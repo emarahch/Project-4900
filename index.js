@@ -15,17 +15,23 @@ Parse.initialize(
        
             // Call the save method, which returns the saved object if successful
             user.signUp().then(function(user) {
-                window.alert('User created successful with name: ' + user.get("username") + ' and email: ' + user.get("email"));
+                chooseYourCharacterPage();
             }).catch(function(error){
                 window.alert("Error: " + error.code + " " + error.message);
             });
     
     }
 
+    function mainProfilePage(){
+        location.href = "ProfilePage.html";
+      };
+
     function login(){ ///struggling
         var user = Parse.User
         .logIn(document.getElementById("email_field").value,document.getElementById("password_field").value).then(function(user) {
-            window.alert("logged in babes");
+            // window.alert("logged in babes");
+            mainProfilePage();
+
     }).catch(function(error){
         window.alert("Error: " + error.code + " " + error.message);
     });
@@ -39,6 +45,19 @@ Parse.initialize(
     location.href = "loginPage.html";
   };
    
+  function chooseYourCharacterPage(){
+    location.href = "chooseYourChara.html";
+  };
+
+
+
+  function refUser(){
+  Parse.User.enableUnsafeCurrentUser()
+  const currentUser = Parse.User.current();
+  refUse=currentUser.get("username");
+   document.getElementById("welcome").innerHTML ="Hey! "+refUse;
+//  window.alert("Hey!"+" "+refUse);
+  }
 
 
        

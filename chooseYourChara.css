@@ -14,3 +14,9 @@ body {
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 20px;
 }
+.pick-mimi,img{
+  width: 50%;
+}
+.pick-zuzu,img{
+  width: 50%;
+}
