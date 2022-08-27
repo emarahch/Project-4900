@@ -1,0 +1,33 @@
+body {
+ background-color: lightpink;
+}
+
+ .intro-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 800px;
+  padding: 300px;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  color:black;
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 20px;
+}
+
+.login-button{
+  position: relative;
+  width: 130px;
+  height: 40px;
+  background-color: orange;
+  border-radius: 5px;
+}
+
+.create-button{
+  position: relative;
+  width: 130px;
+  height: 40px;
+  background-color: orange;
+  border-radius: 5px;
+}
