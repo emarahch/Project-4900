@@ -60,5 +60,39 @@ Parse.initialize(
   }
 
 
+
+  //the following is practice from a video to figure out code to potential 
+const todoInput= document.querySelector('.todo-input');
+const todoButton= document.querySelector('.todo-button');
+const todoList= document.querySelector('.todo-list');
+ 
+todoButton.addEventListener("click", addTodo);
+
+  function addTodo(event){
+    event.preventDefault();
+
+    const toDoDiv = document.createElement('div');
+    toDoDiv.classList.add('todo');
+
+    const newToDo=document.createElement('li');
+    newToDo.innerText ="hey";
+    newToDo.classList.add('todo-item');
+    toDoDiv.appendChild(newToDo);
+
+    const completedButton =document.createElement('button');
+    completedButton.innerText='iddkdkdnd'
+    completedButton.classList.add('complete-btn');
+    toDoDiv.appendChild(completedButton);
+
+    const cancelButton =document.createElement('button');
+    cancelButton.innerText='bye'
+    cancelButton.classList.add("cancel-btn");
+    toDoDiv.appendChild(cancelButton);
+
+    //add to list
+    todoList.appendChild(toDoDiv);
+  }
+
+  //left off at minute 24
        
     

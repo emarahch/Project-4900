@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>HabitBabe</title>
-    <link rel="stylesheet" href="chooseYourChara.css">
+    <link rel="stylesheet" href="ProfilePage.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans">
     <script type="text/javascript" src="https://npmcdn.com/parse/dist/parse.min.js"></script>
     <style>
@@ -11,11 +11,20 @@
    }
 </style>
   </head>
+
   <body onload="refUser()">
 
  <div class="intro-box">
     <h1 id="welcome"></h1>
-   
+
+    <form>
+      <input type="text" class="todo-input"/>
+      <button  class="todo-button" type="submit">submit</button>
+    </form>
+    <div class="checklist-container">
+      <ul class="todo-list"></ul>  
+    
+    </div>
   
 </div>
 <script src ="index.js"></script>
