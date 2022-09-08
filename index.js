@@ -67,6 +67,7 @@ const todoButton= document.querySelector('.todo-button');
 const todoList= document.querySelector('.todo-list');
  
 todoButton.addEventListener("click", addTodo);
+todoList.addEventListener("click", deleteCheck);
 
   function addTodo(event){
     event.preventDefault();
@@ -75,24 +76,48 @@ todoButton.addEventListener("click", addTodo);
     toDoDiv.classList.add('todo');
 
     const newToDo=document.createElement('li');
-    newToDo.innerText ="hey";
+    newToDo.innerText = todoInput.value;
     newToDo.classList.add('todo-item');
     toDoDiv.appendChild(newToDo);
 
     const completedButton =document.createElement('button');
-    completedButton.innerText='iddkdkdnd'
+    completedButton.innerText='done';
     completedButton.classList.add('complete-btn');
     toDoDiv.appendChild(completedButton);
 
     const cancelButton =document.createElement('button');
-    cancelButton.innerText='bye'
+    cancelButton.innerText='trash';
     cancelButton.classList.add("cancel-btn");
     toDoDiv.appendChild(cancelButton);
 
     //add to list
     todoList.appendChild(toDoDiv);
+    //clear inout value 
+    todoInput.value="";
+
+
   }
 
-  //left off at minute 24
+
+function deleteCheck(event){
+  const item= event.target;
+  if(item.classList[0]=== "cancel-btn"){
+    const todo= item.parentElement;
+    todo.remove();
+  }
+
+  if(item.classList[0] === "complete-btn"){
+    const todo= item.parentElement;
+    todo.classList.toggle('completed');
+
+  }
+
+}
+
+//left on minute 48 for filter to do!
+
+
+
+
        
     

@@ -1,14 +1,55 @@
 body {
- background-color: lightpink;
+ background-color: #F8E5E5;
+ margin: 0px;
+padding: 0px;
+border: 0px;
 }
 
+
+nav{
+  /* background-color: white; */
+  width: 100%;
+  height: 15%;
+  margin:auto;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 15px;
+  }
+  
+  .logoImg{
+    width:200px;
+    margin-top: -30px ;
+    margin-right:800px;
+  }
+  
+  .links ul{
+    text-align:right;
+    margin-top: -30px ;
+    margin:10px 50px;
+    }
+
+    .links ul li{
+    /* background-color:white ; */
+    list-style: none;
+    text-align: center;
+    display:inline-block;
+    height: 22px;
+    width:55px;
+    border: 1px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin: 10px 30px;
+    }
+
+  .title{
+    text-align: center;
+   }
+
  .intro-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  margin: 0 auto;
   width: 800px;
   padding: 300px;
-  transform: translate(-50%, -50%);
   background-color: white;
   color:black;
   box-sizing: border-box;
@@ -17,7 +58,7 @@ body {
 }
 
 .login-button{
-  position: relative;
+  position: ;
   width: 130px;
   height: 40px;
   background-color: orange;
@@ -30,4 +71,14 @@ body {
   height: 40px;
   background-color: orange;
   border-radius: 5px;
+}
+
+footer{
+  background-color:black;
+  color:white;
+  text-align: center;
+  height:100px;
+  width:100%;
+  bottom: 0; 
+  position:relative;
 }

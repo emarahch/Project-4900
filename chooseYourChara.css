@@ -1,5 +1,25 @@
 body {
- background-color: lightpink;
+  background-color: #F8E5E5;
+  margin: 0px;
+ padding: 0px;
+ border: 0px;
+
+}
+.logoImg{
+width:200px;
+margin-top: -30px ;
+margin-right:800px;
+}
+
+.intro-box {
+margin: 0 auto;
+width: 800px;
+padding: 300px;
+background-color: white;
+color:black;
+box-sizing: border-box;
+box-shadow: 0 15px 25px rgba(0,0,0,.6);
+border-radius: 20px;
 }
 
  .intro-box {
