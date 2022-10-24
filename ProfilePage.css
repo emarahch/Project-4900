@@ -21,7 +21,11 @@ box-sizing: border-box;
 box-shadow: 0 15px 25px rgba(0,0,0,.6);
 border-radius: 20px;
 }
-  .completed{
+.todo{
+  text-decoration: none;
+     opacity:1;
+}
+.completed{
      text-decoration: line-through;
      opacity: 0.5;
    }
