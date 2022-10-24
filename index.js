@@ -61,8 +61,8 @@ location.href = "chooseYourChara.html";
   }
 
 
-
-  ob=0
+//close but bc it starts at 0 the dunctionaly is off
+ ob=0;
   function storeTODO(){
     (async () => {
       const todo2= new Parse.Object('ToDo');
@@ -108,7 +108,7 @@ location.href = "chooseYourChara.html";
         const query = new Parse.Query('ToDo');
         try {
           // here you put the objectId that you want to update
-          const object = await query.get(ob);
+          const object = await query.get(idd);
           object.set('isCompleted', true);
           try {
             const response = await object.save();
@@ -138,15 +138,13 @@ todoList.addEventListener("click", deleteCheck);
 
 
 
-
-
-
-idd=0;
-  function addTodo(event,ob){
+  function addTodo(event){
     event.preventDefault();
+    storeTODO()
     idd=ob;
 
     const toDoDiv = document.createElement('div');
+    toDoDiv.setAttribute("id", idd);
     toDoDiv.classList.add('todo');
 
     const newToDo=document.createElement('li');
@@ -165,18 +163,19 @@ idd=0;
     cancelButton.classList.add("cancel-btn");
     toDoDiv.appendChild(cancelButton);
 
-    // const idd=document.createElement('p')
-    // idd.innerText=ob;
-    // toDoDiv.appendChild(idd)
 
 
     //add to list
     todoList.appendChild(toDoDiv);
+    
+    window.alert(toDoDiv.getAttribute("id"))// works
     //clear inout value 
     todoInput.value="";
 
   }
 
+
+  //I might need to completlye redo the logic of the todo list
 
 function deleteCheck(event){
   const item= event.target;
@@ -188,8 +187,8 @@ function deleteCheck(event){
   if(item.classList[0] === "complete-btn"){
     const todo= item.parentElement;
     todo.classList.toggle('completed');
-    completedStore(idd)
-    // window.alert(todo.idd)
+    completedStore(todo.getAttribute("id"));
+    // window.alert(todo.getAttribute("id"))
 
    
 
