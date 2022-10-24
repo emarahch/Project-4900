@@ -1,9 +1,10 @@
 
 body {
-    background-color: #F8E5E5;
-    margin: 0px;
-   padding: 0px;
-   border: 0px;
+  /* background-color: #F8E5E5; */
+  background: linear-gradient(179.4deg, rgb(253, 240, 233) 4.2%, rgb(247, 217, 221) 95.2%);
+  margin: 0px;
+  padding: 0px;
+ border: 0px;
 
 }
 .logoImg{
@@ -12,21 +13,52 @@ body {
   margin-right:800px;
 }
 
-.intro-box {
+#create-div {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   margin: 0 auto;
-  width: 800px;
-  padding: 300px;
+  height: 400px;
+  width: 700px;
+  padding: 40px;
   background-color: white;
   color:black;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 70px;
+}
+input{
   border-radius: 20px;
+  /* border-style:outset; */
+  border-style:groove;
+  /* border: 1px solid black; */
+  height:20px;
+  width:200px;
+  margin-top: 10px;
 }
 
 .create-button{
   position: relative;
   width: 130px;
   height: 40px;
-  background-color: orange;
-  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  background-color: #eeeeee4b;
+  border-radius: 142px;
+  letter-spacing: 1px;
+  transition: all 0.2s linear;
+  cursor: pointer;
+  border: none;
+  background: rgb(236, 154, 154);
+  margin-top: 10px;
+
 }
+.create-button:hover > svg {
+  font-size: 1.2em;
+  transform: translateX(-5px);
+ }
+ .create-button:hover {
+  box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+  transform: translateY(-2px);
+ }

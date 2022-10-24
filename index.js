@@ -5,50 +5,51 @@ Parse.initialize(
   'ARHVg2q79aHYce2i4rov3RDm6Z4LMvPckfwggh6T' // This is your Javascript key
 );
 
+function mainProfilePage(){
+  location.href = "ProfilePage.html";
+};
+
+function login(){ ///struggling
+  var user = Parse.User
+  .logIn(document.getElementById("email_field").value,document.getElementById("password_field").value).then(function(user) {
+      // window.alert("logged in babes");
+      mainProfilePage();
+
+}).catch(function(error){
+  window.alert("Error: " + error.code + " " + error.message);
+});
+};
+
+function createAccountPage(){
+  location.href = "createAccount.html";
+};
+
+function loginPage(){
+location.href = "loginPage.html";
+};
+
+function chooseYourCharacterPage(){
+location.href = "chooseYourChara.html";
+};
+
    
 
-        function create () {  //works
-        var user = new Parse.User();
-        user.set("username", document.getElementById("userName_field").value);
-        user.set("email", document.getElementById("email_field").value);
-        user.set("password", document.getElementById("password_field").value);
+ function create () {  
+   var user = new Parse.User();
+   user.set("username", document.getElementById("userName_field").value);
+   user.set("email", document.getElementById("email_field").value);
+   user.set("password", document.getElementById("password_field").value);
        
-            // Call the save method, which returns the saved object if successful
-            user.signUp().then(function(user) {
-                chooseYourCharacterPage();
-            }).catch(function(error){
-                window.alert("Error: " + error.code + " " + error.message);
-            });
+  // Call the save method, which returns the saved object if successful
+   user.signUp().then(function(user) {
+     chooseYourCharacterPage();
+    }).catch(function(error){
+      window.alert("Error: " + error.code + " " + error.message);
+     });
     
     }
 
-    function mainProfilePage(){
-        location.href = "ProfilePage.html";
-      };
-
-    function login(){ ///struggling
-        var user = Parse.User
-        .logIn(document.getElementById("email_field").value,document.getElementById("password_field").value).then(function(user) {
-            // window.alert("logged in babes");
-            mainProfilePage();
-
-    }).catch(function(error){
-        window.alert("Error: " + error.code + " " + error.message);
-    });
-    };
-
-    function createAccountPage(){
-        location.href = "createAccount.html";
-    };
-
-  function loginPage(){
-    location.href = "loginPage.html";
-  };
-   
-  function chooseYourCharacterPage(){
-    location.href = "chooseYourChara.html";
-  };
-
+    
 
 
   function refUser(){
@@ -61,6 +62,72 @@ Parse.initialize(
 
 
 
+  ob=0
+  function storeTODO(){
+    (async () => {
+      const todo2= new Parse.Object('ToDo');
+      todo2.set('User', Parse.User.current());
+      todo2.set('title',document.querySelector('.todo-input').value);
+      todo2.set('isCompleted', false);
+      
+      try {
+        const result = await todo2.save();
+        console.log('ToDo created', result);
+      } catch (error) {
+        console.error('Error while creating ToDo: ', error);
+      }
+
+      ob=todo2.id
+      // window.alert(ob);
+    })();
+     }     
+
+     //still working on
+    // function deleteToDoStore(){
+    //   (async () => {
+    //     const query = new Parse.Query('ToDo');
+    //     try {
+    //       // here you put the objectId that you want to delete
+    //       const object = await query.get('xKue915KBG');
+    //       try {
+    //         const response = await object.destroy();
+    //         console.log('Deleted ParseObject', response);
+    //       } catch (error) {
+    //         console.error('Error while deleting ParseObject', error);
+    //       }
+    //     } catch (error) {
+    //       console.error('Error while retrieving ParseObject', error);
+    //     }
+    //   })();
+
+    // }
+
+//not perfect, but better. need to chnage it so you can complte task any time not just right after adding
+    function completedStore(idd){
+      (async () => {
+        const query = new Parse.Query('ToDo');
+        try {
+          // here you put the objectId that you want to update
+          const object = await query.get(ob);
+          object.set('isCompleted', true);
+          try {
+            const response = await object.save();
+            // You can use the "get" method to get the value of an attribute
+            // Ex: response.get("<ATTRIBUTE_NAME>")
+            // Access the Parse Object attributes using the .GET method
+            // console.log(response.get('myCustomKey1Name'));
+            // console.log('MyCustomClassName updated', response);
+          } catch (error) {
+            console.error('Error while updating ', error);
+          }
+        } catch (error) {
+          console.error('Error while retrieving object ', error);
+        }
+      })();
+    }
+
+
+
   //the following is practice from a video to figure out code to potential 
 const todoInput= document.querySelector('.todo-input');
 const todoButton= document.querySelector('.todo-button');
@@ -69,8 +136,15 @@ const todoList= document.querySelector('.todo-list');
 todoButton.addEventListener("click", addTodo);
 todoList.addEventListener("click", deleteCheck);
 
-  function addTodo(event){
+
+
+
+
+
+idd=0;
+  function addTodo(event,ob){
     event.preventDefault();
+    idd=ob;
 
     const toDoDiv = document.createElement('div');
     toDoDiv.classList.add('todo');
@@ -79,6 +153,7 @@ todoList.addEventListener("click", deleteCheck);
     newToDo.innerText = todoInput.value;
     newToDo.classList.add('todo-item');
     toDoDiv.appendChild(newToDo);
+
 
     const completedButton =document.createElement('button');
     completedButton.innerText='done';
@@ -90,11 +165,15 @@ todoList.addEventListener("click", deleteCheck);
     cancelButton.classList.add("cancel-btn");
     toDoDiv.appendChild(cancelButton);
 
+    // const idd=document.createElement('p')
+    // idd.innerText=ob;
+    // toDoDiv.appendChild(idd)
+
+
     //add to list
     todoList.appendChild(toDoDiv);
     //clear inout value 
     todoInput.value="";
-
 
   }
 
@@ -109,10 +188,23 @@ function deleteCheck(event){
   if(item.classList[0] === "complete-btn"){
     const todo= item.parentElement;
     todo.classList.toggle('completed');
+    completedStore(idd)
+    // window.alert(todo.idd)
+
+   
+
+    //idea, with each todo the id is stored, so here we can get the id of the parent element to dlete
+    // meow=todo.idd;
+    // window.alert(meow)
+    // completedStore(idd)
+    // completedStore(ob)
 
   }
 
 }
+
+
+
 
 //left on minute 48 for filter to do!
 
@@ -120,4 +212,5 @@ function deleteCheck(event){
 
 
        
-    
+
+
