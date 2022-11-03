@@ -15,10 +15,9 @@ function mainProfilePage(){
   
 };
 
-function login(){ ///struggling
+function login(){
   var user = Parse.User
   .logIn(document.getElementById("email_field").value,document.getElementById("password_field").value).then(function(user) {
-      // window.alert("logged in babes");
       mainProfilePage();
 
 }).catch(function(error){
@@ -63,9 +62,7 @@ location.href = "chooseYourChara.html";
   Parse.User.enableUnsafeCurrentUser()
   const currentUser = Parse.User.current();
   refUse=currentUser.get("username");
-   document.getElementById("welcome").innerHTML ="Hey! "+refUse;
-
-
+  document.getElementById("welcome").innerHTML ="Hey! "+refUse;
    //playong with local storage, this is here bc this is the onload functuon in the profile html
   //  localStorage.setItem('myCat', 'Tom');
   //  const cat = localStorage.getItem('myCat');
