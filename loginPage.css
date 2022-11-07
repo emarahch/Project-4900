@@ -1,17 +1,32 @@
 
-body {
-  /* background-color: #F8E5E5; */
-  background: linear-gradient(179.4deg, rgb(253, 240, 233) 4.2%, rgb(247, 217, 221) 95.2%);
-  margin: 0px;
-  padding: 0px;
- border: 0px;
 
-}
-.logoImg{
+body {
+  background: linear-gradient(179.4deg, rgb(253, 240, 233) 4.2%, rgb(247, 217, 221) 99.2%);
+  /* background: linear-gradient(179.4deg, rgb(253, 240, 233) 2.2%, rgb(255, 194, 203) 96.2%); */
+  /* background-image: url("images/mesh-gradient.png"); */
+ }
+ 
+ 
+ nav{
+   margin:-1rem;
+   padding:20px 20px 5px 20px;
+   display:flex;
+   align-items: center;
+  
+   font-size: 15px;
+   background-color: rgb(255, 255, 255);
+   top: 0px;
+  }
+   
+   .logoImg{
+     width:80px;
+   }
+ 
+/* .logoImg{
   width:200px;
   margin-top: -30px ;
   margin-right:800px;
-}
+} */
 
 #login-div {
   display:flex;
