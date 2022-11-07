@@ -26,12 +26,26 @@ function mainProfilePage(){
 
 // / section 2 completed
 
+function preCreate(){
+  var charry="";
+  var charaName = document.getElementsByName('chara');
+  for (var i = 0, length = charaName.length; i < length; i++) {
+  if (charaName[i].checked) {
+   alert(charaName[i].value);
+   charry=charaName[i].value;
+   break;
+  }
+  } 
+  create (charry)
+}
 
-function create () {  
+function create (charry) {  
   var user = new Parse.User();
   user.set("username", document.getElementById("userName_field").value);
   user.set("email", document.getElementById("email_field").value);
   user.set("password", document.getElementById("password_field").value);
+  user.set("chara", charry);
+  
  
       // Call the save method, which returns the saved object if successful
       user.signUp().then(function(user) {
@@ -41,7 +55,6 @@ function create () {
       });
 
 }
-
 
 
 function login(){
@@ -60,7 +73,10 @@ function loader(){
   Parse.User.enableUnsafeCurrentUser()
   const currentUser = Parse.User.current();
   const refUse=currentUser.get("username");
+  const userI=currentUser.get("chara");
   document.getElementById("welcome").innerHTML ="Hey! "+refUse;
+  document.getElementById("userPlay").src =userI;
+
 }
 
 

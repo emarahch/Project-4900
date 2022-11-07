@@ -76,3 +76,34 @@ body {
     box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
     transform: translateY(-2px);
    }
+
+
+   input[type=radio]:checked + label>img {
+    border: 1px solid #fff;
+    box-shadow: 0 0 3px 3px #090;
+  }
+
+
+  /* hiding the button, only show image */
+  input[type="radio"] {
+    opacity: 0;
+}
+   .label-image{
+    width: 30px;
+    height: 40px;
+
+   }
+
+   label::before,
+	 label::after {
+		display: none;
+	}
+
+
+  .pick-Character{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:5px;
+    padding: 20px;
+  }
