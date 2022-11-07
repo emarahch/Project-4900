@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HabitBabe</title>
+<link rel="stylesheet" href="../cssFiles/LogCreate.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans">
+<script type="text/javascript" src="https://npmcdn.com/parse@3.4.4/dist/parse.min.js"></script>
+
+
+  <style>
+   body {
+  font-family: "Fira+Sans", sans-serif;
+        }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="startPage.html"><img src = "../images/HabitBabe-logos_black.png"class="logoImg"></a>
+    </nav>
+
+    <div class="Log-create-div">
+    <h3>Create account</h3>
+    <input type="text" placeholder="name" id="userName_field">
+    <input type="email" placeholder="email" id="email_field">
+    <input type="password" placeholder="password" id="password_field">
+    <button onclick= "create()" class="Log-create-button">Create</button>
+
+
+    </div>
+    <script src  ="../jsFiles/index.js"></script>
+
+   <!-- <script script src  ="../jsFiles/fire.js" type="module"></script> --> 
+
+
+   <!-- <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+    import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.13.0/firebase-analytics.js';
+    import { getAuth } from 'https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js';
+    import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.13.0/firebase-firestore.js';
+    import { getDatabase } from 'https://www.gstatic.com/firebasejs/9.13.0/firebase-databse.js';
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAN8yXtltHHiIiW131G8XYKiKLFcTVuAOo",
+      authDomain: "habittracker-3bbbf.firebaseapp.com",
+      databaseURL: "https://habittracker-3bbbf-default-rtdb.firebaseio.com",
+      projectId: "habittracker-3bbbf",
+      storageBucket: "habittracker-3bbbf.appspot.com",
+      messagingSenderId: "442744489727",
+      appId: "1:442744489727:web:233761bae5af911c8caeca",
+      databaseURL: "https://habittracker-3bbbf-default-rtdb.firebaseio.com/"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const database = getDatabase(app);
+
+
+
+
+
+
+    const database = getDatabase();
+    import { getDatabase, ref, set } from 'https://www.gstatic.com/firebasejs/9.13.0/firebase-databse.js';
+
+function writeUserData(userId, name, email, imageUrl) {
+  const db = getDatabase();
+  set(ref(db, 'users/' + userId), {
+    username: 'hello',
+    email: 'meow',
+  });
+} -->
+
+
+
+
+  </script>
+
+</body>
+  </html>
+
