@@ -1,15 +1,48 @@
 body {
-  background-color: #F8E5E5;
-  margin: 0px;
- padding: 0px;
- border: 0px;
+  background: linear-gradient(179.4deg, rgb(253, 240, 233) 4.2%, rgb(247, 217, 221) 99.2%);
+  /* background: linear-gradient(179.4deg, rgb(253, 240, 233) 2.2%, rgb(255, 194, 203) 96.2%); */
+  /* background-image: url("images/mesh-gradient.png"); */
+ }
+ 
+ 
+ nav{
+   margin:-1rem;
+   padding:20px 20px 5px 20px;
+   display:flex;
+   align-items: center;
+   justify-content: space-between;
+   font-size: 15px;
+   background-color: rgb(255, 255, 255);
+   top: 0px;
+  }
+   
+   .logoImg{
+     width:80px;
+   }
+ 
+    li{
+     list-style: none;
+     text-align: center;
+     display:inline;
+     height: 22px;
+     width:55px;
+     border: 1px;
+     border-radius: 10px;
+     box-sizing: border-box;
+     padding:10px;
+     }
+ a{
+   text-decoration: none;
+   color:black;
+ }
+ a:visited{
+   color:black;
+ }
 
-}
-.logoImg{
-width:200px;
-margin-top: -30px ;
-margin-right:800px;
-}
+#userPlay{
+  height: 55px;
+  width:55px;
+ }
 
 .intro-box {
 margin: 0 auto;

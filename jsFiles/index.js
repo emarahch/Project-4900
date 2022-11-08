@@ -74,12 +74,12 @@ function loader(){
   const currentUser = Parse.User.current();
   const refUse=currentUser.get("username");
   const userI=currentUser.get("chara");
+  const userScore=currentUser.get("score");
   document.getElementById("welcome").innerHTML ="Hey! "+refUse;
   document.getElementById("userPlay").src =userI;
+  document.getElementById("scoreEle").innerHTML=userScore;  // working on, bc it returns undefined
 
 }
-
-
 
 
 
