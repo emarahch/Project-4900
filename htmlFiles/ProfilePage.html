@@ -38,11 +38,24 @@
     <form>
       <input type="text" class="todo-input"/>
 
-      <select multiple data-placeholder="Add tools">
+
+      <!-- priority level, single level -->
+      <select  name="prioriyNumber">
         <option>1</option>
         <!-- <option selected>Framer X</option> -->
         <option>2</option>
         <option>3</option>
+    </select>
+
+
+
+    <select name="field1" id="field1" multiple onchange="console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))" multiselect-hide-x="true">
+      <option value="1">Audi</option>
+      <option selected value="2">BMW</option>
+      <option selected value="3">Mercedes</option>
+      <option value="4">Volvo</option>
+      <option value="5">Lexus</option>
+      <option value="6">Tesla</option>
     </select>
 
       <!-- <button onclick= "storeTODO()" class="todo-button" type="submit">submit</button> -->
@@ -58,6 +71,6 @@
   
 </div>
 <script src ="../jsFiles/index.js"></script>
-
+<script src="../jsFiles/multiselect-dropdown.js" ></script>
   </body>
 </html>
