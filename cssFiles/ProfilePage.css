@@ -1,7 +1,8 @@
 body {
-  background: linear-gradient(179.4deg, rgb(253, 240, 233) 4.2%, rgb(247, 217, 221) 99.2%);
+  /* background: linear-gradient(179.4deg, rgb(253, 240, 233) 4.2%, rgb(247, 217, 221) 99.2%); */
   /* background: linear-gradient(179.4deg, rgb(253, 240, 233) 2.2%, rgb(255, 194, 203) 96.2%); */
   /* background-image: url("images/mesh-gradient.png"); */
+  background-color: white ;
  }
  
  
@@ -15,7 +16,7 @@ body {
    background-color: rgb(255, 255, 255);
    top: 0px;
   }
-   
+
    .logoImg{
      width:80px;
    }
@@ -44,16 +45,33 @@ body {
   width:55px;
  }
 
+
+ .userStuff{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+ }
+ 
 .intro-box {
-margin: 0 auto;
-width: 800px;
-padding: 300px;
+display:flex;
+flex-direction: row;
+justify-content: center;
+
+height:80%;
+width: 90%;
+/* padding: 300px; */
 background-color: white;
 color:black;
-box-sizing: border-box;
-box-shadow: 0 15px 25px rgba(0,0,0,.6);
-border-radius: 20px;
 }
+
+
+
+
+.TestTodoSection{
+  border-right: 2px solid grey;
+}
+
+/* Todo Section */
 .todo{
   text-decoration: none;
      opacity:1;
@@ -62,3 +80,41 @@ border-radius: 20px;
      text-decoration: line-through;
      opacity: 0.5;
    }
+
+
+/* Notes section */
+
+   .note-creation{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom:10px;
+    padding:5px;
+}
+.notes-list{
+    width: 90%;
+    height: 65px;
+}
+
+.note{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    box-shadow: 1px 4px 4px 0px rgba(0,0,0,0.28);
+
+    border-radius: 5px;
+    border : 1px solid rgba(0,0,0,0.28);
+    /* text-decoration: none; */
+    list-style-type: none;
+    margin-bottom: 10px;
+
+    width: 90%;
+    height: 65px;
+    overflow-y: hidden;
+  }
+  .note:hover{
+    background-color: #FF8FAB;
+  }

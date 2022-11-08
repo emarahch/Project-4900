@@ -17,57 +17,88 @@
     <nav>
       <a href="startPage.html"><img src = "../images/HabitBabe-logos_black.png"class="logoImg"></a>
       </nav>
-      <h1 id="welcome"></h1>
-      <div id="userIcon"><img  src="../images/plholder.webp" id="userPlay"></div>
-      <h5 id="scoreEle"></h5>
 
+      <div class="userStuff">
+        <div id="userIcon"><img  src="../images/plholder.webp" id="userPlay"></div>
+      <h1 id="welcome">Hey Emy</h1>
+      <h5 id="scoreEle">28</h5>
+      </div>
 
       <button class="random">get prev todo across restart</button>
       <div id="division1"></div>
- <div class="intro-box">
 
+
+    
+<div class="intro-box">
+
+    <div class="testNav">
   <ul>
-    <li><a href="notes.html">Notes</a></li>
     <li><a href="timer">Timer</a></li>
-    <li><a href="Todo">Todo</a></li>
     <li><a href="settings">Settings</a></li>
   </ul>
-
+</div>
  
 
+<div class="TestTodoSection">
     <form>
       <input type="text" class="todo-input"/>
 
-
       <!-- priority level, single level -->
-      <select  name="prioriyNumber">
-        <option>1</option>
-        <!-- <option selected>Framer X</option> -->
-        <option>2</option>
-        <option>3</option>
-    </select>
-
+      <select  name="priorityNumber">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      </select>
 
 
     <select name="field1" id="field1" multiple onchange="console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))" multiselect-hide-x="true">
-      <option value="1">Audi</option>
-      <option selected value="2">BMW</option>
-      <option selected value="3">Mercedes</option>
-      <option value="4">Volvo</option>
-      <option value="5">Lexus</option>
-      <option value="6">Tesla</option>
+      <option value="1">General</option>
+      <option value="2">School</option>
+      <option value="3">Work</option>
+      <option value="4">Family</option>
+      <option value="5">Home</option>
+      <option value="6">Kids</option>
+      <option value="7">Groccery</option>
+      <option value="8">Meal planning</option>
+      <option value="9">Groccery</option>
+      <option value="10">Goals</option>
+      <option value="11">Side Hustle</option>
+      <option value="12">Creative</option>
     </select>
 
-      <!-- <button onclick= "storeTODO()" class="todo-button" type="submit">submit</button> -->
       <button class="todo-button" type="submit">submit</button>
-      <!-- <button onclick= "storeTODO()" class="todo-button" type="submit">submit</button>  -->
+      
     
     </form>
 
-  
     <div style= "height: 200px; overflow-y: scroll;" class="checklist-container">
       <ul class="todo-list"></ul>  
     </div>
+  </div>
+
+<!-- notes section -->
+
+
+<div class="main">
+  <div class="note-creation">
+      
+       <input class="title-field" type="text" placeholder="title your note">
+      
+
+  <textarea class="body-field"></textarea>
+  <button class="btn-save">Save</button>
+  <button class="btn-clear">Clear </button>
+  </div>
+
+    <!-- Notes Container -->
+    <!-- <div style= "height: 800px; overflow-y: scroll;" class="checklist-container"> -->
+    <section class='notes-list'></section>
+  <!-- </div> -->
+</div>
+
+
+
+
   
 </div>
 <script src ="../jsFiles/index.js"></script>
