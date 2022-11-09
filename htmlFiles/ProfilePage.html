@@ -37,50 +37,55 @@
 <div class="intro-box">
 
     <div class="testNav">
-  <ul>
-    <li><a href="timer">Timer</a></li>
-    <li><a href="settings">Settings</a></li>
+    <ul>
+    <li><button class="">Timer</button></li>
+    <li><button id="themeChangeButton">dark mode</button></li>
   </ul>
 </div>
  
 
 <div class="TestTodoSection">
-    <form>
+
+  <div id="divToCreateForm">
+    <form id="createTodoForm" >
       <input type="text" class="todo-input"/>
 
       <!-- priority level, single level -->
-      <select  name="priorityNumber">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
+      <select name="priorityNumber" id="priorityNumber">
+      <option value="1" selected="selected">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
       </select>
 
 
-    <select name="field1" id="field1" multiple onchange="console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))" multiselect-hide-x="true">
-      <option value="1">General</option>
-      <option value="2">School</option>
-      <option value="3">Work</option>
-      <option value="4">Family</option>
-      <option value="5">Home</option>
-      <option value="6">Kids</option>
-      <option value="7">Groccery</option>
-      <option value="8">Meal planning</option>
-      <option value="9">Groccery</option>
-      <option value="10">Goals</option>
-      <option value="11">Side Hustle</option>
-      <option value="12">Creative</option>
+    <select name="field1" id="categoryNumber" multiple onchange="console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))" multiselect-hide-x="true">
+      <option value="General"selected="selected">General</option>
+      <option value="School">School</option>
+      <option value="Work">Work</option>
+      <option value="Family">Family</option>
+      <option value="Home">Home</option>
+      <option value="Kids">Kids</option>
+      <option value="Groccery">Groccery</option>
+      <option value="Meal planning">Meal planning</option>
+      <option value="Groccery">Groccery</option>
+      <option value="Goals">Goals</option>
+      <option value="Side Hustle">Side Hustle</option>
+      <option value="Creative">Creative</option>
     </select>
 
       <button class="todo-button" type="submit">submit</button>
-      
     
     </form>
+  </div>
+    <button id="createTodoShowBtn">Toggle form visibility</button>
+
 
     <!-- <div style= "height: 200px; overflow-y: scroll;" class="checklist-container"> -->
       <div class="checklist-container"></div>
       <ul class="todo-list"></ul>  
     </div>
-  </div>
+ 
+
 
 <!-- notes section -->
 
@@ -100,6 +105,10 @@
     <section class='notes-list'></section>
   <!-- </div> -->
 </div>
+
+
+<!-- end of introbox -->
+</div> 
 
 
 

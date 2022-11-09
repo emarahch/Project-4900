@@ -6,17 +6,44 @@
 // );
 
 //REMOVE COMMENT WHEN TESTING
-
 //If having trouble with parse, check if there is an update
 
-//FOR BUTTONS START
+//For button
 function mainProfilePage() {
   location.href = "../htmlFiles/ProfilePage.html";
 }
-//FOR BUTTONS END
+
+
+//Theme changer
+const themeChangeButton = document.getElementById('themeChangeButton');
+themeChangeButton.addEventListener("click", themeChangerFunc);
+// const useDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+function themeChangerFunc(){
+  // document.body.classList.toggle("darkMode")
+
+  if (document.documentElement.classList.contains("light")) {
+    document.documentElement.classList.remove("light")
+    document.documentElement.classList.add("darkMode")
+  } else if (document.documentElement.classList.contains("darkMode")) {
+    document.documentElement.classList.remove("darkMode")
+    document.documentElement.classList.add("light")
+  } else {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.classList.add("darkMode")
+    } else {
+      document.documentElement.classList.add("light")
+    }
+  }
+}
+
+
+
+
+
+
 
 //Creating an account
-
 function preCreate() {
   var charry = "";
   var charaName = document.getElementsByName("chara");
@@ -74,31 +101,74 @@ function loader() {
   document.getElementById("scoreEle").innerHTML = userScore; // working on, bc it returns undefined
 }
 
-//Adding New Todo's to the dom
+
+//Showing and hiding the form for adding a todo
+const createTodoShowBtn= document.getElementById('createTodoShowBtn');
+
+createTodoShowBtn.addEventListener('click', () => {
+  const divform = document.getElementById('divToCreateForm');
+
+  if (divform.style.display === 'block') {
+    // 👇️ this HIDES the form
+    divform.style.display = 'none';
+  } else {
+     // 👇️ this SHOWS the form
+     divform.style.display = 'block';
+  }
+});
+
+
+
+
+//Adding New Todo's to the DOM
 const todoInput = document.querySelector(".todo-input");
 const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todo-list");
+
 
 todoButton.addEventListener("click", storeTODO);
 todoList.addEventListener("click", deleteCheck);
 
 function addTodo(idd) {
-  //??
+  var categoryNumberUser = document.getElementById("categoryNumber");
+  var prNumberUser = document.getElementById("priorityNumber");
+  var textPr = prNumberUser .options[prNumberUser .selectedIndex].value;
+  var textCa = Array.from(categoryNumberUser.selectedOptions).map(x=>x.value??x.text)
   // preventDefault();
+  alert(textPr);
   const toDoDiv = document.createElement("div");
+  toDoDiv.setAttribute("class","IndToDo");
   toDoDiv.setAttribute("id", idd);
-  toDoDiv.setAttribute("value", "OFF");
+  toDoDiv.setAttribute("value", "OFF"); //what does this do agaib?
   toDoDiv.classList.add("todo");
 
+  //adding the title, priority, and catergory to the todo on screen
   const newToDo = document.createElement("li");
   newToDo.innerText = todoInput.value;
   newToDo.classList.add("todo-item");
   toDoDiv.appendChild(newToDo);
 
+  const newToDoP = document.createElement("li");
+  newToDoP.innerText = textPr;
+  newToDoP.classList.add("todo-item");
+  toDoDiv.appendChild(newToDoP);
+
+  const newToDoC = document.createElement("li");
+  newToDoC.innerText = textCa;
+  newToDoC.classList.add("todo-item");
+  toDoDiv.appendChild(newToDoC);
+
+
+  const editButton = document.createElement("button");
+  editButton .innerText = "edit";
+  editButton .classList.add("edit-btn");
+  toDoDiv.appendChild(editButton );
+
   const completedButton = document.createElement("button");
   completedButton.innerText = "done";
   completedButton.classList.add("complete-btn");
   toDoDiv.appendChild(completedButton);
+
 
   const cancelButton = document.createElement("button");
   cancelButton.innerText = "trash";
@@ -114,14 +184,24 @@ function addTodo(idd) {
   todoInput.value = "";
 }
 
+
+
 //this stores new Todo to parse
 function storeTODO(event) {
+  //This is for getting the priority level and the categories
+var prNumberUser = document.getElementById("priorityNumber");
+var categoryNumberUser = document.getElementById("categoryNumber");
+var textPr = prNumberUser .options[prNumberUser .selectedIndex].value;
+var textCa = Array.from(categoryNumberUser.selectedOptions).map(x=>x.value??x.text)
+//this is where storing actuallu happens
   event.preventDefault();
   (async () => {
     const newTodo2 = new Parse.Object("ToDo");
     newTodo2.set("User", Parse.User.current());
     newTodo2.set("title", document.querySelector(".todo-input").value);
     newTodo2.set("isCompleted", false);
+    newTodo2.set("priority",textPr );
+    newTodo2.set("category",textCa);
 
     try {
       const result = await newTodo2.save();
@@ -134,6 +214,7 @@ function storeTODO(event) {
     // window.alert(ob);// works
     addTodo(ob);
   })();
+
 }
 //this updates parse for task deletion
 function deleteToDoStore(idd) {
@@ -194,43 +275,50 @@ function deleteCheck(event) {
     todo.classList.toggle("completed");
     completedStore(todo.getAttribute("id"));
   }
-}
 
-//Testing trying to get old stuff...
-const getterButton = document.querySelector(".random");
-getterButton.addEventListener("click", retrieveTodos);
-
-//needs aync bc of await
-async function retrieveTodos() {
-  Parse.User.enableUnsafeCurrentUser();
-  const currentUser = Parse.User.current();
-
-  const GameScore = Parse.Object.extend("ToDo");
-  var query = new Parse.Query(GameScore);
-  query.include("User");
-  query.equalTo("User", currentUser);
-
-  query.find({
-    //Having trouble making this fully work
-    success: function (results) {
-      window.alert("Successfully retrieved " + results.length + " scores."); //this does nothiung?
-      console.log("??");
-    },
-
-    error: function (error) {
-      // error is an instance of Parse.Error.
-      window.alert("problem" + error);
-    },
-  });
-  // window.alert("hello");
-}
-
-function pasteToDo(results) {
-  for (let i = 0; i < results.length; i++) {
-    const object = results[i];
-    alert(object.id + " - " + object.get("User"));
+    if (item.classList[0] === "edit-btn") {
+      const todo = item.parentElement;
+      alert("You are in Edit mode: Not functional yes!")
+      completedStore(todo.getAttribute("id"));
+    
   }
 }
+
+// //Testing trying to get old stuff...
+// const getterButton = document.querySelector(".random");
+// getterButton.addEventListener("click", retrieveTodos);
+
+// //needs aync bc of await
+// async function retrieveTodos() {
+//   Parse.User.enableUnsafeCurrentUser();
+//   const currentUser = Parse.User.current();
+
+//   const GameScore = Parse.Object.extend("ToDo");
+//   var query = new Parse.Query(GameScore);
+//   query.include("User");
+//   query.equalTo("User", currentUser);
+
+//   query.find({
+//     //Having trouble making this fully work
+//     success: function (results) {
+//       window.alert("Successfully retrieved " + results.length + " scores."); //this does nothiung?
+//       console.log("??");
+//     },
+
+//     error: function (error) {
+//       // error is an instance of Parse.Error.
+//       window.alert("problem" + error);
+//     },
+//   });
+//   // window.alert("hello");
+// }
+
+// function pasteToDo(results) {
+//   for (let i = 0; i < results.length; i++) {
+//     const object = results[i];
+//     alert(object.id + " - " + object.get("User"));
+//   }
+// }
 
 //left on minute 48 for filter to do!
 
