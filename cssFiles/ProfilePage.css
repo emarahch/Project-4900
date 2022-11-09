@@ -1,120 +1,168 @@
 body {
-  /* background: linear-gradient(179.4deg, rgb(253, 240, 233) 4.2%, rgb(247, 217, 221) 99.2%); */
-  /* background: linear-gradient(179.4deg, rgb(253, 240, 233) 2.2%, rgb(255, 194, 203) 96.2%); */
-  /* background-image: url("images/mesh-gradient.png"); */
-  background-color: white ;
- }
- 
- 
- nav{
-   margin:-1rem;
-   padding:20px 20px 5px 20px;
-   display:flex;
-   align-items: center;
-   justify-content: space-between;
-   font-size: 15px;
-   background-color: rgb(255, 255, 255);
-   top: 0px;
-  }
+  background-color: white;
+  margin:0%;
+}
 
-   .logoImg{
-     width:80px;
-   }
- 
-    li{
-     list-style: none;
-     text-align: center;
-     display:inline;
-     height: 22px;
-     width:55px;
-     border: 1px;
-     border-radius: 10px;
-     box-sizing: border-box;
-     padding:10px;
-     }
- a{
-   text-decoration: none;
-   color:black;
- }
- a:visited{
-   color:black;
- }
+/* nav {
+  margin: -1rem;
+  padding: 20px 20px 5px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 15px;
+  background-color: rgb(255, 255, 255);
+  top: 0px;
+} */
 
-#userPlay{
-  height: 55px;
-  width:55px;
- }
-
-
- .userStuff{
-  display:flex;
-  flex-direction: row;
-  justify-content: center;
- }
- 
-.intro-box {
-display:flex;
-flex-direction: row;
-justify-content: center;
-
-height:80%;
-width: 90%;
-/* padding: 300px; */
-background-color: white;
-color:black;
+li {
+  list-style: none;
+  text-align: center;
+  height: 22px;
+  width: 55px;
+  border: 1px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 10px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+a:visited {
+  color: black;
 }
 
 
 
+/* The top part of the screen */
 
-.TestTodoSection{
+#userPlay {
+  border-radius: 50%;
+  height: 55px;
+  width: 55px;
+}
+
+.userStuff {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.userNamePfp {
+  display: flex;
+  flex-direction: row;
+}
+
+.ScoreDiv {
+  background-color: #f5e3f1;
+  border-radius: 5px;
+  height: 20%;
+  width: 15%;
+}
+
+/* Everything in the center of the screen */
+.intro-box {
+  display: flex;
+  flex-direction: row;
+  height: 80%;
+  width: 90%;
+  background-color: white;
+  color: black;
+}
+
+.testNav {
+  padding-left: 0%;
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+}
+
+.TestTodoSection {
   border-right: 2px solid grey;
+  width: 50%;
 }
 
 /* Todo Section */
-.todo{
+.todo {
   text-decoration: none;
-     opacity:1;
+  opacity: 1;
 }
-.completed{
-     text-decoration: line-through;
-     opacity: 0.5;
-   }
-
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
 
 /* Notes section */
 
-   .note-creation{
-    position: relative;
+.notesMain {
+  width: 35%;
+}
+
+.note-creation {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+.notes-list {
+  width: 90%;
+  height: 65px;
+}
+
+.note {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  box-shadow: 1px 4px 4px 0px rgba(0, 0, 0, 0.28);
+
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.28);
+  /* text-decoration: none; */
+  list-style-type: none;
+  margin-bottom: 10px;
+
+  width: 90%;
+  height: 65px;
+  overflow-y: hidden;
+}
+.note:hover {
+  background-color: #ff8fab;
+}
+
+
+/* breakpoints */
+
+@media (max-width: 790px) {
+
+  .intro-box {
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    margin-bottom:10px;
-    padding:5px;
-}
-.notes-list{
-    width: 90%;
-    height: 65px;
-}
+    margin:0px;
+    height: 80%;
+    width: 100%;
+ 
+  }
 
-.note{
+  .testNav {
+    /* padding-left: 0%; */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    box-shadow: 1px 4px 4px 0px rgba(0,0,0,0.28);
-
-    border-radius: 5px;
-    border : 1px solid rgba(0,0,0,0.28);
-    /* text-decoration: none; */
-    list-style-type: none;
-    margin-bottom: 10px;
-
-    width: 90%;
-    height: 65px;
-    overflow-y: hidden;
+    flex-direction: column;
+    width: 100%;
   }
-  .note:hover{
-    background-color: #FF8FAB;
+  
+
+  .TestTodoSection {
+    border:none;
+    width: 50%;
   }
+
+  .notesMain {
+    width: 100%;
+  }
+
+  
+}

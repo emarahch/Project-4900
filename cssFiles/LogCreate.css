@@ -1,109 +1,105 @@
-
-
 body {
-    background: linear-gradient(179.4deg, rgb(253, 240, 233) 4.2%, rgb(247, 217, 221) 99.2%);
-    /* background: linear-gradient(179.4deg, rgb(253, 240, 233) 2.2%, rgb(255, 194, 203) 96.2%); */
-    /* background-image: url("images/mesh-gradient.png"); */
-   }
-   
-   nav{
-     margin:-1rem;
-     padding:20px 20px 5px 20px;
-     display:flex;
-     align-items: center;
-    
-     font-size: 15px;
-     background-color: rgb(255, 255, 255);
-     top: 0px;
-    }
-     
-     .logoImg{
-       width:80px;
-     }
-   
-  /* .logoImg{
+  background: linear-gradient(
+    179.4deg,
+    rgb(253, 240, 233) 4.2%,
+    rgb(247, 217, 221) 99.2%
+  );
+  /* background-image: url("images/mesh-gradient.png"); */
+}
+
+nav {
+  margin: -1rem;
+  padding: 20px 20px 5px 20px;
+  display: flex;
+  align-items: center;
+
+  font-size: 15px;
+  background-color: rgb(255, 255, 255);
+  top: 0px;
+}
+
+.logoImg {
+  width: 80px;
+}
+
+/* .logoImg{
     width:200px;
     margin-top: -30px ;
     margin-right:800px;
   } */
-  
-  .Log-create-div{
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin: 0 auto;
-    height: 400px;
-    width: 700px;
-    padding: 40px;
-    background-color: white;
-    color:black;
-    /* box-sizing: border-box; */
-    box-shadow: 0 15px 25px rgba(0,0,0,.6);
-    border-radius: 70px;
-  }
-  input{
-    border-radius: 20px;
-    /* border-style:outset; */
-    border-style:groove;
-    /* border: 1px solid black; */
-    height:20px;
-    width:200px;
-    margin-top: 10px;
-  }
-  
-  .Log-create-button{
-    position: relative;
-    width: 130px;
-    height: 40px;
-    align-items: center;
-    justify-content: center;
-    background-color: #eeeeee4b;
-    border-radius: 142px;
-    letter-spacing: 1px;
-    transition: all 0.2s linear;
-    cursor: pointer;
-    border: none;
-    background: rgb(236, 154, 154);
-    margin-top: 10px;
-  
-  }
-  .Log-create-button:hover > svg {
-    font-size: 1.2em;
-    transform: translateX(-5px);
-   }
-   .Log-create-button:hover {
-    box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
-    transform: translateY(-2px);
-   }
 
-
-   input[type=radio]:checked + label>img {
-    border: 1px solid #fff;
-    box-shadow: 0 0 3px 3px #090;
-  }
-
-
-  /* hiding the button, only show image */
-  input[type="radio"] {
-    opacity: 0;
+.Log-create-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  height: 400px;
+  width: 700px;
+  padding: 40px;
+  background-color: white;
+  color: black;
+  /* box-sizing: border-box; */
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  border-radius: 70px;
 }
-   .label-image{
-    width: 30px;
-    height: 40px;
+input {
+  border-radius: 20px;
+  /* border-style:outset; */
+  border-style: groove;
+  /* border: 1px solid black; */
+  height: 20px;
+  width: 200px;
+  margin-top: 10px;
+}
 
-   }
+.Log-create-button {
+  position: relative;
+  width: 130px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  background-color: #eeeeee4b;
+  border-radius: 142px;
+  letter-spacing: 1px;
+  transition: all 0.2s linear;
+  cursor: pointer;
+  border: none;
+  background: rgb(236, 154, 154);
+  margin-top: 10px;
+}
+.Log-create-button:hover > svg {
+  font-size: 1.2em;
+  transform: translateX(-5px);
+}
+.Log-create-button:hover {
+  box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+  transform: translateY(-2px);
+}
 
-   label::before,
-	 label::after {
-		display: none;
-	}
+input[type="radio"]:checked + label > img {
+  border: 1px solid #fff;
+  box-shadow: 0 0 3px 3px #090;
+}
 
+/* hiding the button, only show image */
+input[type="radio"] {
+  opacity: 0;
+}
+.label-image {
+  width: 30px;
+  height: 40px;
+}
 
-  .pick-Character{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin:5px;
-    padding: 20px;
-  }
+label::before,
+label::after {
+  display: none;
+}
+
+.pick-Character {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  padding: 20px;
+}

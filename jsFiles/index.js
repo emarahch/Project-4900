@@ -5,367 +5,323 @@
 //   'ARHVg2q79aHYce2i4rov3RDm6Z4LMvPckfwggh6T' // This is your Javascript key
 // );
 
-
 //REMOVE COMMENT WHEN TESTING
 
 //If having trouble with parse, check if there is an update
 
-
-
-
-
 //FOR BUTTONS START
-function mainProfilePage(){
+function mainProfilePage() {
   location.href = "../htmlFiles/ProfilePage.html";
-  
-};
+}
 //FOR BUTTONS END
-
 
 //Creating an account
 
-function preCreate(){
-  var charry="";
-  var charaName = document.getElementsByName('chara');
+function preCreate() {
+  var charry = "";
+  var charaName = document.getElementsByName("chara");
   for (var i = 0, length = charaName.length; i < length; i++) {
-  if (charaName[i].checked) {
-   alert(charaName[i].value);
-   charry=charaName[i].value;
-   break;
+    if (charaName[i].checked) {
+      alert(charaName[i].value);
+      charry = charaName[i].value;
+      break;
+    }
   }
-  } 
-  create (charry)
+  create(charry);
 }
 
-function create (charry) {  
+function create(charry) {
   var user = new Parse.User();
   user.set("username", document.getElementById("userName_field").value);
   user.set("email", document.getElementById("email_field").value);
   user.set("password", document.getElementById("password_field").value);
   user.set("chara", charry);
-  
- 
-      // Call the save method, which returns the saved object if successful
-      user.signUp().then(function(user) {
-        mainProfilePage();
-      }).catch(function(error){
-          window.alert("Error: " + error.code + " " + error.message);
-      });
 
+  // Call the save method, which returns the saved object if successful
+  user
+    .signUp()
+    .then(function (user) {
+      mainProfilePage();
+    })
+    .catch(function (error) {
+      window.alert("Error: " + error.code + " " + error.message);
+    });
 }
-
 
 //logging into account
-function login(){
-  var user = Parse.User
-  .logIn(document.getElementById("email_field").value,document.getElementById("password_field").value).then(function(user) {
-    mainProfilePage();
-
-}).catch(function(error){
-  window.alert("Error: " + error.code + " " + error.message);
-});
-};
-
-
-//Body will call this upon loading the page
-function loader(){
-  Parse.User.enableUnsafeCurrentUser()
-  const currentUser = Parse.User.current();
-  const refUse=currentUser.get("username");
-  const userI=currentUser.get("chara");
-  const userScore=currentUser.get("score");
-  document.getElementById("welcome").innerHTML ="Hey! "+refUse;
-  document.getElementById("userPlay").src =userI;
-  document.getElementById("scoreEle").innerHTML=userScore;  // working on, bc it returns undefined
-
+function login() {
+  var user = Parse.User.logIn(
+    document.getElementById("email_field").value,
+    document.getElementById("password_field").value
+  )
+    .then(function (user) {
+      mainProfilePage();
+    })
+    .catch(function (error) {
+      window.alert("Error: " + error.code + " " + error.message);
+    });
 }
 
+//Body will call this upon loading the page
+function loader() {
+  Parse.User.enableUnsafeCurrentUser();
+  const currentUser = Parse.User.current();
+  const refUse = currentUser.get("username");
+  const userI = currentUser.get("chara");
+  const userScore = currentUser.get("score");
+  document.getElementById("welcome").innerHTML = "Hey! " + refUse;
+  document.getElementById("userPlay").src = userI;
+  document.getElementById("scoreEle").innerHTML = userScore; // working on, bc it returns undefined
+}
 
 //Adding New Todo's to the dom
-const todoInput= document.querySelector('.todo-input');
-const todoButton= document.querySelector('.todo-button');
-const todoList= document.querySelector('.todo-list');
+const todoInput = document.querySelector(".todo-input");
+const todoButton = document.querySelector(".todo-button");
+const todoList = document.querySelector(".todo-list");
 
 todoButton.addEventListener("click", storeTODO);
 todoList.addEventListener("click", deleteCheck);
 
-
-function addTodo(idd){
+function addTodo(idd) {
   //??
   // preventDefault();
-  const toDoDiv = document.createElement('div');
+  const toDoDiv = document.createElement("div");
   toDoDiv.setAttribute("id", idd);
-  toDoDiv.setAttribute("value", "OFF")  
-  toDoDiv.classList.add('todo');
+  toDoDiv.setAttribute("value", "OFF");
+  toDoDiv.classList.add("todo");
 
-  const newToDo=document.createElement('li');
+  const newToDo = document.createElement("li");
   newToDo.innerText = todoInput.value;
-  newToDo.classList.add('todo-item');
+  newToDo.classList.add("todo-item");
   toDoDiv.appendChild(newToDo);
 
-
-  const completedButton =document.createElement('button');
-  completedButton.innerText='done';
-  completedButton.classList.add('complete-btn');
+  const completedButton = document.createElement("button");
+  completedButton.innerText = "done";
+  completedButton.classList.add("complete-btn");
   toDoDiv.appendChild(completedButton);
 
-  const cancelButton =document.createElement('button');
-  cancelButton.innerText='trash';
+  const cancelButton = document.createElement("button");
+  cancelButton.innerText = "trash";
   cancelButton.classList.add("cancel-btn");
   toDoDiv.appendChild(cancelButton);
 
-
-
   //add to list
   todoList.appendChild(toDoDiv);
-  
-  // window.alert(toDoDiv.getAttribute("id"))// works
-  //clear inout value 
 
-  todoInput.value="";
+  // window.alert(toDoDiv.getAttribute("id"))// works
+  //clear inout value
+
+  todoInput.value = "";
 }
 
 //this stores new Todo to parse
-function storeTODO(event){
+function storeTODO(event) {
   event.preventDefault();
   (async () => {
-    const newTodo2= new Parse.Object('ToDo');
-    newTodo2.set('User', Parse.User.current());
-    newTodo2.set('title',document.querySelector('.todo-input').value);
-    newTodo2.set('isCompleted', false);
+    const newTodo2 = new Parse.Object("ToDo");
+    newTodo2.set("User", Parse.User.current());
+    newTodo2.set("title", document.querySelector(".todo-input").value);
+    newTodo2.set("isCompleted", false);
 
     try {
-      const result = await  newTodo2.save();
-      console.log('ToDo created', result);
+      const result = await newTodo2.save();
+      console.log("ToDo created", result);
     } catch (error) {
-      console.error('Error while creating ToDo: ', error);
-      
+      console.error("Error while creating ToDo: ", error);
     }
 
-    ob= newTodo2.id;
+    ob = newTodo2.id;
     // window.alert(ob);// works
     addTodo(ob);
-  
   })();
-  
-   }     
-   //this updates parse for task deletion
-  function deleteToDoStore(idd){
-    (async () => {
-      const query = new Parse.Query('ToDo');
+}
+//this updates parse for task deletion
+function deleteToDoStore(idd) {
+  (async () => {
+    const query = new Parse.Query("ToDo");
+    try {
+      // here you put the objectId that you want to delete
+      const object = await query.get(idd);
       try {
-        // here you put the objectId that you want to delete
-        const object = await query.get(idd);
-        try {
-          const response = await object.destroy();
-          console.log('Deleted ParseObject', response);
-        } catch (error) {
-          console.error('Error while deleting ParseObject', error);
-        }
+        const response = await object.destroy();
+        console.log("Deleted ParseObject", response);
       } catch (error) {
-        console.error('Error while retrieving ParseObject', error);
+        console.error("Error while deleting ParseObject", error);
       }
-    })();
-
-  }
-
-
-  //this updates parse for task completion 
-  function completedStore(idd){
-    (async () => {
-      const query = new Parse.Query('ToDo');
-      try {
-        // here you put the objectId that you want to update
-        const object = await query.get(idd);
-        //this is so the user can toggle multiple times for the same task
-        meow=object.get('isCompleted');
-        if (meow==false){
-        object.set('isCompleted', true);
-        }
-        if (meow==true){
-          object.set('isCompleted', false);
-          }
-        try {
-          const response = await object.save();
-
-        } catch (error) {
-          console.error('Error while updating ', error);
-        }
-      } catch (error) {
-        console.error('Error while retrieving object ', error);
-      }
-      
-    })();
-  }
-
-
-
-function deleteCheck(event){
-const item= event.target;
-if(item.classList[0]=== "cancel-btn"){
-  const todo= item.parentElement;
-  todo.remove();
-  deleteToDoStore(todo.getAttribute("id"))
+    } catch (error) {
+      console.error("Error while retrieving ParseObject", error);
+    }
+  })();
 }
 
-
-
-//need to have it whhere the user can click button multuple times, bc people make mistakes - comeplted, but still do test
-if(item.classList[0] === "complete-btn"){
-  const todo= item.parentElement;
-  todo.classList.toggle('completed');
-  completedStore(todo.getAttribute("id"));
-  }
-
+//this updates parse for task completion
+function completedStore(idd) {
+  (async () => {
+    const query = new Parse.Query("ToDo");
+    try {
+      // here you put the objectId that you want to update
+      const object = await query.get(idd);
+      //this is so the user can toggle multiple times for the same task
+      meow = object.get("isCompleted");
+      if (meow == false) {
+        object.set("isCompleted", true);
+      }
+      if (meow == true) {
+        object.set("isCompleted", false);
+      }
+      try {
+        const response = await object.save();
+      } catch (error) {
+        console.error("Error while updating ", error);
+      }
+    } catch (error) {
+      console.error("Error while retrieving object ", error);
+    }
+  })();
 }
 
+function deleteCheck(event) {
+  const item = event.target;
+  if (item.classList[0] === "cancel-btn") {
+    const todo = item.parentElement;
+    todo.remove();
+    deleteToDoStore(todo.getAttribute("id"));
+  }
 
-
-
-
-
-
+  //need to have it whhere the user can click button multuple times, bc people make mistakes - comeplted, but still do test
+  if (item.classList[0] === "complete-btn") {
+    const todo = item.parentElement;
+    todo.classList.toggle("completed");
+    completedStore(todo.getAttribute("id"));
+  }
+}
 
 //Testing trying to get old stuff...
-const getterButton= document.querySelector('.random');
+const getterButton = document.querySelector(".random");
 getterButton.addEventListener("click", retrieveTodos);
 
 //needs aync bc of await
-async function retrieveTodos(){
-  Parse.User.enableUnsafeCurrentUser()
+async function retrieveTodos() {
+  Parse.User.enableUnsafeCurrentUser();
   const currentUser = Parse.User.current();
-  
 
   const GameScore = Parse.Object.extend("ToDo");
   var query = new Parse.Query(GameScore);
-  query.include('User');
-  query.equalTo("User",currentUser);
+  query.include("User");
+  query.equalTo("User", currentUser);
 
-query.find({  //Having trouble making this fully work
-  success: function(results){
+  query.find({
+    //Having trouble making this fully work
+    success: function (results) {
       window.alert("Successfully retrieved " + results.length + " scores."); //this does nothiung?
-      console.log("??")
-  },
+      console.log("??");
+    },
 
-  error: function(error) {
-    // error is an instance of Parse.Error.
-    window.alert("problem" + error);
-  }
-});
-// window.alert("hello");
-
+    error: function (error) {
+      // error is an instance of Parse.Error.
+      window.alert("problem" + error);
+    },
+  });
+  // window.alert("hello");
 }
 
-
-
-function pasteToDo(results){
+function pasteToDo(results) {
   for (let i = 0; i < results.length; i++) {
     const object = results[i];
-    alert(object.id + ' - ' + object.get('User'));
-}
+    alert(object.id + " - " + object.get("User"));
+  }
 }
 
 //left on minute 48 for filter to do!
 
-
-
-
-       
 //NOTES SECTION//
 
-const saveButtonNotes= document.querySelector('.btn-save');
-const clearButtonNotes= document.querySelector('.btn-clear');
-const notesInput= document.querySelector('.body-field');
-const notesList= document.querySelector('.notes-list');
-const notesTitle= document.querySelector('.title-field');
-
+const saveButtonNotes = document.querySelector(".btn-save");
+const clearButtonNotes = document.querySelector(".btn-clear");
+const notesInput = document.querySelector(".body-field");
+const notesList = document.querySelector(".notes-list");
+const notesTitle = document.querySelector(".title-field");
 
 saveButtonNotes.addEventListener("click", storeNote);
 clearButtonNotes.addEventListener("click", clearNote);
 notesList.addEventListener("click", deleteNote);
 
-
-
-
-function storeNote(event){
+function storeNote(event) {
   event.preventDefault();
-  addNote()
-//   window.alert("works");
-
+  addNote();
+  //   window.alert("works");
 }
 
-  function clearNote(event){
-    event.preventDefault();
-    window.alert("works");
-  }
+function clearNote(event) {
+  event.preventDefault();
+  window.alert("works");
+}
 
+function addNote() {
+  // preventDefault();
+  const notesDiv = document.createElement("div");
+  // toDoDiv.setAttribute("id", idd);
+  // toDoDiv.setAttribute("value", "OFF")
+  notesDiv.classList.add("note");
 
-  
+  const noteTitle = document.createElement("li");
+  noteTitle.innerText = notesTitle.value;
+  noteTitle.classList.add("titleOut");
+  notesDiv.appendChild(noteTitle);
 
-  function addNote(){
-    // preventDefault();
-    const notesDiv = document.createElement('div');
-    // toDoDiv.setAttribute("id", idd);
-    // toDoDiv.setAttribute("value", "OFF")  
-    notesDiv.classList.add('note');
-  
+  const newNote = document.createElement("li");
+  newNote.innerText = notesInput.value;
+  newNote.classList.add("note-item");
+  notesDiv.appendChild(newNote);
 
-    const noteTitle=document.createElement('li');
-    noteTitle.innerText= notesTitle.value;
-    noteTitle.classList.add('titleOut');
-    notesDiv.appendChild(noteTitle);
+  const timeCreated = document.createElement("li");
+  timeCreated.innerText = formatTime();
+  timeCreated.classList.add("timeCreatedOutput");
+  notesDiv.appendChild(timeCreated);
 
-    const newNote=document.createElement('li');
-    newNote.innerText = notesInput.value;
-    newNote.classList.add('note-item');
-    notesDiv.appendChild(newNote);
+  const cancelButton = document.createElement("button");
+  cancelButton.innerText = "delete";
+  cancelButton.classList.add("cancel-btn");
+  notesDiv.appendChild(cancelButton);
 
+  //add to list
+  notesList.appendChild(notesDiv);
 
-    const timeCreated =document.createElement('li');
-    timeCreated.innerText=formatTime();
-    timeCreated.classList.add('timeCreatedOutput');
-    notesDiv.appendChild(timeCreated);
-  
-  
-    const cancelButton =document.createElement('button');
-    cancelButton.innerText='delete';
-    cancelButton.classList.add("cancel-btn");
-    notesDiv.appendChild(cancelButton);
-  
-  
-  
-    //add to list
-    notesList.appendChild(notesDiv);
-    
-    // window.alert(toDoDiv.getAttribute("id"))// workdeleteNote
-    //clear inout value 
-  
-    notesInput.value="";
-    notesTitle.value="";
-  }
+  // window.alert(toDoDiv.getAttribute("id"))// workdeleteNote
+  //clear inout value
 
-  
-  function deleteNote(event){
-    const item= event.target;
-    if(item.classList[0]=== "cancel-btn"){
-      const note= item.parentElement;
-      note.remove();
+  notesInput.value = "";
+  notesTitle.value = "";
+}
+
+function deleteNote(event) {
+  const item = event.target;
+  if (item.classList[0] === "cancel-btn") {
+    const note = item.parentElement;
+    note.remove();
     //   deleteToDoStore(todo.getAttribute("id"))
-    }
+  }
 }
 
-  // LOL CHANGE UP
+// LOL CHANGE UP
 
-  //format time
-  function formatTime(str) {
-    // var parsed = new Date(str);
-    var parsed = new Date();
-    var date = zeroPad(parsed.getMonth() + 1) + "/"+ zeroPad(parsed.getDate())  + "/"+  parsed.getFullYear(); 
-    var time = zeroPad(parsed.getHours()) + ":" + zeroPad(parsed.getMinutes());
-    return ("Created: " + date + " | " + time);
+//format time
+function formatTime(str) {
+  // var parsed = new Date(str);
+  var parsed = new Date();
+  var date =
+    zeroPad(parsed.getMonth() + 1) +
+    "/" +
+    zeroPad(parsed.getDate()) +
+    "/" +
+    parsed.getFullYear();
+  var time = zeroPad(parsed.getHours()) + ":" + zeroPad(parsed.getMinutes());
+  return "Created: " + date + " | " + time;
+}
+//append 0's to hours/ minutes if single digits
+function zeroPad(num) {
+  while (String(num).length < 2) {
+    num = "0" + String(num);
   }
-  //append 0's to hours/ minutes if single digits
-  function zeroPad(num) {
-    while(String(num).length < 2) { num = "0" + String(num); }
-    return num;
-  }
+  return num;
+}

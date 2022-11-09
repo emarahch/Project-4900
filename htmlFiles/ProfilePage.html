@@ -14,14 +14,19 @@
 
   <body onload= "loader()">
     <body>
-    <nav>
-      <a href="startPage.html"><img src = "../images/HabitBabe-logos_black.png"class="logoImg"></a>
-      </nav>
+    <!-- <nav>
+     
+      </nav> -->
 
       <div class="userStuff">
-        <div id="userIcon"><img  src="../images/plholder.webp" id="userPlay"></div>
+        <div class="userNamePfp">
+      <img  src="../images/plholder.webp" id="userPlay">
       <h1 id="welcome">Hey Emy</h1>
+    </div>
+
+      <div class="ScoreDiv">
       <h5 id="scoreEle">28</h5>
+    </div>
       </div>
 
       <button class="random">get prev todo across restart</button>
@@ -71,7 +76,8 @@
     
     </form>
 
-    <div style= "height: 200px; overflow-y: scroll;" class="checklist-container">
+    <!-- <div style= "height: 200px; overflow-y: scroll;" class="checklist-container"> -->
+      <div class="checklist-container"></div>
       <ul class="todo-list"></ul>  
     </div>
   </div>
@@ -79,7 +85,7 @@
 <!-- notes section -->
 
 
-<div class="main">
+<div class="notesMain">
   <div class="note-creation">
       
        <input class="title-field" type="text" placeholder="title your note">
@@ -90,8 +96,7 @@
   <button class="btn-clear">Clear </button>
   </div>
 
-    <!-- Notes Container -->
-    <!-- <div style= "height: 800px; overflow-y: scroll;" class="checklist-container"> -->
+   
     <section class='notes-list'></section>
   <!-- </div> -->
 </div>

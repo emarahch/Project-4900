@@ -1,50 +1,74 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>HabitBabe</title>
-<link rel="stylesheet" href="../cssFiles/LogCreate.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans">
-<script type="text/javascript" src="https://npmcdn.com/parse@3.4.4/dist/parse.min.js"></script>
+  <head>
+    <title>HabitBabe</title>
+    <link rel="stylesheet" href="../cssFiles/LogCreate.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Fira+Sans"
+    />
+    <script
+      type="text/javascript"
+      src="https://npmcdn.com/parse@3.4.4/dist/parse.min.js"
+    ></script>
 
-
-  <style>
-   body {
-  font-family: "Fira+Sans", sans-serif;
-        }
-  </style>
-</head>
-<body>
-
-  <nav>
-    <a href="startPage.html"><img src = "../images/HabitBabe-logos_black.png"class="logoImg"></a>
+    <style>
+      body {
+        font-family: "Fira+Sans", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="startPage.html"
+        ><img src="../images/HabitBabe-logos_black.png" class="logoImg"
+      /></a>
     </nav>
-
 
     <!-- chnagfe to form -->
     <div class="Log-create-div">
-    <h3>Create account</h3>
-    <input type="text" placeholder="name" id="userName_field">
-    <input type="email" placeholder="email" id="email_field">
-    <input type="password" placeholder="password" id="password_field">
+      <h3>Create account</h3>
+      <input type="text" placeholder="name" id="userName_field" />
+      <input type="email" placeholder="email" id="email_field" />
+      <input type="password" placeholder="password" id="password_field" />
 
-    <div class="pick-Character">
-      <input type="radio" id="../images/plholder.webp" name="chara" value="../images/plholder.webp" class="input-hidden">
-      <label for="age1"><img src="../images/plholder.webp" class="label-image"></label>
-    
-      <input type="radio" id="../images/plholder.webp" name="chara" value="../images/test1.jpeg" class="input-hidden">
-      <label for="age2"><img  src="../images/test1.jpeg"class="label-image"></label> 
-    
-      <input type="radio" id="../images/plholder.webp" name="chara" value="../images/test2.png" class="input-hidden">
-      <label for="age3"><img  src="../images/test2.png"class="label-image"></label>
-        
+      <div class="pick-Character">
+        <input
+          type="radio"
+          id="../images/plholder.webp"
+          name="chara"
+          value="../images/plholder.webp"
+          class="input-hidden"
+        />
+        <label for="age1"
+          ><img src="../images/plholder.webp" class="label-image"
+        /></label>
+
+        <input
+          type="radio"
+          id="../images/plholder.webp"
+          name="chara"
+          value="../images/test1.jpeg"
+          class="input-hidden"
+        />
+        <label for="age2"
+          ><img src="../images/test1.jpeg" class="label-image"
+        /></label>
+
+        <input
+          type="radio"
+          id="../images/plholder.webp"
+          name="chara"
+          value="../images/test2.png"
+          class="input-hidden"
+        />
+        <label for="age3"
+          ><img src="../images/test2.png" class="label-image"
+        /></label>
       </div>
-    <button onclick= "preCreate()" class="Log-create-button">Create</button>
+      <button onclick="preCreate()" class="Log-create-button">Create</button>
     </div>
 
-
-
-    <script src  ="../jsFiles/index.js"></script>
-
-</body>
-  </html>
-
+    <script src="../jsFiles/index.js"></script>
+  </body>
+</html>
