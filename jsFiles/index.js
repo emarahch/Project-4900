@@ -20,22 +20,42 @@ themeChangeButton.addEventListener("click", themeChangerFunc);
 // const useDark = window.matchMedia("(prefers-color-scheme: dark)");
 
 function themeChangerFunc(){
+
+  document.body.classList.toggle("darkMode")
+//   var targetTheme = themeChangeButton.getAttribute('data-theme')
+
+//   if(targetTheme=="light") { 
+//     alert("Dark mode");
+//     document.body.setAttribute('data-theme', 'darkMode');
+//     localStorage.setItem('data-theme', 'darkMode');
+//   }else{
+//       document.body.setAttribute('data-theme','light');
+//       localStorage.removeItem('data-theme', 'darkMode');
+//       localStorage.setItem('data-theme', 'light'); // reset theme selection 
+//       alert("light mode");
+   
+// } 
+}
+
+
+
+
   // document.body.classList.toggle("darkMode")
 
-  if (document.documentElement.classList.contains("light")) {
-    document.documentElement.classList.remove("light")
-    document.documentElement.classList.add("darkMode")
-  } else if (document.documentElement.classList.contains("darkMode")) {
-    document.documentElement.classList.remove("darkMode")
-    document.documentElement.classList.add("light")
-  } else {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.documentElement.classList.add("darkMode")
-    } else {
-      document.documentElement.classList.add("light")
-    }
-  }
-}
+  // if (document.documentElement.classList.contains("light")) {
+  //   document.documentElement.classList.remove("light")
+  //   document.documentElement.classList.add("darkMode")
+  // } else if (document.documentElement.classList.contains("darkMode")) {
+  //   document.documentElement.classList.remove("darkMode")
+  //   document.documentElement.classList.add("light")
+  // } else {
+  //   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  //     document.documentElement.classList.add("darkMode")
+  //   } else {
+  //     document.documentElement.classList.add("light")
+  //   }
+  // }
+// }
 
 
 
