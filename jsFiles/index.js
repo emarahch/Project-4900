@@ -13,6 +13,10 @@ function mainProfilePage() {
   location.href = "../htmlFiles/ProfilePage.html";
 }
 
+function startPage() {
+  location.href = "../htmlFiles/startPage.html";
+}
+
 //Theme changer
 const themeChangeButton = document.getElementById("themeChangeButton");
 themeChangeButton.addEventListener("click", themeChangerFunc);
@@ -20,37 +24,8 @@ themeChangeButton.addEventListener("click", themeChangerFunc);
 
 function themeChangerFunc() {
   document.body.classList.toggle("darkMode");
-  //   var targetTheme = themeChangeButton.getAttribute('data-theme')
-
-  //   if(targetTheme=="light") {
-  //     alert("Dark mode");
-  //     document.body.setAttribute('data-theme', 'darkMode');
-  //     localStorage.setItem('data-theme', 'darkMode');
-  //   }else{
-  //       document.body.setAttribute('data-theme','light');
-  //       localStorage.removeItem('data-theme', 'darkMode');
-  //       localStorage.setItem('data-theme', 'light'); // reset theme selection
-  //       alert("light mode");
-
-  // }
 }
 
-// document.body.classList.toggle("darkMode")
-
-// if (document.documentElement.classList.contains("light")) {
-//   document.documentElement.classList.remove("light")
-//   document.documentElement.classList.add("darkMode")
-// } else if (document.documentElement.classList.contains("darkMode")) {
-//   document.documentElement.classList.remove("darkMode")
-//   document.documentElement.classList.add("light")
-// } else {
-//   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-//     document.documentElement.classList.add("darkMode")
-//   } else {
-//     document.documentElement.classList.add("light")
-//   }
-// }
-// }
 
 function tutorialClick(){
   
@@ -87,6 +62,7 @@ function create(charry) {
       window.alert("Error: " + error.code + " " + error.message);
     });
 }
+
 
 //logging into account
 function login() {
@@ -274,7 +250,7 @@ function deleteCheck(event) {
     deleteToDoStore(todo.getAttribute("id"));
   }
 
-  //need to have it whhere the user can click button multuple times, bc people make mistakes - comeplted, but still do test
+  //I have it whhere the user can click button multuple times, bc people make mistakes 
   if (item.classList[0] === "complete-btn") {
     const todo = item.parentElement;
     todo.classList.toggle("completed");
@@ -430,6 +406,61 @@ function deleteNote(event) {
   }
 }
 
+
+//Delete account section
+//This deletes the user, but does not delete their items....should I do pointers or relations?
+const deleteAccountButton= document.querySelector(".deleteAccountButton");
+deleteAccountButton.addEventListener("click",areYouSureDelete);
+
+function areYouSureDelete(){
+  var result = confirm("Are you sure you want to delete? All of your information will be lost :(");
+    if(result){
+      alert("deleted");
+      deleteAccountStore();
+    }
+}
+
+
+//need to have it so all their info is deleted too
+function deleteAccountStore(){
+  (async () => {
+    const currentUser = Parse.User.current();
+    const User = new Parse.User();
+    const query = new Parse.Query(User);
+    alert(currentUser.id);
+  
+    try {
+      // Finds the user by its ID
+      let user = await query.get(currentUser.id);
+      try {
+        // Invokes the "destroy" method to delete the user
+        alert("destroyyed");
+        let response = await user.destroy();
+        console.log('Deleted user', response);
+      } catch (error) {
+        console.error('Error while deleting user', error);
+      }
+    } catch (error) {
+      console.error('Error while retrieving user', error);
+    }
+
+    startPage(); 
+  })();
+
+}
+
+//LogOut-works
+const logoutButton = document.querySelector(".logoutButton");
+logoutButton.addEventListener("click",deleteAccountStore);
+
+function logoutFunc(){
+  // startPage();
+}
+
+
+
+
+
 // LOL CHANGE UP
 
 //format time
@@ -452,3 +483,6 @@ function zeroPad(num) {
   }
   return num;
 }
+
+
+
