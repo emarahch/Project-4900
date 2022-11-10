@@ -1,6 +1,6 @@
 body {
   background-color: white;
-  margin:0%;
+  margin: 0%;
 }
 
 /* nav {
@@ -13,8 +13,8 @@ body {
   background-color: rgb(255, 255, 255);
   top: 0px;
 } */
-ul{
-  padding:0px;
+ul {
+  padding: 0px;
 }
 li {
   list-style: none;
@@ -33,9 +33,6 @@ a {
 a:visited {
   color: black;
 }
-
-
-
 
 /* The top part of the screen */
 
@@ -69,7 +66,7 @@ a:visited {
   flex-direction: row;
   background-color: white;
   color: black;
-  border: solid; 
+  border: solid;
 }
 
 .testNav {
@@ -77,19 +74,19 @@ a:visited {
   flex-direction: column;
   justify-content: left;
   width: 5%;
-  border:pink solid; 
+  border: pink solid;
 }
 
 .TestTodoSection {
   border-right: 2px solid grey;
   width: 67%;
-  border:pink solid; 
+  border: pink solid;
 }
 
 /* #divToCreateForm{
   display:none;
 } */
-#createTodoForm{
+#createTodoForm {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -97,7 +94,7 @@ a:visited {
 }
 
 /* Todo Section */
-.IndToDo{
+.IndToDo {
   display: flex;
   flex-direction: row;
 }
@@ -114,7 +111,7 @@ a:visited {
 
 .notesMain {
   width: 23%;
-  border:pink solid; 
+  border: pink solid;
 }
 
 .note-creation {
@@ -152,18 +149,15 @@ a:visited {
   background-color: #ff8fab;
 }
 
-
 /* breakpoints */
 
 @media (max-width: 790px) {
-
   .intro-box {
     display: flex;
     flex-direction: column;
-    margin:0px;
+    margin: 0px;
     height: 80%;
     width: 100%;
- 
   }
 
   .testNav {
@@ -172,43 +166,38 @@ a:visited {
     flex-direction: column;
     width: 100%;
   }
-  
 
   .TestTodoSection {
-    border:none;
+    border: none;
     width: 50%;
   }
 
   .notesMain {
     width: 100%;
   }
-
-  
 }
-
 
 /* Color schemes */
 
 /* (needs serious work), but the logic is there..ish... look into sass lol */
 /* This is an issue of being sepecific..... */
-.darkMode{
-  background-color:black;
-  color:white;
-  transition:1s;
+.darkMode {
+  background-color: black;
+  color: white;
+  transition: 1s;
 }
 /* .darkMode .body{
   background-color:black;
 } */
-.darkMode .intro-box{
-  background-color:grey;
-  color:white;
+.darkMode .intro-box {
+  background-color: grey;
+  color: white;
 }
 
-
-.light{
-  background-color:white;
-  color:black;
-  transition:1s;
+.light {
+  background-color: white;
+  color: black;
+  transition: 1s;
 }
 
 /* automcatic dark mode

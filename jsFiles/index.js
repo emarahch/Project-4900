@@ -1,9 +1,9 @@
-// Parse.serverURL = 'https://parseapi.back4app.com'; // This is your Server URL
-// // Remember to inform BOTH the Back4App Application ID AND the JavaScript KEY
-// Parse.initialize(
-//   'rspognStfNV37CQa4LHoJxZReWuNU1iXKgPyOVv2', // This is your Application ID
-//   'ARHVg2q79aHYce2i4rov3RDm6Z4LMvPckfwggh6T' // This is your Javascript key
-// );
+Parse.serverURL = "https://parseapi.back4app.com"; // This is your Server URL
+// Remember to inform BOTH the Back4App Application ID AND the JavaScript KEY
+Parse.initialize(
+  "rspognStfNV37CQa4LHoJxZReWuNU1iXKgPyOVv2", // This is your Application ID
+  "ARHVg2q79aHYce2i4rov3RDm6Z4LMvPckfwggh6T" // This is your Javascript key
+);
 
 //REMOVE COMMENT WHEN TESTING
 //If having trouble with parse, check if there is an update
@@ -13,55 +13,48 @@ function mainProfilePage() {
   location.href = "../htmlFiles/ProfilePage.html";
 }
 
-
 //Theme changer
-const themeChangeButton = document.getElementById('themeChangeButton');
+const themeChangeButton = document.getElementById("themeChangeButton");
 themeChangeButton.addEventListener("click", themeChangerFunc);
 // const useDark = window.matchMedia("(prefers-color-scheme: dark)");
 
-function themeChangerFunc(){
+function themeChangerFunc() {
+  document.body.classList.toggle("darkMode");
+  //   var targetTheme = themeChangeButton.getAttribute('data-theme')
 
-  document.body.classList.toggle("darkMode")
-//   var targetTheme = themeChangeButton.getAttribute('data-theme')
+  //   if(targetTheme=="light") {
+  //     alert("Dark mode");
+  //     document.body.setAttribute('data-theme', 'darkMode');
+  //     localStorage.setItem('data-theme', 'darkMode');
+  //   }else{
+  //       document.body.setAttribute('data-theme','light');
+  //       localStorage.removeItem('data-theme', 'darkMode');
+  //       localStorage.setItem('data-theme', 'light'); // reset theme selection
+  //       alert("light mode");
 
-//   if(targetTheme=="light") { 
-//     alert("Dark mode");
-//     document.body.setAttribute('data-theme', 'darkMode');
-//     localStorage.setItem('data-theme', 'darkMode');
-//   }else{
-//       document.body.setAttribute('data-theme','light');
-//       localStorage.removeItem('data-theme', 'darkMode');
-//       localStorage.setItem('data-theme', 'light'); // reset theme selection 
-//       alert("light mode");
-   
-// } 
+  // }
 }
 
+// document.body.classList.toggle("darkMode")
 
-
-
-  // document.body.classList.toggle("darkMode")
-
-  // if (document.documentElement.classList.contains("light")) {
-  //   document.documentElement.classList.remove("light")
-  //   document.documentElement.classList.add("darkMode")
-  // } else if (document.documentElement.classList.contains("darkMode")) {
-  //   document.documentElement.classList.remove("darkMode")
-  //   document.documentElement.classList.add("light")
-  // } else {
-  //   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-  //     document.documentElement.classList.add("darkMode")
-  //   } else {
-  //     document.documentElement.classList.add("light")
-  //   }
-  // }
+// if (document.documentElement.classList.contains("light")) {
+//   document.documentElement.classList.remove("light")
+//   document.documentElement.classList.add("darkMode")
+// } else if (document.documentElement.classList.contains("darkMode")) {
+//   document.documentElement.classList.remove("darkMode")
+//   document.documentElement.classList.add("light")
+// } else {
+//   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+//     document.documentElement.classList.add("darkMode")
+//   } else {
+//     document.documentElement.classList.add("light")
+//   }
+// }
 // }
 
-
-
-
-
-
+function tutorialClick(){
+  
+}
 
 //Creating an account
 function preCreate() {
@@ -121,30 +114,25 @@ function loader() {
   document.getElementById("scoreEle").innerHTML = userScore; // working on, bc it returns undefined
 }
 
-
 //Showing and hiding the form for adding a todo
-const createTodoShowBtn= document.getElementById('createTodoShowBtn');
+const createTodoShowBtn = document.getElementById("createTodoShowBtn");
 
-createTodoShowBtn.addEventListener('click', () => {
-  const divform = document.getElementById('divToCreateForm');
+createTodoShowBtn.addEventListener("click", () => {
+  const divform = document.getElementById("divToCreateForm");
 
-  if (divform.style.display === 'block') {
+  if (divform.style.display === "block") {
     // 👇️ this HIDES the form
-    divform.style.display = 'none';
+    divform.style.display = "none";
   } else {
-     // 👇️ this SHOWS the form
-     divform.style.display = 'block';
+    // 👇️ this SHOWS the form
+    divform.style.display = "block";
   }
 });
-
-
-
 
 //Adding New Todo's to the DOM
 const todoInput = document.querySelector(".todo-input");
 const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todo-list");
-
 
 todoButton.addEventListener("click", storeTODO);
 todoList.addEventListener("click", deleteCheck);
@@ -152,12 +140,14 @@ todoList.addEventListener("click", deleteCheck);
 function addTodo(idd) {
   var categoryNumberUser = document.getElementById("categoryNumber");
   var prNumberUser = document.getElementById("priorityNumber");
-  var textPr = prNumberUser .options[prNumberUser .selectedIndex].value;
-  var textCa = Array.from(categoryNumberUser.selectedOptions).map(x=>x.value??x.text)
+  var textPr = prNumberUser.options[prNumberUser.selectedIndex].value;
+  var textCa = Array.from(categoryNumberUser.selectedOptions).map(
+    (x) => x.value ?? x.text
+  );
   // preventDefault();
   alert(textPr);
   const toDoDiv = document.createElement("div");
-  toDoDiv.setAttribute("class","IndToDo");
+  toDoDiv.setAttribute("class", "IndToDo");
   toDoDiv.setAttribute("id", idd);
   toDoDiv.setAttribute("value", "OFF"); //what does this do agaib?
   toDoDiv.classList.add("todo");
@@ -178,17 +168,15 @@ function addTodo(idd) {
   newToDoC.classList.add("todo-item");
   toDoDiv.appendChild(newToDoC);
 
-
   const editButton = document.createElement("button");
-  editButton .innerText = "edit";
-  editButton .classList.add("edit-btn");
-  toDoDiv.appendChild(editButton );
+  editButton.innerText = "edit";
+  editButton.classList.add("edit-btn");
+  toDoDiv.appendChild(editButton);
 
   const completedButton = document.createElement("button");
   completedButton.innerText = "done";
   completedButton.classList.add("complete-btn");
   toDoDiv.appendChild(completedButton);
-
 
   const cancelButton = document.createElement("button");
   cancelButton.innerText = "trash";
@@ -198,30 +186,28 @@ function addTodo(idd) {
   //add to list
   todoList.appendChild(toDoDiv);
 
-  // window.alert(toDoDiv.getAttribute("id"))// works
-  //clear inout value
 
   todoInput.value = "";
 }
 
-
-
 //this stores new Todo to parse
 function storeTODO(event) {
   //This is for getting the priority level and the categories
-var prNumberUser = document.getElementById("priorityNumber");
-var categoryNumberUser = document.getElementById("categoryNumber");
-var textPr = prNumberUser .options[prNumberUser .selectedIndex].value;
-var textCa = Array.from(categoryNumberUser.selectedOptions).map(x=>x.value??x.text)
-//this is where storing actuallu happens
+  var prNumberUser = document.getElementById("priorityNumber");
+  var categoryNumberUser = document.getElementById("categoryNumber");
+  var textPr = prNumberUser.options[prNumberUser.selectedIndex].value;
+  var textCa = Array.from(categoryNumberUser.selectedOptions).map(
+    (x) => x.value ?? x.text
+  );
+  //this is where storing actuallu happens
   event.preventDefault();
   (async () => {
     const newTodo2 = new Parse.Object("ToDo");
     newTodo2.set("User", Parse.User.current());
     newTodo2.set("title", document.querySelector(".todo-input").value);
     newTodo2.set("isCompleted", false);
-    newTodo2.set("priority",textPr );
-    newTodo2.set("category",textCa);
+    newTodo2.set("priority", textPr);
+    newTodo2.set("category", textCa);
 
     try {
       const result = await newTodo2.save();
@@ -234,7 +220,6 @@ var textCa = Array.from(categoryNumberUser.selectedOptions).map(x=>x.value??x.te
     // window.alert(ob);// works
     addTodo(ob);
   })();
-
 }
 //this updates parse for task deletion
 function deleteToDoStore(idd) {
@@ -296,11 +281,10 @@ function deleteCheck(event) {
     completedStore(todo.getAttribute("id"));
   }
 
-    if (item.classList[0] === "edit-btn") {
-      const todo = item.parentElement;
-      alert("You are in Edit mode: Not functional yes!")
-      completedStore(todo.getAttribute("id"));
-    
+  if (item.classList[0] === "edit-btn") {
+    const todo = item.parentElement;
+    alert("You are in Edit mode: Not functional yes!");
+    completedStore(todo.getAttribute("id"));
   }
 }
 
@@ -346,29 +330,18 @@ function deleteCheck(event) {
 
 const saveButtonNotes = document.querySelector(".btn-save");
 const clearButtonNotes = document.querySelector(".btn-clear");
-const notesInput = document.querySelector(".body-field");
 const notesList = document.querySelector(".notes-list");
+const notesInput = document.querySelector(".body-field");
 const notesTitle = document.querySelector(".title-field");
 
 saveButtonNotes.addEventListener("click", storeNote);
 clearButtonNotes.addEventListener("click", clearNote);
 notesList.addEventListener("click", deleteNote);
 
-function storeNote(event) {
-  event.preventDefault();
-  addNote();
-  //   window.alert("works");
-}
-
-function clearNote(event) {
-  event.preventDefault();
-  window.alert("works");
-}
-
-function addNote() {
+function addNote(ob2) {
   // preventDefault();
   const notesDiv = document.createElement("div");
-  // toDoDiv.setAttribute("id", idd);
+  notesDiv.setAttribute("id", ob2);
   // toDoDiv.setAttribute("value", "OFF")
   notesDiv.classList.add("note");
 
@@ -402,12 +375,58 @@ function addNote() {
   notesTitle.value = "";
 }
 
+function storeNote(event) {
+  window.alert("works");
+  //this is where storing actuallu happens
+  event.preventDefault();
+  (async () => {
+    const newNote = new Parse.Object("Notes");
+    newNote.set("User", Parse.User.current());
+    newNote.set("title", document.querySelector(".title-field").value);
+    newNote.set("NoteBody", document.querySelector(".body-field").value);
+    try {
+      const result = await newNote.save();
+      console.log("Note created", result);
+    } catch (error) {
+      console.error("Error while creating note: ", error);
+    }
+    ob2 = newNote.id;
+    // window.alert(ob2); // works
+    addNote(ob2);
+  })();
+  //   window.alert("works");
+}
+
+
+function deleteNoteStore(noteId) {
+  (async () => {
+    const query = new Parse.Query("Notes");
+    try {
+      // here you put the objectId that you want to delete
+      const object = await query.get(noteId);
+      try {
+        const response = await object.destroy();
+        console.log("Deleted ParseObject", response);
+      } catch (error) {
+        console.error("Error while deleting ParseObject", error);
+      }
+    } catch (error) {
+      console.error("Error while retrieving ParseObject", error);
+    }
+  })();
+}
+
+function clearNote(event) {
+  notesInput.value = "";
+  notesTitle.value = "";
+}
+
 function deleteNote(event) {
   const item = event.target;
   if (item.classList[0] === "cancel-btn") {
     const note = item.parentElement;
     note.remove();
-    //   deleteToDoStore(todo.getAttribute("id"))
+    deleteNoteStore(note.getAttribute("id"))
   }
 }
 
