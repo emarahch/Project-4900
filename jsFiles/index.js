@@ -37,7 +37,9 @@ themeChangeButton.addEventListener("click", themeChangerFunc);
 function themeChangerFunc() {
   document.body.classList.toggle("darkMode");
 }
-
+//Getting the current date - MOVE TO LOADER FUNCTION
+var date = (new Date()).toString().split(' ').splice(0,4).join(' ');
+document.getElementById("currentDate").innerHTML = date;
 
 //Creating an account
 function preCreate() {
@@ -362,10 +364,10 @@ function addNote(ob2) {
   newNote.classList.add("note-item");
   notesDiv.appendChild(newNote);
 
-  const timeCreated = document.createElement("li");
-  timeCreated.innerText = formatTime();
-  timeCreated.classList.add("timeCreatedOutput");
-  notesDiv.appendChild(timeCreated);
+  // const timeCreated = document.createElement("li");
+  // timeCreated.innerText = formatTime();
+  // timeCreated.classList.add("timeCreatedOutput");
+  // notesDiv.appendChild(timeCreated);
 
   const cancelButton = document.createElement("button");
   cancelButton.innerText = "delete";
@@ -480,8 +482,103 @@ function deleteAccountStore(){
 
 }
 
+//timer STUFF
+
+var session=30;
+const sessionMax = 60;
+const sessionMin=0;
+
+const timerHours=document.getElementById("timerHours");
+const increaseHours= document.getElementById("increaseHours");
+const decreaseHours= document.getElementById("decreaseHours");
+const timerMiunutes=document.getElementById("timerMiunutes")
 
 
+const  timerStartButton= document.getElementById("timerStartButton");
+const timerPauseButton= document.getElementById("timerPauseButton");
+const timerClearButton= document.getElementById("timerClearButton");
+
+
+increaseHours.addEventListener("click",increaseHFunc);
+decreaseHours.addEventListener("click",decreaseHFunc);
+
+
+
+timerStartButton.addEventListener("click",getSeconds);
+timerPauseButton.addEventListener("click",pauseTimer);
+timerClearButton.addEventListener("click",clearTimer);
+
+
+
+
+
+
+function increaseHFunc(){
+  if (session+5<=sessionMax){
+session=session+=5;
+timerHours.innerHTML= session;
+  }
+}
+
+
+function decreaseHFunc(){
+    if (session-5>sessionMin){
+      session=session-=5;
+      timerHours.innerHTML= session;
+    }
+  }
+
+ 
+  let intervalState;
+  // let cleared = false;
+
+ 
+  var minutes;
+  var seconds;
+
+function getSeconds(){
+  minutes=parseInt(timerHours.innerHTML);
+  seconds=Math.floor(minutes*60);
+  // alert(seconds);
+  startTimer();
+}
+
+function startTimer(){
+  // prevents from hitting start when timer is already actice
+  if(!intervalState){
+    intervalState=setInterval(timerIncrements(),1000)
+  }
+}
+
+function timerIncrements(){
+seconds-=1;
+timerHours.innerHTML=seconds;
+// timerMiunutes.innerHTML="00";
+
+// if(seconds===0){
+// alert("Done");
+// }
+}
+
+function pauseTimer(){ //works
+  timerHours.innerHTML=seconds;
+  clearInterval(intervalState);
+  intervalState = null;
+}
+
+function clearTimer(){
+  clearInterval(intervalState);
+  intervalState = null;
+
+  timerHours.innerHTML="30";
+  timerMiunutes.innerHTML="00";
+
+
+  
+//so many problems....
+ //this gives issues, bc when I clear the time, and try to seta new time, it still shows prev time
+
+}
 
 
 

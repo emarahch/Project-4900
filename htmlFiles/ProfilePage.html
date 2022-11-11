@@ -44,7 +44,6 @@
     <div class="intro-box">
       <div class="testNav">
         <ul>
-          <li><button class="Timer">Timer</button></li>
           <li><button id="themeChangeButton" data-theme="light">dark mode</button></li>
           <!-- Left work here -->
           <li><button id="tutorialbutton" >Tutorial</button></li>
@@ -54,6 +53,8 @@
       </div>
 
       <div class="TestTodoSection">
+        <p id="currentDate">Date</p>
+        <h1>ToDo</h1>
         <div id="divToCreateForm">
           <form id="createTodoForm">
             <input type="text" class="todo-input" />
@@ -96,12 +97,24 @@
         <ul class="todo-list"></ul>
       </div>
 
-      <!-- notes section -->
+      <!-- right section -->
 
-
-                <!-- <div class="notesMain">
-                  <div class="note-creation"> -->
           <div class="notesSection"> 
+
+
+            <div class="timerSection">
+              <h2 id="setTime"> <span id="timerHours">30</span>:<span id="timerMiunutes">00 </span></h2>
+              
+                <button id="increaseHours">+</button>
+                <button id="decreaseHours">-</button>
+            </div>
+              
+              
+              
+              <button id="timerStartButton">Start</button>
+              <button id="timerPauseButton">Pause</button>
+              <button id="timerClearButton">Clear</button>
+            <h1>Notes</h1>
             <div id="divToCreateNote">
               <form id="createNoteForm">
           <input
@@ -112,8 +125,8 @@
 
           <textarea class="body-field"></textarea>
           <button class="btn-save" type="submit">Save</button>
-          <button class="btn-clear">Clear</button>
           </form>
+          <button class="btn-clear">Clear</button>
         </div>
 
         
