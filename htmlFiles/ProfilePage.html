@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>HabitBabe</title>
-    <link rel="stylesheet" href="../cssFiles/ProfilePage.css" />
+ 
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Fira+Sans"
@@ -11,6 +11,7 @@
       type="text/javascript"
       src="https://npmcdn.com/parse@3.4.4/dist/parse.min.js"
     ></script>
+    <link rel="stylesheet" href="../cssFiles/ProfilePage.css" />
     <!-- <style>
    body {
   font-family: "Fira+Sans", sans-serif;
@@ -22,7 +23,6 @@
     <!-- <nav>
      
       </nav> -->
-
     <div class="userStuff">
       <div class="userNamePfp">
         <img src="../images/plholder.webp" id="userPlay" />
@@ -35,6 +35,16 @@
     </div>
 
     <button class="random">get prev todo across restart</button>
+
+
+    <!-- testing out tooltip -->
+    <!-- <button 
+    data-tippy="Message Content"
+    data-tippy-arrow="true"
+    data-tippy-trigger ="click" >
+    Text</button> -->
+
+
     <div id="division1"></div>
 
     <div class="intro-box">
@@ -43,7 +53,7 @@
           <li><button class="Timer">Timer</button></li>
           <li><button id="themeChangeButton" data-theme="light">dark mode</button></li>
           <!-- Left work here -->
-          <li><button class="Tutorial"  data-role="popover"  data-popover-text="This is popover!" data-popover-trigger="click">Tutorial</button></li>
+          <li><button id="tutorialbutton" >Tutorial</button></li>
           <li><button class="logoutButton">Logout</button></li>
           <li><button class="deleteAccountButton">Delete Account</button></li>
         </ul>
@@ -111,10 +121,20 @@
         <!-- </div> -->
       </div>
 
+      
+
       <!-- end of introbox -->
     </div>
-
+       <!-- Tooltip -->
+   <!-- https://kabbouchi.github.io/tippyjs-v4-docs/getting-started/ -->
+   <script src="https://unpkg.com/popper.js@1"></script>
+   <script src="https://unpkg.com/tippy.js@4"></script>
+   
     <script src="../jsFiles/index.js"></script>
     <script src="../jsFiles/multiselect-dropdown.js"></script>
+
+ 
+    
   </body>
 </html>
+

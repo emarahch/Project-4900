@@ -186,33 +186,11 @@ a:visited {
   color: white;
   transition: 1s;
 }
-/* .darkMode .body{
-  background-color:black;
-} */
+
 .darkMode .intro-box {
   background-color: grey;
   color: white;
 }
 
-.light {
-  background-color: white;
-  color: black;
-  transition: 1s;
-}
 
-/* automcatic dark mode
-This can be additional functionality lol*/
 
-/* @media (prefers-color-scheme: dark) {
-  body {
-    background-color:black;
-    color:white;
-    margin:0%;
-  }
-
-  .intro-box {
-    background-color:grey;
-    color:white;
-  } */
-
-/* } */

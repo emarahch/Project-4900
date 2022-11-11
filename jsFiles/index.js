@@ -1,14 +1,26 @@
-Parse.serverURL = "https://parseapi.back4app.com"; // This is your Server URL
-// Remember to inform BOTH the Back4App Application ID AND the JavaScript KEY
-Parse.initialize(
-  "rspognStfNV37CQa4LHoJxZReWuNU1iXKgPyOVv2", // This is your Application ID
-  "ARHVg2q79aHYce2i4rov3RDm6Z4LMvPckfwggh6T" // This is your Javascript key
-);
+
+// Parse.serverURL = "https://parseapi.back4app.com"; // This is your Server URL
+// // Remember to inform BOTH the Back4App Application ID AND the JavaScript KEY
+// Parse.initialize(
+//   "rspognStfNV37CQa4LHoJxZReWuNU1iXKgPyOVv2", // This is your Application ID
+//   "ARHVg2q79aHYce2i4rov3RDm6Z4LMvPckfwggh6T" // This is your Javascript key
+// );
+
 
 //REMOVE COMMENT WHEN TESTING
 //If having trouble with parse, check if there is an update
 
-//For button
+
+//Tutorial tooltip
+tippy('#tutorialbutton', {
+  // content: 'Tooltip',
+  content: 'Hello, Welcome to <span style="color:pink;">HabitBipity</span>!<img src="../images/test2.png" style="width:60px;height:50px;"> <br> I am your helping guide "name, it is really nice to meet you. <br> This is a super easy productivy website to use, let me walk you through it ! <br> ~Create a new todo then add a priotiy and category labels <br> ~Create a new note <br>~Set a timer to give yourself a time frame to work in <br> ~Earn points for your efforts!/> ',
+  placement: 'right',
+  arrow: true,
+  trigger:"click"
+})
+
+//For buttons
 function mainProfilePage() {
   location.href = "../htmlFiles/ProfilePage.html";
 }
@@ -26,10 +38,6 @@ function themeChangerFunc() {
   document.body.classList.toggle("darkMode");
 }
 
-
-function tutorialClick(){
-  
-}
 
 //Creating an account
 function preCreate() {
@@ -77,6 +85,10 @@ function login() {
       window.alert("Error: " + error.code + " " + error.message);
     });
 }
+
+//logging out of account
+const logoutButton = document.querySelector(".logoutButton");
+logoutButton.addEventListener("click",startPage);
 
 //Body will call this upon loading the page
 function loader() {
@@ -449,40 +461,11 @@ function deleteAccountStore(){
 
 }
 
-//LogOut-works
-const logoutButton = document.querySelector(".logoutButton");
-logoutButton.addEventListener("click",deleteAccountStore);
-
-function logoutFunc(){
-  // startPage();
-}
 
 
 
 
 
-// LOL CHANGE UP
-
-//format time
-function formatTime(str) {
-  // var parsed = new Date(str);
-  var parsed = new Date();
-  var date =
-    zeroPad(parsed.getMonth() + 1) +
-    "/" +
-    zeroPad(parsed.getDate()) +
-    "/" +
-    parsed.getFullYear();
-  var time = zeroPad(parsed.getHours()) + ":" + zeroPad(parsed.getMinutes());
-  return "Created: " + date + " | " + time;
-}
-//append 0's to hours/ minutes if single digits
-function zeroPad(num) {
-  while (String(num).length < 2) {
-    num = "0" + String(num);
-  }
-  return num;
-}
 
 
 
