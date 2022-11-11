@@ -7,33 +7,26 @@ const setMinutes=document.getElementById("setMinutes");
 const increaseHours= document.getElementById("increaseHours");
 const decreaseHours= document.getElementById("decreaseHours");
 
-const increaseMinutes= document.getElementById("increaseMinutes");
-const decreaseMinutes= document.getElementById("decreaseMinutes");
 
 increaseHours.addEventListener("click",increaseHFunc);
 decreaseHours.addEventListener("click",decreaseHFunc);
-increaseMinutes.addEventListener("click",increaseMFunc);
-decreaseMinutes.addEventListener("click",decreaseMFunc);
+
+var session=30;
+const sessionMax = 60;
+const sessionMin=0;
 
 function increaseHFunc(){
-  alert("clcikeS");
-setHours.innerHTML= "1";
+  if (session!=sessionMax){
+session=session+=1;
+setHours.innerHTML= session;
+  }
 }
 
 
 function decreaseHFunc(){
-    alert("clcikeeeeS");
-  setHours.innerHTML= "0";
-  }
-
-
-  function increaseMFunc(){
-    alert("clcikeS");
-    setMinutes.innerHTML= "1";
-  }
-  
-  
-  function decreaseMFunc(){
-      alert("clcikeeeeS");
-      setMinutes.innerHTML= "0";
+    if (session!=sessionMin){
+      session=session-=1;
+      setHours.innerHTML= session;
     }
+  
+  }

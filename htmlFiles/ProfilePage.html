@@ -37,12 +37,6 @@
     <button class="random">get prev todo across restart</button>
 
 
-    <!-- testing out tooltip -->
-    <!-- <button 
-    data-tippy="Message Content"
-    data-tippy-arrow="true"
-    data-tippy-trigger ="click" >
-    Text</button> -->
 
 
     <div id="division1"></div>
@@ -104,8 +98,12 @@
 
       <!-- notes section -->
 
-      <div class="notesMain">
-        <div class="note-creation">
+
+                <!-- <div class="notesMain">
+                  <div class="note-creation"> -->
+          <div class="notesSection"> 
+            <div id="divToCreateNote">
+              <form id="createNoteForm">
           <input
             class="title-field"
             type="text"
@@ -113,9 +111,13 @@
           />
 
           <textarea class="body-field"></textarea>
-          <button class="btn-save">Save</button>
+          <button class="btn-save" type="submit">Save</button>
           <button class="btn-clear">Clear</button>
+          </form>
         </div>
+
+        
+        <button id="createNoteShowBtn">Toggle form visibility</button>
 
         <section class="notes-list"></section>
         <!-- </div> -->

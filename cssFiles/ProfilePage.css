@@ -83,9 +83,9 @@ a:visited {
   border: pink solid;
 }
 
-/* #divToCreateForm{
+#divToCreateForm{
   display:none;
-} */
+}
 #createTodoForm {
   display: flex;
   flex-direction: row;
@@ -109,12 +109,16 @@ a:visited {
 
 /* Notes section */
 
-.notesMain {
+.notesSection {
   width: 23%;
   border: pink solid;
 }
 
-.note-creation {
+#divToCreateNote{
+  display:none;
+}
+
+#createNoteForm{
   position: relative;
   display: flex;
   justify-content: center;
@@ -122,6 +126,7 @@ a:visited {
   flex-direction: column;
   margin-bottom: 10px;
   padding: 5px;
+
 }
 .notes-list {
   width: 90%;
@@ -179,8 +184,7 @@ a:visited {
 
 /* Color schemes */
 
-/* (needs serious work), but the logic is there..ish... look into sass lol */
-/* This is an issue of being sepecific..... */
+
 .darkMode {
   background-color: black;
   color: white;

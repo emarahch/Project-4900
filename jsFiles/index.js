@@ -32,7 +32,7 @@ function startPage() {
 //Theme changer
 const themeChangeButton = document.getElementById("themeChangeButton");
 themeChangeButton.addEventListener("click", themeChangerFunc);
-// const useDark = window.matchMedia("(prefers-color-scheme: dark)");
+
 
 function themeChangerFunc() {
   document.body.classList.toggle("darkMode");
@@ -109,13 +109,32 @@ createTodoShowBtn.addEventListener("click", () => {
   const divform = document.getElementById("divToCreateForm");
 
   if (divform.style.display === "block") {
-    // 👇️ this HIDES the form
+    // HIDES the form
     divform.style.display = "none";
   } else {
-    // 👇️ this SHOWS the form
+    //  SHOWS the form
     divform.style.display = "block";
   }
 });
+
+
+
+// //Showing and hiding the form for adding a note
+const createNoteShowBtn = document.getElementById("createNoteShowBtn");
+
+createNoteShowBtn.addEventListener("click", () => {
+  const divform = document.getElementById("divToCreateNote");
+
+  if (divform.style.display === "block") {
+    //  HIDES the form
+    divform.style.display = "none";
+  } else {
+    //  SHOWS the form
+    divform.style.display = "block";
+  }
+});
+
+
 
 //Adding New Todo's to the DOM
 const todoInput = document.querySelector(".todo-input");
