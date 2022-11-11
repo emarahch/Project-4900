@@ -13,7 +13,6 @@
 
 //Tutorial tooltip
 tippy('#tutorialbutton', {
-  // content: 'Tooltip',
   content: 'Hello, Welcome to <span style="color:pink;">HabitBipity</span>!<img src="../images/test2.png" style="width:60px;height:50px;"> <br> I am your helping guide "name, it is really nice to meet you. <br> This is a super easy productivy website to use, let me walk you through it ! <br> ~Create a new todo then add a priotiy and category labels <br> ~Create a new note <br>~Set a timer to give yourself a time frame to work in <br> ~Earn points for your efforts!/> ',
   placement: 'right',
   arrow: true,
@@ -482,16 +481,19 @@ function deleteAccountStore(){
 
 }
 
-//timer STUFF
 
-var session=30;
+
+
+//Timer Section
+var session=25;
 const sessionMax = 60;
-const sessionMin=0;
+const sessionMin=5;
 
-const timerHours=document.getElementById("timerHours");
-const increaseHours= document.getElementById("increaseHours");
-const decreaseHours= document.getElementById("decreaseHours");
-const timerMiunutes=document.getElementById("timerMiunutes")
+const timerMinutes=document.getElementById("timerMinutes");
+const timerSeconds=document.getElementById("timerSeconds")
+const increaseMinutes= document.getElementById("increaseMinutes");
+const decreaseMinutes= document.getElementById("decreaseMinutes");
+
 
 
 const  timerStartButton= document.getElementById("timerStartButton");
@@ -499,12 +501,12 @@ const timerPauseButton= document.getElementById("timerPauseButton");
 const timerClearButton= document.getElementById("timerClearButton");
 
 
-increaseHours.addEventListener("click",increaseHFunc);
-decreaseHours.addEventListener("click",decreaseHFunc);
+increaseMinutes.addEventListener("click",increaseMFunc);
+decreaseMinutes.addEventListener("click",decreaseMFunc);
 
 
 
-timerStartButton.addEventListener("click",getSeconds);
+timerStartButton.addEventListener("click",getTotalTimeS);
 timerPauseButton.addEventListener("click",pauseTimer);
 timerClearButton.addEventListener("click",clearTimer);
 
@@ -513,72 +515,91 @@ timerClearButton.addEventListener("click",clearTimer);
 
 
 
-function increaseHFunc(){
+function increaseMFunc(){
   if (session+5<=sessionMax){
 session=session+=5;
-timerHours.innerHTML= session;
+timerMinutes.innerHTML= session;
   }
 }
 
 
-function decreaseHFunc(){
-    if (session-5>sessionMin){
+function decreaseMFunc(){
+    if (session-5>=sessionMin){
       session=session-=5;
-      timerHours.innerHTML= session;
+      timerMinutes.innerHTML= session;
     }
   }
 
  
   let intervalState;
-  // let cleared = false;
-
- 
   var minutes;
-  var seconds;
+  var totalTimeS;//Total time..
+  isPaused=false;
 
-function getSeconds(){
-  minutes=parseInt(timerHours.innerHTML);
-  seconds=Math.floor(minutes*60);
-  // alert(seconds);
+ function getTotalTimeS(){
+  if(isPaused===false){
+  minutes=parseInt(session);
+  totalTimeS=Math.floor(minutes*60);
   startTimer();
+  }else{
+  isPaused===false;
+  totalTimeS=totalTimeS;
+  startTimer();
+  }
 }
 
 function startTimer(){
-  // prevents from hitting start when timer is already actice
   if(!intervalState){
-    intervalState=setInterval(timerIncrements(),1000)
+    intervalState=setInterval(timerIncrements,1000)
+    increaseMinutes.disabled = true;
+    decreaseMinutes.disabled = true;
+    timerStartButton.disabled = true;
   }
 }
 
 function timerIncrements(){
-seconds-=1;
-timerHours.innerHTML=seconds;
-// timerMiunutes.innerHTML="00";
+  if(totalTimeS===0){
+    clearInterval(intervalState);
+    intervalState = null
+    timerMinutes.innerHTML="25";
+    timerSeconds.innerHTML="00";
+    session=5;
+    alert("Done");
+    }else{
+   timerMinutes.innerHTML=Math.floor(totalTimeS/60);
+if(Math.floor(totalTimeS%60)<10){
+  timerSeconds.innerHTML="0"+ Math.floor(totalTimeS%60);
+}else{ timerSeconds.innerHTML=(Math.floor(totalTimeS%60));}
+   totalTimeS-=1;
+    }
 
-// if(seconds===0){
-// alert("Done");
-// }
+
 }
 
-function pauseTimer(){ //works
-  timerHours.innerHTML=seconds;
+function pauseTimer(){ 
+  totalTimeS=totalTimeS;
+  isPaused=true;
   clearInterval(intervalState);
   intervalState = null;
+  timerStartButton.disabled = false;
 }
 
 function clearTimer(){
   clearInterval(intervalState);
   intervalState = null;
+  isPaused=false;
 
-  timerHours.innerHTML="30";
-  timerMiunutes.innerHTML="00";
+  timerMinutes.innerHTML="25";
+  timerSeconds.innerHTML="00";
+  session=25;
 
-
-  
-//so many problems....
- //this gives issues, bc when I clear the time, and try to seta new time, it still shows prev time
-
+  increaseMinutes.disabled = false;
+  decreaseMinutes.disabled = false;
+  timerStartButton.disabled = false;
 }
+
+
+
 
 
 
