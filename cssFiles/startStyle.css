@@ -3,8 +3,8 @@ body {
     179.4deg,
     rgb(253, 240, 233) 4.2%,
     rgb(247, 217, 221) 99.2%
-  )
- 
+  );
+
   /* background: linear-gradient(179.4deg, rgb(253, 240, 233) 2.2%, rgb(255, 194, 203) 96.2%); */
   /* background-image: url("images/mesh-gradient.png"); */
 }

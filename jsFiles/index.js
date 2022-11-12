@@ -1,23 +1,38 @@
+Parse.serverURL = "https://parseapi.back4app.com"; // This is your Server URL
+// Remember to inform BOTH the Back4App Application ID AND the JavaScript KEY
+Parse.initialize(
+  "rspognStfNV37CQa4LHoJxZReWuNU1iXKgPyOVv2", // This is your Application ID
+  "ARHVg2q79aHYce2i4rov3RDm6Z4LMvPckfwggh6T" // This is your Javascript key
+);
 
-// Parse.serverURL = "https://parseapi.back4app.com"; // This is your Server URL
-// // Remember to inform BOTH the Back4App Application ID AND the JavaScript KEY
-// Parse.initialize(
-//   "rspognStfNV37CQa4LHoJxZReWuNU1iXKgPyOVv2", // This is your Application ID
-//   "ARHVg2q79aHYce2i4rov3RDm6Z4LMvPckfwggh6T" // This is your Javascript key
-// );
+// REMOVE COMMENT WHEN TESTING
+// If having trouble with parse, check if there is an update
 
-
-//REMOVE COMMENT WHEN TESTING
-//If having trouble with parse, check if there is an update
-
+window.addEventListener('load', (event) => {
+  console.log('page is fully loaded');
+  loader()
+});
 
 //Tutorial tooltip
-tippy('#tutorialbutton', {
-  content: 'Hello, Welcome to <span style="color:pink;">HabitBipity</span>!<img src="../images/test2.png" style="width:60px;height:50px;"> <br> I am your helping guide "name, it is really nice to meet you. <br> This is a super easy productivy website to use, let me walk you through it ! <br> ~Create a new todo then add a priotiy and category labels <br> ~Create a new note <br>~Set a timer to give yourself a time frame to work in <br> ~Earn points for your efforts!/> ',
-  placement: 'right',
+tippy("#tutorialbutton", {
+  content:
+    'Hello, Welcome to <span style="color:pink;">HabitBipity</span>!<img src="../images/test2.png" style="width:60px;height:50px;"> <br> I am your helping guide "name, it is really nice to meet you. <br> This is a super easy productivy website to use, let me walk you through it ! <br> ~Create a new todo then add a priotiy and category labels <br> ~Create a new note <br>~Set a timer to give yourself a time frame to work in <br> ~Earn points for your efforts!/> ',
+  placement: "right",
   arrow: true,
-  trigger:"click"
+  trigger: "click",
+});
+
+//multislect
+new SlimSelect({
+  select: '#categoryNumber'
 })
+//prority label
+new SlimSelect({
+select: '#priorityNumber'
+})
+
+
+
 
 //For buttons
 function mainProfilePage() {
@@ -32,12 +47,11 @@ function startPage() {
 const themeChangeButton = document.getElementById("themeChangeButton");
 themeChangeButton.addEventListener("click", themeChangerFunc);
 
-
 function themeChangerFunc() {
   document.body.classList.toggle("darkMode");
 }
 //Getting the current date - MOVE TO LOADER FUNCTION
-var date = (new Date()).toString().split(' ').splice(0,4).join(' ');
+var date = new Date().toString().split(" ").splice(0, 4).join(" ");
 document.getElementById("currentDate").innerHTML = date;
 
 //Creating an account
@@ -59,6 +73,7 @@ function create(charry) {
   user.set("username", document.getElementById("userName_field").value);
   user.set("email", document.getElementById("email_field").value);
   user.set("password", document.getElementById("password_field").value);
+  user.set("score", 1);
   user.set("chara", charry);
 
   // Call the save method, which returns the saved object if successful
@@ -71,7 +86,6 @@ function create(charry) {
       window.alert("Error: " + error.code + " " + error.message);
     });
 }
-
 
 //logging into account
 function login() {
@@ -89,18 +103,36 @@ function login() {
 
 //logging out of account
 const logoutButton = document.querySelector(".logoutButton");
-logoutButton.addEventListener("click",startPage);
+logoutButton.addEventListener("click", startPage);
 
-//Body will call this upon loading the page
-function loader() {
+
+
+//This is so i can get the SCORE back in real time....should i do asyn on other functions???
+//Maybe I can do this in a dif place... this file is getting large lol
+
+function upScoreRealTime(){
   Parse.User.enableUnsafeCurrentUser();
   const currentUser = Parse.User.current();
-  const refUse = currentUser.get("username");
-  const userI = currentUser.get("chara");
-  const userScore = currentUser.get("score");
-  document.getElementById("welcome").innerHTML = "Hey! " + refUse;
-  document.getElementById("userPlay").src = userI;
-  document.getElementById("scoreEle").innerHTML = userScore; // working on, bc it returns undefined
+  (async () => {
+    const query = new Parse.Query("User");
+    try {
+      const object = await query.get(currentUser.id);
+      try {
+        var userScore = object.get("score");
+
+      } catch (error) {
+        console.error("Error while hehe ParseObject", error);
+      }
+    } catch (error) {
+      console.error("Error while retrieving ParseObject", error);
+    }
+    document.getElementById("scoreEle").innerHTML = userScore; 
+
+    //working on this
+    // const barLevel=document.getElementById("bar");
+    // barLevel.setAttribute("data-value", "100");
+  })();
+  
 }
 
 //Showing and hiding the form for adding a todo
@@ -118,8 +150,6 @@ createTodoShowBtn.addEventListener("click", () => {
   }
 });
 
-
-
 // //Showing and hiding the form for adding a note
 const createNoteShowBtn = document.getElementById("createNoteShowBtn");
 
@@ -135,8 +165,6 @@ createNoteShowBtn.addEventListener("click", () => {
   }
 });
 
-
-
 //Adding New Todo's to the DOM
 const todoInput = document.querySelector(".todo-input");
 const todoButton = document.querySelector(".todo-button");
@@ -148,12 +176,13 @@ todoList.addEventListener("click", deleteCheck);
 function addTodo(idd) {
   var categoryNumberUser = document.getElementById("categoryNumber");
   var prNumberUser = document.getElementById("priorityNumber");
+
   var textPr = prNumberUser.options[prNumberUser.selectedIndex].value;
   var textCa = Array.from(categoryNumberUser.selectedOptions).map(
     (x) => x.value ?? x.text
   );
   // preventDefault();
-  alert(textPr);
+  // alert(textPr);
   const toDoDiv = document.createElement("div");
   toDoDiv.setAttribute("class", "IndToDo");
   toDoDiv.setAttribute("id", idd);
@@ -193,7 +222,6 @@ function addTodo(idd) {
 
   //add to list
   todoList.appendChild(toDoDiv);
-
 
   todoInput.value = "";
 }
@@ -250,6 +278,11 @@ function deleteToDoStore(idd) {
 
 //this updates parse for task completion
 function completedStore(idd) {
+  // I call current user a lot...maybe I can fix this?
+  
+  Parse.User.enableUnsafeCurrentUser();
+  const currentUser = Parse.User.current();
+  var userScore=currentUser.get("score");
   (async () => {
     const query = new Parse.Query("ToDo");
     try {
@@ -259,6 +292,10 @@ function completedStore(idd) {
       meow = object.get("isCompleted");
       if (meow == false) {
         object.set("isCompleted", true);
+        userScore+=2;
+        // alert( userScore);
+        currentUser.set("score",userScore);
+        document.getElementById("scoreEle").innerHTML = userScore; 
       }
       if (meow == true) {
         object.set("isCompleted", false);
@@ -271,7 +308,8 @@ function completedStore(idd) {
     } catch (error) {
       console.error("Error while retrieving object ", error);
     }
-  })();
+  })()
+ 
 }
 
 function deleteCheck(event) {
@@ -282,7 +320,7 @@ function deleteCheck(event) {
     deleteToDoStore(todo.getAttribute("id"));
   }
 
-  //I have it whhere the user can click button multuple times, bc people make mistakes 
+  //I have it whhere the user can click button multuple times, bc people make mistakes
   if (item.classList[0] === "complete-btn") {
     const todo = item.parentElement;
     todo.classList.toggle("completed");
@@ -291,7 +329,7 @@ function deleteCheck(event) {
 
   if (item.classList[0] === "edit-btn") {
     const todo = item.parentElement;
-    alert("You are in Edit mode: Not functional yes!");
+    alert("You are in Edit mode: Not functional yet!");
     completedStore(todo.getAttribute("id"));
   }
 }
@@ -332,7 +370,6 @@ function deleteCheck(event) {
 //   }
 // }
 
-//left on minute 48 for filter to do!
 
 //NOTES SECTION//
 
@@ -362,11 +399,6 @@ function addNote(ob2) {
   newNote.innerText = notesInput.value;
   newNote.classList.add("note-item");
   notesDiv.appendChild(newNote);
-
-  // const timeCreated = document.createElement("li");
-  // timeCreated.innerText = formatTime();
-  // timeCreated.classList.add("timeCreatedOutput");
-  // notesDiv.appendChild(timeCreated);
 
   const cancelButton = document.createElement("button");
   cancelButton.innerText = "delete";
@@ -405,7 +437,6 @@ function storeNote(event) {
   //   window.alert("works");
 }
 
-
 function deleteNoteStore(noteId) {
   (async () => {
     const query = new Parse.Query("Notes");
@@ -434,33 +465,33 @@ function deleteNote(event) {
   if (item.classList[0] === "cancel-btn") {
     const note = item.parentElement;
     note.remove();
-    deleteNoteStore(note.getAttribute("id"))
+    deleteNoteStore(note.getAttribute("id"));
   }
 }
 
-
 //Delete account section
 //This deletes the user, but does not delete their items....should I do pointers or relations?
-const deleteAccountButton= document.querySelector(".deleteAccountButton");
-deleteAccountButton.addEventListener("click",areYouSureDelete);
+const deleteAccountButton = document.querySelector(".deleteAccountButton");
+deleteAccountButton.addEventListener("click", areYouSureDelete);
 
-function areYouSureDelete(){
-  var result = confirm("Are you sure you want to delete? All of your information will be lost :(");
-    if(result){
-      alert("deleted");
-      deleteAccountStore();
-    }
+function areYouSureDelete() {
+  var result = confirm(
+    "Are you sure you want to delete? All of your information will be lost :("
+  );
+  if (result) {
+    alert("deleted");
+    deleteAccountStore();
+  }
 }
 
-
 //need to have it so all their info is deleted too
-function deleteAccountStore(){
+function deleteAccountStore() {
   (async () => {
     const currentUser = Parse.User.current();
     const User = new Parse.User();
     const query = new Parse.Query(User);
     alert(currentUser.id);
-  
+
     try {
       // Finds the user by its ID
       let user = await query.get(currentUser.id);
@@ -468,130 +499,114 @@ function deleteAccountStore(){
         // Invokes the "destroy" method to delete the user
         alert("destroyyed");
         let response = await user.destroy();
-        console.log('Deleted user', response);
+        console.log("Deleted user", response);
       } catch (error) {
-        console.error('Error while deleting user', error);
+        console.error("Error while deleting user", error);
       }
     } catch (error) {
-      console.error('Error while retrieving user', error);
+      console.error("Error while retrieving user", error);
     }
 
-    startPage(); 
+    startPage();
   })();
-
 }
-
-
-
 
 //Timer Section
-var session=25;
+var session = 25;
 const sessionMax = 60;
-const sessionMin=5;
+const sessionMin = 5;
 
-const timerMinutes=document.getElementById("timerMinutes");
-const timerSeconds=document.getElementById("timerSeconds")
-const increaseMinutes= document.getElementById("increaseMinutes");
-const decreaseMinutes= document.getElementById("decreaseMinutes");
+const timerMinutes = document.getElementById("timerMinutes");
+const timerSeconds = document.getElementById("timerSeconds");
+const increaseMinutes = document.getElementById("increaseMinutes");
+const decreaseMinutes = document.getElementById("decreaseMinutes");
 
+const timerStartButton = document.getElementById("timerStartButton");
+const timerPauseButton = document.getElementById("timerPauseButton");
+const timerClearButton = document.getElementById("timerClearButton");
 
+increaseMinutes.addEventListener("click", increaseMFunc);
+decreaseMinutes.addEventListener("click", decreaseMFunc);
 
-const  timerStartButton= document.getElementById("timerStartButton");
-const timerPauseButton= document.getElementById("timerPauseButton");
-const timerClearButton= document.getElementById("timerClearButton");
+timerStartButton.addEventListener("click", getTotalTimeS);
+timerPauseButton.addEventListener("click", pauseTimer);
+timerClearButton.addEventListener("click", clearTimer);
 
-
-increaseMinutes.addEventListener("click",increaseMFunc);
-decreaseMinutes.addEventListener("click",decreaseMFunc);
-
-
-
-timerStartButton.addEventListener("click",getTotalTimeS);
-timerPauseButton.addEventListener("click",pauseTimer);
-timerClearButton.addEventListener("click",clearTimer);
-
-
-
-
-
-
-function increaseMFunc(){
-  if (session+5<=sessionMax){
-session=session+=5;
-timerMinutes.innerHTML= session;
+function increaseMFunc() {
+  if (session + 5 <= sessionMax) {
+    session = session += 5;
+    timerMinutes.innerHTML = session;
   }
 }
 
-
-function decreaseMFunc(){
-    if (session-5>=sessionMin){
-      session=session-=5;
-      timerMinutes.innerHTML= session;
-    }
-  }
-
- 
-  let intervalState;
-  var minutes;
-  var totalTimeS;//Total time..
-  isPaused=false;
-
- function getTotalTimeS(){
-  if(isPaused===false){
-  minutes=parseInt(session);
-  totalTimeS=Math.floor(minutes*60);
-  startTimer();
-  }else{
-  isPaused===false;
-  totalTimeS=totalTimeS;
-  startTimer();
+function decreaseMFunc() {
+  if (session - 5 >= sessionMin) {
+    session = session -= 5;
+    timerMinutes.innerHTML = session;
   }
 }
 
-function startTimer(){
-  if(!intervalState){
-    intervalState=setInterval(timerIncrements,1000)
+let intervalState;
+var minutes;
+var totalTimeS; //Total time..
+isPaused = false;
+
+function getTotalTimeS() {
+  if (isPaused === false) {
+    minutes = parseInt(session);
+    totalTimeS = Math.floor(minutes * 60);
+    startTimer();
+  } else {
+    isPaused === false;
+    totalTimeS = totalTimeS;
+    startTimer();
+  }
+}
+
+function startTimer() {
+  if (!intervalState) {
+    intervalState = setInterval(timerIncrements, 1000);
     increaseMinutes.disabled = true;
     decreaseMinutes.disabled = true;
     timerStartButton.disabled = true;
   }
 }
 
-function timerIncrements(){
-  if(totalTimeS===0){
+function timerIncrements() {
+  if (totalTimeS === 0) {
     clearInterval(intervalState);
-    intervalState = null
-    timerMinutes.innerHTML="25";
-    timerSeconds.innerHTML="00";
-    session=5;
+    intervalState = null;
+    timerMinutes.innerHTML = "25";
+    timerSeconds.innerHTML = "00";
+    session = 5;
     alert("Done");
-    }else{
-   timerMinutes.innerHTML=Math.floor(totalTimeS/60);
-if(Math.floor(totalTimeS%60)<10){
-  timerSeconds.innerHTML="0"+ Math.floor(totalTimeS%60);
-}else{ timerSeconds.innerHTML=(Math.floor(totalTimeS%60));}
-   totalTimeS-=1;
+  } else {
+    timerMinutes.innerHTML = Math.floor(totalTimeS / 60);
+    if (Math.floor(totalTimeS % 60) < 10) {
+      timerSeconds.innerHTML = "0" + Math.floor(totalTimeS % 60);
+    } else {
+      timerSeconds.innerHTML = Math.floor(totalTimeS % 60);
     }
-
-
+    totalTimeS -= 1;
+  }
 }
 
-function pauseTimer(){ 
-  totalTimeS=totalTimeS;
-  isPaused=true;
+function pauseTimer() {
+  totalTimeS = totalTimeS;
+  isPaused = true;
   clearInterval(intervalState);
   intervalState = null;
   timerStartButton.disabled = false;
 }
 
-function clearTimer(){
+function clearTimer() {
   clearInterval(intervalState);
   intervalState = null;
-  isPaused=false;
+  isPaused = false;
 
-  timerMinutes.innerHTML="25";
-  timerSeconds.innerHTML="00";
-  session=25;
+  timerMinutes.innerHTML = "25";
+  timerSeconds.innerHTML = "00";
+  session = 25;
 
   increaseMinutes.disabled = false;
   decreaseMinutes.disabled = false;
@@ -599,10 +614,16 @@ function clearTimer(){
 }
 
 
-
-
-
-
-
-
+//Body will call this upon loading the page
+function loader() {
+  Parse.User.enableUnsafeCurrentUser();
+  const currentUser = Parse.User.current();
+  const refUse = currentUser.get("username");
+  const userI = currentUser.get("chara");
+  var userScore = currentUser.get("score");
+  document.getElementById("welcome").innerHTML = "Hey! " + refUse;
+  document.getElementById("userPlay").src = userI;
+  upScoreRealTime();
+ 
+}
 

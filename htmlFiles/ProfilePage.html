@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>HabitBabe</title>
- 
+
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Fira+Sans"
@@ -12,14 +12,11 @@
       src="https://npmcdn.com/parse@3.4.4/dist/parse.min.js"
     ></script>
     <link rel="stylesheet" href="../cssFiles/ProfilePage.css" />
-    <!-- <style>
-   body {
-  font-family: "Fira+Sans", sans-serif;
-   }
-</style> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.1/slimselect.min.css" rel="stylesheet"></link>
+    <link rel="stylesheet" type="text/css" href="../cssFiles/loading-bar.css"/>
   </head>
 
-  <body onload="loader()">
+    <body>
     <!-- <nav>
      
       </nav> -->
@@ -30,23 +27,31 @@
       </div>
 
       <div class="ScoreDiv">
-        <h5 id="scoreEle">28</h5>
+        <p id="scoreEle">0</p>
+        <!-- static for now -->
+        <div 
+        data-preset="rainbow"
+        data-stroke-width="10"
+        data-stroke-trail-width="10"
+        id="bar"
+        class="ldBar label-center" 
+        data-value="28"
+        ></div>
       </div>
     </div>
 
     <button class="random">get prev todo across restart</button>
-
-
-
 
     <div id="division1"></div>
 
     <div class="intro-box">
       <div class="testNav">
         <ul>
-          <li><button id="themeChangeButton" data-theme="light">dark mode</button></li>
+          <li>
+            <button id="themeChangeButton" data-theme="light">dark mode</button>
+          </li>
           <!-- Left work here -->
-          <li><button id="tutorialbutton" >Tutorial</button></li>
+          <li><button id="tutorialbutton">Tutorial</button></li>
           <li><button class="logoutButton">Logout</button></li>
           <li><button class="deleteAccountButton">Delete Account</button></li>
         </ul>
@@ -60,32 +65,37 @@
             <input type="text" class="todo-input" />
 
             <!-- priority level, single level -->
+            <div id="divToSingleSelect">
             <select name="priorityNumber" id="priorityNumber">
               <option value="1" selected="selected">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
             </select>
+          </div>
 
-            <select
+            <!-- console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))" -->
+            <!-- multiselect-hide-x="true" -->
+            <div id="divToMulstiSelect">
+            <select multiple 
               name="field1"
               id="categoryNumber"
-              multiple
               onchange="console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))"
-              multiselect-hide-x="true"
+              
             >
               <option value="General" selected="selected">General</option>
               <option value="School">School</option>
               <option value="Work">Work</option>
+              <option value="Side Hustle">Side Hustle</option>
+              <option value="Creative">Creative</option>
               <option value="Family">Family</option>
               <option value="Home">Home</option>
               <option value="Kids">Kids</option>
               <option value="Groccery">Groccery</option>
               <option value="Meal planning">Meal planning</option>
-              <option value="Groccery">Groccery</option>
               <option value="Goals">Goals</option>
-              <option value="Side Hustle">Side Hustle</option>
-              <option value="Creative">Creative</option>
             </select>
+          </div>
+
 
             <button class="todo-button" type="submit">submit</button>
           </form>
@@ -99,57 +109,54 @@
 
       <!-- right section -->
 
-          <div class="notesSection"> 
+      <div class="notesSection">
 
+        <!-- Timer things -->
+        <div class="timerSection">
+          <h2 id="setTime">
+            <span id="timerMinutes">25</span>:<span id="timerSeconds">00 </span>
+          </h2>
 
-            <div class="timerSection">
-              <h2 id="setTime"> <span id="timerMinutes">25</span>:<span id="timerSeconds">00 </span></h2>
-              
-                <button id="increaseMinutes">+</button>
-                <button id="decreaseMinutes">-</button>
-            </div>
-              
-              
-              
-              <button id="timerStartButton">Start</button>
-              <button id="timerPauseButton">Pause</button>
-              <button id="timerClearButton">Clear</button>
-            <h1>Notes</h1>
-            <div id="divToCreateNote">
-              <form id="createNoteForm">
-          <input
-            class="title-field"
-            type="text"
-            placeholder="title your note"
-          />
+          <button id="increaseMinutes">+</button>
+          <button id="decreaseMinutes">-</button>
+        </div>
 
-          <textarea class="body-field"></textarea>
-          <button class="btn-save" type="submit">Save</button>
+        <button id="timerStartButton">Start</button>
+        <button id="timerPauseButton">Pause</button>
+        <button id="timerClearButton">Clear</button>
+        <!-- Note things -->
+        <h1>Notes</h1>
+        <div id="divToCreateNote">
+          <form id="createNoteForm">
+            <input
+              class="title-field"
+              type="text"
+              placeholder="title your note"
+            />
+
+            <textarea class="body-field"></textarea>
+            <button class="btn-save" type="submit">Save</button>
           </form>
           <button class="btn-clear">Clear</button>
         </div>
 
-        
         <button id="createNoteShowBtn">Toggle form visibility</button>
 
         <section class="notes-list"></section>
         <!-- </div> -->
       </div>
 
-      
-
       <!-- end of introbox -->
     </div>
-       <!-- Tooltip -->
-   <!-- https://kabbouchi.github.io/tippyjs-v4-docs/getting-started/ -->
-   <script src="https://unpkg.com/popper.js@1"></script>
-   <script src="https://unpkg.com/tippy.js@4"></script>
-   
-    <script src="../jsFiles/index.js"></script>
-    <script src="../jsFiles/multiselect-dropdown.js"></script>
+    <!-- Tooltip -->
+    <!-- https://kabbouchi.github.io/tippyjs-v4-docs/getting-started/ -->
+    <script src="https://unpkg.com/popper.js@1"></script>
+    <script src="https://unpkg.com/tippy.js@4"></script>
 
- 
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.1/slimselect.min.js"></script>
+    <script type="text/javascript" src="../jsFiles/loading-bar.js"></script>
+    <script src="../jsFiles/index.js"></script>
     
   </body>
 </html>
-

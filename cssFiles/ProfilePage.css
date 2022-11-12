@@ -46,7 +46,7 @@ a:visited {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height:10vh;
+  height: 10vh;
 }
 
 .userNamePfp {
@@ -55,9 +55,14 @@ a:visited {
 }
 
 .ScoreDiv {
+  margin-top: 20px;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #f5e3f1;
   border-radius: 5px;
-  height: 20%;
+  height: 80%;
   width: 15%;
 }
 
@@ -68,9 +73,8 @@ a:visited {
   background-color: white;
   color: black;
   border: solid;
-  height:80vh;
+  height: 80vh;
 }
-
 
 .testNav {
   display: flex;
@@ -86,8 +90,8 @@ a:visited {
   border: pink solid;
 }
 
-#divToCreateForm{
-  display:none;
+#divToCreateForm {
+  display: none;
 }
 #createTodoForm {
   display: flex;
@@ -97,6 +101,7 @@ a:visited {
 }
 
 /* Todo Section */
+
 .IndToDo {
   display: flex;
   flex-direction: row;
@@ -113,12 +118,10 @@ a:visited {
 
 /* Timer section */
 
-.timerSection{
+.timerSection {
   display: flex;
   flex-direction: column;
 }
-
-
 
 /* Notes section */
 
@@ -127,33 +130,32 @@ a:visited {
   border: pink solid;
 }
 
-.title-field{
+.title-field {
   background-color: aqua;
-  border-radius:2px ;
-  border:.3px black;
+  border-radius: 2px;
+  border: 0.3px black;
   /* height: 40%; */
-  width:60%;
-  margin-bottom:8px;
+  width: 60%;
+  margin-bottom: 8px;
 }
 
-.body-field{
-  background-color:blueviolet;
-  border-radius:2px ;
-  border:.3px black;
+.body-field {
+  background-color: blueviolet;
+  border-radius: 2px;
+  border: 0.3px black;
   width: 60%;
   height: 60%;
 
   max-width: 60%;
-  min-width:60%;
+  min-width: 60%;
   min-height: 60%;
 }
 
-
-#divToCreateNote{
-  display:none;
+#divToCreateNote {
+  display: none;
 }
 
-#createNoteForm{
+#createNoteForm {
   position: relative;
   display: flex;
   justify-content: center;
@@ -161,8 +163,6 @@ a:visited {
   flex-direction: column;
   margin-bottom: 10px;
   padding: 5px;
-
-
 }
 .notes-list {
   width: 90%;
@@ -220,7 +220,6 @@ a:visited {
 
 /* Color schemes */
 
-
 .darkMode {
   background-color: black;
   color: white;
@@ -231,6 +230,3 @@ a:visited {
   background-color: grey;
   color: white;
 }
-
-
-
