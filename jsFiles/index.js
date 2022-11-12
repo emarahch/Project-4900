@@ -1,9 +1,11 @@
-Parse.serverURL = "https://parseapi.back4app.com"; // This is your Server URL
-// Remember to inform BOTH the Back4App Application ID AND the JavaScript KEY
-Parse.initialize(
-  "rspognStfNV37CQa4LHoJxZReWuNU1iXKgPyOVv2", // This is your Application ID
-  "ARHVg2q79aHYce2i4rov3RDm6Z4LMvPckfwggh6T" // This is your Javascript key
-);
+// Parse.serverURL = "https://parseapi.back4app.com"; // This is your Server URL
+// // Remember to inform BOTH the Back4App Application ID AND the JavaScript KEY
+// Parse.initialize(
+//   "rspognStfNV37CQa4LHoJxZReWuNU1iXKgPyOVv2", // This is your Application ID
+//   "ARHVg2q79aHYce2i4rov3RDm6Z4LMvPckfwggh6T" // This is your Javascript key
+// );
+
+//i implemented scoring function, not level yet
 
 // REMOVE COMMENT WHEN TESTING
 // If having trouble with parse, check if there is an update
@@ -30,6 +32,11 @@ new SlimSelect({
 new SlimSelect({
 select: '#priorityNumber'
 })
+
+//Progress Bar
+var bar1 = new ldBar(".ldBar");
+var bar2 = document.getElementById('bar').ldBar;
+bar1.set(80);
 
 
 
@@ -74,6 +81,7 @@ function create(charry) {
   user.set("email", document.getElementById("email_field").value);
   user.set("password", document.getElementById("password_field").value);
   user.set("score", 1);
+  user.set("level", 1);
   user.set("chara", charry);
 
   // Call the save method, which returns the saved object if successful
@@ -119,6 +127,7 @@ function upScoreRealTime(){
       const object = await query.get(currentUser.id);
       try {
         var userScore = object.get("score");
+        var userLevel= object.get("level");
 
       } catch (error) {
         console.error("Error while hehe ParseObject", error);
@@ -127,10 +136,10 @@ function upScoreRealTime(){
       console.error("Error while retrieving ParseObject", error);
     }
     document.getElementById("scoreEle").innerHTML = userScore; 
-
-    //working on this
-    // const barLevel=document.getElementById("bar");
-    // barLevel.setAttribute("data-value", "100");
+    document.getElementById("levelEle").innerHTML = userLevel; 
+    //works for getting coreect
+    
+    bar1.set(scoringMath(userScore));
   })();
   
 }
@@ -292,10 +301,13 @@ function completedStore(idd) {
       meow = object.get("isCompleted");
       if (meow == false) {
         object.set("isCompleted", true);
-        userScore+=2;
-        // alert( userScore);
+        userScore+=20; //chnage just for testing
         currentUser.set("score",userScore);
-        document.getElementById("scoreEle").innerHTML = userScore; 
+
+        //changes the score imm for the user to see
+        //This needs to be updates real time to ensure 
+        bar1.set(scoringMath(userScore));
+        // document.getElementById("scoreEle").innerHTML = userScore; 
       }
       if (meow == true) {
         object.set("isCompleted", false);
@@ -620,10 +632,37 @@ function loader() {
   const currentUser = Parse.User.current();
   const refUse = currentUser.get("username");
   const userI = currentUser.get("chara");
-  var userScore = currentUser.get("score");
+  // var userScore = currentUser.get("score");
+  // var userLevel=currentUser.get("level");
+  // bar1.set(userScore); I dont belive this is needed
   document.getElementById("welcome").innerHTML = "Hey! " + refUse;
   document.getElementById("userPlay").src = userI;
   upScoreRealTime();
+
  
+}
+
+
+
+//LEVEL AND SCORING functions
+function scoringMath(userScore){
+  var lastDigits=Math.floor(userScore% 100);
+  if(lastDigits==0){
+  bar1.set(0);
+   }  else{
+    bar1.set(lastDigits);
+   }
+return lastDigits;
+}
+
+function levelMath(userScore){
+  var gettingFirstNumb=Math.floor(userScore/100);
+  if((gettingFirstNumb)>=1){//do i need this if statement?
+  for(let i=0; i<gettingFirstNumb;i++){ ///this might cause a problem honestly
+    level+=1;
+    document.getElementById("levelEle").innerHTML = level; 
+   }
+  }
+  return level;
 }
 
