@@ -105,6 +105,7 @@ function login() {
     })
     .catch(function (error) {
       window.alert("Error: " + error.code + " " + error.message);
+      
     });
 }
 
@@ -256,7 +257,13 @@ function storeTODO(event) {
       addTodo(ob);
       console.log("ToDo created", result);
     } catch (error) {
-      alert("Bestie you need words lol");
+      Toastify({
+        text: "Error : Besite you need to add a title ",
+        duration: 2500,
+        style: {
+          background: "linear-gradient(to right, #FF69B4, purple)",
+        },
+      }).showToast();
       console.error("Error while creating ToDo: ", error);
     }
 
@@ -407,12 +414,19 @@ function storeNote(event) {
       ob2 = newNote.id;
       addNote(ob2);
     } catch (error) {
-      alert("Bestie you need to add a title AND words in the body");
+      Toastify({
+        text: "Error : Besite you need to add a title and body",
+        duration: 2500,
+        style: {
+          background: "linear-gradient(to right, #FF69B4, purple)",
+        },
+      }).showToast();
       console.error("Error while creating note: ", error);
     }
    
   })();
 }
+
 
 function deleteNoteStore(noteId) {
   (async () => {
@@ -667,8 +681,7 @@ function retrieveTodos() {
       const isCompleted =  object.get("isCompleted");
       const priority=object.get("priority");
       const category=object.get("category");
-  
-      // alert(objectId+title + isCompleted  +priority+category);
+
       addOldToDo(objectId,title,isCompleted,priority,category);
     
     }
@@ -744,9 +757,6 @@ function retrieveNotes() {
       const objectId=object.id;
       const title = object.get('title');
       const NoteBody =  object.get("NoteBody");
-     
-  
-      // alert(objectId+title + isCompleted  +priority+category);
       addOldNote(objectId,title,NoteBody);
     
     }
