@@ -1,11 +1,11 @@
-// Parse.serverURL = "https://parseapi.back4app.com"; // This is your Server URL
-// // Remember to inform BOTH the Back4App Application ID AND the JavaScript KEY
-// Parse.initialize(
-//   "rspognStfNV37CQa4LHoJxZReWuNU1iXKgPyOVv2", // This is your Application ID
-//   "ARHVg2q79aHYce2i4rov3RDm6Z4LMvPckfwggh6T" // This is your Javascript key
-// );
+Parse.serverURL = "https://parseapi.back4app.com"; // This is your Server URL
+// Remember to inform BOTH the Back4App Application ID AND the JavaScript KEY
+Parse.initialize(
+  "rspognStfNV37CQa4LHoJxZReWuNU1iXKgPyOVv2", // This is your Application ID
+  "ARHVg2q79aHYce2i4rov3RDm6Z4LMvPckfwggh6T" // This is your Javascript key
+);
 
-//i implemented scoring function, not level yet
+
 
 // REMOVE COMMENT WHEN TESTING
 // If having trouble with parse, check if there is an update
@@ -67,7 +67,6 @@ function preCreate() {
   var charaName = document.getElementsByName("chara");
   for (var i = 0, length = charaName.length; i < length; i++) {
     if (charaName[i].checked) {
-      alert(charaName[i].value);
       charry = charaName[i].value;
       break;
     }
@@ -80,7 +79,7 @@ function create(charry) {
   user.set("username", document.getElementById("userName_field").value);
   user.set("email", document.getElementById("email_field").value);
   user.set("password", document.getElementById("password_field").value);
-  user.set("score", 1);
+  user.set("score", 0);
   user.set("level", 1);
   user.set("chara", charry);
 
@@ -154,7 +153,6 @@ createTodoShowBtn.addEventListener("click", () => {
     // HIDES the form
     divform.style.display = "none";
   } else {
-    //  SHOWS the form
     divform.style.display = "block";
   }
 });
@@ -169,7 +167,6 @@ createNoteShowBtn.addEventListener("click", () => {
     //  HIDES the form
     divform.style.display = "none";
   } else {
-    //  SHOWS the form
     divform.style.display = "block";
   }
 });
@@ -191,7 +188,6 @@ function addTodo(idd) {
     (x) => x.value ?? x.text
   );
   // preventDefault();
-  // alert(textPr);
   const toDoDiv = document.createElement("div");
   toDoDiv.setAttribute("class", "IndToDo");
   toDoDiv.setAttribute("id", idd);
@@ -256,14 +252,15 @@ function storeTODO(event) {
 
     try {
       const result = await newTodo2.save();
+      ob = newTodo2.id;
+      addTodo(ob);
       console.log("ToDo created", result);
     } catch (error) {
+      alert("Bestie you need words lol");
       console.error("Error while creating ToDo: ", error);
     }
 
-    ob = newTodo2.id;
-    // window.alert(ob);// works
-    addTodo(ob);
+   
   })();
 }
 //this updates parse for task deletion
@@ -292,6 +289,7 @@ function completedStore(idd) {
   Parse.User.enableUnsafeCurrentUser();
   const currentUser = Parse.User.current();
   var userScore=currentUser.get("score");
+  var userLevel=currentUser.get("level");
   (async () => {
     const query = new Parse.Query("ToDo");
     try {
@@ -301,14 +299,19 @@ function completedStore(idd) {
       meow = object.get("isCompleted");
       if (meow == false) {
         object.set("isCompleted", true);
-        userScore+=20; //chnage just for testing
+        userScore+=5; //chnage just for testing
         currentUser.set("score",userScore);
-
-        //changes the score imm for the user to see
-        //This needs to be updates real time to ensure 
+        //changes the score real time for the user to see
         bar1.set(scoringMath(userScore));
-        // document.getElementById("scoreEle").innerHTML = userScore; 
+
+        //Updates level real time
+        if(scoringMath(userScore)===0){
+        currentUser.set("level",levelMath(userLevel,userScore));
+        document.getElementById("levelEle").innerHTML =levelMath(userLevel,userScore);
+        }
       }
+
+
       if (meow == true) {
         object.set("isCompleted", false);
       }
@@ -342,45 +345,10 @@ function deleteCheck(event) {
   if (item.classList[0] === "edit-btn") {
     const todo = item.parentElement;
     alert("You are in Edit mode: Not functional yet!");
-    completedStore(todo.getAttribute("id"));
+    // completedStore(todo.getAttribute("id"));
   }
 }
 
-// //Testing trying to get old stuff...
-// const getterButton = document.querySelector(".random");
-// getterButton.addEventListener("click", retrieveTodos);
-
-// //needs aync bc of await
-// async function retrieveTodos() {
-//   Parse.User.enableUnsafeCurrentUser();
-//   const currentUser = Parse.User.current();
-
-//   const GameScore = Parse.Object.extend("ToDo");
-//   var query = new Parse.Query(GameScore);
-//   query.include("User");
-//   query.equalTo("User", currentUser);
-
-//   query.find({
-//     //Having trouble making this fully work
-//     success: function (results) {
-//       window.alert("Successfully retrieved " + results.length + " scores."); //this does nothiung?
-//       console.log("??");
-//     },
-
-//     error: function (error) {
-//       // error is an instance of Parse.Error.
-//       window.alert("problem" + error);
-//     },
-//   });
-//   // window.alert("hello");
-// }
-
-// function pasteToDo(results) {
-//   for (let i = 0; i < results.length; i++) {
-//     const object = results[i];
-//     alert(object.id + " - " + object.get("User"));
-//   }
-// }
 
 
 //NOTES SECTION//
@@ -420,15 +388,12 @@ function addNote(ob2) {
   //add to list
   notesList.appendChild(notesDiv);
 
-  // window.alert(toDoDiv.getAttribute("id"))// workdeleteNote
-  //clear inout value
 
   notesInput.value = "";
   notesTitle.value = "";
 }
 
 function storeNote(event) {
-  window.alert("works");
   //this is where storing actuallu happens
   event.preventDefault();
   (async () => {
@@ -439,14 +404,14 @@ function storeNote(event) {
     try {
       const result = await newNote.save();
       console.log("Note created", result);
+      ob2 = newNote.id;
+      addNote(ob2);
     } catch (error) {
+      alert("Bestie you need to add a title AND words in the body");
       console.error("Error while creating note: ", error);
     }
-    ob2 = newNote.id;
-    // window.alert(ob2); // works
-    addNote(ob2);
+   
   })();
-  //   window.alert("works");
 }
 
 function deleteNoteStore(noteId) {
@@ -496,20 +461,54 @@ function areYouSureDelete() {
   }
 }
 
-//need to have it so all their info is deleted too
+//Can I combine these async calls?? This is MESSY
 function deleteAccountStore() {
+
+  (async () => {
+    const currentUser = Parse.User.current();
+  
+    var query = new Parse.Query("ToDo");
+    query.include("User");
+    query.equalTo("User", currentUser);
+    try {
+      const results = await query.find();
+      for (const object of results) {
+        await object.destroy();
+      }
+    } catch (error) {
+      console.error('Error while fetching ToDo', error);
+    }
+  
+    })();
+
+    (async () => {
+      const currentUser = Parse.User.current();
+    
+      var query = new Parse.Query("Notes");
+      query.include("User");
+      query.equalTo("User", currentUser);
+      try {
+        const results = await query.find();
+        for (const object of results) {
+          await object.destroy();
+        }
+      } catch (error) {
+        console.error('Error while fetching note', error);
+      }
+    
+      })();
+
+
   (async () => {
     const currentUser = Parse.User.current();
     const User = new Parse.User();
     const query = new Parse.Query(User);
-    alert(currentUser.id);
 
     try {
       // Finds the user by its ID
       let user = await query.get(currentUser.id);
       try {
         // Invokes the "destroy" method to delete the user
-        alert("destroyyed");
         let response = await user.destroy();
         console.log("Deleted user", response);
       } catch (error) {
@@ -626,23 +625,165 @@ function clearTimer() {
 }
 
 
+
+
+
+
 //Body will call this upon loading the page
 function loader() {
   Parse.User.enableUnsafeCurrentUser();
   const currentUser = Parse.User.current();
   const refUse = currentUser.get("username");
   const userI = currentUser.get("chara");
-  // var userScore = currentUser.get("score");
-  // var userLevel=currentUser.get("level");
-  // bar1.set(userScore); I dont belive this is needed
   document.getElementById("welcome").innerHTML = "Hey! " + refUse;
   document.getElementById("userPlay").src = userI;
   upScoreRealTime();
-
- 
+  retrieveTodos();
+  retrieveNotes();
 }
 
 
+
+
+
+
+
+//Getting old stuff, called by loader
+//this works!!!!
+//for loops makes things slower thouf=gh...
+function retrieveTodos() {
+  (async () => {
+  Parse.User.enableUnsafeCurrentUser();
+  const currentUser = Parse.User.current();
+
+  var query = new Parse.Query("ToDo");
+  query.include("User");
+  query.equalTo("User", currentUser);
+  try {
+    const results = await query.find();
+    for (const object of results) {
+      const objectId=object.id;
+      const title = object.get('title');
+      const isCompleted =  object.get("isCompleted");
+      const priority=object.get("priority");
+      const category=object.get("category");
+  
+      // alert(objectId+title + isCompleted  +priority+category);
+      addOldToDo(objectId,title,isCompleted,priority,category);
+    
+    }
+  } catch (error) {
+    console.error('Error while fetching ToDo', error);
+  }
+
+  })();
+}
+
+
+function addOldToDo(objectId,title,isCompleted,priority,category) {
+
+  const toDoDiv = document.createElement("div");
+  toDoDiv.setAttribute("class", "IndToDo");
+  toDoDiv.setAttribute("id", objectId);
+  // toDoDiv.setAttribute("value", "OFF"); //what does this do agaib?
+  toDoDiv.classList.add("todo");
+
+  //adding the title, priority, and catergory to the todo on screen
+  const newToDo = document.createElement("li");
+  newToDo.innerText = title;
+  newToDo.classList.add("todo-item");
+  toDoDiv.appendChild(newToDo);
+
+  const newToDoP = document.createElement("li");
+  newToDoP.innerText = priority;
+  newToDoP.classList.add("todo-item");
+  toDoDiv.appendChild(newToDoP);
+
+  const newToDoC = document.createElement("li");
+  newToDoC.innerText = category;
+  newToDoC.classList.add("todo-item");
+  toDoDiv.appendChild(newToDoC);
+
+  const editButton = document.createElement("button");
+  editButton.innerText = "edit";
+  editButton.classList.add("edit-btn");
+  toDoDiv.appendChild(editButton);
+
+  const completedButton = document.createElement("button");
+  completedButton.innerText = "done";
+  completedButton.classList.add("complete-btn");
+  toDoDiv.appendChild(completedButton);
+
+  const cancelButton = document.createElement("button");
+  cancelButton.innerText = "trash";
+  cancelButton.classList.add("cancel-btn");
+  toDoDiv.appendChild(cancelButton);
+
+  if(isCompleted==true){
+    toDoDiv.classList.toggle("completed");
+  }
+  //add to list
+  todoList.appendChild(toDoDiv);
+
+
+  
+}
+
+
+function retrieveNotes() {
+  (async () => {
+  Parse.User.enableUnsafeCurrentUser();
+  const currentUser = Parse.User.current();
+
+  var query = new Parse.Query("Notes");
+  query.include("User");
+  query.equalTo("User", currentUser);
+  try {
+    const results = await query.find();
+    for (const object of results) {
+      const objectId=object.id;
+      const title = object.get('title');
+      const NoteBody =  object.get("NoteBody");
+     
+  
+      // alert(objectId+title + isCompleted  +priority+category);
+      addOldNote(objectId,title,NoteBody);
+    
+    }
+  } catch (error) {
+    console.error('Error while fetching ToDo', error);
+  }
+
+  })();
+}
+
+
+function addOldNote(objectId,title,NoteBody) {
+  // preventDefault();
+  const notesDiv = document.createElement("div");
+  notesDiv.setAttribute("id", objectId);
+  // toDoDiv.setAttribute("value", "OFF")
+  notesDiv.classList.add("note");
+
+  const noteTitle = document.createElement("li");
+  noteTitle.innerText = title;
+  noteTitle.classList.add("titleOut");
+  notesDiv.appendChild(noteTitle);
+
+  const newNote = document.createElement("li");
+  newNote.innerText = NoteBody;
+  newNote.classList.add("note-item");
+  notesDiv.appendChild(newNote);
+
+  const cancelButton = document.createElement("button");
+  cancelButton.innerText = "delete";
+  cancelButton.classList.add("cancel-btn");
+  notesDiv.appendChild(cancelButton);
+
+  //add to list
+  notesList.appendChild(notesDiv);
+
+}
 
 //LEVEL AND SCORING functions
 function scoringMath(userScore){
@@ -655,14 +796,12 @@ function scoringMath(userScore){
 return lastDigits;
 }
 
-function levelMath(userScore){
+function levelMath(userLevel,userScore){
   var gettingFirstNumb=Math.floor(userScore/100);
   if((gettingFirstNumb)>=1){//do i need this if statement?
   for(let i=0; i<gettingFirstNumb;i++){ ///this might cause a problem honestly
-    level+=1;
-    document.getElementById("levelEle").innerHTML = level; 
+    userLevel+=1;
    }
   }
-  return level;
+  return userLevel;
 }
-
