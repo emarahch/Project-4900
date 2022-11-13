@@ -604,7 +604,18 @@ function timerIncrements() {
     timerMinutes.innerHTML = "25";
     timerSeconds.innerHTML = "00";
     session = 5;
-    alert("Done");
+    // alert("Done");
+    Toastify({
+      text: "Your timer is Done!",
+      duration: 2500,
+      style: {
+        background: "linear-gradient(to right, #FF69B4, purple)",
+      },
+    }).showToast();
+
+    increaseMinutes.disabled = false;
+  decreaseMinutes.disabled = false;
+  timerStartButton.disabled = false;
   } else {
     timerMinutes.innerHTML = Math.floor(totalTimeS / 60);
     if (Math.floor(totalTimeS % 60) < 10) {
