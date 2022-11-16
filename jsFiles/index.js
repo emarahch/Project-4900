@@ -47,7 +47,7 @@ function mainProfilePage() {
 }
 
 function startPage() {
-  location.href = "../htmlFiles/startPage.html";
+  location.href = "../htmlFiles/index.html";
 }
 
 //Theme changer
