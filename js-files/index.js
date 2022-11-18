@@ -43,11 +43,11 @@ bar1.set(80);
 
 //For buttons
 function mainProfilePage() {
-  location.href = "../htmlFiles/ProfilePage.html";
+  location.href = "../html/profile-page.html";
 }
 
 function startPage() {
-  location.href = "../htmlFiles/index.html";
+  location.href = "../html/index.html";
 }
 
 //Theme changer
