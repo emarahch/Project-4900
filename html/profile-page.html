@@ -105,6 +105,36 @@
           </form>
         </div>
         <button id="createTodoShowBtn">Toggle form visibility</button>
+        <button id="editButton">edit</button>
+        <button id="sortButton">sortPriorityInc</button>
+        <button id="sortCategoryButtonTodo">sortCategory</button>
+
+        <div id="divToSelectFilterFormToDo">
+          <div id="divToSingleSelect">
+            <form id="selectFilterTodo">
+            <select name="filterTodo" id="filterTodo">
+              <option value="General" >General</option>
+              <option value="School">School</option>
+              <option value="Work">Work</option>
+              <option value="Side Hustle">Side Hustle</option>
+              <option value="Creative">Creative</option>
+              <option value="Family">Family</option>
+              <option value="Home">Home</option>
+              <option value="Kids">Kids</option>
+              <option value="Groccery">Groccery</option>
+              <option value="Meal planning">Meal planning</option>
+              <option value="Goals">Goals</option>
+            </select>
+        </form>
+        <!-- supposed to be inside form?? -->
+        <button id="submitFilterChoiceTodo" type="submit">submitFilterChoice</button>
+      </div>
+    </div>
+
+
+
+
+       
 
         <!-- <div style= "height: 200px; overflow-y: scroll;" class="checklist-container"> -->
         <div class="checklist-container"></div>
@@ -137,14 +167,59 @@
               type="text"
               placeholder="title your note"
             />
+            
 
             <textarea class="body-field"></textarea>
+
+            <div id="divToMulstiSelect">
+              <select multiple 
+                name="field1"
+                id="categoryNumberNotes"
+                onchange="console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))"
+                
+              >
+                <option value="General">General</option>
+                <option value="School">School</option>
+                <option value="Work">Work</option>
+                <option value="Side Hustle">Side Hustle</option>
+                <option value="Creative">Creative</option>
+                <option value="Family">Family</option>
+                <option value="Home">Home</option>
+                <option value="Kids">Kids</option>
+                <option value="Groccery">Groccery</option>
+                <option value="Meal planning">Meal planning</option>
+                <option value="Goals">Goals</option>
+              </select>
+            </div>
             <button class="btn-save" type="submit">Save</button>
           </form>
           <button class="btn-clear">Clear</button>
         </div>
 
+        <div id="divToSelectFilterForm">
+        <div id="divToSingleSelect">
+          <form id="selectFilterNotes">
+          <select name="filterNotes" id="filterNotes">
+            <option value="General" >General</option>
+            <option value="School">School</option>
+            <option value="Work">Work</option>
+            <option value="Side Hustle">Side Hustle</option>
+            <option value="Creative">Creative</option>
+            <option value="Family">Family</option>
+            <option value="Home">Home</option>
+            <option value="Kids">Kids</option>
+            <option value="Groccery">Groccery</option>
+            <option value="Meal planning">Meal planning</option>
+            <option value="Goals">Goals</option>
+          </select>
+      </form>
+      <!-- supposed to be inside form?? -->
+      <button id="submitFilterChoice" type="submit">submitFilterChoice</button>
+    </div>
+  </div>
+
         <button id="createNoteShowBtn">Toggle form visibility</button>
+        <button id="sortButtonNotes">sortButtonNotes</button>
 
         <section class="notes-list"></section>
         <!-- </div> -->

@@ -99,6 +99,17 @@ a:visited {
   justify-content: space-between;
   /* fix this... */
 }
+#divToSelectFilterFormToDo{
+  display: none;
+}
+
+
+/* Toggle trash edit  */
+
+.cancel-btn{
+  display: none;
+}
+
 
 /* Todo Section */
 
@@ -124,6 +135,8 @@ a:visited {
 }
 
 /* Notes section */
+
+
 
 .notesSection {
   width: 28%;
@@ -164,6 +177,11 @@ a:visited {
   margin-bottom: 10px;
   padding: 5px;
 }
+
+#divToSelectFilterForm{
+  display: none;
+}
+
 .notes-list {
   width: 90%;
   height: 65px;

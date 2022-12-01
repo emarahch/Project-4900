@@ -28,10 +28,28 @@ tippy("#tutorialbutton", {
 new SlimSelect({
   select: '#categoryNumber'
 })
+
+//filter notes
+new SlimSelect({
+  select: '#filterNotes'
+  })
+
+
 //prority label
 new SlimSelect({
 select: '#priorityNumber'
 })
+
+//filtertodo
+new SlimSelect({
+  select: '#filterTodo'
+  })
+
+
+//multi for note cat
+new SlimSelect({
+  select: '#categoryNumberNotes'
+  })
 
 //Progress Bar
 var bar1 = new ldBar(".ldBar");
@@ -195,6 +213,11 @@ function addTodo(idd) {
   toDoDiv.setAttribute("value", "OFF"); //what does this do agaib?
   toDoDiv.classList.add("todo");
 
+  const completedButton = document.createElement("button");
+  completedButton.innerText = "done";
+  completedButton.classList.add("complete-btn");
+  toDoDiv.appendChild(completedButton);
+
   //adding the title, priority, and catergory to the todo on screen
   const newToDo = document.createElement("li");
   newToDo.innerText = todoInput.value;
@@ -202,29 +225,29 @@ function addTodo(idd) {
   toDoDiv.appendChild(newToDo);
 
   const newToDoP = document.createElement("li");
+  newToDoP.setAttribute("class", "IndPriority");
   newToDoP.innerText = textPr;
   newToDoP.classList.add("todo-item");
   toDoDiv.appendChild(newToDoP);
 
   const newToDoC = document.createElement("li");
+  newToDoC.setAttribute("class", "IndCategories");
   newToDoC.innerText = textCa;
   newToDoC.classList.add("todo-item");
   toDoDiv.appendChild(newToDoC);
 
-  const editButton = document.createElement("button");
-  editButton.innerText = "edit";
-  editButton.classList.add("edit-btn");
-  toDoDiv.appendChild(editButton);
+  // const editButton = document.createElement("button");
+  // editButton.innerText = "edit";
+  // editButton.classList.add("edit-btn");
+  // toDoDiv.appendChild(editButton);
 
-  const completedButton = document.createElement("button");
-  completedButton.innerText = "done";
-  completedButton.classList.add("complete-btn");
-  toDoDiv.appendChild(completedButton);
+
 
   const cancelButton = document.createElement("button");
   cancelButton.innerText = "trash";
   cancelButton.classList.add("cancel-btn");
   toDoDiv.appendChild(cancelButton);
+
 
   //add to list
   todoList.appendChild(toDoDiv);
@@ -349,11 +372,11 @@ function deleteCheck(event) {
     completedStore(todo.getAttribute("id"));
   }
 
-  if (item.classList[0] === "edit-btn") {
-    const todo = item.parentElement;
-    alert("You are in Edit mode: Not functional yet!");
-    // completedStore(todo.getAttribute("id"));
-  }
+  // if (item.classList[0] === "edit-btn") {
+  //   const todo = item.parentElement;
+  //   alert("You are in Edit mode: Not functional yet!");
+  //   // completedStore(todo.getAttribute("id"));
+  // }
 }
 
 
@@ -371,6 +394,10 @@ clearButtonNotes.addEventListener("click", clearNote);
 notesList.addEventListener("click", deleteNote);
 
 function addNote(ob2) {
+  var categoryNumberUser = document.getElementById("categoryNumberNotes");
+  var textCa = Array.from(categoryNumberUser.selectedOptions).map(
+    (x) => x.value ?? x.text
+  );
   // preventDefault();
   const notesDiv = document.createElement("div");
   notesDiv.setAttribute("id", ob2);
@@ -382,15 +409,25 @@ function addNote(ob2) {
   noteTitle.classList.add("titleOut");
   notesDiv.appendChild(noteTitle);
 
+
+
   const newNote = document.createElement("li");
   newNote.innerText = notesInput.value;
   newNote.classList.add("note-item");
   notesDiv.appendChild(newNote);
 
-  const cancelButton = document.createElement("button");
-  cancelButton.innerText = "delete";
-  cancelButton.classList.add("cancel-btn");
-  notesDiv.appendChild(cancelButton);
+
+  const noteCategory = document.createElement("li");
+  noteCategory .setAttribute("class", "IndCategories");
+  noteCategory.innerText = textCa;
+  noteCategory.classList.add("category");
+  notesDiv.appendChild(noteCategory);
+
+
+  // const cancelButton = document.createElement("button");
+  // cancelButton.innerText = "delete";
+  // cancelButton.classList.add("cancel-btn");
+  // notesDiv.appendChild(cancelButton);
 
   //add to list
   notesList.appendChild(notesDiv);
@@ -401,13 +438,19 @@ function addNote(ob2) {
 }
 
 function storeNote(event) {
-  //this is where storing actuallu happens
+  var categoryNumberUser = document.getElementById("categoryNumberNotes");
+  var textCa = Array.from(categoryNumberUser.selectedOptions).map(
+    (x) => x.value ?? x.text
+  );
+
   event.preventDefault();
   (async () => {
     const newNote = new Parse.Object("Notes");
     newNote.set("User", Parse.User.current());
     newNote.set("title", document.querySelector(".title-field").value);
     newNote.set("NoteBody", document.querySelector(".body-field").value);
+    newNote.set("category",textCa);
+    
     try {
       const result = await newNote.save();
       console.log("Note created", result);
@@ -712,6 +755,12 @@ function addOldToDo(objectId,title,isCompleted,priority,category) {
   // toDoDiv.setAttribute("value", "OFF"); //what does this do agaib?
   toDoDiv.classList.add("todo");
 
+  const completedButton = document.createElement("button");
+  completedButton.innerText = "done";
+  completedButton.classList.add("complete-btn");
+  toDoDiv.appendChild(completedButton);
+
+
   //adding the title, priority, and catergory to the todo on screen
   const newToDo = document.createElement("li");
   newToDo.innerText = title;
@@ -719,24 +768,22 @@ function addOldToDo(objectId,title,isCompleted,priority,category) {
   toDoDiv.appendChild(newToDo);
 
   const newToDoP = document.createElement("li");
+  newToDoP.setAttribute("class", "IndPriority");
   newToDoP.innerText = priority;
   newToDoP.classList.add("todo-item");
   toDoDiv.appendChild(newToDoP);
 
   const newToDoC = document.createElement("li");
+  newToDoC.setAttribute("class", "IndCategories");
   newToDoC.innerText = category;
   newToDoC.classList.add("todo-item");
   toDoDiv.appendChild(newToDoC);
 
-  const editButton = document.createElement("button");
-  editButton.innerText = "edit";
-  editButton.classList.add("edit-btn");
-  toDoDiv.appendChild(editButton);
+  // const editButton = document.createElement("button");
+  // editButton.innerText = "edit";
+  // editButton.classList.add("edit-btn");
+  // toDoDiv.appendChild(editButton);
 
-  const completedButton = document.createElement("button");
-  completedButton.innerText = "done";
-  completedButton.classList.add("complete-btn");
-  toDoDiv.appendChild(completedButton);
 
   const cancelButton = document.createElement("button");
   cancelButton.innerText = "trash";
@@ -768,7 +815,8 @@ function retrieveNotes() {
       const objectId=object.id;
       const title = object.get('title');
       const NoteBody =  object.get("NoteBody");
-      addOldNote(objectId,title,NoteBody);
+      const category=object.get("category");
+      addOldNote(objectId,title,NoteBody,category);
     
     }
   } catch (error) {
@@ -779,7 +827,7 @@ function retrieveNotes() {
 }
 
 
-function addOldNote(objectId,title,NoteBody) {
+function addOldNote(objectId,title,NoteBody,category) {
   // preventDefault();
   const notesDiv = document.createElement("div");
   notesDiv.setAttribute("id", objectId);
@@ -795,6 +843,12 @@ function addOldNote(objectId,title,NoteBody) {
   newNote.innerText = NoteBody;
   newNote.classList.add("note-item");
   notesDiv.appendChild(newNote);
+
+  const noteCategory = document.createElement("li");
+  noteCategory .setAttribute("class", "IndCategories");
+  noteCategory .innerText = category;
+  noteCategory .classList.add("note-item");
+  notesDiv.appendChild(noteCategory );
 
   const cancelButton = document.createElement("button");
   cancelButton.innerText = "delete";
@@ -826,3 +880,247 @@ function levelMath(userLevel,userScore){
   }
   return userLevel;
 }
+
+
+// // ///edit mode button that shows trash button
+const  editButtonTrash = document.getElementById("editButton");
+editButtonTrash.addEventListener("click", () => {
+var trashList = document.querySelectorAll(".cancel-btn");
+for (let i = 0; i < trashList.length; i++) {
+  if (trashList[i].style.display === "block") {
+    // HIDES the form
+    trashList[i].style.display = "none";
+  } else {
+    trashList[i].style.display = "block";
+  }
+}
+  
+});
+
+
+
+//Sorting todos based on priority 
+//this works!
+const  sortButton = document.getElementById("sortButton");
+sortButton.addEventListener("click", () => {
+var numbersToSort = document.querySelector(".todo-list").children;
+numbersToSort = Array.prototype.slice.call(numbersToSort, 0);
+
+
+
+if (sortButton.innerHTML=="sortPriorityInc"){
+numbersToSort.sort(function(a, b) {
+    ab=a.querySelector(".todo-item.IndPriority");
+    ba=b.querySelector(".todo-item.IndPriority");
+    return (ab.innerHTML > ba.innerHTML);
+});
+var parent = document.querySelector(".todo-list");
+parent.innerHTML = "";
+
+for(var i = 0, l = numbersToSort.length; i < l; i++) {
+    parent.appendChild(numbersToSort[i]);
+}
+sortButton.innerHTML="sortPriorityDec";
+}
+
+else if(sortButton.innerHTML=="sortPriorityDec"){
+  numbersToSort.sort(function(a, b) {
+    ab=a.querySelector(".todo-item.IndPriority");
+    ba=b.querySelector(".todo-item.IndPriority");
+    return (ba.innerHTML >ab.innerHTML);
+});
+var parent = document.querySelector(".todo-list");
+parent.innerHTML = "";
+
+for(var i = 0, l = numbersToSort.length; i < l; i++) {
+    parent.appendChild(numbersToSort[i]);
+}
+sortButton.innerHTML="sortPriorityInc";
+
+}
+
+});
+
+
+
+//filtering todo section
+const  sortCategoryButtonTodo=document.getElementById("sortCategoryButtonTodo");
+sortCategoryButtonTodo.addEventListener("click", () => {
+
+  const divToSelectFilterFormToDo = document.getElementById("divToSelectFilterFormToDo");
+
+  if (divToSelectFilterFormToDo.style.display === "block") {
+    // HIDES the form
+    divToSelectFilterFormToDo.style.display = "none";
+  } else {
+    divToSelectFilterFormToDo.style.display = "block";
+  }
+
+});
+
+
+
+
+
+
+//filtering notes section
+const  sortButtonNotes = document.getElementById("sortButtonNotes");
+sortButtonNotes.addEventListener("click", () => {
+
+  const divSelectFilterform = document.getElementById("divToSelectFilterForm");
+
+  if (divSelectFilterform.style.display === "block") {
+    // HIDES the form
+    divSelectFilterform.style.display = "none";
+  } else {
+    divSelectFilterform.style.display = "block";
+  }
+
+});
+
+
+const submitFilterChoiceTodo =document.getElementById("submitFilterChoiceTodo");
+
+submitFilterChoiceTodo.addEventListener("click", () => {
+  var filterTodo = document.getElementById("filterTodo");
+  var filterSelection= filterTodo.options[filterTodo.selectedIndex].value;
+
+  var numby = document.querySelector(".todo-list").children;
+  numby = Array.prototype.slice.call(numby, 0);
+
+
+  var numbyFalse = document.querySelector(".todo-list").children;
+  numbyFalse = Array.prototype.slice.call(numbyFalse, 0);
+  console.log(filterSelection)
+  
+  numby = numby.filter(function (number) {
+    var ab=number.querySelector(".IndCategories.todo-item");
+  //in order to find if any of the words match
+  var first=ab.innerHTML.indexOf(filterSelection) > -1
+  return(first);
+
+  });
+
+
+  numby2 = numbyFalse.filter(function (number) {
+    var ab=number.querySelector(".IndCategories.todo-item");
+  //in order to find if any of the words match
+  var first=ab.innerHTML.indexOf(filterSelection) > -1
+  var second=!first;
+    return(second);
+  });
+
+
+
+  
+  var parent = document.querySelector(".todo-list");
+  parent.innerHTML = "";
+
+  if (numby.length===0){
+    Toastify({
+      text: "You dont have anything in this category ",
+      duration: 2500,
+      style: {
+        background: "linear-gradient(to right, #FF69B4, purple)",
+      },
+    }).showToast();
+
+    for(var i = 0, l = numby2.length; i < l; i++) {
+      parent.appendChild(numby2[i]);
+  }
+  }
+else{
+  for(var i = 0, l = numby.length; i < l; i++) {
+      parent.appendChild(numby[i]);
+  }
+
+  for(var i = 0, l = numby2.length; i < l; i++) {
+    parent.appendChild(numby2[i]);
+}
+}
+
+  
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Not perfect...need to have it so that if there is nothing in that selection, then you dont show anything???or at least show a message
+const submitFilterChoice =document.getElementById("submitFilterChoice");
+
+submitFilterChoice.addEventListener("click", () => {
+  var filterNotes = document.getElementById("filterNotes");
+  var filterSelection= filterNotes.options[filterNotes.selectedIndex].value;
+
+  var numby = document.querySelector(".notes-list").children;
+  numby = Array.prototype.slice.call(numby, 0);
+
+
+  var numbyFalse = document.querySelector(".notes-list").children;
+  numbyFalse = Array.prototype.slice.call(numbyFalse, 0);
+  console.log(filterSelection)
+  
+  numby = numby.filter(function (number) {
+    var ab=number.querySelector(".IndCategories.note-item");
+  //in order to find if any of the words match
+  var first=ab.innerHTML.indexOf(filterSelection) > -1
+  return(first);
+
+  });
+
+
+  numby2 = numbyFalse.filter(function (number) {
+    var ab=number.querySelector(".IndCategories.note-item");
+  //in order to find if any of the words match
+  var first=ab.innerHTML.indexOf(filterSelection) > -1
+  var second=!first;
+    return(second);
+  });
+
+
+
+  
+  var parent = document.querySelector(".notes-list");
+  parent.innerHTML = "";
+
+  if (numby.length===0){
+    Toastify({
+      text: "You dont have anything in this category ",
+      duration: 2500,
+      style: {
+        background: "linear-gradient(to right, #FF69B4, purple)",
+      },
+    }).showToast();
+
+    for(var i = 0, l = numby2.length; i < l; i++) {
+      parent.appendChild(numby2[i]);
+  }
+  }
+else{
+  for(var i = 0, l = numby.length; i < l; i++) {
+      parent.appendChild(numby[i]);
+  }
+
+  for(var i = 0, l = numby2.length; i < l; i++) {
+    parent.appendChild(numby2[i]);
+}
+}
+
+  
+  });
+
+
