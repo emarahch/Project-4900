@@ -23,23 +23,21 @@
       </nav> -->
 
     <div class="userStuff">
+      <img src="../images/plholder.webp" id="userPlay" />
       <div class="userNamePfp">
         <p id="currentDate">Date</p>
-        <img src="../images/plholder.webp" id="userPlay" />
-        <h1 id="welcome">Hey Emy</h1>
+        <p id="welcome">Hey Emy</p>
       </div>
 
       <div class="ScoreDiv">
+        <p>Level:</p>
         <p id="levelEle">1</p>
-        <p>---</p>
-        <p id="scoreEle">0</p>
-        <!-- static for now -->
         <div 
         data-preset="rainbow"
         data-stroke-width="10"
         data-stroke-trail-width="10"
         id="bar"
-        class="ldBar"
+        class="ldBar label-center"
         ></div>
       </div>
     </div>
@@ -131,12 +129,12 @@
       </div>
     </div>
 
-
-
-
-       
-
         <!-- <div style= "height: 200px; overflow-y: scroll;" class="checklist-container"> -->
+        <div class="labels">
+          <p id="taskLabel">Task</p>
+          <p id="priorityLabel"> Priority</p>
+          <p id="CategoryLabel">Category</p>
+        </div>
         <div class="checklist-container"></div>
         <ul class="todo-list"></ul>
       </div>

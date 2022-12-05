@@ -153,7 +153,6 @@ function upScoreRealTime(){
     } catch (error) {
       console.error("Error while retrieving ParseObject", error);
     }
-    document.getElementById("scoreEle").innerHTML = userScore; 
     document.getElementById("levelEle").innerHTML = userLevel; 
     //works for getting coreect
     
@@ -208,33 +207,43 @@ function addTodo(idd) {
   );
   // preventDefault();
   const toDoDiv = document.createElement("div");
+  const toDoDivTextOnly =document.createElement("div");
+  toDoDivTextOnly.setAttribute("class", "IndToDoTextOnly");
+
+
   toDoDiv.setAttribute("class", "IndToDo");
   toDoDiv.setAttribute("id", idd);
   toDoDiv.setAttribute("value", "OFF"); //what does this do agaib?
   toDoDiv.classList.add("todo");
+  
 
   const completedButton = document.createElement("button");
   completedButton.innerText = "done";
   completedButton.classList.add("complete-btn");
   toDoDiv.appendChild(completedButton);
 
+
   //adding the title, priority, and catergory to the todo on screen
   const newToDo = document.createElement("li");
+  newToDo.setAttribute("class", "IndTitle");
   newToDo.innerText = todoInput.value;
   newToDo.classList.add("todo-item");
   toDoDiv.appendChild(newToDo);
+  
 
   const newToDoP = document.createElement("li");
   newToDoP.setAttribute("class", "IndPriority");
   newToDoP.innerText = textPr;
   newToDoP.classList.add("todo-item");
   toDoDiv.appendChild(newToDoP);
+ 
 
   const newToDoC = document.createElement("li");
   newToDoC.setAttribute("class", "IndCategories");
   newToDoC.innerText = textCa;
   newToDoC.classList.add("todo-item");
   toDoDiv.appendChild(newToDoC);
+
 
   // const editButton = document.createElement("button");
   // editButton.innerText = "edit";
@@ -251,6 +260,7 @@ function addTodo(idd) {
 
   //add to list
   todoList.appendChild(toDoDiv);
+
 
   todoInput.value = "";
 }
@@ -763,6 +773,7 @@ function addOldToDo(objectId,title,isCompleted,priority,category) {
 
   //adding the title, priority, and catergory to the todo on screen
   const newToDo = document.createElement("li");
+  newToDo.setAttribute("class", "IndTitle");
   newToDo.innerText = title;
   newToDo.classList.add("todo-item");
   toDoDiv.appendChild(newToDo);
