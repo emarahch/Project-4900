@@ -229,6 +229,14 @@ function addTodo(idd) {
   newToDo.innerText = todoInput.value;
   newToDo.classList.add("todo-item");
   toDoDiv.appendChild(newToDo);
+
+  const EditTitleButton = document.createElement("button");
+  EditTitleButton.setAttribute("value", "Off");
+  EditTitleButton.innerText = "EditTitle";
+  EditTitleButton.classList.add("EditTitle-btn");
+  toDoDiv.appendChild(EditTitleButton);
+
+
   
 
   const newToDoP = document.createElement("li");
@@ -245,10 +253,6 @@ function addTodo(idd) {
   toDoDiv.appendChild(newToDoC);
 
 
-  // const editButton = document.createElement("button");
-  // editButton.innerText = "edit";
-  // editButton.classList.add("edit-btn");
-  // toDoDiv.appendChild(editButton);
 
 
 
@@ -367,6 +371,62 @@ function completedStore(idd) {
  
 }
 
+//MOVE?
+function editTextFunc(id){
+  // const paragraph = document.getElementById(id);
+  const p = document.getElementById(id);
+  paragraph=p.querySelector(".IndTitle")
+  paragraph.contentEditable = true;
+  paragraph.style.backgroundColor = "#dddbdb";
+} 
+
+
+//need to fix the lay out fo this, maybe two try statements???
+function  stopEditText(id){
+  const p = document.getElementById(id);
+  paragraph=p.querySelector(".IndTitle")
+  paragraph.contentEditable = false;
+  paragraph.style.backgroundColor = "#ffe44d";
+  editStoreTodo(id, paragraph.innerHTML);
+}
+
+
+function editStoreTodo(id, todoText) {
+  (async () => {
+   
+    const query = new Parse.Query("ToDo");
+    // try {
+    // const object = await query.get(id);
+    // object.set("title", todoText);
+    
+ 
+    try {
+      const object = await query.get(id);
+     object.set("title", todoText);
+      const result = await object.save();
+      // ob = newTodo2.id;
+      // addTodo(ob);
+      console.log("EDIT MADE", result);
+    } catch (error) {
+      // Toastify({
+      //   text: "Error : Besite you need to add a title ",
+      //   duration: 2500,
+      //   style: {
+      //     background: "linear-gradient(to right, #FF69B4, purple)",
+      //   },
+      // }).showToast();
+      console.error("Error while creating ToDo: ", error);
+    }
+
+   
+  })();
+}
+
+
+
+
+
+
 function deleteCheck(event) {
   const item = event.target;
   if (item.classList[0] === "cancel-btn") {
@@ -382,12 +442,31 @@ function deleteCheck(event) {
     completedStore(todo.getAttribute("id"));
   }
 
-  // if (item.classList[0] === "edit-btn") {
-  //   const todo = item.parentElement;
-  //   alert("You are in Edit mode: Not functional yet!");
-  //   // completedStore(todo.getAttribute("id"));
-  // }
+
+  if (item.classList[0] === "EditTitle-btn") {
+    const todo = item.parentElement;
+    ObjectIdText=todo.getAttribute("id"); //Works
+    alert(item.getAttribute("value"));
+
+    if(item.getAttribute("value")=="Off"){
+      editTextFunc(ObjectIdText);
+      item.setAttribute("value", "On");
+    }
+
+    else if(item.getAttribute("value")=="On"){
+      stopEditText(ObjectIdText);
+      item.setAttribute("value", "Off");
+    }
+    
+    
+    // completedStore(todo.getAttribute("id"));
+  }
+
+
 }
+
+
+
 
 
 
@@ -433,11 +512,6 @@ function addNote(ob2) {
   noteCategory.classList.add("category");
   notesDiv.appendChild(noteCategory);
 
-
-  // const cancelButton = document.createElement("button");
-  // cancelButton.innerText = "delete";
-  // cancelButton.classList.add("cancel-btn");
-  // notesDiv.appendChild(cancelButton);
 
   //add to list
   notesList.appendChild(notesDiv);
@@ -778,6 +852,15 @@ function addOldToDo(objectId,title,isCompleted,priority,category) {
   newToDo.classList.add("todo-item");
   toDoDiv.appendChild(newToDo);
 
+  const EditTitleButton = document.createElement("button");
+  EditTitleButton.setAttribute("value", "Off");
+  EditTitleButton.innerText = "EditTitle";
+  EditTitleButton.classList.add("EditTitle-btn");
+  toDoDiv.appendChild(EditTitleButton);
+
+
+
+
   const newToDoP = document.createElement("li");
   newToDoP.setAttribute("class", "IndPriority");
   newToDoP.innerText = priority;
@@ -789,11 +872,6 @@ function addOldToDo(objectId,title,isCompleted,priority,category) {
   newToDoC.innerText = category;
   newToDoC.classList.add("todo-item");
   toDoDiv.appendChild(newToDoC);
-
-  // const editButton = document.createElement("button");
-  // editButton.innerText = "edit";
-  // editButton.classList.add("edit-btn");
-  // toDoDiv.appendChild(editButton);
 
 
   const cancelButton = document.createElement("button");
@@ -893,7 +971,8 @@ function levelMath(userLevel,userScore){
 }
 
 
-// // ///edit mode button that shows trash button
+// // ///edit mode button that shows trash button and makes tect editabkle...
+//is there a way to improve how this looks??
 const  editButtonTrash = document.getElementById("editButton");
 editButtonTrash.addEventListener("click", () => {
 var trashList = document.querySelectorAll(".cancel-btn");
@@ -905,8 +984,21 @@ for (let i = 0; i < trashList.length; i++) {
     trashList[i].style.display = "block";
   }
 }
+
+var editTitleList = document.querySelectorAll(".EditTitle-btn");
+for (let i = 0; i < editTitleList.length; i++) {
+  if (editTitleList[i].style.display === "block") {
+    // HIDES the form
+    editTitleList[i].style.display = "none";
+  } else {
+    editTitleList[i].style.display = "block";
+  }
+}
   
 });
+
+
+
 
 
 
@@ -1052,7 +1144,6 @@ else{
 
   
   });
-
 
 
 

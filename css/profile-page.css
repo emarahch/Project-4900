@@ -132,6 +132,10 @@ a:visited {
   display: none;
 }
 
+.EditTitle-btn{
+  display: none;
+}
+
 
 /* Todo Section */
 
