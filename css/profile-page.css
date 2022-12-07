@@ -1,6 +1,7 @@
 body {
   background-color: white;
   margin: 0%;
+  overflow: hidden;
 }
 
 /* nav {
@@ -80,7 +81,7 @@ a:visited {
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
-  width: 5%;
+  width:5%;
   border-right: rgb(184, 184, 184) solid 0.5px;
 }
 .testNav button {
@@ -116,8 +117,13 @@ a:visited {
 }
 
 .TestTodoSection {
-  width: 67%;
-  padding: 5%;
+  width: 54%;
+  padding: 2%;
+}
+.todo-list{
+  overflow: auto;
+  height:80%;
+
 }
 
 #divToCreateForm {
@@ -247,6 +253,7 @@ a:visited {
   margin: 5px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   padding: 2%;
+  border-radius: 5px;
 }
 
 .todo {
@@ -272,6 +279,7 @@ a:visited {
 .completed {
   text-decoration: line-through;
   opacity: 0.5;
+ 
 }
 .completed .complete-btn {
   background-image: url("../images/check12.png");
@@ -318,13 +326,22 @@ a:visited {
 
 .timerSection {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+
 }
+.timerSection  button{
+  width:20px;
+  height:20px;
+}
+
+
 
 /* Notes section */
 
 .notesSection {
-  width: 28%;
+  width: 40%;
 }
 
 .title-field {
@@ -400,15 +417,17 @@ a:visited {
 
 
 .notes-list {
-  width: 90%;
-  height: 65px;
+  /* width: 90%; */
+  height: 65%;
+  overflow: auto;
 }
 
 .note {
   display: flex;
   flex-direction: column;
   justify-content:space-between;
- 
+  transition: all 0.5s;
+  
 
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
@@ -446,6 +465,7 @@ a:visited {
 
 .noteExpand{
   height: 200px;
+  transition: all 0.5s;
 } 
 
 .noteExpand .bodyOut{
@@ -502,6 +522,9 @@ a:visited {
   .notesMain {
     width: 100%;
   }
+  body{
+    overflow: scroll;
+  }
 }
 
 /* Color schemes */
@@ -513,6 +536,15 @@ a:visited {
 }
 
 .darkMode .intro-box {
-  background-color: grey;
+  background-color: black;
   color: white;
 }
+
+.darkMode .IndToDo{
+  background-color: grey;
+}
+
+/* .darkMode button{
+  /* color: white;
+  background-color: transparent; */
+/* } */ 
