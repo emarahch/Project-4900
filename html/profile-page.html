@@ -12,12 +12,19 @@
       src="https://npmcdn.com/parse@3.4.4/dist/parse.min.js"
     ></script>
     <link rel="stylesheet" href="../css/profile-page.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.1/slimselect.min.css" rel="stylesheet"></link>
-    <link rel="stylesheet" type="text/css" href="../css/loading-bar.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.1/slimselect.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="../css/loading-bar.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
   </head>
 
-    <body>
+  <body>
     <!-- <nav>
      
       </nav> -->
@@ -31,18 +38,16 @@
 
       <div class="ScoreDiv">
         <p>Level:</p>
-        <p id="levelEle">1</p>
-        <div 
-        data-preset="rainbow"
-        data-stroke-width="10"
-        data-stroke-trail-width="10"
-        id="bar"
-        class="ldBar label-center"
+        <div id="levelEle">1</div>
+        <div
+          data-preset="rainbow"
+          data-stroke-width="10"
+          data-stroke-trail-width="10"
+          id="bar"
+          class="ldBar label-center"
         ></div>
       </div>
-    </div>
-
-
+  </div>
 
     <div id="division1"></div>
 
@@ -53,14 +58,13 @@
             <button id="themeChangeButton" data-theme="light"></button>
           </li>
           <!-- Left work here -->
-          <li><button id="tutorialbutton">Tutorial</button></li>
-          <li><button class="logoutButton">Logout</button></li>
-          <li><button class="deleteAccountButton">Delete Account</button></li>
+          <li><button id="tutorialbutton"></button></li>
+          <li><button class="logoutButton"></button></li>
+          <li><button class="deleteAccountButton"></button></li>
         </ul>
       </div>
 
       <div class="TestTodoSection">
-       
         <h1>ToDo</h1>
         <div id="divToCreateForm">
           <form id="createTodoForm">
@@ -68,62 +72,23 @@
 
             <!-- priority level, single level -->
             <div id="divToSingleSelect">
-            <select name="priorityNumber" id="priorityNumber">
-              <option value="1" selected="selected">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-            </select>
-          </div>
+              <select name="priorityNumber" id="priorityNumber">
+                <option value="1" selected="selected">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
 
             <!-- console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))" -->
             <!-- multiselect-hide-x="true" -->
             <div id="divToMulstiSelect">
-            <select multiple 
-              name="field1"
-              id="categoryNumber"
-              onchange="console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))"
-              
-            >
-              <option value="General" selected="selected">General</option>
-              <option value="School">School</option>
-              <option value="Work">Work</option>
-              <option value="Side Hustle">Side Hustle</option>
-              <option value="Creative">Creative</option>
-              <option value="Family">Family</option>
-              <option value="Home">Home</option>
-              <option value="Kids">Kids</option>
-              <option value="Groccery">Groccery</option>
-              <option value="Meal planning">Meal planning</option>
-              <option value="Goals">Goals</option>
-            </select>
-
-        
-            
-
-
-          </div>
-
-
-            <button class="todo-button" type="submit">submit</button>
-          </form>
-        
-
-
-
-        </div>
-        <button id="createTodoShowBtn">+</button>
-        <button id="editButton">edit</button>
-        <button id="SortButtonsAll">Sort</button>
-        <div id="sortButtonsDiv" >
-          <div id="divInSortButtonsDiv">
-          <h4>Options</h4>
-          <button id="sortButton">sortPriorityInc</button>
-          <button id="sortCategoryButtonTodo">sortCategory</button>
-          <div id="divToSelectFilterFormToDo">
-            <div id="divToSingleSelect">
-              <form id="selectFilterTodo">
-              <select name="filterTodo" id="filterTodo">
-                <option value="General" >General</option>
+              <select
+                multiple
+                name="field1"
+                id="categoryNumber"
+                onchange="console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))"
+              >
+                <option value="General" selected="selected">General</option>
                 <option value="School">School</option>
                 <option value="Work">Work</option>
                 <option value="Side Hustle">Side Hustle</option>
@@ -135,37 +100,59 @@
                 <option value="Meal planning">Meal planning</option>
                 <option value="Goals">Goals</option>
               </select>
-          </form>
-          <!-- supposed to be inside form?? -->
-          <button id="submitFilterChoiceTodo" type="submit">submitFilterChoice</button>
-        </div>
-      </div>
-        </div>
-        </div>
-        
-        
+            </div>
 
-     
+            <button class="todo-button" type="submit">submit</button>
+          </form>
+        </div>
+        <button id="createTodoShowBtn">+</button>
+        <button id="editButton">Edit</button>
+        <button id="SortButtonsAll">Sort</button>
+        <div id="sortButtonsDiv">
+          <div id="divInSortButtonsDiv">
+            <h4>Options</h4>
+            <button id="sortButton">sortPriorityInc</button>
+            <button id="sortCategoryButtonTodo">sortCategory</button>
+            <div id="divToSelectFilterFormToDo">
+              <div id="divToSingleSelect">
+                <form id="selectFilterTodo">
+                  <select name="filterTodo" id="filterTodo">
+                    <option value="General">General</option>
+                    <option value="School">School</option>
+                    <option value="Work">Work</option>
+                    <option value="Side Hustle">Side Hustle</option>
+                    <option value="Creative">Creative</option>
+                    <option value="Family">Family</option>
+                    <option value="Home">Home</option>
+                    <option value="Kids">Kids</option>
+                    <option value="Groccery">Groccery</option>
+                    <option value="Meal planning">Meal planning</option>
+                    <option value="Goals">Goals</option>
+                  </select>
+                </form>
+                <!-- supposed to be inside form?? -->
+                <button id="submitFilterChoiceTodo" type="submit">
+                  submitFilterChoice
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- <div style= "height: 200px; overflow-y: scroll;" class="checklist-container"> -->
         <div class="labels">
           <p id="taskLabel">Task</p>
-          <p id="priorityLabel"> Priority</p> 
-          <p id="CategoryLabel">Category</p> 
+          <p id="priorityLabel">Priority</p>
+          <p id="CategoryLabel">Category</p>
         </div>
-
-
-        
 
         <div class="checklist-container"></div>
         <ul class="todo-list"></ul>
       </div>
 
-
       <!-- right section -->
 
       <div class="notesSection">
-
         <!-- Timer things -->
         <div class="timerSection">
           <h2 id="setTime">
@@ -187,17 +174,17 @@
               class="title-field"
               type="text"
               placeholder="title your note"
+              maxlength="50"
             />
-            
 
             <textarea class="body-field"></textarea>
 
             <div id="divToMulstiSelect">
-              <select multiple 
+              <select
+                multiple
                 name="field1"
                 id="categoryNumberNotes"
                 onchange="console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))"
-                
               >
                 <option value="General">General</option>
                 <option value="School">School</option>
@@ -218,29 +205,31 @@
         </div>
 
         <div id="divToSelectFilterForm">
-        <div id="divToSingleSelect">
-          <form id="selectFilterNotes">
-          <select name="filterNotes" id="filterNotes">
-            <option value="General" >General</option>
-            <option value="School">School</option>
-            <option value="Work">Work</option>
-            <option value="Side Hustle">Side Hustle</option>
-            <option value="Creative">Creative</option>
-            <option value="Family">Family</option>
-            <option value="Home">Home</option>
-            <option value="Kids">Kids</option>
-            <option value="Groccery">Groccery</option>
-            <option value="Meal planning">Meal planning</option>
-            <option value="Goals">Goals</option>
-          </select>
-      </form>
-      <!-- supposed to be inside form?? -->
-      <button id="submitFilterChoice" type="submit">submitFilterChoice</button>
-    </div>
-  </div>
+          <div id="divToSingleSelect">
+            <form id="selectFilterNotes">
+              <select name="filterNotes" id="filterNotes">
+                <option value="General">General</option>
+                <option value="School">School</option>
+                <option value="Work">Work</option>
+                <option value="Side Hustle">Side Hustle</option>
+                <option value="Creative">Creative</option>
+                <option value="Family">Family</option>
+                <option value="Home">Home</option>
+                <option value="Kids">Kids</option>
+                <option value="Groccery">Groccery</option>
+                <option value="Meal planning">Meal planning</option>
+                <option value="Goals">Goals</option>
+              </select>
+            </form>
+            <!-- supposed to be inside form?? -->
+            <button id="submitFilterChoice" type="submit">
+              submitFilterChoice
+            </button>
+          </div>
+        </div>
 
-        <button id="createNoteShowBtn">Toggle form visibility</button>
-        <button id="sortButtonNotes">sortButtonNotes</button>
+        <button id="createNoteShowBtn">+</button>
+        <button id="sortButtonNotes">Sort</button>
 
         <section class="notes-list"></section>
         <!-- </div> -->
@@ -249,27 +238,33 @@
       <!-- end of introbox -->
     </div>
 
-    <div id="insideTutorial" style="display: none;">
-       Hello, Welcome to <span style="color:pink;">HabitBipity</span>!<img src="../images/test2.png" style="width:60px;height:50px;"> 
-       <br> I am your helping guide "name, it is really nice to meet you. <br> This is a super easy productivy website to use, let me walk you through it ! 
-       <br> ~Create a new todo then add a priotiy and category labels 
-      <br> ~Create a new note <br>~Set a timer to give yourself a time frame to work in <br> ~Earn points for your efforts!/> ',
+    <div id="insideTutorial" style="display: none">
+      Hello, Welcome to <span style="color: pink">HabitBipity</span>!<img
+        src="../images/test2.png"
+        style="width: 60px; height: 50px"
+      />
+      <br />
+      I am your helping guide "name, it is really nice to meet you. <br />
+      This is a super easy productivy website to use, let me walk you through it
+      ! <br />
+      ~Create a new todo then add a priotiy and category labels <br />
+      ~Create a new note <br />~Set a timer to give yourself a time frame to
+      work in <br />
+      ~Earn points for your efforts!/> ',
     </div>
     <!-- Tooltip -->
     <!-- https://kabbouchi.github.io/tippyjs-v4-docs/getting-started/ -->
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
-  
 
-   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.1/slimselect.min.js"></script>
     <script type="text/javascript" src="../js-files/loading-bar.js"></script>
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
 
     <script src="../js-files/index.js"></script>
-    
   </body>
 </html>
-
-
