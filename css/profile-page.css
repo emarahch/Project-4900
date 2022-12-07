@@ -84,10 +84,26 @@ a:visited {
 .testNav {
   display: flex;
   flex-direction: column;
-  justify-content: left;
+  /* justify-content: center; */
   width: 5%;
-  /* border: pink solid; */
+  border-right: rgb(184, 184, 184) solid 0.5px;
 }
+.testNav button{
+  border-radius: 50%;
+  background-color: white;
+  border:solid grey 0.5px;
+  height:50px;
+  width:50px;
+}
+
+#themeChangeButton{
+  background-image: url('../images/darkMode30.png');
+
+}
+
+
+
+
 
 .TestTodoSection {
   /* border-right: 2px solid grey; */
@@ -99,30 +115,78 @@ a:visited {
 #divToCreateForm {
   display: none;
 }
+#createTodoShowBtn{
+  border-radius: 50%;
+  border:solid grey 0.5px;
+  background-color: white;
+}
+
+#createTodoShowBtn:hover{
+  background-color: rgb(214, 211, 211);
+}
+
+
 #createTodoForm {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   /* fix this... */
 }
+
+
 #divToSelectFilterFormToDo{
   display: none;
 }
+
+#sortButtonsDiv{
+  display: none;
+  position: absolute;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  border:0.02px solid  rgb(230, 229, 229) ;
+  background-color: white;
+  /* max-width: 60%; */
+  width: 10%;
+  height:20%; 
+  /* max-height: 40%; */
+  border-radius: 10px;
+}
+
+#divInSortButtonsDiv{
+display:flex;
+align-items: flex-start;
+flex-direction: column;
+
+}
+
+
+#sortButtonsDiv button{
+  background-color: white;
+  border:none;
+}
+#sortButtonsDiv button:hover{
+  background-color: rgb(248, 214, 214);
+  border-radius: 5px;
+  border:none;
+}
+
 
 /* Lables for task */
 
 .labels{
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 #taskLabel{
- 
+ /* margin-left: 5px; */
 
 }
 #priorityLabel{
+  /* margin-left: 5px; */
 
 }
 #CategoryLabel{
+  /* margin-left: 5px; */
 
 }
 
@@ -164,6 +228,8 @@ a:visited {
 .IndCategories{
   width: 20%;
   padding-right:15%;
+  background-color: #EE82FF;
+  border-radius: 5px;
 }
 
 
@@ -171,6 +237,44 @@ a:visited {
   text-decoration: line-through;
   opacity: 0.5;
 }
+.completed .complete-btn{
+  background-image: url('../images/check12.png');
+}
+
+.complete-btn{
+border-radius: 50%;
+border:solid grey 0.5px;
+background-color: white;
+max-width: 14px;
+max-height: 14px;
+}
+
+.complete-btn:hover{
+  background-image: url('../images/check12.png');
+  }
+
+  .EditTitle-btn{
+    border-radius: 50%;
+    border:none;
+    background-color: white;
+    background-image: url('../images/pencil12.png');
+    max-width: 14px;
+    max-height: 14px;
+  }
+
+  .editingModeCancelIcon.EditTitle-btn{
+    background-image: url('../images/check12.png');
+  }
+  .editingModeNormalIcon.EditTitle-btn{
+    background-image: url('../images/pencil12.png');
+  }
+
+  .EditTitle-btn:hover{
+    background-color: rgb(112, 90, 90);
+    
+  }
+
+
 
 
 

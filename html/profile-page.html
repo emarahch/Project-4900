@@ -50,7 +50,7 @@
       <div class="testNav">
         <ul>
           <li>
-            <button id="themeChangeButton" data-theme="light">dark mode</button>
+            <button id="themeChangeButton" data-theme="light"></button>
           </li>
           <!-- Left work here -->
           <li><button id="tutorialbutton">Tutorial</button></li>
@@ -96,48 +96,71 @@
               <option value="Meal planning">Meal planning</option>
               <option value="Goals">Goals</option>
             </select>
+
+        
+            
+
+
           </div>
 
 
             <button class="todo-button" type="submit">submit</button>
           </form>
-        </div>
-        <button id="createTodoShowBtn">Toggle form visibility</button>
-        <button id="editButton">edit</button>
-        <button id="sortButton">sortPriorityInc</button>
-        <button id="sortCategoryButtonTodo">sortCategory</button>
+        
 
-        <div id="divToSelectFilterFormToDo">
-          <div id="divToSingleSelect">
-            <form id="selectFilterTodo">
-            <select name="filterTodo" id="filterTodo">
-              <option value="General" >General</option>
-              <option value="School">School</option>
-              <option value="Work">Work</option>
-              <option value="Side Hustle">Side Hustle</option>
-              <option value="Creative">Creative</option>
-              <option value="Family">Family</option>
-              <option value="Home">Home</option>
-              <option value="Kids">Kids</option>
-              <option value="Groccery">Groccery</option>
-              <option value="Meal planning">Meal planning</option>
-              <option value="Goals">Goals</option>
-            </select>
-        </form>
-        <!-- supposed to be inside form?? -->
-        <button id="submitFilterChoiceTodo" type="submit">submitFilterChoice</button>
+
+
+        </div>
+        <button id="createTodoShowBtn">+</button>
+        <button id="editButton">edit</button>
+        <button id="SortButtonsAll">Sort</button>
+        <div id="sortButtonsDiv" >
+          <div id="divInSortButtonsDiv">
+          <h4>Options</h4>
+          <button id="sortButton">sortPriorityInc</button>
+          <button id="sortCategoryButtonTodo">sortCategory</button>
+          <div id="divToSelectFilterFormToDo">
+            <div id="divToSingleSelect">
+              <form id="selectFilterTodo">
+              <select name="filterTodo" id="filterTodo">
+                <option value="General" >General</option>
+                <option value="School">School</option>
+                <option value="Work">Work</option>
+                <option value="Side Hustle">Side Hustle</option>
+                <option value="Creative">Creative</option>
+                <option value="Family">Family</option>
+                <option value="Home">Home</option>
+                <option value="Kids">Kids</option>
+                <option value="Groccery">Groccery</option>
+                <option value="Meal planning">Meal planning</option>
+                <option value="Goals">Goals</option>
+              </select>
+          </form>
+          <!-- supposed to be inside form?? -->
+          <button id="submitFilterChoiceTodo" type="submit">submitFilterChoice</button>
+        </div>
       </div>
-    </div>
+        </div>
+        </div>
+        
+        
+
+     
 
         <!-- <div style= "height: 200px; overflow-y: scroll;" class="checklist-container"> -->
         <div class="labels">
           <p id="taskLabel">Task</p>
-          <p id="priorityLabel"> Priority</p>
-          <p id="CategoryLabel">Category</p>
+          <p id="priorityLabel"> Priority</p> 
+          <p id="CategoryLabel">Category</p> 
         </div>
+
+
+        
+
         <div class="checklist-container"></div>
         <ul class="todo-list"></ul>
       </div>
+
 
       <!-- right section -->
 
@@ -225,10 +248,18 @@
 
       <!-- end of introbox -->
     </div>
+
+    <div id="insideTutorial" style="display: none;">
+       Hello, Welcome to <span style="color:pink;">HabitBipity</span>!<img src="../images/test2.png" style="width:60px;height:50px;"> 
+       <br> I am your helping guide "name, it is really nice to meet you. <br> This is a super easy productivy website to use, let me walk you through it ! 
+       <br> ~Create a new todo then add a priotiy and category labels 
+      <br> ~Create a new note <br>~Set a timer to give yourself a time frame to work in <br> ~Earn points for your efforts!/> ',
+    </div>
     <!-- Tooltip -->
     <!-- https://kabbouchi.github.io/tippyjs-v4-docs/getting-started/ -->
-    <script src="https://unpkg.com/popper.js@1"></script>
-    <script src="https://unpkg.com/tippy.js@4"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+  
 
    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.1/slimselect.min.js"></script>

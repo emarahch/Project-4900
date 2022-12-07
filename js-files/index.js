@@ -16,13 +16,26 @@ window.addEventListener('load', (event) => {
 });
 
 //Tutorial tooltip
+const tutuWords=document.getElementById('insideTutorial');
 tippy("#tutorialbutton", {
-  content:
-    'Hello, Welcome to <span style="color:pink;">HabitBipity</span>!<img src="../images/test2.png" style="width:60px;height:50px;"> <br> I am your helping guide "name, it is really nice to meet you. <br> This is a super easy productivy website to use, let me walk you through it ! <br> ~Create a new todo then add a priotiy and category labels <br> ~Create a new note <br>~Set a timer to give yourself a time frame to work in <br> ~Earn points for your efforts!/> ',
+  content:tutuWords.innerHTML,
   placement: "right",
   arrow: true,
+  allowHTML: true,
   trigger: "click",
 });
+
+// const sortButtonTippy = document.getElementById('sortButtonTippy');
+// tippy("#SortButtonsAll", {
+//   content: sortButtonTippy.innerHTML,
+//   interactive: true,
+//   trigger: 'click',
+//   allowHTML: true,
+// });
+
+
+
+
 
 //multislect
 new SlimSelect({
@@ -161,6 +174,22 @@ function upScoreRealTime(){
   
 }
 
+
+//showing and hiding sort by priority etc buttosn
+const SortButtonsAll = document.getElementById("SortButtonsAll");
+const sortButtonsDiv = document.getElementById("sortButtonsDiv");
+
+
+SortButtonsAll.addEventListener("click", () => {
+  
+  if (sortButtonsDiv.style.display === "block") {
+    // HIDES the form
+    sortButtonsDiv.style.display = "none";
+  } else {
+    sortButtonsDiv.style.display = "block";
+  }
+});
+
 //Showing and hiding the form for adding a todo
 const createTodoShowBtn = document.getElementById("createTodoShowBtn");
 
@@ -218,7 +247,7 @@ function addTodo(idd) {
   
 
   const completedButton = document.createElement("button");
-  completedButton.innerText = "done";
+  // completedButton.innerText = "✓";
   completedButton.classList.add("complete-btn");
   toDoDiv.appendChild(completedButton);
 
@@ -232,7 +261,7 @@ function addTodo(idd) {
 
   const EditTitleButton = document.createElement("button");
   EditTitleButton.setAttribute("value", "Off");
-  EditTitleButton.innerText = "EditTitle";
+  // EditTitleButton.innerText = "EditTitle";
   EditTitleButton.classList.add("EditTitle-btn");
   toDoDiv.appendChild(EditTitleButton);
 
@@ -386,7 +415,7 @@ function  stopEditText(id){
   const p = document.getElementById(id);
   paragraph=p.querySelector(".IndTitle")
   paragraph.contentEditable = false;
-  paragraph.style.backgroundColor = "#ffe44d";
+  paragraph.style.backgroundColor = "#FFFFFF";
   editStoreTodo(id, paragraph.innerHTML);
 }
 
@@ -446,14 +475,17 @@ function deleteCheck(event) {
   if (item.classList[0] === "EditTitle-btn") {
     const todo = item.parentElement;
     ObjectIdText=todo.getAttribute("id"); //Works
-    alert(item.getAttribute("value"));
+
 
     if(item.getAttribute("value")=="Off"){
+      item.classList.toggle("editingModeCancelIcon");
       editTextFunc(ObjectIdText);
       item.setAttribute("value", "On");
     }
 
+
     else if(item.getAttribute("value")=="On"){
+      item.classList.toggle("editingModeNormalIcon");
       stopEditText(ObjectIdText);
       item.setAttribute("value", "Off");
     }
@@ -840,7 +872,6 @@ function addOldToDo(objectId,title,isCompleted,priority,category) {
   toDoDiv.classList.add("todo");
 
   const completedButton = document.createElement("button");
-  completedButton.innerText = "done";
   completedButton.classList.add("complete-btn");
   toDoDiv.appendChild(completedButton);
 
@@ -854,7 +885,7 @@ function addOldToDo(objectId,title,isCompleted,priority,category) {
 
   const EditTitleButton = document.createElement("button");
   EditTitleButton.setAttribute("value", "Off");
-  EditTitleButton.innerText = "EditTitle";
+  // EditTitleButton.innerText = "EditTitle";
   EditTitleButton.classList.add("EditTitle-btn");
   toDoDiv.appendChild(EditTitleButton);
 
@@ -1226,3 +1257,8 @@ else{
   });
 
 
+
+
+  
+  
+  // noDateButton
