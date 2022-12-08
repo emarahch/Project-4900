@@ -30,9 +30,9 @@
       </nav> -->
 
     <div class="userStuff">
-      <img src="../images/plholder.webp" id="userPlay" />
+      
       <div class="userNamePfp">
-        <p id="currentDate">Date</p>
+        <img src="../images/plholder.webp" id="userPlay" />
         <p id="welcome">Hey Emy</p>
       </div>
       <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX4t95PAs1EpY?utm_source=generator&theme=0" width="40%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
@@ -52,6 +52,7 @@
     <div id="division1"></div>
 
     <div class="intro-box">
+      
       <div class="testNav">
         <ul>
           <li>
@@ -63,48 +64,12 @@
           <li><button class="deleteAccountButton"></button></li>
         </ul>
       </div>
+      <button id="showSideBar"></button>
 
       <div class="TestTodoSection">
+        <p id="currentDate">Date</p>
         <h1>ToDo</h1>
-        <div id="divToCreateForm">
-          <form id="createTodoForm">
-            <input type="text" class="todo-input" />
-
-            <!-- priority level, single level -->
-            <div id="divToSingleSelect">
-              <select name="priorityNumber" id="priorityNumber">
-                <option value="1" selected="selected">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
-            </div>
-
-            <!-- console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))" -->
-            <!-- multiselect-hide-x="true" -->
-            <div id="divToMulstiSelect">
-              <select
-                multiple
-                name="field1"
-                id="categoryNumber"
-                onchange="console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))"
-              >
-                <option value="General" selected="selected">General</option>
-                <option value="School">School</option>
-                <option value="Work">Work</option>
-                <option value="Side Hustle">Side Hustle</option>
-                <option value="Creative">Creative</option>
-                <option value="Family">Family</option>
-                <option value="Home">Home</option>
-                <option value="Kids">Kids</option>
-                <option value="Groccery">Groccery</option>
-                <option value="Meal planning">Meal planning</option>
-                <option value="Goals">Goals</option>
-              </select>
-            </div>
-
-            <button class="todo-button" type="submit">submit</button>
-          </form>
-        </div>
+       
         <button id="createTodoShowBtn">+</button>
         <button id="editButton">Edit</button>
         <button id="SortButtonsAll">Sort</button>
@@ -146,6 +111,47 @@
           <p id="CategoryLabel">Category</p>
         </div>
 
+        <div id="divToCreateForm">
+          <form id="createTodoForm">
+
+            <input type="text" class="todo-input" />
+
+            <!-- priority level, single level -->
+            <div id="divToSingleSelect">
+              <select name="priorityNumber" id="priorityNumber">
+                <option value="1" selected="selected">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+
+            <!-- console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))" -->
+            <!-- multiselect-hide-x="true" -->
+            <div id="divToMulstiSelect">
+              <select
+                multiple
+                name="field1"
+                id="categoryNumber"
+                onchange="console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))"
+              >
+                <option value="General" selected="selected">General</option>
+                <option value="School">School</option>
+                <option value="Work">Work</option>
+                <option value="Side Hustle">Side Hustle</option>
+                <option value="Creative">Creative</option>
+                <option value="Family">Family</option>
+                <option value="Home">Home</option>
+                <option value="Kids">Kids</option>
+                <option value="Groccery">Groccery</option>
+                <option value="Meal planning">Meal planning</option>
+                <option value="Goals">Goals</option>
+              </select>
+            </div>
+
+            <button class="todo-button" type="submit">submit</button>
+          </form>
+        </div>
+
         <div class="checklist-container"></div>
         <ul class="todo-list"></ul>
       </div>
@@ -171,6 +177,7 @@
         <h1>Notes</h1>
         <div id="divToCreateNote">
           <form id="createNoteForm">
+            <div id="createNoteFormInputs">
             <input
               class="title-field"
               type="text"
@@ -179,6 +186,7 @@
             />
 
             <textarea class="body-field"></textarea>
+          </div>
 
             <div id="divToMulstiSelect">
               <select

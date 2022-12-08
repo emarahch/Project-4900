@@ -171,6 +171,20 @@ SortButtonsAll.addEventListener("click", () => {
   }
 });
 
+//Showing and hiding nav bar
+const showSideBar = document.getElementById("showSideBar");
+
+showSideBar.addEventListener("click", () => {
+  const divSideform = document.querySelector(".testNav");
+
+  if (divSideform.style.display === "block") {
+    // HIDES the form
+    divSideform.style.display = "none";
+  } else {
+    divSideform.style.display = "block";
+  }
+});
+
 //Showing and hiding the form for adding a todo
 const createTodoShowBtn = document.getElementById("createTodoShowBtn");
 
