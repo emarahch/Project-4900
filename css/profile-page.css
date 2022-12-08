@@ -1,5 +1,6 @@
 body {
-  background-color: white;
+  font-family: "Open Sans", sans-serif;
+  background-color: #fafafa;
   margin: 0%;
   overflow: hidden;
 }
@@ -66,23 +67,24 @@ a:visited {
 
 
 .ScoreDiv {
-  margin-top: 20px;
-  margin-right: 20px;
+  margin-top: 5px;
+  /* margin-right: 20px; */
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: #f5e3f1;
-  border-radius: 5px;
+  /* justify-content: center; */
+  /* background-color: #f5e3f1; */
+  /* border-radius: 5px; */
   height: 80%;
   width: 15%;
-  margin-left: 50%;
+  /* margin-left: 50%; */
 }
 
 /* Everything in the center of the screen */
 .intro-box {
   display: flex;
   flex-direction: row;
-  background-color: white;
+  background-color: #ffffff;
+  /* background-color: white; */
   color: black;
   /* border: solid; */
   height: 94vh;
@@ -97,6 +99,17 @@ a:visited {
   height:12px;
   width:12px;
 }
+
+
+h1{
+  font-size:20px;
+}
+
+#currentDate{
+  font-size:15px;
+  color:grey;
+}
+
 
 .testNav {
   display: block ;
@@ -155,15 +168,15 @@ a:visited {
 }
 #createTodoShowBtn {
   border-radius: 50%;
-  /* border: solid grey 0.5px; */
-  border:none;
-  background-color:#FFB2EE;
+  border: solid grey 0.5px;
+  /* border:none; */
+  background-color: white;
   /* background-color: white; */
   
 }
 
 #createTodoShowBtn:hover {
-  background-color: rgb(214, 211, 211);
+  background-color: #FFB2EE;
 }
 
 #SortButtonsAll {
@@ -176,14 +189,14 @@ a:visited {
   border-radius: 5px;
   height: 20px;
   width: 50px;
-  /* border: solid grey 0.5px; */
-  background-color: #FFB2EE;
-  border:none;
+  border: solid grey 0.5px;
+  background-color: white;
+  /* border:none; */
   /* background-color: transparent; */
 }
 
 #SortButtonsAll:hover {
-  background-color: rgb(214, 211, 211);
+  background-color:#FFB2EE;
 }
 
 #editButton {
@@ -196,14 +209,14 @@ a:visited {
   border-radius: 5px;
   height: 20px;
   width: 50px;
-  /* border: solid grey 0.5px; */
-  background-color: #FFB2EE;
-  border:none;
+  border: solid grey 0.5px;
+  background-color: white;
+  /* border:none; */
   /* background-color: transparent; */
 }
 
 #editButton:hover {
-  background-color: rgb(214, 211, 211);
+  background-color:#FFB2EE;
 }
 
 #createTodoForm {
@@ -247,7 +260,7 @@ a:visited {
   border: none;
 }
 #sortButtonsDiv button:hover {
-  background-color: rgb(248, 214, 214);
+  background-color: #FFB2EE;
   border-radius: 5px;
   border: none;
 }
@@ -258,6 +271,7 @@ a:visited {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  font-size:14px ;
 }
 
 /* Toggle trash edit  */
@@ -272,7 +286,7 @@ a:visited {
   background-repeat: no-repeat;
 }
 .cancel-btn:hover {
-  background-color: rgb(214, 211, 211);
+  background-color: #FFB2EE;
 }
 
 .EditTitle-btn {
@@ -288,7 +302,13 @@ a:visited {
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   padding: 2%;
   border-radius: 5px;
-  color:rgb(87, 86, 86);
+  /* font-size:16px;
+  color:rgb(0, 0, 0); */
+}
+
+.todo-item{
+  font-size:14px;
+  color:rgb(46, 46, 46);
 }
 
 .IndToDo:hover {
@@ -358,7 +378,7 @@ a:visited {
 }
 
 .EditTitle-btn:hover {
-  background-color: rgb(214, 211, 211);
+  background-color: #FFB2EE;
 }
 
 /* Timer section */
@@ -380,6 +400,7 @@ a:visited {
 /* Notes section */
 
 .notesSection {
+  padding:2%;
   width: 40%;
 }
 
@@ -412,7 +433,7 @@ a:visited {
 }
 
 #createNoteShowBtn:hover {
-  background-color: rgb(214, 211, 211);
+  background-color: #FFB2EE;
 }
 
 
@@ -446,7 +467,7 @@ a:visited {
 }
 
 #sortButtonNotes:hover {
-  background-color: rgb(214, 211, 211);
+  background-color: #FFB2EE;
 }
 
 #divToSelectFilterForm {
@@ -479,6 +500,9 @@ a:visited {
   width: 90%;
   height: 65px;
   overflow-y: hidden;
+
+  font-size:14px;
+  color:rgb(46, 46, 46);
 }
 
 .note .titleOut{
@@ -528,7 +552,7 @@ a:visited {
 }
 
 .Expand-btn:hover {
-  background-color: rgb(214, 211, 211);
+  background-color:#FFB2EE;
 }
 
 
@@ -555,8 +579,9 @@ a:visited {
   list-style-type: none;
   margin-bottom: 10px;
   padding: 2%;
-  height: 30px;
-  width:45px;
+  /* height: 30px; */
+  width:65px;
+  height: 65px;
   
 }
 
