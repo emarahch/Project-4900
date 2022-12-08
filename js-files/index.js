@@ -213,6 +213,10 @@ createNoteShowBtn.addEventListener("click", () => {
   }
 });
 
+
+
+
+
 //Adding New Todo's to the DOM
 const todoInput = document.querySelector(".todo-input");
 const todoButton = document.querySelector(".todo-button");
@@ -1156,7 +1160,88 @@ submitFilterChoice.addEventListener("click", () => {
   }
 });
 
-//On click note exand
+//EVERYTHING HABIT TRACKER
+
+//Adding New  Habit
+
+const createNewHabitBtn =document.getElementById("createNewHabitBtn");
+createNewHabitBtn.addEventListener("click", () => {
+  const divzform = document.getElementById("divToCreateHabitForm");
+
+  if (divzform.style.display === "block") {
+    // HIDES the form
+    divzform.style.display = "none";
+  } else {
+    divzform.style.display = "block";
+  }
+});
+
+
+const submitNewHabitBtn =document.getElementById("submitNewHabit");
+const habitList=document.querySelector(".habit-list");
+
+habitList.addEventListener("click", deleteCheckHabit);
+
+submitNewHabitBtn.addEventListener("click", addHabit);
+function addHabit(){
+  // alert(habitList.childNodes.length);
+  if (habitList.childNodes.length<3){
+  const habitDiv = document.createElement("div");
+  habitDiv.setAttribute("class", "IndHabit");
+  habitDiv.classList.add("Habit");
+
+
+  const ExpandButton = document.createElement("button");
+  // ExpandButton.innerText = "expand";
+  ExpandButton.classList.add("Expand-btn");
+  habitDiv.appendChild(ExpandButton);
+
+  const habitDivTitle = document.createElement("li");
+  habitDivTitle.setAttribute("class", "IndHabitTitle");
+  habitDivTitle.innerText = document.getElementById("habit-input").value;
+  habitDivTitle.classList.add("habitTitle");
+  habitDiv.appendChild( habitDivTitle);
+
+
+  const cancelButton = document.createElement("button");
+  // cancelButton.innerText = "trash";
+  cancelButton.classList.add("cancel-btn");
+  habitDiv.appendChild(cancelButton);
+
+  habitList.appendChild(habitDiv);
+  }
+  else{
+    Toastify({
+      text: "At the moment you can only track 3 habits ",
+      duration: 2500,
+      style: {
+        background: "linear-gradient(to right, #FF69B4, purple)",
+      },
+    }).showToast();
+    console.error("Error while creating ToDo: ", error);
+
+  }
+
+
+
+ 
+}
+
+
+function deleteCheckHabit(event) {
+  const item = event.target;
+  if (item.classList[0] === "cancel-btn") {
+    const habit= item.parentElement;
+    habit.remove();
+    // deleteNoteStore(note.getAttribute("id"));
+  }
+
+
+  if (item.classList[0] === "Expand-btn") {
+    const habit = item.parentElement;
+    habit.classList.toggle("HabitExpand");
+  }
+}
 
 
 
