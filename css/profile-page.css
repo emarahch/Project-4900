@@ -5,28 +5,12 @@ body {
   overflow: hidden;
 }
 
-/* nav {
-  margin: -1rem;
-  padding: 20px 20px 5px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 15px;
-  background-color: rgb(255, 255, 255);
-  top: 0px;
-} */
 ul {
   padding: 0px;
 }
 li {
   list-style: none;
-  /* text-align: center;
-  height: 22px;
-  width: 55px;
-  border: 1px;
-  border-radius: 10px;
-  box-sizing: border-box;
-  padding: 10px; */
+ 
 }
 a {
   text-decoration: none;
@@ -102,6 +86,12 @@ h1{
   font-weight:700;
 }
 
+#todoAndShowMore{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 #currentDate{
   font-size:15px;
   color:grey;
@@ -166,23 +156,75 @@ h1{
 
 
 .todo-list{
+  display:block;
   overflow: auto;
   height:65%;
   margin-top:2px;
 
 }
-#todoButtonsEditSort{
-  margin-left:auto;
+
+.CompletedTodo-list{
+  display:none;
+  overflow: auto;
+  height:65%;
+  margin-top:2px;
+}
+#DivForShowMore{
+ display:flex;
+ flex-direction: column;
+ margin-left: auto;
+
+}
+
+#DivForButtonsArchEditSort{
+ display:none;
+ position: fixed;
+ box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  border: 0.02px solid rgb(230, 229, 229);
+  background-color: white;
+  width: 200px;
+  height: 100px;
+  border-radius: 10px;
+  margin-top: 40px;
+}
+
+#sortButtonsDiv button,
+#DivForButtonsArchEditSort button{
+  background-color: transparent;
+  border: none;
+}
+
+#DivForButtonsArchEditSort button:hover{
+  background-color: #FFB2EE;
+  border-radius: 5px;
+  border: none;
+}
+
+#ShowArchEditSortButton{
+  border-radius: 5px;
+  border: 1px solid rgba(0,0,0,.20);
+  background-color: white;
+  padding: 10px;
+ 
+}
+
+#ShowArchEditSortButton:hover{
+  background-color: #FFB2EE;
 }
 
 #divToCreateForm {
   display: none;
 }
 #createTodoShowBtn {
-  border-radius: 50%;
-  border: 1px solid rgba(0,0,0,.20);
+  
+  border-radius:5px;;
+  /* border: 1px solid rgba(0,0,0,.20); */
+  border:none;
   background-color: white;
-  padding: 10px;
+  padding: 5px;
+  font-size:14px;
   
 }
 
@@ -246,7 +288,7 @@ h1{
 
 #sortButtonsDiv {
   display: none;
-  position: absolute;
+  position: fixed;
   box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
     rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
@@ -254,6 +296,7 @@ h1{
   background-color: white;
   width: 200px;
   height: 100px;
+  margin-top:80px;
   border-radius: 10px;
 }
 
@@ -266,11 +309,7 @@ h1{
   padding:15px;
 }
 
-#sortButtonsDiv button {
-  /* background-color: white; */
-  background-color: transparent;
-  border: none;
-}
+
 #sortButtonsDiv button:hover {
   background-color: #FFB2EE;
   border-radius: 5px;
@@ -352,8 +391,9 @@ h1{
 }
 
 .completed {
-  text-decoration: line-through;
+  /* text-decoration: line-through; */
   opacity: 0.5;
+  
  
 }
 .completed .complete-btn {

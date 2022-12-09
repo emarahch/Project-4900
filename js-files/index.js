@@ -5,7 +5,6 @@ Parse.initialize(
   "ARHVg2q79aHYce2i4rov3RDm6Z4LMvPckfwggh6T" // This is your Javascript key
 );
 
-// REMOVE COMMENT WHEN TESTING
 // If having trouble with parse, check if there is an update
 
 window.addEventListener("load", (event) => {
@@ -23,13 +22,6 @@ tippy("#tutorialbutton", {
   trigger: "click",
 });
 
-// const sortButtonTippy = document.getElementById('sortButtonTippy');
-// tippy("#SortButtonsAll", {
-//   content: sortButtonTippy.innerHTML,
-//   interactive: true,
-//   trigger: 'click',
-//   allowHTML: true,
-// });
 
 //multislect
 new SlimSelect({
@@ -212,6 +204,38 @@ createNoteShowBtn.addEventListener("click", () => {
     divform.style.display = "block";
   }
 });
+
+const viewArchiveButton = document.getElementById("viewArchiveButton");
+viewArchiveButton.addEventListener("click", () => {
+  const divpform = document.querySelector(".todo-list");
+  const divArchiveform = document.querySelector(".CompletedTodo-list");
+
+  if (divpform.style.display === "block") {
+    //  HIDES the form
+    divpform.style.display = "none";
+    divArchiveform.style.display ="block";
+    viewArchiveButton.innerHTML="Show To Do"
+  } else {
+    divpform.style.display = "block";
+    divArchiveform.style.display ="none";
+    viewArchiveButton.innerHTML="Show Archive"
+  }
+});
+
+
+const ShowArchEditSortButton =document.getElementById("ShowArchEditSortButton");
+ShowArchEditSortButton.addEventListener("click", () => {
+  const divform = document.getElementById("DivForButtonsArchEditSort");
+
+  if (divform.style.display === "block") {
+    //  HIDES the form
+    divform.style.display = "none";
+  } else {
+    divform.style.display = "block";
+  }
+});
+
+
 
 
 
@@ -471,9 +495,12 @@ function deleteCheck(event) {
     const todoNode= item.parentNode;
     if(todoNode.parentNode.className==="todo-list"){
       addToArchive(todoNode);
+      
+      
     }
     else if(todoNode.parentNode.className==="CompletedTodo-list"){
       addToOG(todoNode);
+      
     }
     
   }

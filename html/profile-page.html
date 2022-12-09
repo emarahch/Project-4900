@@ -69,49 +69,65 @@
       <div class="TestTodoSection">
         <!-- <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX4t95PAs1EpY?utm_source=generator&theme=0" width="40%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> -->
 
+        <div id="todoAndShowMore">
         <h1 id="todoHeader">Todo</h1>
-        <p id="currentDate">Date</p>
-       
-        <div id="todoButtons">
-        <button id="createTodoShowBtn">+</button>
-        <div id="todoButtonsEditSort">
+         <div id="DivForShowMore">
+        <button id="ShowArchEditSortButton">Show More</button>
+        <div id="DivForButtonsArchEditSort">
+        <button id="viewArchiveButton">Show Archive</button>
         <button id="editButton">Edit</button>
         <button id="SortButtonsAll">Sort</button>
       </div>
-      </div>
 
-        <div id="sortButtonsDiv">
-          <div id="divInSortButtonsDiv">
-            <!-- <h4>Options</h4> -->
-            <button id="sortButton">Priority Increasing</button>
-            <button id="sortButtonDate">Date Increasing</button>
-            <button id="sortCategoryButtonTodo">Category</button>
-            <div id="divToSelectFilterFormToDo">
-              <div id="divToSingleSelect">
-                <form id="selectFilterTodo">
-                  <select name="filterTodo" id="filterTodo">
-                    <option value="General" selected="selected">General</option>
-                <option value="School">School</option>
-                <option value="School">Health</option>
-                <option value="Goals">Goals</option>
-                <option value="Work">Work</option>
-                <option value="Side Hustle">Side Hustle</option>
-                <option value="Creative">Creative</option>
-                <option value="Family">Family</option>
-                <option value="Home">Home</option>
-                <option value="Kids">Kids</option>
-                <option value="Groccery">Groccery</option>
-                <option value="Meal planning">Meal planning</option>
-                  </select>
-                </form>
-                <!-- supposed to be inside form?? -->
-                <button id="submitFilterChoiceTodo" type="submit">
-                  submitFilterChoice
-                </button>
-              </div>
+      <div id="sortButtonsDiv">
+        <div id="divInSortButtonsDiv">
+          <button id="sortButton">Priority Increasing</button>
+          <button id="sortButtonDate">Date Increasing</button>
+          <button id="sortCategoryButtonTodo">Category</button>
+          <div id="divToSelectFilterFormToDo">
+            <div id="divToSingleSelect">
+              <form id="selectFilterTodo">
+                <select name="filterTodo" id="filterTodo">
+                  <option value="General" selected="selected">General</option>
+              <option value="School">School</option>
+              <option value="School">Health</option>
+              <option value="Goals">Goals</option>
+              <option value="Work">Work</option>
+              <option value="Side Hustle">Side Hustle</option>
+              <option value="Creative">Creative</option>
+              <option value="Family">Family</option>
+              <option value="Home">Home</option>
+              <option value="Kids">Kids</option>
+              <option value="Groccery">Groccery</option>
+              <option value="Meal planning">Meal planning</option>
+                </select>
+              </form>
+              <!-- supposed to be inside form?? -->
+              <button id="submitFilterChoiceTodo" type="submit">
+                submitFilterChoice
+              </button>
             </div>
           </div>
         </div>
+      </div>
+      </div>
+    </div>
+      
+        <p id="currentDate">Date</p>
+       
+        <div id="todoButtons">
+        <button id="createTodoShowBtn">+ Add Task</button>
+        <!-- <div id="DivForShowMore">
+        <button id="ShowArchEditSortButton">Show More</button>
+        <div id="DivForButtonsArchEditSort">
+        <button id="viewArchiveButton">Archive</button>
+        <button id="editButton">Edit</button>
+        <button id="SortButtonsAll">Sort</button>
+      </div>
+      </div> -->
+      </div>
+
+    
 
         <!-- <div style= "height: 200px; overflow-y: scroll;" class="checklist-container"> -->
         <div class="labels">
@@ -165,11 +181,12 @@
 
         <div class="checklist-container"></div>
         <ul class="todo-list"></ul>
+        <ul class="CompletedTodo-list"></ul>
       </div>
 
-      <div class="archivedList-container">
+      <!-- <div class="archivedList-container">
         <ul class="CompletedTodo-list"></ul>
-    </div>
+    </div> -->
 
       <!-- right section -->
 
