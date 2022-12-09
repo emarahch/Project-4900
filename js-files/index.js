@@ -221,6 +221,7 @@ createNoteShowBtn.addEventListener("click", () => {
 const todoInput = document.querySelector(".todo-input");
 const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todo-list");
+const todoDateInput=document.querySelector(".todo-dateInput");
 
 todoButton.addEventListener("click", storeTODO);
 todoList.addEventListener("click", deleteCheck);
@@ -273,6 +274,12 @@ function addTodo(idd) {
   newToDoC.classList.add("todo-item");
   toDoDiv.appendChild(newToDoC);
 
+  const newTodoDate=document.createElement('li');
+  newTodoDate.setAttribute("class", "IndDate");
+  newTodoDate.innerText=todoDateInput.value;
+  newTodoDate.classList.add("todo-item");
+  toDoDiv.appendChild(newTodoDate);
+
   const cancelButton = document.createElement("button");
   // cancelButton.innerText = "trash";
   cancelButton.classList.add("cancel-btn");
@@ -302,6 +309,7 @@ function storeTODO(event) {
     newTodo2.set("isCompleted", false);
     newTodo2.set("priority", textPr);
     newTodo2.set("category", textCa);
+    newTodo2.set("date", document.querySelector(".todo-dateInput").value);
 
     try {
       const result = await newTodo2.save();
@@ -360,14 +368,6 @@ function completedStore(idd) {
         currentUser.set("score", userScore);
         //changes the score real time for the user to see
         bar1.set(scoringMath(userScore));
-        Toastify({
-          text: "Woohoo a task completed!",
-          duration: 2500,
-          position: "center",
-          style: {
-            background: "linear-gradient(to right, #FF69B4, purple)",
-          },
-        }).showToast();
         //Updates level real time
         if (scoringMath(userScore) === 0) {
           currentUser.set("level", levelMath(userLevel, userScore));
@@ -438,8 +438,20 @@ function editStoreTodo(id, todoText) {
 }
 
 
+const CompletedTodoList = document.querySelector(".CompletedTodo-list");
+CompletedTodoList.addEventListener("click", deleteCheck);
+function addToArchive(todo){
+  // const CompletedTodoList = document.querySelector(".CompletedTodo-list");
+  var meow=todo;
+  CompletedTodoList.appendChild(meow);
+}
 
-
+function addToOG(todo){
+  const ogList = document.querySelector(".todo-list");
+  var meow=todo;
+  ogList .appendChild(meow);
+  ogList .addEventListener("click", deleteCheck);
+}
 
 function deleteCheck(event) {
   const item = event.target;
@@ -448,12 +460,22 @@ function deleteCheck(event) {
     todo.remove();
     deleteToDoStore(todo.getAttribute("id"));
   }
+  
 
   //I have it whhere the user can click button multuple times, bc people make mistakes
   if (item.classList[0] === "complete-btn") {
     const todo = item.parentElement;
     todo.classList.toggle("completed");
     completedStore(todo.getAttribute("id"));
+
+    const todoNode= item.parentNode;
+    if(todoNode.parentNode.className==="todo-list"){
+      addToArchive(todoNode);
+    }
+    else if(todoNode.parentNode.className==="CompletedTodo-list"){
+      addToOG(todoNode);
+    }
+    
   }
 
 
@@ -822,8 +844,9 @@ function retrieveTodos() {
         const isCompleted = object.get("isCompleted");
         const priority = object.get("priority");
         const category = object.get("category");
+        const date = object.get("date");
 
-        addOldToDo(objectId, title, isCompleted, priority, category);
+        addOldToDo(objectId, title, isCompleted, priority, category,date);
       }
     } catch (error) {
       console.error("Error while fetching ToDo", error);
@@ -831,7 +854,7 @@ function retrieveTodos() {
   })();
 }
 
-function addOldToDo(objectId, title, isCompleted, priority, category) {
+function addOldToDo(objectId, title, isCompleted, priority, category,date) {
   const toDoDiv = document.createElement("div");
   toDoDiv.setAttribute("class", "IndToDo");
   toDoDiv.setAttribute("id", objectId);
@@ -867,6 +890,13 @@ function addOldToDo(objectId, title, isCompleted, priority, category) {
   newToDoC.classList.add("todo-item");
   toDoDiv.appendChild(newToDoC);
 
+
+  const newTodoDate=document.createElement('li');
+  newTodoDate.setAttribute("class", "IndDate");
+  newTodoDate.innerText=date;
+  newTodoDate.classList.add("todo-item");
+  toDoDiv.appendChild(newTodoDate);
+
   const cancelButton = document.createElement("button");
   // cancelButton.innerText = "trash";
   cancelButton.classList.add("cancel-btn");
@@ -874,9 +904,12 @@ function addOldToDo(objectId, title, isCompleted, priority, category) {
 
   if (isCompleted == true) {
     toDoDiv.classList.toggle("completed");
+    CompletedTodoList.appendChild(toDoDiv);
   }
-  //add to list
-  todoList.appendChild(toDoDiv);
+  else if(isCompleted == false){
+    todoList.appendChild(toDoDiv);
+  }
+  
 }
 
 function retrieveNotes() {
@@ -1026,6 +1059,53 @@ sortButton.addEventListener("click", () => {
   }
 });
 
+
+//soring based on date:
+const sortButtonDate = document.getElementById("sortButtonDate");
+sortButtonDate.addEventListener("click", () => {
+  var DatesToSort = document.querySelector(".todo-list").children;
+  DatesToSort = Array.prototype.slice.call(DatesToSort, 0);
+
+  if (sortButtonDate.innerHTML == "Date Increasing") {
+    DatesToSort.sort(function (a, b) {
+      ab = a.querySelector(".todo-item.IndDate ");
+      ba = b.querySelector(".todo-item.IndDate ");
+      return ab.innerHTML > ba.innerHTML;
+    });
+    var parent = document.querySelector(".todo-list");
+    parent.innerHTML = "";
+
+    for (var i = 0, l = DatesToSort.length; i < l; i++) {
+      parent.appendChild(DatesToSort[i]);
+    }
+    sortButtonDate.innerHTML = "Date Decreasing";
+  } else if (sortButtonDate.innerHTML == "Date Decreasing") {
+    DatesToSort.sort(function (a, b) {
+      ab = a.querySelector(".todo-item.IndDate ");
+      ba = b.querySelector(".todo-item.IndDate ");
+      return ba.innerHTML > ab.innerHTML;
+    });
+    var parent = document.querySelector(".todo-list");
+    parent.innerHTML = "";
+
+    for (var i = 0, l = DatesToSort.length; i < l; i++) {
+      parent.appendChild(DatesToSort[i]);
+    }
+    sortButtonDate.innerHTML = "Date Increasing";
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
 //filtering todo section
 const sortCategoryButtonTodo = document.getElementById(
   "sortCategoryButtonTodo"
@@ -1166,6 +1246,13 @@ submitFilterChoice.addEventListener("click", () => {
     }
   }
 });
+
+
+
+
+
+
+
 
 //EVERYTHING HABIT TRACKER
 

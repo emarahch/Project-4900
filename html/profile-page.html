@@ -84,22 +84,24 @@
           <div id="divInSortButtonsDiv">
             <!-- <h4>Options</h4> -->
             <button id="sortButton">Priority Increasing</button>
+            <button id="sortButtonDate">Date Increasing</button>
             <button id="sortCategoryButtonTodo">Category</button>
             <div id="divToSelectFilterFormToDo">
               <div id="divToSingleSelect">
                 <form id="selectFilterTodo">
                   <select name="filterTodo" id="filterTodo">
-                    <option value="General">General</option>
-                    <option value="School">School</option>
-                    <option value="Work">Work</option>
-                    <option value="Side Hustle">Side Hustle</option>
-                    <option value="Creative">Creative</option>
-                    <option value="Family">Family</option>
-                    <option value="Home">Home</option>
-                    <option value="Kids">Kids</option>
-                    <option value="Groccery">Groccery</option>
-                    <option value="Meal planning">Meal planning</option>
-                    <option value="Goals">Goals</option>
+                    <option value="General" selected="selected">General</option>
+                <option value="School">School</option>
+                <option value="School">Health</option>
+                <option value="Goals">Goals</option>
+                <option value="Work">Work</option>
+                <option value="Side Hustle">Side Hustle</option>
+                <option value="Creative">Creative</option>
+                <option value="Family">Family</option>
+                <option value="Home">Home</option>
+                <option value="Kids">Kids</option>
+                <option value="Groccery">Groccery</option>
+                <option value="Meal planning">Meal planning</option>
                   </select>
                 </form>
                 <!-- supposed to be inside form?? -->
@@ -141,19 +143,21 @@
                 id="categoryNumber"
                 onchange="console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))"
               >
-                <option value="General" selected="selected">General</option>
-                <option value="School">School</option>
-                <option value="Work">Work</option>
-                <option value="Side Hustle">Side Hustle</option>
-                <option value="Creative">Creative</option>
-                <option value="Family">Family</option>
-                <option value="Home">Home</option>
-                <option value="Kids">Kids</option>
-                <option value="Groccery">Groccery</option>
-                <option value="Meal planning">Meal planning</option>
-                <option value="Goals">Goals</option>
+              <option value="General" selected="selected">General</option>
+              <option value="School">School</option>
+              <option value="School">Health</option>
+              <option value="Goals">Goals</option>
+              <option value="Work">Work</option>
+              <option value="Side Hustle">Side Hustle</option>
+              <option value="Creative">Creative</option>
+              <option value="Family">Family</option>
+              <option value="Home">Home</option>
+              <option value="Kids">Kids</option>
+              <option value="Groccery">Groccery</option>
+              <option value="Meal planning">Meal planning</option>
               </select>
             </div>
+            <input type="date" class="todo-dateInput" />
 
             <button class="todo-button" type="submit">submit</button>
           </form>
@@ -162,6 +166,10 @@
         <div class="checklist-container"></div>
         <ul class="todo-list"></ul>
       </div>
+
+      <div class="archivedList-container">
+        <ul class="CompletedTodo-list"></ul>
+    </div>
 
       <!-- right section -->
 
@@ -202,17 +210,18 @@
                 id="categoryNumberNotes"
                 onchange="console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))"
               >
-                <option value="General">General</option>
-                <option value="School">School</option>
-                <option value="Work">Work</option>
-                <option value="Side Hustle">Side Hustle</option>
-                <option value="Creative">Creative</option>
-                <option value="Family">Family</option>
-                <option value="Home">Home</option>
-                <option value="Kids">Kids</option>
-                <option value="Groccery">Groccery</option>
-                <option value="Meal planning">Meal planning</option>
-                <option value="Goals">Goals</option>
+              <option value="General" selected="selected">General</option>
+              <option value="School">School</option>
+              <option value="School">Health</option>
+              <option value="Goals">Goals</option>
+              <option value="Work">Work</option>
+              <option value="Side Hustle">Side Hustle</option>
+              <option value="Creative">Creative</option>
+              <option value="Family">Family</option>
+              <option value="Home">Home</option>
+              <option value="Kids">Kids</option>
+              <option value="Groccery">Groccery</option>
+              <option value="Meal planning">Meal planning</option>
               </select>
             </div>
             <button class="btn-save" type="submit">Save</button>
@@ -224,8 +233,10 @@
           <div id="divToSingleSelect">
             <form id="selectFilterNotes">
               <select name="filterNotes" id="filterNotes">
-                <option value="General">General</option>
+                <option value="General" selected="selected">General</option>
                 <option value="School">School</option>
+                <option value="School">Health</option>
+                <option value="Goals">Goals</option>
                 <option value="Work">Work</option>
                 <option value="Side Hustle">Side Hustle</option>
                 <option value="Creative">Creative</option>
@@ -234,7 +245,6 @@
                 <option value="Kids">Kids</option>
                 <option value="Groccery">Groccery</option>
                 <option value="Meal planning">Meal planning</option>
-                <option value="Goals">Goals</option>
               </select>
             </form>
             <!-- supposed to be inside form?? -->

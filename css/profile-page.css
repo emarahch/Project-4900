@@ -328,6 +328,7 @@ h1{
 
 .IndToDo:hover {
   background-color: #FFB2EE;
+  transition: all 0.3s;
 }
 
 .todo {
