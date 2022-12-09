@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HabitBabe</title>
+    <title>ProDo</title>
 
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Open+Sans"
+      href="https://fonts.googleapis.com/css?family=Lato"
     />
     <script
       type="text/javascript"
@@ -67,19 +67,24 @@
       <button id="showSideBar"></button>
 
       <div class="TestTodoSection">
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX4t95PAs1EpY?utm_source=generator&theme=0" width="40%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <!-- <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX4t95PAs1EpY?utm_source=generator&theme=0" width="40%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> -->
 
         <h1 id="todoHeader">Todo</h1>
         <p id="currentDate">Date</p>
        
+        <div id="todoButtons">
         <button id="createTodoShowBtn">+</button>
+        <div id="todoButtonsEditSort">
         <button id="editButton">Edit</button>
         <button id="SortButtonsAll">Sort</button>
+      </div>
+      </div>
+
         <div id="sortButtonsDiv">
           <div id="divInSortButtonsDiv">
-            <h4>Options</h4>
-            <button id="sortButton">sortPriorityInc</button>
-            <button id="sortCategoryButtonTodo">sortCategory</button>
+            <!-- <h4>Options</h4> -->
+            <button id="sortButton">Priority Increasing</button>
+            <button id="sortCategoryButtonTodo">Category</button>
             <div id="divToSelectFilterFormToDo">
               <div id="divToSingleSelect">
                 <form id="selectFilterTodo">
@@ -108,9 +113,9 @@
 
         <!-- <div style= "height: 200px; overflow-y: scroll;" class="checklist-container"> -->
         <div class="labels">
-          <p id="taskLabel">Task</p>
+          <!-- <p id="taskLabel">Task</p>
           <p id="priorityLabel">Priority</p>
-          <p id="CategoryLabel">Category</p>
+          <p id="CategoryLabel">Category</p> -->
         </div>
 
         <div id="divToCreateForm">
@@ -238,9 +243,10 @@
             </button>
           </div>
         </div>
-
+        <div id="NoteButtons">
         <button id="createNoteShowBtn">+</button>
         <button id="sortButtonNotes">Sort</button>
+        </div>
 
         <section class="notes-list"></section>
         <!-- </div> -->
@@ -255,7 +261,7 @@
            <div id="habitTrackerSection">
             <div id="divToCreateHabitForm">
             <form id="createHabitForm">
-              <input type="text" id="habit-input" /> -->
+              <input type="text" id="habit-input" /> 
               <!-- <button id="submitNewHabit" >submit</button> -->
             </form>
             <button id="submitNewHabit" >submit</button>
@@ -272,7 +278,7 @@
     </div>
 
     <div id="insideTutorial" style="display: none">
-      Hello, Welcome to <span style="color: pink">HabitBipity</span>!<img
+      Hello, Welcome to <span style="color: pink">ProDo</span>!<img
         src="../images/test2.png"
         style="width: 60px; height: 50px"
       />

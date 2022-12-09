@@ -990,7 +990,7 @@ sortButton.addEventListener("click", () => {
   var numbersToSort = document.querySelector(".todo-list").children;
   numbersToSort = Array.prototype.slice.call(numbersToSort, 0);
 
-  if (sortButton.innerHTML == "sortPriorityInc") {
+  if (sortButton.innerHTML == "Priority Increasing") {
     numbersToSort.sort(function (a, b) {
       ab = a.querySelector(".todo-item.IndPriority");
       ba = b.querySelector(".todo-item.IndPriority");
@@ -1002,8 +1002,8 @@ sortButton.addEventListener("click", () => {
     for (var i = 0, l = numbersToSort.length; i < l; i++) {
       parent.appendChild(numbersToSort[i]);
     }
-    sortButton.innerHTML = "sortPriorityDec";
-  } else if (sortButton.innerHTML == "sortPriorityDec") {
+    sortButton.innerHTML = "Priority Decreasing";
+  } else if (sortButton.innerHTML == "Priority Decreasing") {
     numbersToSort.sort(function (a, b) {
       ab = a.querySelector(".todo-item.IndPriority");
       ba = b.querySelector(".todo-item.IndPriority");
@@ -1015,7 +1015,7 @@ sortButton.addEventListener("click", () => {
     for (var i = 0, l = numbersToSort.length; i < l; i++) {
       parent.appendChild(numbersToSort[i]);
     }
-    sortButton.innerHTML = "sortPriorityInc";
+    sortButton.innerHTML = "Priority Increasing";
   }
 });
 
