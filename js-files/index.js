@@ -360,7 +360,14 @@ function completedStore(idd) {
         currentUser.set("score", userScore);
         //changes the score real time for the user to see
         bar1.set(scoringMath(userScore));
-
+        Toastify({
+          text: "Woohoo a task completed!",
+          duration: 2500,
+          position: "center",
+          style: {
+            background: "linear-gradient(to right, #FF69B4, purple)",
+          },
+        }).showToast();
         //Updates level real time
         if (scoringMath(userScore) === 0) {
           currentUser.set("level", levelMath(userLevel, userScore));
