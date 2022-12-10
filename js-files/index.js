@@ -69,6 +69,7 @@ themeChangeButton.addEventListener("click", themeChangerFunc);
 function themeChangerFunc() {
   document.body.classList.toggle("darkMode");
 }
+
 //Getting the current date - MOVE TO LOADER FUNCTION
 var date = new Date().toString().split(" ").splice(0, 4).join(" ");
 document.getElementById("currentDate").innerHTML = date;
@@ -99,7 +100,7 @@ function create(charry) {
   user
     .signUp()
     .then(function (user) {
-      mainProfilePage();
+      login();
     })
     .catch(function (error) {
       window.alert("Error: " + error.code + " " + error.message);
@@ -150,66 +151,56 @@ function upScoreRealTime() {
   })();
 }
 
+
+
 //showing and hiding sort by priority etc buttosn
+
+function generalDisplayBlockCall(Div){
+  if (Div.style.display === "block") {
+    // HIDES the form
+    Div.style.display = "none";
+  } else {
+    Div.style.display = "block";
+  }
+
+}
 const SortButtonsAll = document.getElementById("SortButtonsAll");
 const sortButtonsDiv = document.getElementById("sortButtonsDiv");
 
 SortButtonsAll.addEventListener("click", () => {
-  if (sortButtonsDiv.style.display === "block") {
-    // HIDES the form
-    sortButtonsDiv.style.display = "none";
-  } else {
-    sortButtonsDiv.style.display = "block";
-  }
+  generalDisplayBlockCall(sortButtonsDiv);
 });
 
 //Showing and hiding nav bar
 const showSideBar = document.getElementById("showSideBar");
-
+const divSideform = document.querySelector(".testNav");
 showSideBar.addEventListener("click", () => {
-  const divSideform = document.querySelector(".testNav");
-
-  if (divSideform.style.display === "block") {
-    // HIDES the form
-    divSideform.style.display = "none";
-  } else {
-    divSideform.style.display = "block";
-  }
+  generalDisplayBlockCall(divSideform);
 });
 
 //Showing and hiding the form for adding a todo
 const createTodoShowBtn = document.getElementById("createTodoShowBtn");
+const divToCreateForm = document.getElementById("divToCreateForm");
 
 createTodoShowBtn.addEventListener("click", () => {
-  const divform = document.getElementById("divToCreateForm");
-
-  if (divform.style.display === "block") {
-    // HIDES the form
-    divform.style.display = "none";
-  } else {
-    divform.style.display = "block";
-  }
+  generalDisplayBlockCall(divToCreateForm);
 });
 
 // //Showing and hiding the form for adding a note
 const createNoteShowBtn = document.getElementById("createNoteShowBtn");
+const divToCreateNote = document.getElementById("divToCreateNote");
 
 createNoteShowBtn.addEventListener("click", () => {
-  const divform = document.getElementById("divToCreateNote");
-
-  if (divform.style.display === "block") {
-    //  HIDES the form
-    divform.style.display = "none";
-  } else {
-    divform.style.display = "block";
-  }
+  generalDisplayBlockCall(divToCreateNote);
 });
 
+//Switching between archive view and normal view
 const viewArchiveButton = document.getElementById("viewArchiveButton");
+const CompletedTodoList = document.querySelector(".CompletedTodo-list");
+const divArchiveform = document.querySelector(".CompletedTodo-list");
 viewArchiveButton.addEventListener("click", () => {
   const divpform = document.querySelector(".todo-list");
-  const divArchiveform = document.querySelector(".CompletedTodo-list");
-
+  // const divArchiveform = document.querySelector(".CompletedTodo-list");
   if (divpform.style.display === "block") {
     //  HIDES the form
     divpform.style.display = "none";
@@ -224,20 +215,11 @@ viewArchiveButton.addEventListener("click", () => {
 
 
 const ShowArchEditSortButton =document.getElementById("ShowArchEditSortButton");
+const DivForButtonsArchEditSort= document.getElementById("DivForButtonsArchEditSort");
 ShowArchEditSortButton.addEventListener("click", () => {
-  const divform = document.getElementById("DivForButtonsArchEditSort");
-
-  if (divform.style.display === "block") {
-    //  HIDES the form
-    divform.style.display = "none";
-  } else {
-    divform.style.display = "block";
-  }
+  generalDisplayBlockCall(DivForButtonsArchEditSort);
+ 
 });
-
-
-
-
 
 
 
@@ -282,7 +264,6 @@ function addTodo(idd) {
 
   const EditTitleButton = document.createElement("button");
   EditTitleButton.setAttribute("value", "Off");
-  // EditTitleButton.innerText = "EditTitle";
   EditTitleButton.classList.add("EditTitle-btn");
   toDoDiv.appendChild(EditTitleButton);
 
@@ -315,7 +296,7 @@ function addTodo(idd) {
   todoInput.value = "";
 }
 
-//this stores new Todo to parse
+//this stores new Todo to parse, first store then add to the DOM
 function storeTODO(event) {
   //This is for getting the priority level and the categories
   var prNumberUser = document.getElementById("priorityNumber");
@@ -324,7 +305,6 @@ function storeTODO(event) {
   var textCa = Array.from(categoryNumberUser.selectedOptions).map(
     (x) => x.value ?? x.text
   );
-  //this is where storing actuallu happens
   event.preventDefault();
   (async () => {
     const newTodo2 = new Parse.Object("ToDo");
@@ -352,6 +332,7 @@ function storeTODO(event) {
     }
   })();
 }
+
 //this updates parse for task deletion
 function deleteToDoStore(idd) {
   (async () => {
@@ -373,7 +354,6 @@ function deleteToDoStore(idd) {
 
 //this updates parse for task completion
 function completedStore(idd) {
-  // I call current user a lot...maybe I can fix this?
 
   Parse.User.enableUnsafeCurrentUser();
   const currentUser = Parse.User.current();
@@ -437,35 +417,21 @@ function stopEditText(id) {
 function editStoreTodo(id, todoText) {
   (async () => {
     const query = new Parse.Query("ToDo");
-    // try {
-    // const object = await query.get(id);
-    // object.set("title", todoText);
-
     try {
       const object = await query.get(id);
       object.set("title", todoText);
       const result = await object.save();
-      // ob = newTodo2.id;
-      // addTodo(ob);
       console.log("EDIT MADE", result);
     } catch (error) {
-      // Toastify({
-      //   text: "Error : Besite you need to add a title ",
-      //   duration: 2500,
-      //   style: {
-      //     background: "linear-gradient(to right, #FF69B4, purple)",
-      //   },
-      // }).showToast();
-      console.error("Error while creating ToDo: ", error);
+      console.error("Error while EDITING ToDo: ", error);
     }
   })();
 }
 
 
-const CompletedTodoList = document.querySelector(".CompletedTodo-list");
+// const CompletedTodoList = document.querySelector(".CompletedTodo-list");
 CompletedTodoList.addEventListener("click", deleteCheck);
 function addToArchive(todo){
-  // const CompletedTodoList = document.querySelector(".CompletedTodo-list");
   var meow=todo;
   CompletedTodoList.appendChild(meow);
 }
@@ -495,7 +461,6 @@ function deleteCheck(event) {
     const todoNode= item.parentNode;
     if(todoNode.parentNode.className==="todo-list"){
       addToArchive(todoNode);
-      
       
     }
     else if(todoNode.parentNode.className==="CompletedTodo-list"){
@@ -544,13 +509,15 @@ function addNote(ob2) {
   // preventDefault();
   const notesDiv = document.createElement("div");
   notesDiv.setAttribute("id", ob2);
-  // toDoDiv.setAttribute("value", "OFF")
   notesDiv.classList.add("note");
 
   const ExpandButton = document.createElement("button");
-  // ExpandButton.innerText = "expand";
   ExpandButton.classList.add("Expand-btn");
   notesDiv.appendChild(ExpandButton);
+
+  const showMoreIndButtonNote=document.createElement("button");
+  showMoreIndButtonNote.classList.add("showMoreIndNote-Button");
+  notesDiv.appendChild(showMoreIndButtonNote);
 
   const noteTitle = document.createElement("li");
   noteTitle.innerText = notesTitle.value;
@@ -572,7 +539,6 @@ function addNote(ob2) {
  
 
   const cancelButton = document.createElement("button");
-  // cancelButton.innerText = "delete";
   cancelButton.classList.add("cancel-btn");
   notesDiv.appendChild(cancelButton);
 
@@ -649,7 +615,8 @@ function deleteNote(event) {
 
 
   if (item.classList[0] === "Expand-btn") {
-    const note = item.parentElement;
+    const notey = item.parentElement;
+    const note =notey.parentElement;
     note.classList.toggle("noteExpand");
   }
 }
@@ -852,9 +819,7 @@ function loader() {
   retrieveNotes();
 }
 
-//Getting old stuff, called by loader
-//this works!!!!
-//for loops makes things slower thouf=gh...
+
 function retrieveTodos() {
   (async () => {
     Parse.User.enableUnsafeCurrentUser();
@@ -901,7 +866,6 @@ function addOldToDo(objectId, title, isCompleted, priority, category,date) {
 
   const EditTitleButton = document.createElement("button");
   EditTitleButton.setAttribute("value", "Off");
-  // EditTitleButton.innerText = "EditTitle";
   EditTitleButton.classList.add("EditTitle-btn");
   toDoDiv.appendChild(EditTitleButton);
 
@@ -964,16 +928,25 @@ function retrieveNotes() {
 
 function addOldNote(objectId, title, NoteBody, category) {
   // preventDefault();
+
+  const notesDivButtons = document.createElement("div");
+  notesDivButtons.setAttribute("id", "notesDivButtons");
+
+  const ExpandButton = document.createElement("button");
+  ExpandButton.classList.add("Expand-btn");
+  notesDivButtons.appendChild(ExpandButton);
+  
+  const showMoreIndButtonNote=document.createElement("button");
+  showMoreIndButtonNote.classList.add("showMoreIndNote-Button");
+  notesDivButtons.appendChild(showMoreIndButtonNote);
+
+
+
   const notesDiv = document.createElement("div");
+  notesDiv.appendChild(notesDivButtons)
   notesDiv.setAttribute("id", objectId);
   // toDoDiv.setAttribute("value", "OFF")
   notesDiv.classList.add("note");
-
-
-  const ExpandButton = document.createElement("button");
-  // ExpandButton.innerText = "expand";
-  ExpandButton.classList.add("Expand-btn");
-  notesDiv.appendChild(ExpandButton);
 
   const noteTitle = document.createElement("li");
   noteTitle.innerText = title;
@@ -996,6 +969,7 @@ function addOldNote(objectId, title, NoteBody, category) {
   const cancelButton = document.createElement("button");
   // cancelButton.innerText = "delete";
   cancelButton.classList.add("cancel-btn");
+
   notesDiv.appendChild(cancelButton);
 
   //add to list
@@ -1031,24 +1005,18 @@ const editButtonTrash = document.getElementById("editButton");
 editButtonTrash.addEventListener("click", () => {
   var trashList = document.querySelectorAll(".cancel-btn");
   for (let i = 0; i < trashList.length; i++) {
-    if (trashList[i].style.display === "block") {
-      // HIDES the form
-      trashList[i].style.display = "none";
-    } else {
-      trashList[i].style.display = "block";
-    }
+    generalDisplayBlockCall(trashList[i]);
   }
 
   var editTitleList = document.querySelectorAll(".EditTitle-btn");
   for (let i = 0; i < editTitleList.length; i++) {
-    if (editTitleList[i].style.display === "block") {
-      // HIDES the form
-      editTitleList[i].style.display = "none";
-    } else {
-      editTitleList[i].style.display = "block";
-    }
+    generalDisplayBlockCall(editTitleList[i]);
   }
 });
+
+
+
+
 
 //Sorting todos based on priority
 //this works!
@@ -1142,12 +1110,7 @@ sortCategoryButtonTodo.addEventListener("click", () => {
     "divToSelectFilterFormToDo"
   );
 
-  if (divToSelectFilterFormToDo.style.display === "block") {
-    // HIDES the form
-    divToSelectFilterFormToDo.style.display = "none";
-  } else {
-    divToSelectFilterFormToDo.style.display = "block";
-  }
+  generalDisplayBlockCall(divToSelectFilterFormToDo);
 });
 
 //filtering notes section
@@ -1155,12 +1118,7 @@ const sortButtonNotes = document.getElementById("sortButtonNotes");
 sortButtonNotes.addEventListener("click", () => {
   const divSelectFilterform = document.getElementById("divToSelectFilterForm");
 
-  if (divSelectFilterform.style.display === "block") {
-    // HIDES the form
-    divSelectFilterform.style.display = "none";
-  } else {
-    divSelectFilterform.style.display = "block";
-  }
+  generalDisplayBlockCall(divSelectFilterform);
 });
 
 const submitFilterChoiceTodo = document.getElementById(
@@ -1287,14 +1245,8 @@ submitFilterChoice.addEventListener("click", () => {
 
 const createNewHabitBtn =document.getElementById("createNewHabitBtn");
 createNewHabitBtn.addEventListener("click", () => {
-  const divzform = document.getElementById("divToCreateHabitForm");
-
-  if (divzform.style.display === "block") {
-    // HIDES the form
-    divzform.style.display = "none";
-  } else {
-    divzform.style.display = "block";
-  }
+  const divToCreateHabitForm = document.getElementById("divToCreateHabitForm");
+  generalDisplayBlockCall(divToCreateHabitForm);
 });
 
 

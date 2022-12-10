@@ -402,6 +402,14 @@ h1{
   background-position: center;
 }
 
+.completed .complete-btn:hover {
+  background-image:none;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+
 .complete-btn {
   border-radius: 50%;
   border: solid grey 0.5px;
@@ -528,6 +536,21 @@ h1{
   margin-left: 77%;
 }
 
+.showMoreIndNote-Button{
+  background-image: url("../images/sort12.png");
+  background-repeat: no-repeat;
+  background-position-x: 2px;
+  background-position-y: center;
+  padding-left: 8px;
+
+  border-radius: 5px;
+  height: 20px;
+  width: 50px;
+  border: 1px solid rgba(0,0,0,.20);
+  background-color: transparent;
+  /* margin-left: 77%; */
+}
+
 #sortButtonNotes:hover {
   background-color: #FFB2EE;
 }
@@ -561,7 +584,7 @@ h1{
   margin-bottom: 10px;
   padding: 2%;
   width: 90%;
-  height: 65px;
+  height: 70px;
   overflow-y: hidden;
 
   font-size:14px;
@@ -575,7 +598,9 @@ h1{
 }
 
 .note .bodyOut{
-  /* overflow: hidden; */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   /* height:40px; */
   opacity: 0.8;
 }
@@ -591,15 +616,18 @@ h1{
 }
 
 
-
-
 .noteExpand{
-  height: 200px;
   transition: all 0.5s;
+}
+
+.noteExpand .note{
+  height: 200px;
 } 
 
 .noteExpand .bodyOut{
   overflow:scroll;
+  white-space: initial;
+  text-overflow:initial;
   height: 200px;
 } 
 
