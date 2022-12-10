@@ -32,9 +32,11 @@
     <div class="userStuff">
       
       <div class="userNamePfp">
+        <button id="tutorialbutton"></button>
         <img src="../images/plholder.webp" id="userPlay" />
         <p id="welcome">Hey Emy</p>
       </div>
+      <p id="ThingsDo">You have 3 tasks due today</p>
       
       <div class="ScoreDiv">
         <p>Level:</p>
@@ -59,7 +61,6 @@
             <button id="themeChangeButton" data-theme="light"></button>
           </li>
           <!-- Left work here -->
-          <li><button id="tutorialbutton"></button></li>
           <li><button class="logoutButton"></button></li>
           <li><button class="deleteAccountButton"></button></li>
         </ul>
@@ -72,44 +73,49 @@
         <div id="todoAndShowMore">
         <h1 id="todoHeader">Todo</h1>
          <div id="DivForShowMore">
-        <button id="ShowArchEditSortButton">Show More</button>
+        <button id="ShowArchEditSortButton"></button>
         <div id="DivForButtonsArchEditSort">
+          <div id="DivForButtonsArchEditSortFormating">
         <button id="viewArchiveButton">Show Archive</button>
         <button id="editButton">Edit</button>
         <button id="SortButtonsAll">Sort</button>
-      </div>
-
-      <div id="sortButtonsDiv">
-        <div id="divInSortButtonsDiv">
-          <button id="sortButton">Priority Increasing</button>
-          <button id="sortButtonDate">Date Increasing</button>
-          <button id="sortCategoryButtonTodo">Category</button>
-          <div id="divToSelectFilterFormToDo">
-            <div id="divToSingleSelect">
-              <form id="selectFilterTodo">
-                <select name="filterTodo" id="filterTodo">
-                  <option value="General" selected="selected">General</option>
-              <option value="School">School</option>
-              <option value="School">Health</option>
-              <option value="Goals">Goals</option>
-              <option value="Work">Work</option>
-              <option value="Side Hustle">Side Hustle</option>
-              <option value="Creative">Creative</option>
-              <option value="Family">Family</option>
-              <option value="Home">Home</option>
-              <option value="Kids">Kids</option>
-              <option value="Groccery">Groccery</option>
-              <option value="Meal planning">Meal planning</option>
-                </select>
-              </form>
-              <!-- supposed to be inside form?? -->
-              <button id="submitFilterChoiceTodo" type="submit">
-                Submit Filter Choice
-              </button>
+        </div>
+        <div id="sortButtonsDiv">
+          <div id="divInSortButtonsDiv">
+            <button id="sortButton">Priority Increasing</button>
+            <button id="sortButtonDate">Date Increasing</button>
+            <button id="sortCategoryButtonTodo">Category</button>
+            <div id="divToSelectFilterFormToDo">
+              <div id="divToSingleSelect">
+                <form id="selectFilterTodo">
+                  <select name="filterTodo" id="filterTodo">
+                    <option value="General" selected="selected">General</option>
+                <option value="School">School</option>
+                <option value="School">Health</option>
+                <option value="Goals">Goals</option>
+                <option value="Work">Work</option>
+                <option value="Side Hustle">Side Hustle</option>
+                <option value="Creative">Creative</option>
+                <option value="Family">Family</option>
+                <option value="Home">Home</option>
+                <option value="Kids">Kids</option>
+                <option value="Groccery">Groccery</option>
+                <option value="Meal planning">Meal planning</option>
+                  </select>
+                </form>
+                <!-- supposed to be inside form?? -->
+                <button id="submitFilterChoiceTodo" type="submit">
+                  Submit Filter Choice
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+
+
+
       </div>
     </div>
       
@@ -262,7 +268,7 @@
           </div>
         </div>
         <div id="NoteButtons">
-        <button id="createNoteShowBtn">+</button>
+        <button id="createNoteShowBtn">+ Add Note</button>
         <button id="sortButtonNotes">Sort</button>
         </div>
 

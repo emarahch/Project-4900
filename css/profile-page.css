@@ -36,6 +36,11 @@ a:visited {
   height: 6vh;
   background-color:#FFB2EE;;
 }
+.userStuff button{
+  background-color:transparent;
+  width:5%;
+  border:none;
+}
 
 #welcome{
   padding:3px;
@@ -179,6 +184,7 @@ h1{
 #DivForButtonsArchEditSort{
  display:none;
  position: fixed;
+
  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
     rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
@@ -190,10 +196,19 @@ h1{
   margin-top: 40px;
 }
 
+#DivForButtonsArchEditSortFormating{
+  display:flex;
+  flex-direction: column;
+  padding:15px;
+  height: 20px;
+  max-width: 100px;
+}
+
 #sortButtonsDiv button,
 #DivForButtonsArchEditSort button{
   background-color: transparent;
   border: none;
+  font-size:13px;
 }
 
 #DivForButtonsArchEditSort button:hover{
@@ -203,6 +218,9 @@ h1{
 }
 
 #ShowArchEditSortButton{
+  background-image: url("../images/3dots14.png");
+  background-repeat: no-repeat;
+  background-position:center;
   border-radius: 5px;
   border: 1px solid rgba(0,0,0,.20);
   background-color: white;
@@ -217,8 +235,9 @@ h1{
 #divToCreateForm {
   display: none;
 }
-#createTodoShowBtn {
-  
+
+#createTodoShowBtn,
+#createNoteShowBtn {
   border-radius:5px;;
   /* border: 1px solid rgba(0,0,0,.20); */
   border:none;
@@ -258,7 +277,6 @@ h1{
   background-position-x: 2px;
   background-position-y: center;
   padding-left: 8px;
-
   border-radius: 5px;
   height: 20px;
   width: 50px;
@@ -282,6 +300,11 @@ h1{
   /* fix this... */
 }
 
+
+/* #divToSingleSelect{
+  background-color:white;
+
+} */
 #divToSelectFilterFormToDo {
   display: none;
 }
@@ -289,15 +312,17 @@ h1{
 #sortButtonsDiv {
   display: none;
   position: fixed;
-  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+  box-shadow: rgba(0, 0, 0, 0.08)  0px 8px 8px 0px;
+  /* box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
     rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; */
   border: 0.02px solid rgb(230, 229, 229);
   background-color: white;
-  width: 200px;
-  height: 100px;
-  margin-top:80px;
-  border-radius: 10px;
+  width: 199px;
+  height: 150px;
+  border-radius:0px 0px 10px 10px;
+  margin-top: 33px;
+  border-top: none;
 }
 
 #divInSortButtonsDiv {
@@ -327,7 +352,8 @@ h1{
 
 /* Toggle trash edit  */
 
-.cancel-btn {
+.cancel-btn, 
+.Notecancel-btn {
   display: none;
   background-image: url("../images/trash18.png");
   border: none;
@@ -493,13 +519,13 @@ h1{
   min-width: 60%;
   min-height: 60%;
 }
-#createNoteShowBtn {
+/* #createNoteShowBtn {
   border-radius: 50%;
   border: 1px solid rgba(0,0,0,.20);
   background-color: white;
   /* background-color: white; */
-  padding:10px;
-}
+  /* padding:10px; */
+/* } */ 
 
 #createNoteShowBtn:hover {
   background-color: #FFB2EE;
@@ -537,19 +563,19 @@ h1{
 }
 
 .showMoreIndNote-Button{
-  background-image: url("../images/sort12.png");
+  background-image: url("../images/3dots14.png");
   background-repeat: no-repeat;
-  background-position-x: 2px;
-  background-position-y: center;
+background-position: center;
   padding-left: 8px;
 
   border-radius: 5px;
   height: 20px;
   width: 50px;
-  border: 1px solid rgba(0,0,0,.20);
+  border: none;
   background-color: transparent;
   /* margin-left: 77%; */
 }
+
 
 #sortButtonNotes:hover {
   background-color: #FFB2EE;
@@ -591,6 +617,10 @@ h1{
   color:rgb(46, 46, 46);
   box-shadow:rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
   border:1px solid rgba(0,0,0,.12)
+}
+
+#notesDivButtons{
+margin-left: auto;
 }
 
 .note .titleOut{
@@ -641,14 +671,14 @@ h1{
   height: 20px;
   width: 20px;
   min-height: 20px;
-  border: solid grey 0.5px;
+  border:none;
+  /* border: 1px solid rgba(0,0,0,.20); */
   background-color: transparent;
 }
 
 .Expand-btn:hover {
   background-color:#FFB2EE;
 }
-
 
 /* .note .noteExpand{
   background-color: yellow;
@@ -686,12 +716,12 @@ h1{
 }
 .habit-list{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 /* breakpoints */
 
-@media (max-width: 790px) {
+@media (max-width: 900px) {
   .intro-box {
     display: flex;
     flex-direction: column;
@@ -699,6 +729,13 @@ h1{
     height: 80%;
     width: 100%;
   }
+
+  #DivForButtonsArchEditSort{
+   
+     /* width: 200px;
+     height: 100px; */
+  }
+
 
   .testNav {
     /* padding-left: 0%; */
@@ -723,12 +760,29 @@ h1{
 
   .TestTodoSection {
     border: none;
-    width: 50%;
+    width: 95%;
   
+  }
+
+  .notesSection{
+    width: 95%;
   }
 
   .notesMain {
     width: 100%;
+  }
+
+  .habit-list{
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left:70px;
+    margin-right: 70px;
+  }
+
+  .HabitExpand{
+    height: 100px;
+    width:150px;
+    transition: all 0.5s;
   }
   body{
     overflow: scroll;

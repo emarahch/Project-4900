@@ -507,17 +507,25 @@ function addNote(ob2) {
     (x) => x.value ?? x.text
   );
   // preventDefault();
-  const notesDiv = document.createElement("div");
-  notesDiv.setAttribute("id", ob2);
-  notesDiv.classList.add("note");
+  const notesDivButtons = document.createElement("div");
+  notesDivButtons.setAttribute("id", "notesDivButtons");
 
   const ExpandButton = document.createElement("button");
   ExpandButton.classList.add("Expand-btn");
-  notesDiv.appendChild(ExpandButton);
-
+  notesDivButtons.appendChild(ExpandButton);
+  
   const showMoreIndButtonNote=document.createElement("button");
   showMoreIndButtonNote.classList.add("showMoreIndNote-Button");
-  notesDiv.appendChild(showMoreIndButtonNote);
+  notesDivButtons.appendChild(showMoreIndButtonNote);
+
+
+
+  const notesDiv = document.createElement("div");
+  notesDiv.appendChild(notesDivButtons);
+  notesDiv.setAttribute("id", ob2);
+  notesDiv.classList.add("note");
+
+  
 
   const noteTitle = document.createElement("li");
   noteTitle.innerText = notesTitle.value;
