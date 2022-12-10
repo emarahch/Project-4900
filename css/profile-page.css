@@ -618,11 +618,12 @@ h1{
 
 .noteExpand{
   transition: all 0.5s;
+  height: 200px;
 }
 
-.noteExpand .note{
+/* .noteExpand .note{
   height: 200px;
-} 
+}  */
 
 .noteExpand .bodyOut{
   overflow:scroll;
