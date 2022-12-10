@@ -53,6 +53,32 @@ var bar1 = new ldBar(".ldBar");
 var bar2 = document.getElementById("bar").ldBar;
 bar1.set(80);
 
+
+const config = {
+  name: "Event from ProDo",
+  description: "",
+  startDate: "today",
+  "options":[
+    "Apple",
+    "Google",
+    "Yahoo",
+    "iCal"
+  ],
+  trigger: "click",
+  "inline":true,
+  "checkmark":false,
+  "listStyle":"overlay",
+  "mindScrolling":true,
+  iCalFileName: "Reminder-Event",
+};
+const ShowAddToCalendar = document.getElementById('ShowAddToCalendar');
+ShowAddToCalendar.addEventListener('click', () => atcb_action(config, ShowAddToCalendar));
+
+
+
+
+
+
 //For buttons
 function mainProfilePage() {
   location.href = "../html/profile-page.html";

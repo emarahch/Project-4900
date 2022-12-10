@@ -111,7 +111,7 @@ h1{
   /* border-right: rgb(184, 184, 184) solid 0.5px; */
 }
 .testNav button {
-  border-radius: 50%;
+  /* border-radius: 50%; */
   background-color: transparent;
   /* border:solid grey 0.5px; */
   border: none;
@@ -162,10 +162,13 @@ h1{
 
 .todo-list{
   display:block;
-  overflow: auto;
+  overflow: hidden;
   height:65%;
   margin-top:2px;
+}
 
+.todo-list:hover{
+  overflow-y: auto;
 }
 
 .CompletedTodo-list{
@@ -592,7 +595,10 @@ background-position: center;
 .notes-list {
   /* width: 90%; */
   height: 65%;
-  overflow: auto;
+  overflow: hidden;
+}
+.notes-list:hover{
+  overflow-y: auto;
 }
 
 .note {
@@ -728,6 +734,14 @@ margin-left: auto;
     margin: 0px;
     height: 80%;
     width: 100%;
+  }
+
+  .notes-list{
+    height:400px;
+  }
+
+  .todo-list{
+    height:00px;
   }
 
   #DivForButtonsArchEditSort{
