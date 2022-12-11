@@ -455,6 +455,9 @@ function editStoreTodo(id, todoText) {
 }
 
 
+
+
+
 // const CompletedTodoList = document.querySelector(".CompletedTodo-list");
 CompletedTodoList.addEventListener("click", deleteCheck);
 function addToArchive(todo){
@@ -500,7 +503,7 @@ function deleteCheck(event) {
   if (item.classList[0] === "EditTitle-btn") {
     const todo = item.parentElement;
     ObjectIdText = todo.getAttribute("id"); //Works
-
+    alert(ObjectIdText)
     if (item.getAttribute("value") == "Off") {
       item.classList.toggle("editingModeCancelIcon");
       editTextFunc(ObjectIdText);
@@ -546,8 +549,23 @@ function addNote(ob2) {
 
 
 
+  const  DivShowEditDeleteNoteButtons = document.createElement("div");
+  DivShowEditDeleteNoteButtons.setAttribute("id", "DivShowEditDeleteNoteButtons");
+
+  const EditNotesButton = document.createElement("button");
+  EditNotesButton.setAttribute("value", "Off");
+  EditNotesButton.classList.add("EditNotesButton");
+  DivShowEditDeleteNoteButtons.appendChild(EditNotesButton);
+
+  const cancelButton = document.createElement("button");
+  cancelButton.classList.add("cancelNote-btn");
+  DivShowEditDeleteNoteButtons.appendChild(cancelButton);
+
+
+
   const notesDiv = document.createElement("div");
   notesDiv.appendChild(notesDivButtons);
+  notesDiv.appendChild(DivShowEditDeleteNoteButtons);
   notesDiv.setAttribute("id", ob2);
   notesDiv.classList.add("note");
 
@@ -571,10 +589,6 @@ function addNote(ob2) {
   notesDiv.appendChild(noteCategory);
 
  
-
-  const cancelButton = document.createElement("button");
-  cancelButton.classList.add("cancel-btn");
-  notesDiv.appendChild(cancelButton);
 
   //add to list
   notesList.appendChild(notesDiv);
@@ -638,11 +652,46 @@ function clearNote(event) {
   notesTitle.value = "";
 }
 
+//Edit text note - potentially merge functions for both note and text in future
+function editTextNoteFunc(id) {
+  // const paragraph = document.getElementById(id);
+  const p = document.getElementById(id);
+  paragraph = p.querySelector(".bodyOut");
+  paragraph.contentEditable = true;
+  paragraph.style.backgroundColor = "#dddbdb";
+}
+
+//need to fix the lay out fo this, maybe two try statements???
+function stopEditTextNote(id) {
+  const p = document.getElementById(id);
+  paragraph = p.querySelector(".bodyOut");
+  paragraph.contentEditable = false;
+  paragraph.style.backgroundColor = "#FFFFFF";
+  editStoreNote(id, paragraph.innerHTML);
+}
+
+function editStoreNote(id, NoteBodyText) {
+  (async () => {
+    const query = new Parse.Query("Notes");
+    try {
+      const object = await query.get(id);
+      object.set("NoteBody", NoteBodyText);
+      const result = await object.save();
+      console.log("EDIT MADE", result);
+    } catch (error) {
+      console.error("Error while EDITING Note Body: ", error);
+    }
+  })();
+}
+
+
+
 
 function deleteNote(event) {
   const item = event.target;
-  if (item.classList[0] === "cancel-btn") {
-    const note = item.parentElement;
+  if (item.classList[0] === "cancelNote-btn") {
+    const notey = item.parentElement;
+    const note = notey.parentElement;
     note.remove();
     deleteNoteStore(note.getAttribute("id"));
   }
@@ -653,7 +702,31 @@ function deleteNote(event) {
     const note =notey.parentElement;
     note.classList.toggle("noteExpand");
   }
+
+  if (item.classList[0] === "showMoreIndNote-Button") {
+    const notey = item.parentElement;
+    const note = notey.parentElement
+    ObjectIdText = note.getAttribute("id"); //Works
+    alert(ObjectIdText)
+
+
+    if (item.getAttribute("value") == "Off") {
+    // item.classList.toggle("editingModeCancelIcon");
+    editTextNoteFunc(ObjectIdText);
+    item.setAttribute("value", "On");
+  } else if (item.getAttribute("value") == "On") {
+    // item.classList.toggle("editingModeNormalIcon");
+    stopEditTextNote(ObjectIdText);
+    item.setAttribute("value", "Off");
+  }
+  
+  }
+
 }
+
+
+
+
 
 //Delete account section
 //This deletes the user, but does not delete their items....should I do pointers or relations?
@@ -976,8 +1049,23 @@ function addOldNote(objectId, title, NoteBody, category) {
 
 
 
+  const  DivShowEditDeleteNoteButtons = document.createElement("div");
+  DivShowEditDeleteNoteButtons.setAttribute("id", "DivShowEditDeleteNoteButtons");
+
+  const EditNotesButton = document.createElement("button");
+  EditNotesButton.setAttribute("value", "Off");
+  EditNotesButton.classList.add("EditNotesButton");
+  DivShowEditDeleteNoteButtons.appendChild(EditNotesButton);
+
+  const cancelButton = document.createElement("button");
+  cancelButton.classList.add("cancelNote-btn");
+  DivShowEditDeleteNoteButtons.appendChild(cancelButton);
+
+
+
   const notesDiv = document.createElement("div");
   notesDiv.appendChild(notesDivButtons)
+  notesDiv.appendChild(DivShowEditDeleteNoteButtons);
   notesDiv.setAttribute("id", objectId);
   // toDoDiv.setAttribute("value", "OFF")
   notesDiv.classList.add("note");
@@ -1000,11 +1088,9 @@ function addOldNote(objectId, title, NoteBody, category) {
   notesDiv.appendChild(noteCategory);
 
 
-  const cancelButton = document.createElement("button");
-  // cancelButton.innerText = "delete";
-  cancelButton.classList.add("cancel-btn");
 
-  notesDiv.appendChild(cancelButton);
+
+ 
 
   //add to list
   notesList.appendChild(notesDiv);

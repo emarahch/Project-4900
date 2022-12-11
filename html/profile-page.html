@@ -18,7 +18,9 @@
     />
     <link rel="stylesheet" type="text/css" href="../css/loading-bar.css" />
 
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/add-to-calendar-button@1/assets/css/atcb-3d.min.css">
+
     <link
       rel="stylesheet"
       type="text/css"
@@ -40,6 +42,7 @@
       <!-- <p id="ThingsDo">You have 3 tasks due today</p> -->
 
           <!-- Timer things -->
+          <div id="timerAndScore">
           <div class="timerSection">
             <h2 id="setTime">
               <span id="timerMinutes">25</span>:<span id="timerSeconds">00 </span>
@@ -54,8 +57,8 @@
   
       
       <div class="ScoreDiv">
-        <p>Level:</p>
-        <div id="levelEle">1</div>
+        <p>Level </p>
+        <div id="levelEle"> 1</div>
         <div
           data-preset="rainbow"
           data-stroke-width="10"
@@ -63,6 +66,7 @@
           id="bar"
           class="ldBar label-center"
         ></div>
+      </div>
       </div>
 
 
@@ -75,7 +79,7 @@
       <div class="testNav">
         <ul>
           <li><button id="themeChangeButton" data-theme="light"></button></li>
-          <li><button id="ShowAddToCalendar">Add to calendar</button></li>
+          <li><button id="ShowAddToCalendar"></button></li>
           <li><button id="tutorialbutton"></button></li>
           <li><button class="logoutButton"></button></li>
           <li><button class="deleteAccountButton"></button></li>
@@ -204,6 +208,36 @@
         
         <!-- Note things -->
         <h1 id="notesHeader">Notes</h1>
+
+        <div id="divToSelectFilterForm">
+          <div id="divToSingleSelect">
+            <form id="selectFilterNotes">
+              <select name="filterNotes" id="filterNotes">
+                <option value="General" selected="selected">General</option>
+                <option value="School">School</option>
+                <option value="School">Health</option>
+                <option value="Goals">Goals</option>
+                <option value="Work">Work</option>
+                <option value="Side Hustle">Side Hustle</option>
+                <option value="Creative">Creative</option>
+                <option value="Family">Family</option>
+                <option value="Home">Home</option>
+                <option value="Kids">Kids</option>
+                <option value="Groccery">Groccery</option>
+                <option value="Meal planning">Meal planning</option>
+              </select>
+            </form>
+            <!-- supposed to be inside form?? -->
+            <button id="submitFilterChoice" type="submit">
+              Submit Filter Choice
+            </button>
+          </div>
+        </div>
+        <div id="NoteButtons">
+        <button id="createNoteShowBtn">+ Add Note</button>
+        <button id="sortButtonNotes">Sort</button>
+        </div>
+
         <div id="divToCreateNote">
           <form id="createNoteForm">
             <div id="createNoteFormInputs">
@@ -241,35 +275,6 @@
             <button class="btn-save" type="submit">Save</button>
           </form>
           <button class="btn-clear">Clear</button>
-        </div>
-
-        <div id="divToSelectFilterForm">
-          <div id="divToSingleSelect">
-            <form id="selectFilterNotes">
-              <select name="filterNotes" id="filterNotes">
-                <option value="General" selected="selected">General</option>
-                <option value="School">School</option>
-                <option value="School">Health</option>
-                <option value="Goals">Goals</option>
-                <option value="Work">Work</option>
-                <option value="Side Hustle">Side Hustle</option>
-                <option value="Creative">Creative</option>
-                <option value="Family">Family</option>
-                <option value="Home">Home</option>
-                <option value="Kids">Kids</option>
-                <option value="Groccery">Groccery</option>
-                <option value="Meal planning">Meal planning</option>
-              </select>
-            </form>
-            <!-- supposed to be inside form?? -->
-            <button id="submitFilterChoice" type="submit">
-              Submit Filter Choice
-            </button>
-          </div>
-        </div>
-        <div id="NoteButtons">
-        <button id="createNoteShowBtn">+ Add Note</button>
-        <button id="sortButtonNotes">Sort</button>
         </div>
 
         <section class="notes-list"></section>
