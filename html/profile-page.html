@@ -34,11 +34,24 @@
     <div class="userStuff">
       
       <div class="userNamePfp">
-        <button id="tutorialbutton"></button>
         <img src="../images/plholder.webp" id="userPlay" />
         <p id="welcome">Hey Emy</p>
       </div>
-      <p id="ThingsDo">You have 3 tasks due today</p>
+      <!-- <p id="ThingsDo">You have 3 tasks due today</p> -->
+
+          <!-- Timer things -->
+          <div class="timerSection">
+            <h2 id="setTime">
+              <span id="timerMinutes">25</span>:<span id="timerSeconds">00 </span>
+            </h2>
+  
+            <button id="increaseMinutes">+</button>
+            <button id="decreaseMinutes">-</button>
+            <button id="timerStartButton">Start</button>
+          <button id="timerPauseButton">Pause</button>
+          <button id="timerClearButton">Clear</button>
+          </div>
+  
       
       <div class="ScoreDiv">
         <p>Level:</p>
@@ -51,6 +64,8 @@
           class="ldBar label-center"
         ></div>
       </div>
+
+
   </div>
 
     <div id="division1"></div>
@@ -61,6 +76,7 @@
         <ul>
           <li><button id="themeChangeButton" data-theme="light"></button></li>
           <li><button id="ShowAddToCalendar">Add to calendar</button></li>
+          <li><button id="tutorialbutton"></button></li>
           <li><button class="logoutButton"></button></li>
           <li><button class="deleteAccountButton"></button></li>
         </ul>
@@ -70,59 +86,55 @@
       <div class="TestTodoSection">
         <!-- <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX4t95PAs1EpY?utm_source=generator&theme=0" width="40%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> -->
 
+        <p id="currentDate">Date</p>
         <div id="todoAndShowMore">
         <h1 id="todoHeader">Todo</h1>
-         <div id="DivForShowMore">
-        <button id="ShowArchEditSortButton"></button>
-        <div id="DivForButtonsArchEditSort">
-          <div id="DivForButtonsArchEditSortFormating">
-        <button id="viewArchiveButton">Show Archive</button>
-        <button id="editButton">Edit</button>
-        <button id="SortButtonsAll">Sort</button>
-        </div>
-        <div id="sortButtonsDiv">
-          <div id="divInSortButtonsDiv">
-            <button id="sortButton">Priority Increasing</button>
-            <button id="sortButtonDate">Date Increasing</button>
-            <button id="sortCategoryButtonTodo">Category</button>
-            <div id="divToSelectFilterFormToDo">
-              <div id="divToSingleSelect">
-                <form id="selectFilterTodo">
-                  <select name="filterTodo" id="filterTodo">
-                    <option value="General" selected="selected">General</option>
-                <option value="School">School</option>
-                <option value="School">Health</option>
-                <option value="Goals">Goals</option>
-                <option value="Work">Work</option>
-                <option value="Side Hustle">Side Hustle</option>
-                <option value="Creative">Creative</option>
-                <option value="Family">Family</option>
-                <option value="Home">Home</option>
-                <option value="Kids">Kids</option>
-                <option value="Groccery">Groccery</option>
-                <option value="Meal planning">Meal planning</option>
-                  </select>
-                </form>
-                <!-- supposed to be inside form?? -->
-                <button id="submitFilterChoiceTodo" type="submit">
-                  Submit Filter Choice
-                </button>
+    </div>
+      
+       
+        <div id="todoButtons">
+        <button id="createTodoShowBtn">+ Add Task</button>
+        <div id="DivForShowMore">
+          <button id="ShowArchEditSortButton"></button>
+          <div id="DivForButtonsArchEditSort">
+            <div id="DivForButtonsArchEditSortFormating">
+          <button id="viewArchiveButton">Show Archive</button>
+          <button id="editButton">Edit</button>
+          <button id="SortButtonsAll">Sort</button>
+          </div>
+          <div id="sortButtonsDiv">
+            <div id="divInSortButtonsDiv">
+              <button id="sortButton">Priority Increasing</button>
+              <button id="sortButtonDate">Date Increasing</button>
+              <button id="sortCategoryButtonTodo">Category</button>
+              <div id="divToSelectFilterFormToDo">
+                <div id="divToSingleSelect">
+                  <form id="selectFilterTodo">
+                    <select name="filterTodo" id="filterTodo">
+                      <option value="General" selected="selected">General</option>
+                  <option value="School">School</option>
+                  <option value="School">Health</option>
+                  <option value="Goals">Goals</option>
+                  <option value="Work">Work</option>
+                  <option value="Side Hustle">Side Hustle</option>
+                  <option value="Creative">Creative</option>
+                  <option value="Family">Family</option>
+                  <option value="Home">Home</option>
+                  <option value="Kids">Kids</option>
+                  <option value="Groccery">Groccery</option>
+                  <option value="Meal planning">Meal planning</option>
+                    </select>
+                  </form>
+                  <!-- supposed to be inside form?? -->
+                  <button id="submitFilterChoiceTodo" type="submit">
+                    Submit Filter Choice
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
-
-
-
-      </div>
-    </div>
-      
-        <p id="currentDate">Date</p>
-       
-        <div id="todoButtons">
-        <button id="createTodoShowBtn">+ Add Task</button>
+        </div>
   
       </div>
 
@@ -186,24 +198,12 @@
     </div> -->
 
       <!-- right section -->
+  <div id="LineDivTodoNote"></div>
 
       <div class="notesSection">
-        <!-- Timer things -->
-        <div class="timerSection">
-          <h2 id="setTime">
-            <span id="timerMinutes">25</span>:<span id="timerSeconds">00 </span>
-          </h2>
-
-          <button id="increaseMinutes">+</button>
-          <button id="decreaseMinutes">-</button>
-          <button id="timerStartButton">Start</button>
-        <button id="timerPauseButton">Pause</button>
-        <button id="timerClearButton">Clear</button>
-        </div>
-
         
         <!-- Note things -->
-        <h1>Notes</h1>
+        <h1 id="notesHeader">Notes</h1>
         <div id="divToCreateNote">
           <form id="createNoteForm">
             <div id="createNoteFormInputs">
