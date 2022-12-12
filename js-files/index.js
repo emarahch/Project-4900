@@ -6,9 +6,12 @@ Parse.initialize(
 );
 
 // If having trouble with parse, check if there is an update
+const loaderContainer = document.querySelector('.loader-container');
 
 window.addEventListener("load", (event) => {
   console.log("page is fully loaded");
+  // loaderContainer.style.display = 'none';
+  loaderContainer.parentElement.removeChild(loaderContainer);
   loader();
 });
 
@@ -79,6 +82,27 @@ ShowAddToCalendar.addEventListener('click', () => atcb_action(config, ShowAddToC
 
 
 
+//For date later on 
+function formatDate() {
+  var d = new Date(),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+  if (month.length < 2) 
+      month = '0' + month;
+  if (day.length < 2) 
+      day = '0' + day;
+
+  return [year, month, day].join('-');
+}
+
+var taskDueToday=0;
+const ThingsDue=document.getElementById('ThingsDue');
+
+
+
+
 //For buttons
 function mainProfilePage() {
   location.href = "../html/profile-page.html";
@@ -97,8 +121,8 @@ function themeChangerFunc() {
 }
 
 //Getting the current date - MOVE TO LOADER FUNCTION
-var date = new Date().toString().split(" ").splice(0, 4).join(" ");
-document.getElementById("currentDate").innerHTML = date;
+var TodayDate = new Date().toString().split(" ").splice(0, 4).join(" ");
+document.getElementById("currentDate").innerHTML = TodayDate;
 
 //Creating an account
 function preCreate() {
@@ -220,6 +244,7 @@ createNoteShowBtn.addEventListener("click", () => {
   generalDisplayBlockCall(divToCreateNote);
 });
 
+
 //Switching between archive view and normal view
 const viewArchiveButton = document.getElementById("viewArchiveButton");
 const CompletedTodoList = document.querySelector(".CompletedTodo-list");
@@ -318,8 +343,12 @@ function addTodo(idd) {
 
   //add to list
   todoList.appendChild(toDoDiv);
-
   todoInput.value = "";
+
+  if(todoDateInput.value===formatDate()){
+    taskDueToday+=1;
+    ThingsDue.innerHTML=taskDueToday;
+  }
 }
 
 //this stores new Todo to parse, first store then add to the DOM
@@ -436,7 +465,7 @@ function stopEditText(id) {
   const p = document.getElementById(id);
   paragraph = p.querySelector(".IndTitle");
   paragraph.contentEditable = false;
-  paragraph.style.backgroundColor = "#FFFFFF";
+  paragraph.style.backgroundColor = "transparent";
   editStoreTodo(id, paragraph.innerHTML);
 }
 
@@ -487,13 +516,25 @@ function deleteCheck(event) {
     todo.classList.toggle("completed");
     completedStore(todo.getAttribute("id"));
 
+
+
     const todoNode= item.parentNode;
     if(todoNode.parentNode.className==="todo-list"){
       addToArchive(todoNode);
+      // alert(todo.children.item(5).innerText)
+      if(todo.children.item(5).innerText===formatDate()){
+        taskDueToday-=1;
+        ThingsDue.innerHTML=taskDueToday;
+      }
       
     }
     else if(todoNode.parentNode.className==="CompletedTodo-list"){
       addToOG(todoNode);
+      if(todo.children.item(5).innerText===formatDate()){
+        taskDueToday+=1;
+        ThingsDue.innerHTML=taskDueToday;
+      }
+      
       
     }
     
@@ -550,7 +591,7 @@ function addNote(ob2) {
 
 
   const  DivShowEditDeleteNoteButtons = document.createElement("div");
-  DivShowEditDeleteNoteButtons.setAttribute("id", "DivShowEditDeleteNoteButtons");
+  DivShowEditDeleteNoteButtons.setAttribute("class", "DivShowEditDeleteNoteButtons");
 
   const EditNotesButton = document.createElement("button");
   EditNotesButton.setAttribute("value", "Off");
@@ -595,6 +636,8 @@ function addNote(ob2) {
 
   notesInput.value = "";
   notesTitle.value = "";
+
+  
 }
 
 function storeNote(event) {
@@ -666,7 +709,7 @@ function stopEditTextNote(id) {
   const p = document.getElementById(id);
   paragraph = p.querySelector(".bodyOut");
   paragraph.contentEditable = false;
-  paragraph.style.backgroundColor = "#FFFFFF";
+  paragraph.style.backgroundColor = "transparent";
   editStoreNote(id, paragraph.innerHTML);
 }
 
@@ -703,11 +746,11 @@ function deleteNote(event) {
     note.classList.toggle("noteExpand");
   }
 
-  if (item.classList[0] === "showMoreIndNote-Button") {
+  if (item.classList[0] === "EditNotesButton") {
     const notey = item.parentElement;
-    const note = notey.parentElement
+    const note = notey.parentElement;
     ObjectIdText = note.getAttribute("id"); //Works
-    alert(ObjectIdText)
+    note.classList.toggle("noteExpand")
 
 
     if (item.getAttribute("value") == "Off") {
@@ -721,6 +764,18 @@ function deleteNote(event) {
   }
   
   }
+
+
+  if (item.classList[0] === "showMoreIndNote-Button") {
+    const notey = item.parentElement;
+    const note = notey.parentElement;
+    ObjectIdText = note.getAttribute("id")
+
+    //this finds the correct child (showMoreDiv) and calls the display function
+    generalDisplayBlockCall(note.children.item(1));
+  }
+
+
 
 }
 
@@ -919,7 +974,7 @@ function loader() {
   const currentUser = Parse.User.current();
   const refUse = currentUser.get("username");
   const userI = currentUser.get("chara");
-  document.getElementById("welcome").innerHTML = "Hey! " + refUse;
+  document.getElementById("welcome").innerHTML = "Hey, " + refUse + "!";
   document.getElementById("userPlay").src = userI;
   upScoreRealTime();
   retrieveTodos();
@@ -1007,6 +1062,12 @@ function addOldToDo(objectId, title, isCompleted, priority, category,date) {
   else if(isCompleted == false){
     todoList.appendChild(toDoDiv);
   }
+
+
+  if(date===formatDate()){
+    taskDueToday+=1;
+    ThingsDue.innerHTML=taskDueToday;
+  }
   
 }
 
@@ -1050,7 +1111,7 @@ function addOldNote(objectId, title, NoteBody, category) {
 
 
   const  DivShowEditDeleteNoteButtons = document.createElement("div");
-  DivShowEditDeleteNoteButtons.setAttribute("id", "DivShowEditDeleteNoteButtons");
+  DivShowEditDeleteNoteButtons.setAttribute("class", "DivShowEditDeleteNoteButtons");
 
   const EditNotesButton = document.createElement("button");
   EditNotesButton.setAttribute("value", "Off");
@@ -1087,14 +1148,15 @@ function addOldNote(objectId, title, NoteBody, category) {
   noteCategory.classList.add("note-item");
   notesDiv.appendChild(noteCategory);
 
-
-
-
- 
-
   //add to list
   notesList.appendChild(notesDiv);
 }
+
+
+
+
+
+
 
 //LEVEL AND SCORING functions
 function scoringMath(userScore) {

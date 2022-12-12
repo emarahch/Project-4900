@@ -20,6 +20,34 @@ a:visited {
   color: black;
 }
 
+.loader-container {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background: #000
+      url("../images/icons8-favorite-64.png") center
+      no-repeat;
+  z-index: 1;
+  animation:heartBeat 2s infinite;
+}
+
+@keyframes heartBeat {
+	0% {
+		transform: scale(0.96);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+	}
+
+	100% {
+		transform: scale(0.96);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+	}
+}
+
 /* The top part of the screen */
 
 #userPlay {
@@ -39,12 +67,18 @@ a:visited {
 }
 
 
-#welcome{
+#welcome,
+#YouHaveDue{
  padding:3px;
  font-weight: 400;
  font-size: 18px;
  line-height: 22px;
 }
+
+#YouHaveDue{
+  padding-left:0px;
+}
+
 .userNamePfp{
   display: flex;
   flex-direction: row;
@@ -68,6 +102,10 @@ a:visited {
   border-radius:6px;
   border:none;
   background-color: white;
+}
+
+.timerSection  button:hover{
+  background-color: #fd9be8;
 }
 
 .timerSection #increaseMinutes, 
@@ -186,7 +224,7 @@ line-height: 1px;
   background-image: url("../images/logOut30.png");
   background-repeat: no-repeat;
   background-position: center;
-  margin-top: 500px;
+  margin-top: 550px;
 }
 
 .deleteAccountButton {
@@ -389,8 +427,8 @@ line-height: 1px;
 
 /* Toggle trash edit  */
 
-.cancel-btn, 
-.Notecancel-btn {
+.cancel-btn,
+.cancelNote-btn{
   display: none;
   background-image: url("../images/trash18.png");
   border: none;
@@ -428,8 +466,8 @@ line-height: 1px;
 }
 
 .IndToDo:hover {
-  background-color: #FFB2EE;
-  transition: all 0.3s;
+  /* background-color: #FFB2EE;
+  transition: all 0.3s; */
 }
 
 .todo {
@@ -442,7 +480,7 @@ line-height: 1px;
 }
 
 .IndPriority {
-  margin-left:200px;
+  margin-left:auto;
   margin-right:9px;
   padding: 5px 10px 5px 10px;
   border-radius: 10px;
@@ -493,9 +531,11 @@ line-height: 1px;
   background-image: url("../images/check12.png");
   background-position: center;
   background-repeat: no-repeat;
+  background-color: #FFB2EE;
 }
 
-.EditTitle-btn {
+.EditTitle-btn,
+.EditNotesButton {
   border: none;
   background-color: transparent;
   background-repeat: no-repeat;
@@ -530,6 +570,17 @@ line-height: 1px;
 #NoteButtons {
   display:flex;
   flex-direction: row;
+}
+.DivShowEditDeleteNoteButtons{
+  display:none;
+  background-color: white;
+  margin-left: 35%;
+  position: absolute;
+  z-index: 9;
+  box-shadow:rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
+  border: 0.02px solid rgb(230, 229, 229);
+  width: 20px;
+  height: 40px;
 }
 
 
@@ -605,6 +656,10 @@ background-position: center;
   background-color: transparent;
 }
 
+.note button:hover{
+  background-color: #FFB2EE;
+}
+
 
 #sortButtonNotes:hover {
   background-color: #FFB2EE;
@@ -654,7 +709,7 @@ margin-left: auto;
 }
 
 .note .titleOut{
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .note .bodyOut{
@@ -673,10 +728,6 @@ text-align: center;
 }
 
 
-
-.note:hover {
-  background-color: #FFB2EE;
-}
 
 
 .noteExpand{
@@ -705,9 +756,12 @@ text-align: center;
   background-color: transparent;
 }
 
-.Expand-btn:hover {
-  background-color:#FFB2EE;
+
+
+.cancelNote-btn{
+  display:block;
 }
+
 
 
 
@@ -763,6 +817,8 @@ text-align: center;
     width: 100%;
   }
 
+
+
   .notes-list{
     height:400px;
   }
@@ -778,21 +834,29 @@ text-align: center;
   }  */
 
 
+  #showSideBar{
+    display:none;
+  }
   .testNav {
     width: 100%;
+    height: 80px;
   }
 
   .testNav ul{
-    display: flex;
-    flex-direction: row;
-    justify-content:none; 
-    align-items:none;
+   display:flex;
+   flex-direction: row;
+   gap:50px;
+  }
+  .logoutButton{
+    margin:0px;
   }
 
+
   .testNav button{
-    width: 100%;
+    width:300%;
  
   }
+
 
   #notesHeader{
     margin-top:20px;
@@ -830,6 +894,19 @@ text-align: center;
     width:150px;
     transition: all 0.5s;
   }
+
+  .DivShowEditDeleteNoteButtons{
+    margin-left: 90%;
+  }
+  #welcome,
+  #YouHaveDue{
+   padding:1px;
+   font-weight: 400;
+   font-size: 15px;
+   line-height: 22px;
+  }
+
+
   body{
     overflow: scroll;
   }
@@ -891,5 +968,9 @@ text-align: center;
 
 .darkMode .complete-btn{
   border-color:white;
+}
+
+.darkMode .testNav{
+
 }
 
