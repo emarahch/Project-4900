@@ -198,7 +198,6 @@ function upScoreRealTime() {
       console.error("Error while retrieving ParseObject", error);
     }
     document.getElementById("levelEle").innerHTML = userLevel;
-    //works for getting coreect
 
     bar1.set(scoringMath(userScore));
   })();
@@ -566,28 +565,31 @@ function deleteCheck(event) {
 
 
 const saveButtonNotes = document.querySelector(".btn-save");
-const clearButtonNotes = document.querySelector(".btn-clear");
 const notesList = document.querySelector(".notes-list");
 const notesInput = document.querySelector(".body-field");
 const notesTitle = document.querySelector(".title-field");
 
 saveButtonNotes.addEventListener("click", storeNote);
-clearButtonNotes.addEventListener("click", clearNote);
 notesList.addEventListener("click", deleteNote);
 
 //Everythign pexils
-// import { createClient } from 'pexels';
-// const Pexclient = createClient('563492ad6f917000010000013fbd8851f18b454ca1d76ee6f744a667');
-// Pexclient.photos.search({ query, per_page: 1 }).then(photos => {console.log("works")});
-
 const searchButton=document.getElementById("searchButton");
-const page_num=1;
-const query="cat";
-
-searchButton. addEventListener("click", SearchPhotos(query, page_num));
-
+const noImageButton = document.getElementById("noImageButton");
+const searchInput =document.getElementById("image-search");
+var imageDisplay=document.querySelector(".display_images")
 var currentImageSelected;
-async function SearchPhotos(query, page_num){
+
+// var query="cat";
+
+noImageButton.addEventListener("click",() => {
+  currentImageSelected=null;
+});
+
+searchButton.addEventListener("click", async () => {
+  var query=searchInput.value;
+  const page_num=1;
+  alert(query)
+
   const data=await fetch(`https://api.pexels.com/v1/search?query=${query}&page=${page_num}`, 
   {
       method: "GET",
@@ -600,19 +602,20 @@ async function SearchPhotos(query, page_num){
   console.log(response);
 
   display_images(response);   // call the display_images method to display the images on page
+});
+
+
+function display_images(response){
+  while (imageDisplay.firstChild) {
+    imageDisplay.removeChild(imageDisplay.firstChild);
 }
 
-// var currentImageSelected;
-function display_images(response){
-  //use forEach loop to iterate on each item
   response.photos.forEach((image) => {
-    //  var imageId =${image.height};
       const photo=document.createElement("div");
-      // photo.setAttribute("id", imageId);
       photo.setAttribute("class", "IndImageGrid");
-      photo.innerHTML=`<img src=${image.src.small}>
+      photo.innerHTML=`<img src=${image.src.large}>
       <figcaption>By: ${image.photographer}</figcaption>`;
-      document.querySelector(".display_images").appendChild(photo);
+      imageDisplay.appendChild(photo);
   });
 
 
@@ -627,14 +630,6 @@ imageChoice.forEach(function (i) {
   });
 });
 }
-
-const searchSubmit = document.getElementById("searchSubmit");
-searchSubmit.addEventListener('click',  () => { 
-alert(currentImageSelected);
-});
-
-
-
 
 
 
@@ -680,11 +675,12 @@ function addNote(ob2) {
 
   
 
-  if (images!=null && images!=undefined){
+  if (currentImageSelected!=null && currentImageSelected!=undefined){
     const noteHeaderImage = document.createElement("img")
     noteHeaderImage.setAttribute("class", "IndNoteHeadImagePerNote")
-    noteHeaderImage.src=images;
+    noteHeaderImage.src=currentImageSelected;
     notesDiv.appendChild(noteHeaderImage);
+    currentImageSelected=null;
     }
 
   const noteTitle = document.createElement("li");
@@ -766,10 +762,6 @@ function deleteNoteStore(noteId) {
   })();
 }
 
-function clearNote(event) {
-  notesInput.value = "";
-  notesTitle.value = "";
-}
 
 //Edit text note - potentially merge functions for both note and text in future
 function editTextNoteFunc(id) {
@@ -830,11 +822,9 @@ function deleteNote(event) {
 
 
     if (item.getAttribute("value") == "Off") {
-    // item.classList.toggle("editingModeCancelIcon");
     editTextNoteFunc(ObjectIdText);
     item.setAttribute("value", "On");
   } else if (item.getAttribute("value") == "On") {
-    // item.classList.toggle("editingModeNormalIcon");
     stopEditTextNote(ObjectIdText);
     item.setAttribute("value", "Off");
   }
@@ -1088,14 +1078,12 @@ function addOldToDo(objectId, title, isCompleted, priority, category,date) {
   const toDoDiv = document.createElement("div");
   toDoDiv.setAttribute("class", "IndToDo");
   toDoDiv.setAttribute("id", objectId);
-  // toDoDiv.setAttribute("value", "OFF"); //what does this do agaib?
   toDoDiv.classList.add("todo");
 
   const completedButton = document.createElement("button");
   completedButton.classList.add("complete-btn");
   toDoDiv.appendChild(completedButton);
 
-  //adding the title, priority, and catergory to the todo on screen
   const newToDo = document.createElement("li");
   newToDo.setAttribute("class", "IndTitle");
   newToDo.innerText = title;
@@ -1127,7 +1115,6 @@ function addOldToDo(objectId, title, isCompleted, priority, category,date) {
   toDoDiv.appendChild(newTodoDate);
 
   const cancelButton = document.createElement("button");
-  // cancelButton.innerText = "trash";
   cancelButton.classList.add("cancel-btn");
   toDoDiv.appendChild(cancelButton);
 
@@ -1204,7 +1191,6 @@ function addOldNote(objectId, title, NoteBody, category, images) {
   notesDiv.appendChild(notesDivButtons)
   notesDiv.appendChild(DivShowEditDeleteNoteButtons);
   notesDiv.setAttribute("id", objectId);
-  // toDoDiv.setAttribute("value", "OFF")
   notesDiv.classList.add("note");
 
 
