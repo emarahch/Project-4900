@@ -607,6 +607,35 @@ line-height: 1px;
   min-height: 60%;
 }
 
+/* .display_images{
+height:20px;
+width:20px;
+overflow: scroll;
+} */
+
+
+figcaption{
+  font-size: xx-small;
+}
+
+.display_images{
+  width: 80%;
+  height:70px;
+  overflow: scroll;
+  /* margin: 100px auto; */
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap:0px;
+}
+.display_images img 
+{
+  width: 40px;
+  border-radius: 5px;
+  height: 40px;
+  cursor: pointer;
+}
+
+
 
 #createNoteShowBtn:hover {
   background-color: #FFB2EE;
@@ -690,12 +719,10 @@ background-position: center;
 
   background-color: white;
   border-radius: 5px;
-  /* list-style-type: none; */
   margin: 5px;
   margin-bottom: 10px;
   padding: 2%;
-  /* width: 90%; */
-  height: 70px;
+  height: 100px;
   overflow-y: hidden;
 
   font-size:14px;
@@ -706,6 +733,14 @@ background-position: center;
 
 #notesDivButtons{
 margin-left: auto;
+}
+
+.IndNoteHeadImagePerNote{
+  padding:0px;
+  width:100%;
+  height:40px;
+  object-fit: cover;
+  border-radius:4px;
 }
 
 .note .titleOut{

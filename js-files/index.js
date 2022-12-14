@@ -5,6 +5,9 @@ Parse.initialize(
   "ARHVg2q79aHYce2i4rov3RDm6Z4LMvPckfwggh6T" // This is your Javascript key
 );
 
+
+
+
 // If having trouble with parse, check if there is an update
 const loaderContainer = document.querySelector('.loader-container');
 
@@ -561,6 +564,7 @@ function deleteCheck(event) {
 
 //NOTES SECTION//
 
+
 const saveButtonNotes = document.querySelector(".btn-save");
 const clearButtonNotes = document.querySelector(".btn-clear");
 const notesList = document.querySelector(".notes-list");
@@ -570,6 +574,71 @@ const notesTitle = document.querySelector(".title-field");
 saveButtonNotes.addEventListener("click", storeNote);
 clearButtonNotes.addEventListener("click", clearNote);
 notesList.addEventListener("click", deleteNote);
+
+//Everythign pexils
+// import { createClient } from 'pexels';
+// const Pexclient = createClient('563492ad6f917000010000013fbd8851f18b454ca1d76ee6f744a667');
+// Pexclient.photos.search({ query, per_page: 1 }).then(photos => {console.log("works")});
+
+const searchButton=document.getElementById("searchButton");
+const page_num=1;
+const query="cat";
+
+searchButton. addEventListener("click", SearchPhotos(query, page_num));
+
+var currentImageSelected;
+async function SearchPhotos(query, page_num){
+  const data=await fetch(`https://api.pexels.com/v1/search?query=${query}&page=${page_num}`, 
+  {
+      method: "GET",
+      headers: {
+          Accept: "application/json",
+          Authorization:'563492ad6f917000010000013fbd8851f18b454ca1d76ee6f744a667' ,     //use the apikey you have generated
+      },
+  });
+  const response=await data.json();   //convert the response to json 
+  console.log(response);
+
+  display_images(response);   // call the display_images method to display the images on page
+}
+
+// var currentImageSelected;
+function display_images(response){
+  //use forEach loop to iterate on each item
+  response.photos.forEach((image) => {
+    //  var imageId =${image.height};
+      const photo=document.createElement("div");
+      // photo.setAttribute("id", imageId);
+      photo.setAttribute("class", "IndImageGrid");
+      photo.innerHTML=`<img src=${image.src.small}>
+      <figcaption>By: ${image.photographer}</figcaption>`;
+      document.querySelector(".display_images").appendChild(photo);
+  });
+
+
+
+
+
+var imageChoice = document.querySelectorAll(".IndImageGrid");
+imageChoice.forEach(function (i) {
+  i.addEventListener('click', function() {
+    console.log(i.firstChild.getAttribute("src"));
+    currentImageSelected=i.firstChild.getAttribute("src");
+  });
+});
+}
+
+const searchSubmit = document.getElementById("searchSubmit");
+searchSubmit.addEventListener('click',  () => { 
+alert(currentImageSelected);
+});
+
+
+
+
+
+
+
 
 function addNote(ob2) {
   var categoryNumberUser = document.getElementById("categoryNumberNotes");
@@ -587,7 +656,6 @@ function addNote(ob2) {
   const showMoreIndButtonNote=document.createElement("button");
   showMoreIndButtonNote.classList.add("showMoreIndNote-Button");
   notesDivButtons.appendChild(showMoreIndButtonNote);
-
 
 
   const  DivShowEditDeleteNoteButtons = document.createElement("div");
@@ -611,6 +679,13 @@ function addNote(ob2) {
   notesDiv.classList.add("note");
 
   
+
+  if (images!=null && images!=undefined){
+    const noteHeaderImage = document.createElement("img")
+    noteHeaderImage.setAttribute("class", "IndNoteHeadImagePerNote")
+    noteHeaderImage.src=images;
+    notesDiv.appendChild(noteHeaderImage);
+    }
 
   const noteTitle = document.createElement("li");
   noteTitle.innerText = notesTitle.value;
@@ -653,6 +728,7 @@ function storeNote(event) {
     newNote.set("title", document.querySelector(".title-field").value);
     newNote.set("NoteBody", document.querySelector(".body-field").value);
     newNote.set("category", textCa);
+    newNote.set("images", currentImageSelected);
 
     try {
       const result = await newNote.save();
@@ -1086,7 +1162,8 @@ function retrieveNotes() {
         const title = object.get("title");
         const NoteBody = object.get("NoteBody");
         const category = object.get("category");
-        addOldNote(objectId, title, NoteBody, category);
+        const noteHeaderImage = object.get("images");
+        addOldNote(objectId, title, NoteBody, category, noteHeaderImage);
       }
     } catch (error) {
       console.error("Error while fetching ToDo", error);
@@ -1094,7 +1171,7 @@ function retrieveNotes() {
   })();
 }
 
-function addOldNote(objectId, title, NoteBody, category) {
+function addOldNote(objectId, title, NoteBody, category, images) {
   // preventDefault();
 
   const notesDivButtons = document.createElement("div");
@@ -1107,7 +1184,6 @@ function addOldNote(objectId, title, NoteBody, category) {
   const showMoreIndButtonNote=document.createElement("button");
   showMoreIndButtonNote.classList.add("showMoreIndNote-Button");
   notesDivButtons.appendChild(showMoreIndButtonNote);
-
 
 
   const  DivShowEditDeleteNoteButtons = document.createElement("div");
@@ -1131,6 +1207,15 @@ function addOldNote(objectId, title, NoteBody, category) {
   // toDoDiv.setAttribute("value", "OFF")
   notesDiv.classList.add("note");
 
+
+
+  if (images!=null && images!=undefined){
+    const noteHeaderImage = document.createElement("img")
+    noteHeaderImage.setAttribute("class", "IndNoteHeadImagePerNote")
+    noteHeaderImage.src=images;
+    notesDiv.appendChild(noteHeaderImage);
+    }
+  
   const noteTitle = document.createElement("li");
   noteTitle.innerText = title;
   noteTitle.classList.add("titleOut");
@@ -1502,6 +1587,11 @@ function deleteCheckHabit(event) {
 
 
 
-  
+
+
+
+
+// heheMeow=imagesChoice.children;
+// alert(imageChoice.childElementCount);
 
 
