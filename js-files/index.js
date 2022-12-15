@@ -1380,6 +1380,8 @@ const submitFilterChoiceTodo = document.getElementById(
   "submitFilterChoiceTodo"
 );
 
+
+//Went through stackoverflow and came yup with this
 submitFilterChoiceTodo.addEventListener("click", () => {
   var filterTodo = document.getElementById("filterTodo");
   var filterSelection = filterTodo.options[filterTodo.selectedIndex].value;
