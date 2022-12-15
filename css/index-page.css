@@ -1,5 +1,6 @@
 body {
   font-family: "Lato";
+  margin: 0%;
 }
 
 nav {
@@ -30,34 +31,26 @@ a:visited {
   color: black;
 }
 
-.title {
-  text-align: left;
-}
 
-.intro-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-}
 
 .intro-box {
   display: flex;
   align-items: center;
   justify-content: center;
+ flex-direction: row;
   background:url(../images/ffflux.svg);
-  width: 100%;
   height:80vh;
-  padding: 10%;
   border:none;
-  color: black;
 
 }
 #TagLine{
   width: 500px;
   font-size: 70px;
   text-align:center;
+}
+
+#cutePink{
+  color:#f79af2;
 }
 
 .create-button,
@@ -69,9 +62,10 @@ a:visited {
   letter-spacing: 1px;
   transition: all 0.2s linear;
   cursor: pointer;
-  border: none;
-  border-radius: 20px;
-  background: rgb(236, 154, 154);
+  border: rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  color:white;
+  background: #000000;
 }
 
 .create-button{
@@ -92,11 +86,10 @@ a:visited {
 }
 
 #boxpic {
-  position: relative;
-  height: 300px;
-  width: 300px;
-  /* box-shadow: 0 0 10px rgb(219, 218, 218); */
+  height: 500px;
+  width: 500px;
   border-radius: 20px;
+  object-fit:contain;
 }
 .login-button:hover {
   box-shadow: 9px 9px 33px rgb(202, 176, 176), -9px -9px 33px #ffffff;
@@ -107,7 +100,8 @@ a:visited {
   display: flex;
   align-items: center;
   flex-direction: column;
-
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 .features {
@@ -117,7 +111,6 @@ a:visited {
   flex-direction: row;
   padding: 40px;
   padding-top: 50px;
-  /* margin:200px; */
 }
 
 .singleFeature {
@@ -144,10 +137,10 @@ a:visited {
 .FPic {
   height: 300px;
   width: 300px;
-
   position: relative;
   box-shadow: 0 0 10px rgb(219, 218, 218);
   border-radius: 30px;
+  object-fit:contain;
 }
 
 #FAQDiv{
@@ -191,26 +184,20 @@ hr {
   color:pink;
 }
 .panel {
-  padding: 0 18px;
   background-color: rgb(88, 88, 88);
   padding: 18px;
-  width: 728px;
+  width: 680px;
   display: none;
-  /* overflow: hidden; */
 }
 
 footer {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  /* background-color:black; */
-  /* color:white; */
   color: black;
   text-align: center;
   height: 100px;
   width: 100%;
-  margin: -1rem;
   position: relative;
 }
 
@@ -232,32 +219,39 @@ footer {
 
 @media (max-width: 950px) {
   .features {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
     padding: 40px;
     padding-top: 50px;
-    /* margin:200px; */
   }
 
   .intro-box {
     padding: 15%;
+    font-size: 40px;
   }
   #boxpic {
-    height: 250px;
-    width: 250px;
+    height: 400px;
+    width: 400px;
   }
 
   .singleFeature {
     height: 60%;
     width: 40%;
   }
+  #TagLine{
+    font-size: 60px;
+  }
 }
 
 @media (max-width: 790px) {
-  .singleFeature {
-    height: 60%;
-    width: 65%;
+    .intro-box{
+    flex-direction: column;
+  }
+
+  .accordion{
+ width:500px;
+  }
+
+  .panel{
+    width:500px;
   }
 }

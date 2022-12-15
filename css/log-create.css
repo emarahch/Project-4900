@@ -1,62 +1,53 @@
 body {
-  font-family: "Lato";
-  background: linear-gradient(
-    179.4deg,
-    rgb(253, 240, 233) 4.2%,
-    rgb(247, 217, 221) 99.2%
-  );
-  /* background: linear-gradient(179.4deg, rgb(253, 240, 233) 2.2%, rgb(255, 194, 203) 96.2%); */
-  /* background-image: url("images/mesh-gradient.png"); */
+font-family: "Lato";
+background:url(../images/ffflux.svg);
+margin:0px;
 }
 
-nav {
-  margin: -1rem;
-  padding: 20px 20px 5px 20px;
-  display: flex;
-  align-items: center;
 
+nav {
+  padding: 20px 20px 5px 20px;
   font-size: 15px;
   background-color: rgb(255, 255, 255);
-  top: 0px;
+
 }
 
 .logoImg {
   width: 80px;
 }
 
-/* .logoImg{
-    width:200px;
-    margin-top: -30px ;
-    margin-right:800px;
-  } */
+
+#DivDivForLogCreate{
+  height:93vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .Log-create-div {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin: 0 auto;
   height: 400px;
   width: 700px;
   padding: 40px;
   background-color: white;
   color: black;
-  /* box-sizing: border-box; */
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
-  border-radius: 70px;
+  border-radius: 10px;
 }
 input {
   border-radius: 20px;
-  /* border-style:outset; */
-  border-style: groove;
-  /* border: 1px solid black; */
+  border: 0.02px solid rgb(230, 229, 229);
+  /* border-style: groove; */
   height: 20px;
   width: 200px;
   margin-top: 10px;
 }
 
-.Log-create-button {
-  position: relative;
+.Log-create-button,
+.loginButton{
   width: 130px;
   height: 40px;
   align-items: center;
@@ -67,7 +58,9 @@ input {
   transition: all 0.2s linear;
   cursor: pointer;
   border: none;
-  background: rgb(236, 154, 154);
+
+  background: rgb(0, 0, 0);
+  color:white;
   margin-top: 10px;
 }
 .Log-create-button:hover > svg {
@@ -81,7 +74,7 @@ input {
 
 input[type="radio"]:checked + label > img {
   border: 1px solid #fff;
-  box-shadow: 0 0 3px 3px #090;
+  box-shadow: 0 0 3px 3px#e2a7df;
 }
 
 /* hiding the button, only show image */
@@ -93,15 +86,10 @@ input[type="radio"] {
   height: 40px;
 }
 
-label::before,
-label::after {
-  display: none;
-}
-
 .pick-Character {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 5px;
-  padding: 20px;
+  /* margin: 5px; */
+  padding: 20px; 
 }

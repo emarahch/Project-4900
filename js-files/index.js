@@ -523,7 +523,8 @@ function deleteCheck(event) {
     const todoNode= item.parentNode;
     if(todoNode.parentNode.className==="todo-list"){
       addToArchive(todoNode);
-      // alert(todo.children.item(5).innerText)
+     
+
       if(todo.children.item(5).innerText===formatDate()){
         taskDueToday-=1;
         ThingsDue.innerHTML=taskDueToday;
@@ -546,7 +547,6 @@ function deleteCheck(event) {
   if (item.classList[0] === "EditTitle-btn") {
     const todo = item.parentElement;
     ObjectIdText = todo.getAttribute("id"); //Works
-    alert(ObjectIdText)
     if (item.getAttribute("value") == "Off") {
       item.classList.toggle("editingModeCancelIcon");
       editTextFunc(ObjectIdText);
@@ -557,7 +557,8 @@ function deleteCheck(event) {
       item.setAttribute("value", "Off");
     }
 
-    // completedStore(todo.getAttribute("id"));
+  
+   
   }
 }
 
@@ -579,7 +580,8 @@ const searchInput =document.getElementById("image-search");
 var imageDisplay=document.querySelector(".display_images")
 var currentImageSelected;
 
-// var query="cat";
+
+
 
 noImageButton.addEventListener("click",() => {
   currentImageSelected=null;
@@ -588,7 +590,7 @@ noImageButton.addEventListener("click",() => {
 searchButton.addEventListener("click", async () => {
   var query=searchInput.value;
   const page_num=1;
-  alert(query)
+
 
   const data=await fetch(`https://api.pexels.com/v1/search?query=${query}&page=${page_num}`, 
   {
@@ -989,7 +991,7 @@ function timerIncrements() {
     timerMinutes.innerHTML = "25";
     timerSeconds.innerHTML = "00";
     session = 5;
-    // alert("Done");
+  
     Toastify({
       text: "Your timer is Done!",
       duration: 2500,
@@ -1510,7 +1512,7 @@ habitList.addEventListener("click", deleteCheckHabit);
 
 submitNewHabitBtn.addEventListener("click", addHabit);
 function addHabit(){
-  // alert(habitList.childNodes.length);
+ 
   if (habitList.childNodes.length<3){
   const habitDiv = document.createElement("div");
   habitDiv.setAttribute("class", "IndHabit");
@@ -1518,7 +1520,6 @@ function addHabit(){
 
 
   const ExpandButton = document.createElement("button");
-  // ExpandButton.innerText = "expand";
   ExpandButton.classList.add("Expand-btn");
   habitDiv.appendChild(ExpandButton);
 
@@ -1530,7 +1531,6 @@ function addHabit(){
 
 
   const cancelButton = document.createElement("button");
-  // cancelButton.innerText = "trash";
   cancelButton.classList.add("cancel-btn");
   habitDiv.appendChild(cancelButton);
 
@@ -1575,9 +1575,5 @@ function deleteCheckHabit(event) {
 
 
 
-
-
-// heheMeow=imagesChoice.children;
-// alert(imageChoice.childElementCount);
 
 
