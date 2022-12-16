@@ -86,6 +86,7 @@ ShowAddToCalendar.addEventListener('click', () => atcb_action(config, ShowAddToC
 
 
 //For date later on 
+//This specific format function is from stack overflow
 function formatDate() {
   var d = new Date(),
       month = '' + (d.getMonth() + 1),
@@ -592,18 +593,21 @@ searchButton.addEventListener("click", async () => {
   const page_num=1;
 
 
+// For setting this up I references 
+// https://dev.to/nehasoni__/create-an-amazing-image-search-app-using-pexels-api-2cf 
+//and https://www.pexels.com/api/documentation/
+
   const data=await fetch(`https://api.pexels.com/v1/search?query=${query}&page=${page_num}`, 
   {
       method: "GET",
       headers: {
           Accept: "application/json",
-          Authorization:'563492ad6f917000010000013fbd8851f18b454ca1d76ee6f744a667' ,     //use the apikey you have generated
+          Authorization:'563492ad6f917000010000013fbd8851f18b454ca1d76ee6f744a667' ,    
       },
   });
-  const response=await data.json();   //convert the response to json 
-  console.log(response);
+  const response=await data.json();  
 
-  display_images(response);   // call the display_images method to display the images on page
+  display_images(response);   
 });
 
 
