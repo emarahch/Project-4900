@@ -14,6 +14,7 @@ const loaderContainer = document.querySelector('.loader-container');
 window.addEventListener("load", (event) => {
   console.log("page is fully loaded");
   // loaderContainer.style.display = 'none';
+  //referenced https://stackabuse.com/loading-animation-in-vanilla-javascript/
   loaderContainer.parentElement.removeChild(loaderContainer);
   loader();
 });
