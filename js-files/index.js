@@ -594,7 +594,7 @@ searchButton.addEventListener("click", async () => {
   const page_num=1;
 
 
-// For setting this up I references 
+// For setting this up I referenced 
 // https://dev.to/nehasoni__/create-an-amazing-image-search-app-using-pexels-api-2cf 
 //and https://www.pexels.com/api/documentation/
 
