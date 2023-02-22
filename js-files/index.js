@@ -5,11 +5,8 @@ Parse.initialize(
   "ARHVg2q79aHYce2i4rov3RDm6Z4LMvPckfwggh6T" // This is your Javascript key
 );
 
-
-
-
 // If having trouble with parse, check if there is an update
-const loaderContainer = document.querySelector('.loader-container');
+const loaderContainer = document.querySelector(".loader-container");
 
 window.addEventListener("load", (event) => {
   console.log("page is fully loaded");
@@ -28,7 +25,6 @@ tippy("#tutorialbutton", {
   allowHTML: true,
   trigger: "click",
 });
-
 
 //multislect
 new SlimSelect({
@@ -60,53 +56,39 @@ var bar1 = new ldBar(".ldBar");
 var bar2 = document.getElementById("bar").ldBar;
 bar1.set(80);
 
-
 const config = {
   name: "Event from ProDo",
   description: "",
   startDate: "today",
-  "options":[
-    "Apple",
-    "Google",
-    "Yahoo",
-    "iCal"
-  ],
+  options: ["Apple", "Google", "Yahoo", "iCal"],
   trigger: "click",
-  "inline":true,
-  "checkmark":false,
-  "listStyle":"overlay",
-  "mindScrolling":true,
+  inline: true,
+  checkmark: false,
+  listStyle: "overlay",
+  mindScrolling: true,
   iCalFileName: "Reminder-Event",
 };
-const ShowAddToCalendar = document.getElementById('ShowAddToCalendar');
-ShowAddToCalendar.addEventListener('click', () => atcb_action(config, ShowAddToCalendar));
+const ShowAddToCalendar = document.getElementById("ShowAddToCalendar");
+ShowAddToCalendar.addEventListener("click", () =>
+  atcb_action(config, ShowAddToCalendar)
+);
 
-
-
-
-
-
-//For date later on 
+//For date later on
 //This specific format function is from stack overflow
 function formatDate() {
   var d = new Date(),
-      month = '' + (d.getMonth() + 1),
-      day = '' + d.getDate(),
-      year = d.getFullYear();
+    month = "" + (d.getMonth() + 1),
+    day = "" + d.getDate(),
+    year = d.getFullYear();
 
-  if (month.length < 2) 
-      month = '0' + month;
-  if (day.length < 2) 
-      day = '0' + day;
+  if (month.length < 2) month = "0" + month;
+  if (day.length < 2) day = "0" + day;
 
-  return [year, month, day].join('-');
+  return [year, month, day].join("-");
 }
 
-var taskDueToday=0;
-const ThingsDue=document.getElementById('ThingsDue');
-
-
-
+var taskDueToday = 0;
+const ThingsDue = document.getElementById("ThingsDue");
 
 //For buttons
 function mainProfilePage() {
@@ -205,18 +187,15 @@ function upScoreRealTime() {
   })();
 }
 
-
-
 //showing and hiding sort by priority etc buttosn
 
-function generalDisplayBlockCall(Div){
+function generalDisplayBlockCall(Div) {
   if (Div.style.display === "block") {
     // HIDES the form
     Div.style.display = "none";
   } else {
     Div.style.display = "block";
   }
-
 }
 const SortButtonsAll = document.getElementById("SortButtonsAll");
 const sortButtonsDiv = document.getElementById("sortButtonsDiv");
@@ -248,7 +227,6 @@ createNoteShowBtn.addEventListener("click", () => {
   generalDisplayBlockCall(divToCreateNote);
 });
 
-
 //Switching between archive view and normal view
 const viewArchiveButton = document.getElementById("viewArchiveButton");
 const CompletedTodoList = document.querySelector(".CompletedTodo-list");
@@ -259,30 +237,30 @@ viewArchiveButton.addEventListener("click", () => {
   if (divpform.style.display === "block") {
     //  HIDES the form
     divpform.style.display = "none";
-    divArchiveform.style.display ="block";
-    viewArchiveButton.innerHTML="Show To Do"
+    divArchiveform.style.display = "block";
+    viewArchiveButton.innerHTML = "Show To Do";
   } else {
     divpform.style.display = "block";
-    divArchiveform.style.display ="none";
-    viewArchiveButton.innerHTML="Show Archive"
+    divArchiveform.style.display = "none";
+    viewArchiveButton.innerHTML = "Show Archive";
   }
 });
 
-
-const ShowArchEditSortButton =document.getElementById("ShowArchEditSortButton");
-const DivForButtonsArchEditSort= document.getElementById("DivForButtonsArchEditSort");
+const ShowArchEditSortButton = document.getElementById(
+  "ShowArchEditSortButton"
+);
+const DivForButtonsArchEditSort = document.getElementById(
+  "DivForButtonsArchEditSort"
+);
 ShowArchEditSortButton.addEventListener("click", () => {
   generalDisplayBlockCall(DivForButtonsArchEditSort);
- 
 });
-
-
 
 //Adding New Todo's to the DOM
 const todoInput = document.querySelector(".todo-input");
 const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todo-list");
-const todoDateInput=document.querySelector(".todo-dateInput");
+const todoDateInput = document.querySelector(".todo-dateInput");
 
 todoButton.addEventListener("click", storeTODO);
 todoList.addEventListener("click", deleteCheck);
@@ -334,9 +312,9 @@ function addTodo(idd) {
   newToDoC.classList.add("todo-item");
   toDoDiv.appendChild(newToDoC);
 
-  const newTodoDate=document.createElement('li');
+  const newTodoDate = document.createElement("li");
   newTodoDate.setAttribute("class", "IndDate");
-  newTodoDate.innerText=todoDateInput.value;
+  newTodoDate.innerText = todoDateInput.value;
   newTodoDate.classList.add("todo-item");
   toDoDiv.appendChild(newTodoDate);
 
@@ -349,9 +327,9 @@ function addTodo(idd) {
   todoList.appendChild(toDoDiv);
   todoInput.value = "";
 
-  if(todoDateInput.value===formatDate()){
-    taskDueToday+=1;
-    ThingsDue.innerHTML=taskDueToday;
+  if (todoDateInput.value === formatDate()) {
+    taskDueToday += 1;
+    ThingsDue.innerHTML = taskDueToday;
   }
 }
 
@@ -413,7 +391,6 @@ function deleteToDoStore(idd) {
 
 //this updates parse for task completion
 function completedStore(idd) {
-
   Parse.User.enableUnsafeCurrentUser();
   const currentUser = Parse.User.current();
   var userScore = currentUser.get("score");
@@ -487,22 +464,18 @@ function editStoreTodo(id, todoText) {
   })();
 }
 
-
-
-
-
 // const CompletedTodoList = document.querySelector(".CompletedTodo-list");
 CompletedTodoList.addEventListener("click", deleteCheck);
-function addToArchive(todo){
-  var meow=todo;
+function addToArchive(todo) {
+  var meow = todo;
   CompletedTodoList.appendChild(meow);
 }
 
-function addToOG(todo){
+function addToOG(todo) {
   const ogList = document.querySelector(".todo-list");
-  var meow=todo;
-  ogList .appendChild(meow);
-  ogList .addEventListener("click", deleteCheck);
+  var meow = todo;
+  ogList.appendChild(meow);
+  ogList.addEventListener("click", deleteCheck);
 }
 
 function deleteCheck(event) {
@@ -512,7 +485,6 @@ function deleteCheck(event) {
     todo.remove();
     deleteToDoStore(todo.getAttribute("id"));
   }
-  
 
   //I have it whhere the user can click button multuple times, bc people make mistakes
   if (item.classList[0] === "complete-btn") {
@@ -520,31 +492,22 @@ function deleteCheck(event) {
     todo.classList.toggle("completed");
     completedStore(todo.getAttribute("id"));
 
-
-
-    const todoNode= item.parentNode;
-    if(todoNode.parentNode.className==="todo-list"){
+    const todoNode = item.parentNode;
+    if (todoNode.parentNode.className === "todo-list") {
       addToArchive(todoNode);
-     
 
-      if(todo.children.item(5).innerText===formatDate()){
-        taskDueToday-=1;
-        ThingsDue.innerHTML=taskDueToday;
+      if (todo.children.item(5).innerText === formatDate()) {
+        taskDueToday -= 1;
+        ThingsDue.innerHTML = taskDueToday;
       }
-      
-    }
-    else if(todoNode.parentNode.className==="CompletedTodo-list"){
+    } else if (todoNode.parentNode.className === "CompletedTodo-list") {
       addToOG(todoNode);
-      if(todo.children.item(5).innerText===formatDate()){
-        taskDueToday+=1;
-        ThingsDue.innerHTML=taskDueToday;
+      if (todo.children.item(5).innerText === formatDate()) {
+        taskDueToday += 1;
+        ThingsDue.innerHTML = taskDueToday;
       }
-      
-      
     }
-    
   }
-
 
   if (item.classList[0] === "EditTitle-btn") {
     const todo = item.parentElement;
@@ -558,14 +521,10 @@ function deleteCheck(event) {
       stopEditText(ObjectIdText);
       item.setAttribute("value", "Off");
     }
-
-  
-   
   }
 }
 
 //NOTES SECTION//
-
 
 const saveButtonNotes = document.querySelector(".btn-save");
 const notesList = document.querySelector(".notes-list");
@@ -576,71 +535,61 @@ saveButtonNotes.addEventListener("click", storeNote);
 notesList.addEventListener("click", deleteNote);
 
 //Everythign pexils
-const searchButton=document.getElementById("searchButton");
+const searchButton = document.getElementById("searchButton");
 const noImageButton = document.getElementById("noImageButton");
-const searchInput =document.getElementById("image-search");
-var imageDisplay=document.querySelector(".display_images")
+const searchInput = document.getElementById("image-search");
+var imageDisplay = document.querySelector(".display_images");
 var currentImageSelected;
 
-
-
-
-noImageButton.addEventListener("click",() => {
-  currentImageSelected=null;
+noImageButton.addEventListener("click", () => {
+  currentImageSelected = null;
 });
 
 searchButton.addEventListener("click", async () => {
-  var query=searchInput.value;
-  const page_num=1;
+  var query = searchInput.value;
+  const page_num = 1;
 
+  // For setting this up I referenced
+  // https://dev.to/nehasoni__/create-an-amazing-image-search-app-using-pexels-api-2cf
+  //and https://www.pexels.com/api/documentation/
 
-// For setting this up I referenced 
-// https://dev.to/nehasoni__/create-an-amazing-image-search-app-using-pexels-api-2cf 
-//and https://www.pexels.com/api/documentation/
-
-  const data=await fetch(`https://api.pexels.com/v1/search?query=${query}&page=${page_num}`, 
-  {
+  const data = await fetch(
+    `https://api.pexels.com/v1/search?query=${query}&page=${page_num}`,
+    {
       method: "GET",
       headers: {
-          Accept: "application/json",
-          Authorization:'563492ad6f917000010000013fbd8851f18b454ca1d76ee6f744a667' ,    
+        Accept: "application/json",
+        Authorization:
+          "563492ad6f917000010000013fbd8851f18b454ca1d76ee6f744a667",
       },
-  });
-  const response=await data.json();  
+    }
+  );
+  const response = await data.json();
 
-  display_images(response);   
+  display_images(response);
 });
 
-
-function display_images(response){
+function display_images(response) {
   while (imageDisplay.firstChild) {
     imageDisplay.removeChild(imageDisplay.firstChild);
-}
+  }
 
   response.photos.forEach((image) => {
-      const photo=document.createElement("div");
-      photo.setAttribute("class", "IndImageGrid");
-      photo.innerHTML=`<img src=${image.src.large}>
+    const photo = document.createElement("div");
+    photo.setAttribute("class", "IndImageGrid");
+    photo.innerHTML = `<img src=${image.src.large}>
       <figcaption>By: ${image.photographer}</figcaption>`;
-      imageDisplay.appendChild(photo);
+    imageDisplay.appendChild(photo);
   });
 
-
-
-
-
-var imageChoice = document.querySelectorAll(".IndImageGrid");
-imageChoice.forEach(function (i) {
-  i.addEventListener('click', function() {
-    console.log(i.firstChild.getAttribute("src"));
-    currentImageSelected=i.firstChild.getAttribute("src");
+  var imageChoice = document.querySelectorAll(".IndImageGrid");
+  imageChoice.forEach(function (i) {
+    i.addEventListener("click", function () {
+      console.log(i.firstChild.getAttribute("src"));
+      currentImageSelected = i.firstChild.getAttribute("src");
+    });
   });
-});
 }
-
-
-
-
 
 function addNote(ob2) {
   var categoryNumberUser = document.getElementById("categoryNumberNotes");
@@ -654,14 +603,16 @@ function addNote(ob2) {
   const ExpandButton = document.createElement("button");
   ExpandButton.classList.add("Expand-btn");
   notesDivButtons.appendChild(ExpandButton);
-  
-  const showMoreIndButtonNote=document.createElement("button");
+
+  const showMoreIndButtonNote = document.createElement("button");
   showMoreIndButtonNote.classList.add("showMoreIndNote-Button");
   notesDivButtons.appendChild(showMoreIndButtonNote);
 
-
-  const  DivShowEditDeleteNoteButtons = document.createElement("div");
-  DivShowEditDeleteNoteButtons.setAttribute("class", "DivShowEditDeleteNoteButtons");
+  const DivShowEditDeleteNoteButtons = document.createElement("div");
+  DivShowEditDeleteNoteButtons.setAttribute(
+    "class",
+    "DivShowEditDeleteNoteButtons"
+  );
 
   const EditNotesButton = document.createElement("button");
   EditNotesButton.setAttribute("value", "Off");
@@ -672,23 +623,19 @@ function addNote(ob2) {
   cancelButton.classList.add("cancelNote-btn");
   DivShowEditDeleteNoteButtons.appendChild(cancelButton);
 
-
-
   const notesDiv = document.createElement("div");
   notesDiv.appendChild(notesDivButtons);
   notesDiv.appendChild(DivShowEditDeleteNoteButtons);
   notesDiv.setAttribute("id", ob2);
   notesDiv.classList.add("note");
 
-  
-
-  if (currentImageSelected!=null && currentImageSelected!=undefined){
-    const noteHeaderImage = document.createElement("img")
-    noteHeaderImage.setAttribute("class", "IndNoteHeadImagePerNote")
-    noteHeaderImage.src=currentImageSelected;
+  if (currentImageSelected != null && currentImageSelected != undefined) {
+    const noteHeaderImage = document.createElement("img");
+    noteHeaderImage.setAttribute("class", "IndNoteHeadImagePerNote");
+    noteHeaderImage.src = currentImageSelected;
     notesDiv.appendChild(noteHeaderImage);
-    currentImageSelected=null;
-    }
+    currentImageSelected = null;
+  }
 
   const noteTitle = document.createElement("li");
   noteTitle.innerText = notesTitle.value;
@@ -707,15 +654,11 @@ function addNote(ob2) {
   noteCategory.classList.add("category");
   notesDiv.appendChild(noteCategory);
 
- 
-
   //add to list
   notesList.appendChild(notesDiv);
 
   notesInput.value = "";
   notesTitle.value = "";
-
-  
 }
 
 function storeNote(event) {
@@ -769,7 +712,6 @@ function deleteNoteStore(noteId) {
   })();
 }
 
-
 //Edit text note - potentially merge functions for both note and text in future
 function editTextNoteFunc(id) {
   // const paragraph = document.getElementById(id);
@@ -802,9 +744,6 @@ function editStoreNote(id, NoteBodyText) {
   })();
 }
 
-
-
-
 function deleteNote(event) {
   const item = event.target;
   if (item.classList[0] === "cancelNote-btn") {
@@ -814,10 +753,9 @@ function deleteNote(event) {
     deleteNoteStore(note.getAttribute("id"));
   }
 
-
   if (item.classList[0] === "Expand-btn") {
     const notey = item.parentElement;
-    const note =notey.parentElement;
+    const note = notey.parentElement;
     note.classList.toggle("noteExpand");
   }
 
@@ -825,36 +763,26 @@ function deleteNote(event) {
     const notey = item.parentElement;
     const note = notey.parentElement;
     ObjectIdText = note.getAttribute("id"); //Works
-    note.classList.toggle("noteExpand")
-
+    note.classList.toggle("noteExpand");
 
     if (item.getAttribute("value") == "Off") {
-    editTextNoteFunc(ObjectIdText);
-    item.setAttribute("value", "On");
-  } else if (item.getAttribute("value") == "On") {
-    stopEditTextNote(ObjectIdText);
-    item.setAttribute("value", "Off");
+      editTextNoteFunc(ObjectIdText);
+      item.setAttribute("value", "On");
+    } else if (item.getAttribute("value") == "On") {
+      stopEditTextNote(ObjectIdText);
+      item.setAttribute("value", "Off");
+    }
   }
-  
-  }
-
 
   if (item.classList[0] === "showMoreIndNote-Button") {
     const notey = item.parentElement;
     const note = notey.parentElement;
-    ObjectIdText = note.getAttribute("id")
+    ObjectIdText = note.getAttribute("id");
 
     //this finds the correct child (showMoreDiv) and calls the display function
     generalDisplayBlockCall(note.children.item(1));
   }
-
-
-
 }
-
-
-
-
 
 //Delete account section
 //This deletes the user, but does not delete their items....should I do pointers or relations?
@@ -996,7 +924,7 @@ function timerIncrements() {
     timerMinutes.innerHTML = "25";
     timerSeconds.innerHTML = "00";
     session = 5;
-  
+
     Toastify({
       text: "Your timer is Done!",
       duration: 2500,
@@ -1054,7 +982,6 @@ function loader() {
   retrieveNotes();
 }
 
-
 function retrieveTodos() {
   (async () => {
     Parse.User.enableUnsafeCurrentUser();
@@ -1073,7 +1000,7 @@ function retrieveTodos() {
         const category = object.get("category");
         const date = object.get("date");
 
-        addOldToDo(objectId, title, isCompleted, priority, category,date);
+        addOldToDo(objectId, title, isCompleted, priority, category, date);
       }
     } catch (error) {
       console.error("Error while fetching ToDo", error);
@@ -1081,7 +1008,7 @@ function retrieveTodos() {
   })();
 }
 
-function addOldToDo(objectId, title, isCompleted, priority, category,date) {
+function addOldToDo(objectId, title, isCompleted, priority, category, date) {
   const toDoDiv = document.createElement("div");
   toDoDiv.setAttribute("class", "IndToDo");
   toDoDiv.setAttribute("id", objectId);
@@ -1114,10 +1041,9 @@ function addOldToDo(objectId, title, isCompleted, priority, category,date) {
   newToDoC.classList.add("todo-item");
   toDoDiv.appendChild(newToDoC);
 
-
-  const newTodoDate=document.createElement('li');
+  const newTodoDate = document.createElement("li");
   newTodoDate.setAttribute("class", "IndDate");
-  newTodoDate.innerText=date;
+  newTodoDate.innerText = date;
   newTodoDate.classList.add("todo-item");
   toDoDiv.appendChild(newTodoDate);
 
@@ -1128,17 +1054,14 @@ function addOldToDo(objectId, title, isCompleted, priority, category,date) {
   if (isCompleted == true) {
     toDoDiv.classList.toggle("completed");
     CompletedTodoList.appendChild(toDoDiv);
-  }
-  else if(isCompleted == false){
+  } else if (isCompleted == false) {
     todoList.appendChild(toDoDiv);
   }
 
-
-  if(date===formatDate()){
-    taskDueToday+=1;
-    ThingsDue.innerHTML=taskDueToday;
+  if (date === formatDate()) {
+    taskDueToday += 1;
+    ThingsDue.innerHTML = taskDueToday;
   }
-  
 }
 
 function retrieveNotes() {
@@ -1174,14 +1097,16 @@ function addOldNote(objectId, title, NoteBody, category, images) {
   const ExpandButton = document.createElement("button");
   ExpandButton.classList.add("Expand-btn");
   notesDivButtons.appendChild(ExpandButton);
-  
-  const showMoreIndButtonNote=document.createElement("button");
+
+  const showMoreIndButtonNote = document.createElement("button");
   showMoreIndButtonNote.classList.add("showMoreIndNote-Button");
   notesDivButtons.appendChild(showMoreIndButtonNote);
 
-
-  const  DivShowEditDeleteNoteButtons = document.createElement("div");
-  DivShowEditDeleteNoteButtons.setAttribute("class", "DivShowEditDeleteNoteButtons");
+  const DivShowEditDeleteNoteButtons = document.createElement("div");
+  DivShowEditDeleteNoteButtons.setAttribute(
+    "class",
+    "DivShowEditDeleteNoteButtons"
+  );
 
   const EditNotesButton = document.createElement("button");
   EditNotesButton.setAttribute("value", "Off");
@@ -1192,23 +1117,19 @@ function addOldNote(objectId, title, NoteBody, category, images) {
   cancelButton.classList.add("cancelNote-btn");
   DivShowEditDeleteNoteButtons.appendChild(cancelButton);
 
-
-
   const notesDiv = document.createElement("div");
-  notesDiv.appendChild(notesDivButtons)
+  notesDiv.appendChild(notesDivButtons);
   notesDiv.appendChild(DivShowEditDeleteNoteButtons);
   notesDiv.setAttribute("id", objectId);
   notesDiv.classList.add("note");
 
-
-
-  if (images!=null && images!=undefined){
-    const noteHeaderImage = document.createElement("img")
-    noteHeaderImage.setAttribute("class", "IndNoteHeadImagePerNote")
-    noteHeaderImage.src=images;
+  if (images != null && images != undefined) {
+    const noteHeaderImage = document.createElement("img");
+    noteHeaderImage.setAttribute("class", "IndNoteHeadImagePerNote");
+    noteHeaderImage.src = images;
     notesDiv.appendChild(noteHeaderImage);
-    }
-  
+  }
+
   const noteTitle = document.createElement("li");
   noteTitle.innerText = title;
   noteTitle.classList.add("titleOut");
@@ -1229,12 +1150,6 @@ function addOldNote(objectId, title, NoteBody, category, images) {
   //add to list
   notesList.appendChild(notesDiv);
 }
-
-
-
-
-
-
 
 //LEVEL AND SCORING functions
 function scoringMath(userScore) {
@@ -1274,10 +1189,6 @@ editButtonTrash.addEventListener("click", () => {
   }
 });
 
-
-
-
-
 //Sorting todos based on priority
 //this works!
 const sortButton = document.getElementById("sortButton");
@@ -1314,7 +1225,6 @@ sortButton.addEventListener("click", () => {
   }
 });
 
-
 //soring based on date:
 const sortButtonDate = document.getElementById("sortButtonDate");
 sortButtonDate.addEventListener("click", () => {
@@ -1350,17 +1260,6 @@ sortButtonDate.addEventListener("click", () => {
   }
 });
 
-
-
-
-
-
-
-
-
-
-
-
 //filtering todo section
 const sortCategoryButtonTodo = document.getElementById(
   "sortCategoryButtonTodo"
@@ -1384,7 +1283,6 @@ sortButtonNotes.addEventListener("click", () => {
 const submitFilterChoiceTodo = document.getElementById(
   "submitFilterChoiceTodo"
 );
-
 
 //Went through stackoverflow and came yup with this
 submitFilterChoiceTodo.addEventListener("click", () => {
@@ -1493,21 +1391,3 @@ submitFilterChoice.addEventListener("click", () => {
     }
   }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

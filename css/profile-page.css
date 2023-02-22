@@ -10,7 +10,6 @@ ul {
 }
 li {
   list-style: none;
- 
 }
 a {
   text-decoration: none;
@@ -24,26 +23,23 @@ a:visited {
   width: 100%;
   height: 100vh;
   position: fixed;
-  background: #000
-      url("../images/icons8-favorite-64.png") center
-      no-repeat;
+  background: #000 url("../images/icons8-favorite-64.png") center no-repeat;
   z-index: 1;
-  animation:heartBeat 2s infinite;
+  animation: heartBeat 2s infinite;
 }
 
 @keyframes heartBeat {
-	0% {
-		transform: scale(0.96);
-	}
+  0% {
+    transform: scale(0.96);
+  }
 
-	70% {
-		transform: scale(1);
-	}
+  70% {
+    transform: scale(1);
+  }
 
-	100% {
-		transform: scale(0.96);
-
-	}
+  100% {
+    transform: scale(0.96);
+  }
 }
 
 /* The top part of the screen */
@@ -58,30 +54,29 @@ a:visited {
 .userStuff {
   display: flex;
   flex-direction: row;
-  border:none;
+  border: none;
   align-items: center;
   height: 6vh;
-  background-color:#FFD2FD;
+  background-color: #ffd2fd;
 }
-
 
 #welcome,
-#YouHaveDue{
- padding:3px;
- font-weight: 400;
- font-size: 18px;
- line-height: 22px;
+#YouHaveDue {
+  padding: 3px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
 }
 
-#YouHaveDue{
-  padding-left:0px;
+#YouHaveDue {
+  padding-left: 0px;
 }
 
-.userNamePfp{
+.userNamePfp {
   display: flex;
   flex-direction: row;
-  margin-left:10px;
-  gap:23px;
+  margin-left: 10px;
+  gap: 23px;
 }
 
 /* Timer section */
@@ -91,20 +86,19 @@ a:visited {
   align-items: center;
   justify-content: center;
   flex-direction: row;
-
 }
-.timerSection  button{
-  margin:2px;
-  width:40px;
-  padding:2px;
-  height:40px;
-  border-radius:50%;
+.timerSection button {
+  margin: 2px;
+  width: 36px;
+  padding: 2px;
+  height: 36px;
+  border-radius: 50%;
   gap: 12px;
-  border:none;
+  border: none;
   background-color: white;
 }
 
-.timerSection  button:hover{
+.timerSection button:hover {
   background-color: #fd9be8;
 }
 
@@ -115,15 +109,13 @@ a:visited {
   height: 48px; */
 /* } */
 
-
-#timerAndScore{
+#timerAndScore {
   display: flex;
   margin-left: auto;
   gap: 32px;
 }
 
-
-#setTime{
+#setTime {
   font-size: 18px;
 }
 
@@ -131,8 +123,8 @@ a:visited {
   margin-top: 5px;
   display: flex;
   align-items: center;
-  gap:5px;
-  font-size:14px;
+  gap: 5px;
+  font-size: 14px;
 }
 
 /* Everything in the center of the screen */
@@ -144,51 +136,49 @@ a:visited {
   height: 94vh;
 }
 
-#showSideBar{
+#showSideBar {
   background-image: url("../images/icons8-double-right-15.png");
   background-repeat: no-repeat;
   background-position: center;
-   border:none;
+  border: none;
   background-color: transparent;
-  height:30px;
-  width:30px;
+  height: 30px;
+  width: 30px;
   margin-left: -9px;
 }
 
-
-h1{
+h1 {
   font-size: 32px;
   font-weight: 275px;
   line-height: 38px;
 }
-#notesHeader{
-margin-top:60px;
+#notesHeader {
+  margin-top: 60px;
 }
 
-#todoAndShowMore{
-  display:flex;
+#todoAndShowMore {
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-#currentDate{
-  color: #7E7E7E;
+#currentDate {
+  color: #7e7e7e;
   font-weight: 700;
-font-size: 16px;
-line-height: 1px;
+  font-size: 16px;
+  line-height: 1px;
 }
 
-#LineDivTodoNote{
-  border: 0.5px solid #DFDFDF;
+#LineDivTodoNote {
+  border: 0.5px solid #dfdfdf;
 }
-
 
 .testNav {
-  display: block ;
-  background-color:  #F6F6F6;
+  background-color: #f6f6f6;
   width: 83px;
-  border:none;
+  border: none;
 }
+
 .testNav button {
   background-color: transparent;
   border: none;
@@ -196,7 +186,7 @@ line-height: 1px;
   width: 50px;
 }
 
-.testNav ul{
+.testNav ul {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -238,41 +228,38 @@ line-height: 1px;
   padding: 2%;
 }
 
-#todoButtons{
+#todoButtons {
   display: flex;
 }
 
-
-
-.todo-list{
-  display:block;
+.todo-list {
+  display: block;
   overflow: hidden;
-  height:80%;
-  margin-top:2px;
+  height: 80%;
+  margin-top: 2px;
 }
 
-.todo-list:hover{
+.todo-list:hover {
   overflow-y: auto;
 }
 
-.CompletedTodo-list{
-  display:none;
+.CompletedTodo-list {
+  display: none;
   overflow: auto;
-  height:65%;
-  margin-top:2px;
+  height: 65%;
+  margin-top: 2px;
 }
-#DivForShowMore{
- display:flex;
- flex-direction: column;
- margin-left: auto;
-
+#DivForShowMore {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
 }
 
-#DivForButtonsArchEditSort{
- display:none;
- position: fixed;
+#DivForButtonsArchEditSort {
+  display: none;
+  position: fixed;
 
- box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
     rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
   border: 0.02px solid rgb(230, 229, 229);
@@ -284,40 +271,39 @@ line-height: 1px;
   z-index: 7;
 }
 
-#DivForButtonsArchEditSortFormating{
-  display:flex;
+#DivForButtonsArchEditSortFormating {
+  display: flex;
   flex-direction: column;
-  padding:15px;
+  padding: 15px;
   height: 20px;
   max-width: 100px;
 }
 
 #sortButtonsDiv button,
-#DivForButtonsArchEditSort button{
+#DivForButtonsArchEditSort button {
   background-color: transparent;
   border: none;
-  font-size:13px;
+  font-size: 13px;
 }
 
-#DivForButtonsArchEditSort button:hover{
-  background-color: #FFB2EE;
+#DivForButtonsArchEditSort button:hover {
+  background-color: #ffb2ee;
   border-radius: 5px;
   border: none;
 }
 
-#ShowArchEditSortButton{
+#ShowArchEditSortButton {
   background-image: url("../images/3dots14.png");
   background-repeat: no-repeat;
-  background-position:center;
+  background-position: center;
   border-radius: 5px;
-  border: 1px solid rgba(0,0,0,.20);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   background-color: white;
   padding: 10px;
- 
 }
 
-#ShowArchEditSortButton:hover{
-  background-color: #FFB2EE;
+#ShowArchEditSortButton:hover {
+  background-color: #ffb2ee;
 }
 
 #divToCreateForm {
@@ -326,16 +312,15 @@ line-height: 1px;
 
 #createTodoShowBtn,
 #createNoteShowBtn {
-  border-radius:5px;;
-  border:none;
+  border-radius: 5px;
+  border: none;
   background-color: white;
   padding: 5px;
-  font-size:14px;
-  
+  font-size: 14px;
 }
 
 #createTodoShowBtn:hover {
-  background-color: #FFB2EE;
+  background-color: #ffb2ee;
 }
 
 #SortButtonsAll {
@@ -348,12 +333,12 @@ line-height: 1px;
   border-radius: 5px;
   height: 20px;
   width: 50px;
-  border: 1px solid rgba(0,0,0,.20);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   background-color: white;
 }
 
 #SortButtonsAll:hover {
-  background-color:#FFB2EE;
+  background-color: #ffb2ee;
 }
 
 #editButton {
@@ -366,11 +351,11 @@ line-height: 1px;
   height: 20px;
   width: 50px;
   background-color: white;
-  border: 1px solid rgba(0,0,0,.20);
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 #editButton:hover {
-  background-color:#FFB2EE;
+  background-color: #ffb2ee;
 }
 
 #createTodoForm {
@@ -378,7 +363,7 @@ line-height: 1px;
   flex-direction: row;
   justify-content: space-between;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-  padding:15px;
+  padding: 15px;
   border-radius: 5px;
   /* fix this... */
 }
@@ -390,12 +375,12 @@ line-height: 1px;
 #sortButtonsDiv {
   display: none;
   position: fixed;
-  box-shadow: rgba(0, 0, 0, 0.08)  0px 8px 8px 0px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 8px 0px;
   border: 0.02px solid rgb(230, 229, 229);
   background-color: white;
   width: 199px;
   height: 150px;
-  border-radius:0px 0px 10px 10px;
+  border-radius: 0px 0px 10px 10px;
   margin-top: 33px;
   border-top: none;
 }
@@ -406,12 +391,11 @@ line-height: 1px;
   flex-direction: column;
   width: 100%;
   height: 100%;
-  padding:15px;
+  padding: 15px;
 }
 
-
 #sortButtonsDiv button:hover {
-  background-color: #FFB2EE;
+  background-color: #ffb2ee;
   border-radius: 5px;
   border: none;
 }
@@ -422,13 +406,13 @@ line-height: 1px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-size:14px ;
+  font-size: 14px;
 }
 
 /* Toggle trash edit  */
 
 .cancel-btn,
-.cancelNote-btn{
+.cancelNote-btn {
   display: none;
   background-image: url("../images/trash18.png");
   border: none;
@@ -436,10 +420,10 @@ line-height: 1px;
   width: 18px;
   height: 18px;
   background-repeat: no-repeat;
-  margin-left:auto;
+  margin-left: auto;
 }
 .cancel-btn:hover {
-  background-color: #FFB2EE;
+  background-color: #ffb2ee;
 }
 
 .EditTitle-btn {
@@ -456,13 +440,13 @@ line-height: 1px;
   margin-bottom: 10px;
   padding: 2%;
   border-radius: 5px;
-  box-shadow:rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
-  border:1px solid rgba(0,0,0,.12);
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-.todo-item{
-  font-size:14px;
-  color:rgb(46, 46, 46);
+.todo-item {
+  font-size: 14px;
+  color: rgb(46, 46, 46);
 }
 
 .todo {
@@ -475,25 +459,25 @@ line-height: 1px;
 }
 
 .IndPriority {
-  margin-left:auto;
-  margin-right:9px;
+  margin-left: auto;
+  margin-right: 9px;
   padding: 5px 10px 5px 10px;
   border-radius: 10px;
-  background-color: #DBF2FF;
+  background-color: #dbf2ff;
 }
 
 .IndCategories {
   /* border-radius: 5px; */
   padding: 5px;
   border-radius: 10px;
-  margin-right:9px;
-  background-color:  #dbe0ff;
+  margin-right: 9px;
+  background-color: #dbe0ff;
 }
-.IndDate{
+.IndDate {
   padding: 5px;
   border-radius: 10px;
-  margin-right:9px;
-  background-color: #F2DBFF;
+  margin-right: 9px;
+  background-color: #f2dbff;
 }
 
 .completed {
@@ -507,12 +491,10 @@ line-height: 1px;
 }
 
 .completed .complete-btn:hover {
-  background-image:none;
+  background-image: none;
   background-repeat: no-repeat;
   background-position: center;
 }
-
-
 
 .complete-btn {
   border-radius: 50%;
@@ -526,7 +508,7 @@ line-height: 1px;
   background-image: url("../images/check12.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #FFB2EE;
+  background-color: #ffb2ee;
 }
 
 .EditTitle-btn,
@@ -548,132 +530,118 @@ line-height: 1px;
 }
 
 .EditTitle-btn:hover {
-  background-color: #FFB2EE;
+  background-color: #ffb2ee;
 }
-
-
-
-
 
 /* Notes section */
 
 .notesSection {
-  padding:2%;
+  padding: 2%;
   width: 40%;
 }
 
 #NoteButtons {
-  display:flex;
+  display: flex;
   flex-direction: row;
 }
-.DivShowEditDeleteNoteButtons{
-  display:none;
+.DivShowEditDeleteNoteButtons {
+  display: none;
   background-color: white;
   margin-left: 35%;
   position: absolute;
   z-index: 9;
-  box-shadow:rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
   border: 0.02px solid rgb(230, 229, 229);
   width: 20px;
   height: 40px;
 }
 
-
 .title-field,
-.body-field  {
-  background-color:white;
+.body-field {
+  background-color: white;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   border-radius: 5px;
   border: 0.3px black;
-  width:200px ;
+  width: 200px;
   margin-bottom: 8px;
 }
 
-.title-field{
-  height:20px;
+.title-field {
+  height: 20px;
 }
 
 .body-field {
-  height:200px;
+  height: 200px;
 }
 
-#divForAllThingsImageSearch{
-  display:flex;
+#divForAllThingsImageSearch {
+  display: flex;
   justify-content: center;
   flex-direction: column;
-  padding:2px;
+  padding: 2px;
   border-radius: 5px;
-  border:1px solid rgba(0,0,0,.12);
+  border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-#imageButtons{
-  display:flex;
+#imageButtons {
+  display: flex;
   justify-content: center;
   flex-direction: row;
-  gap:2px;
-
+  gap: 2px;
 }
 
-#divForAllThingsImageSearch input, 
+#divForAllThingsImageSearch input,
 #divForAllThingsImageSearch button,
-.btn-save{
+.btn-save {
   border-radius: 5px;
   background-color: white;
-  border:0.5px solid rgba(0,0,0,.12);
+  border: 0.5px solid rgba(0, 0, 0, 0.12);
   font-size: 10px;
 }
 
-
-
-#divForAllThingsImageSearch button:hover{
-  background-color: #FFD2FD;
+#divForAllThingsImageSearch button:hover {
+  background-color: #ffd2fd;
 }
 
-
-figcaption{
+figcaption {
   font-size: xx-small;
 }
 
-.display_images{
+.display_images {
   width: 100%;
-  height:200px;
+  height: 200px;
   overflow-y: hidden;
   display: grid;
   grid-template-columns: auto auto auto;
-  grid-gap:0px;
+  grid-gap: 0px;
 }
 
-.display_images:hover{
+.display_images:hover {
   overflow-y: scroll;
 }
 
-.display_images img 
-{
+.display_images img {
   width: 40px;
   border-radius: 5px;
   height: 40px;
   cursor: pointer;
 }
 
-.IndImageGrid:hover{
-  background-color: #F2DBFF;
+.IndImageGrid:hover {
+  background-color: #f2dbff;
   border-radius: 5px;
 }
 
-
-
 #createNoteShowBtn:hover {
-  background-color: #FFB2EE;
+  background-color: #ffb2ee;
 }
-
 
 #divToCreateNote {
   display: none;
-  margin-bottom:10px;
+  margin-bottom: 10px;
 }
 
 #createNoteForm {
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -682,8 +650,7 @@ figcaption{
   padding: 5px;
 }
 
-
-#sortButtonNotes{
+#sortButtonNotes {
   background-image: url("../images/sort12.png");
   background-repeat: no-repeat;
   background-position-x: 2px;
@@ -693,15 +660,15 @@ figcaption{
   border-radius: 5px;
   height: 20px;
   width: 50px;
-   border: 1px solid rgba(0,0,0,.20);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   background-color: transparent;
   margin-left: 77%;
 }
 
-.showMoreIndNote-Button{
+.showMoreIndNote-Button {
   background-image: url("../images/3dots14.png");
   background-repeat: no-repeat;
-background-position: center;
+  background-position: center;
   padding-left: 8px;
 
   border-radius: 5px;
@@ -711,35 +678,30 @@ background-position: center;
   background-color: transparent;
 }
 
-.note button:hover{
-  background-color: #FFB2EE;
+.note button:hover {
+  background-color: #ffb2ee;
 }
 
-
 #sortButtonNotes:hover {
-  background-color: #FFB2EE;
+  background-color: #ffb2ee;
 }
 
 #divToSelectFilterForm {
   display: none;
 }
 
-
-
-
-
 .notes-list {
-  height:80%;
+  height: 80%;
   overflow: hidden;
 }
-.notes-list:hover{
+.notes-list:hover {
   overflow-y: auto;
 }
 
 .note {
   display: flex;
   flex-direction: column;
-  justify-content:space-between;
+  justify-content: space-between;
 
   transition: all 0.5s;
 
@@ -750,134 +712,112 @@ background-position: center;
   padding: 2%;
   overflow-y: hidden;
 
-  font-size:14px;
-  color:rgb(46, 46, 46);
-  box-shadow:rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
-  border:1px solid rgba(0,0,0,.12)
+  font-size: 14px;
+  color: rgb(46, 46, 46);
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-#notesDivButtons{
-right: 100px;
-z-index: 2;
-position:absolute;
-display: none;
+#notesDivButtons {
+  right: 100px;
+  z-index: 2;
+  position: absolute;
+  display: none;
 }
 
-.note:hover #notesDivButtons{
-  display:block;
+.note:hover #notesDivButtons {
+  display: block;
   background-color: #f4f5fc;
-  border-radius:5px;
+  border-radius: 5px;
 }
 
-
-.IndNoteHeadImagePerNote{
-  width:100%;
-  height:40px;
+.IndNoteHeadImagePerNote {
+  width: 100%;
+  height: 40px;
   object-fit: cover;
-  border-radius:4px;
+  border-radius: 4px;
 }
 
-.note .titleOut{
+.note .titleOut {
   font-weight: 500;
 }
 
-.note .bodyOut{
+.note .bodyOut {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  height:20px;
+  height: 20px;
   opacity: 0.8;
 }
 
 .note .IndCategories {
   opacity: 0.9;
-  padding:0px;
-text-align: center;
- 
+  padding: 0px;
+  text-align: center;
 }
 
-
-
-
-.noteExpand{
+.noteExpand {
   transition: all 0.5s;
   height: 200px;
 }
 
-.noteExpand .IndNoteHeadImagePerNote{
+.noteExpand .IndNoteHeadImagePerNote {
   height: 80px;
 }
 
-
-.noteExpand .bodyOut{
-  overflow-y:auto;
+.noteExpand .bodyOut {
+  overflow-y: auto;
   white-space: initial;
-  text-overflow:initial;
+  text-overflow: initial;
   height: 200px;
-} 
+}
 
-.Expand-btn{
+.Expand-btn {
   margin-left: auto;
   background-image: url("../images/enlarge12.png");
   background-repeat: no-repeat;
-  background-position:center;
+  background-position: center;
   border-radius: 5px;
   height: 20px;
   width: 20px;
   min-height: 20px;
-  border:none;
+  border: none;
   background-color: transparent;
 }
 
-
-
-.cancelNote-btn{
-  display:block;
+.cancelNote-btn {
+  display: block;
 }
 
-
-
-
-#divToCreateHabitForm{
-  display:none;
+#divToCreateHabitForm {
+  display: none;
 }
 
-.IndHabit{
+.IndHabit {
   display: flex;
   flex-direction: column;
-  justify-content:space-between;
+  justify-content: space-between;
   transition: all 0.5s;
-  
 
   background-color: white;
   border-radius: 5px;
   list-style-type: none;
   margin-bottom: 10px;
   padding: 2%;
-  width:65px;
+  width: 65px;
   height: 65px;
-  box-shadow:rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
-  border:1px solid rgba(0,0,0,.12);
-  
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-.HabitExpand{
+.HabitExpand {
   height: 200px;
   transition: all 0.5s;
 }
-.habit-list{
+.habit-list {
   display: flex;
   flex-direction: column;
 }
-
-
-
-
-
-
-
-
-
 
 /* breakpoints */
 
@@ -890,56 +830,48 @@ text-align: center;
     width: 100%;
   }
 
-
-
-  .notes-list{
-    height:400px;
+  .notes-list {
+    height: 400px;
   }
 
-  .todo-list{
-    height:200px;
+  .todo-list {
+    height: 200px;
   }
-  #showSideBar{
-    display:none;
+  #showSideBar {
+    display: none;
   }
   .testNav {
     width: 100%;
     height: 80px;
   }
 
-  .testNav ul{
-   display:flex;
-   flex-direction: row;
-   gap:50px;
+  .testNav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
   }
-  .logoutButton{
-    margin:0px;
-  }
-
-
-  .testNav button{
-    width:300%;
- 
+  .logoutButton {
+    margin: 0px;
   }
 
+  .testNav button {
+    width: 300%;
+  }
 
-  #notesHeader{
-    margin-top:20px;
-    }
-    
-  
+  #notesHeader {
+    margin-top: 20px;
+  }
 
   .TestTodoSection {
     border: none;
     width: 95%;
-    height:530px;
-  
+    height: 530px;
   }
-  .todo-list{
-    height:350px;
+  .todo-list {
+    height: 350px;
   }
 
-  .notesSection{
+  .notesSection {
     width: 95%;
   }
 
@@ -947,94 +879,91 @@ text-align: center;
     width: 100%;
   }
 
-  .habit-list{
+  .habit-list {
     flex-direction: row;
     justify-content: space-between;
-    margin-left:70px;
+    margin-left: 70px;
     margin-right: 70px;
   }
 
-  .HabitExpand{
+  .HabitExpand {
     height: 100px;
-    width:150px;
+    width: 150px;
     transition: all 0.5s;
   }
 
-  .DivShowEditDeleteNoteButtons{
+  .DivShowEditDeleteNoteButtons {
     margin-left: 90%;
   }
   #welcome,
-  #YouHaveDue{
-   padding:1px;
-   font-weight: 400;
-   font-size: 15px;
-   line-height: 22px;
+  #YouHaveDue {
+    padding: 1px;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
   }
 
-
-  body{
+  body {
     overflow: scroll;
   }
 }
 
-/* Color schemes */
-
-
-
-.darkMode {
+@media (max-width: 600px) {
+  .userStuff {
+    display: flex;
+    flex-direction: row;
+    border: none;
+    align-items: center;
+    height: 10vh;
+    flex-wrap: wrap;
+  }
 }
+
+/* Color schemes */
 
 .darkMode .intro-box {
   background-color: black;
   color: white;
 }
 
-.darkMode .IndToDo{
+.darkMode .IndToDo {
   background-color: grey;
   transition: 1s;
   /* color: white; */
 }
 
-
-.darkMode .IndToDo .IndTitle{
+.darkMode .IndToDo .IndTitle {
   color: white;
 }
 
-
-.darkMode .note{
+.darkMode .note {
   transition: 1s;
   background-color: grey;
   color: white;
 }
 
-.darkMode .note .IndCategories{
+.darkMode .note .IndCategories {
   color: black;
 }
 
-.darkMode  #LineDivTodoNote{
+.darkMode #LineDivTodoNote {
   border: 0.5px solid #696868;
 }
 
 .darkMode #createTodoShowBtn,
 .darkMode #createNoteShowBtn,
-.darkMode #sortButtonNotes{
-  color:white;
+.darkMode #sortButtonNotes {
+  color: white;
   background-color: black;
 }
 
 .darkMode #createTodoShowBtn:hover,
 .darkMode #createNoteShowBtn:hover,
-
-.darkMode #sortButtonNotes:hover{
-  background-color: #FFB2EE;
-  color:black;
+.darkMode #sortButtonNotes:hover {
+  background-color: #ffb2ee;
+  color: black;
 }
 
-.darkMode .complete-btn{
-  border-color:white;
+.darkMode .complete-btn {
+  border-color: white;
 }
-
-.darkMode .testNav{
-
-}
-

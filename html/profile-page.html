@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title>ProDo</title>
-    <meta name="viewport" content= "width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link
       rel="stylesheet"
@@ -19,8 +19,10 @@
     />
     <link rel="stylesheet" type="text/css" href="../css/loading-bar.css" />
 
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/add-to-calendar-button@1/assets/css/atcb-3d.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/add-to-calendar-button@1/assets/css/atcb-3d.min.css"
+    />
 
     <link
       rel="stylesheet"
@@ -34,60 +36,75 @@
      
       </nav> -->
 
-
-      <div class="loader-container">
-    </div>
+    <div class="loader-container"></div>
 
     <div class="userStuff">
-      
       <div class="userNamePfp">
-        <img src="../images/plholder.webp" id="userPlay"  alt="Profie picture"/>
+        <img src="../images/plholder.webp" id="userPlay" alt="Profie picture" />
         <p id="welcome">Hey Emy!</p>
       </div>
-      <p id="YouHaveDue">You have <span id="ThingsDue">0</span> tasks due today</p>
-  
-          <!-- Timer things -->
-          <div id="timerAndScore">
-          <div class="timerSection">
-            <h2 id="setTime">
-              <span id="timerMinutes">25</span>:<span id="timerSeconds">00 </span>
-            </h2>
-  
-            <button id="increaseMinutes">+</button>
-            <button id="decreaseMinutes">-</button>
-            <button id="timerStartButton">Start</button>
+      <p id="YouHaveDue">
+        You have <span id="ThingsDue">0</span> tasks due today
+      </p>
+
+      <!-- Timer things -->
+      <div id="timerAndScore">
+        <div class="timerSection">
+          <h2 id="setTime">
+            <span id="timerMinutes">25</span>:<span id="timerSeconds">00 </span>
+          </h2>
+
+          <button id="increaseMinutes">+</button>
+          <button id="decreaseMinutes">-</button>
+          <button id="timerStartButton">Start</button>
           <button id="timerPauseButton">Pause</button>
           <button id="timerClearButton">Clear</button>
-          </div>
-  
-      
-      <div class="ScoreDiv">
-        <p>Level </p>
-        <div id="levelEle"> 1</div>
-        <div
-          data-preset="rainbow"
-          data-stroke-width="10"
-          data-stroke-trail-width="10"
-          id="bar"
-          class="ldBar label-center"
-        ></div>
-      </div>
-      </div>
+        </div>
 
-
-  </div>
+        <div class="ScoreDiv">
+          <p>Level</p>
+          <div id="levelEle">1</div>
+          <div
+            data-preset="rainbow"
+            data-stroke-width="10"
+            data-stroke-trail-width="10"
+            id="bar"
+            class="ldBar label-center"
+          ></div>
+        </div>
+      </div>
+    </div>
 
     <div id="division1"></div>
 
     <div class="intro-box">
-      
       <div class="testNav">
         <ul>
-          <li><button id="themeChangeButton" data-theme="light" aria-label="theme Change Button"></button></li>
-          <li><button id="ShowAddToCalendar" aria-label="Add To Calendar Button"></button></li>
-          <li><button id="tutorialbutton" aria-label="Tutorial Button" ></button></li>
-          <li><button class="logoutButton" aria-label="logOut Button"></button></li>
-          <li><button class="deleteAccountButton " aria-label="Delete Account Button"></button></li>
+          <li>
+            <button
+              id="themeChangeButton"
+              data-theme="light"
+              aria-label="theme Change Button"
+            ></button>
+          </li>
+          <li>
+            <button
+              id="ShowAddToCalendar"
+              aria-label="Add To Calendar Button"
+            ></button>
+          </li>
+          <li>
+            <button id="tutorialbutton" aria-label="Tutorial Button"></button>
+          </li>
+          <li>
+            <button class="logoutButton" aria-label="logOut Button"></button>
+          </li>
+          <li>
+            <button
+              class="deleteAccountButton"
+              aria-label="Delete Account Button"
+            ></button>
+          </li>
         </ul>
       </div>
       <button id="showSideBar"></button>
@@ -97,66 +114,66 @@
 
         <p id="currentDate">Date</p>
         <div id="todoAndShowMore">
-        <h1 id="todoHeader">Todo</h1>
-    </div>
-      
-       
+          <h1 id="todoHeader">Todo</h1>
+        </div>
+
         <div id="todoButtons">
-        <button id="createTodoShowBtn">+ Add Task</button>
-        <div id="DivForShowMore">
-          <button id="ShowArchEditSortButton" aria-label="Show more Button" ></button>
-          <div id="DivForButtonsArchEditSort">
-            <div id="DivForButtonsArchEditSortFormating">
-          <button id="viewArchiveButton">Show Archive</button>
-          <button id="editButton">Edit</button>
-          <button id="SortButtonsAll">Sort</button>
-          </div>
-          <div id="sortButtonsDiv">
-            <div id="divInSortButtonsDiv">
-              <button id="sortButton">Priority Increasing</button>
-              <button id="sortButtonDate">Date Increasing</button>
-              <button id="sortCategoryButtonTodo">Category</button>
-              <div id="divToSelectFilterFormToDo">
-                <div id="divToSingleSelect">
-                  <form id="selectFilterTodo">
-                    <select name="filterTodo" id="filterTodo">
-                      <option value="General" selected="selected">General</option>
-                  <option value="School">School</option>
-                  <option value="School">Health</option>
-                  <option value="Goals">Goals</option>
-                  <option value="Work">Work</option>
-                  <option value="Side Hustle">Side Hustle</option>
-                  <option value="Creative">Creative</option>
-                  <option value="Family">Family</option>
-                  <option value="Home">Home</option>
-                  <option value="Kids">Kids</option>
-                  <option value="Groccery">Groccery</option>
-                  <option value="Meal planning">Meal planning</option>
-                    </select>
-                  </form>
-                  <!-- supposed to be inside form?? -->
-                  <button id="submitFilterChoiceTodo" type="submit">
-                    Submit Filter Choice
-                  </button>
+          <button id="createTodoShowBtn">+ Add Task</button>
+          <div id="DivForShowMore">
+            <button
+              id="ShowArchEditSortButton"
+              aria-label="Show more Button"
+            ></button>
+            <div id="DivForButtonsArchEditSort">
+              <div id="DivForButtonsArchEditSortFormating">
+                <button id="viewArchiveButton">Show Archive</button>
+                <button id="editButton">Edit</button>
+                <button id="SortButtonsAll">Sort</button>
+              </div>
+              <div id="sortButtonsDiv">
+                <div id="divInSortButtonsDiv">
+                  <button id="sortButton">Priority Increasing</button>
+                  <button id="sortButtonDate">Date Increasing</button>
+                  <button id="sortCategoryButtonTodo">Category</button>
+                  <div id="divToSelectFilterFormToDo">
+                    <div id="divToSingleSelect">
+                      <form id="selectFilterTodo">
+                        <select name="filterTodo" id="filterTodo">
+                          <option value="General" selected="selected">
+                            General
+                          </option>
+                          <option value="School">School</option>
+                          <option value="School">Health</option>
+                          <option value="Goals">Goals</option>
+                          <option value="Work">Work</option>
+                          <option value="Side Hustle">Side Hustle</option>
+                          <option value="Creative">Creative</option>
+                          <option value="Family">Family</option>
+                          <option value="Home">Home</option>
+                          <option value="Kids">Kids</option>
+                          <option value="Groccery">Groccery</option>
+                          <option value="Meal planning">Meal planning</option>
+                        </select>
+                      </form>
+                      <!-- supposed to be inside form?? -->
+                      <button id="submitFilterChoiceTodo" type="submit">
+                        Submit Filter Choice
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        </div>
-  
-      </div>
 
-    
-
-<!--         
+        <!--         
         <div class="labels">
 
         </div> -->
 
         <div id="divToCreateForm">
           <form id="createTodoForm">
-
             <input type="text" class="todo-input" />
 
             <!-- priority level, single level -->
@@ -177,18 +194,18 @@
                 id="categoryNumber"
                 onchange="console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))"
               >
-              <option value="General" selected="selected">General</option>
-              <option value="School">School</option>
-              <option value="School">Health</option>
-              <option value="Goals">Goals</option>
-              <option value="Work">Work</option>
-              <option value="Side Hustle">Side Hustle</option>
-              <option value="Creative">Creative</option>
-              <option value="Family">Family</option>
-              <option value="Home">Home</option>
-              <option value="Kids">Kids</option>
-              <option value="Groccery">Groccery</option>
-              <option value="Meal planning">Meal planning</option>
+                <option value="General" selected="selected">General</option>
+                <option value="School">School</option>
+                <option value="School">Health</option>
+                <option value="Goals">Goals</option>
+                <option value="Work">Work</option>
+                <option value="Side Hustle">Side Hustle</option>
+                <option value="Creative">Creative</option>
+                <option value="Family">Family</option>
+                <option value="Home">Home</option>
+                <option value="Kids">Kids</option>
+                <option value="Groccery">Groccery</option>
+                <option value="Meal planning">Meal planning</option>
               </select>
             </div>
             <input type="date" class="todo-dateInput" />
@@ -207,10 +224,9 @@
     </div> -->
 
       <!-- right section -->
-  <div id="LineDivTodoNote"></div>
+      <div id="LineDivTodoNote"></div>
 
       <div class="notesSection">
-        
         <!-- Note things -->
         <h1 id="notesHeader">Notes</h1>
 
@@ -239,34 +255,34 @@
           </div>
         </div>
         <div id="NoteButtons">
-        <button id="createNoteShowBtn">+ Add Note</button>
-        <button id="sortButtonNotes">Sort</button>
+          <button id="createNoteShowBtn">+ Add Note</button>
+          <button id="sortButtonNotes">Sort</button>
         </div>
 
         <div id="divToCreateNote">
           <form id="createNoteForm">
             <div id="createNoteFormInputs">
-            <input
-              class="title-field"
-              type="text"
-              placeholder="title your note"
-              maxlength="50"
-            />
-
-            <textarea class="body-field"></textarea>
-          </div>
-
-          <div id="divForAllThingsImageSearch">
-            <div id="imageButtons">
-            <input
-                id="image-search"
+              <input
+                class="title-field"
                 type="text"
-                placeholder="Search for an image"
-                maxlength="20"
+                placeholder="title your note"
+                maxlength="50"
               />
-            <button id="searchButton" type="button">Search Images</button>
-            <button id="noImageButton" type="button">no image</button>
-          </div>
+
+              <textarea class="body-field"></textarea>
+            </div>
+
+            <div id="divForAllThingsImageSearch">
+              <div id="imageButtons">
+                <input
+                  id="image-search"
+                  type="text"
+                  placeholder="Search for an image"
+                  maxlength="20"
+                />
+                <button id="searchButton" type="button">Search Images</button>
+                <button id="noImageButton" type="button">no image</button>
+              </div>
               <div class="display_images"></div>
             </div>
 
@@ -277,39 +293,31 @@
                 id="categoryNumberNotes"
                 onchange="console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))"
               >
-              <option value="General" selected="selected">General</option>
-              <option value="School">School</option>
-              <option value="School">Health</option>
-              <option value="Goals">Goals</option>
-              <option value="Work">Work</option>
-              <option value="Side Hustle">Side Hustle</option>
-              <option value="Creative">Creative</option>
-              <option value="Family">Family</option>
-              <option value="Home">Home</option>
-              <option value="Kids">Kids</option>
-              <option value="Groccery">Groccery</option>
-              <option value="Meal planning">Meal planning</option>
+                <option value="General" selected="selected">General</option>
+                <option value="School">School</option>
+                <option value="School">Health</option>
+                <option value="Goals">Goals</option>
+                <option value="Work">Work</option>
+                <option value="Side Hustle">Side Hustle</option>
+                <option value="Creative">Creative</option>
+                <option value="Family">Family</option>
+                <option value="Home">Home</option>
+                <option value="Kids">Kids</option>
+                <option value="Groccery">Groccery</option>
+                <option value="Meal planning">Meal planning</option>
               </select>
             </div>
-        
+
             <button class="btn-save" type="submit">Save</button>
           </form>
-          
+
           <!-- <button class="btn-clear">Clear</button> -->
         </div>
 
         <section class="notes-list"></section>
         <!-- </div> -->
-
-      
       </div>
 
-
-
-    
-
-
-   
       <!-- end of introbox -->
     </div>
 
@@ -324,12 +332,13 @@
       This is a super easy productivy website to use, let me walk you through it
       ! <br />
       ~Create a new todo then add a priotiy, category, and date labels. <br />
-      ~Create a new note, and add a category or an image if you would like.<br />~Set a timer to give yourself a time frame to
-      work in.<br />
+      ~Create a new note, and add a category or an image if you would like.<br />~Set
+      a timer to give yourself a time frame to work in.<br />
       ~Sort and edit your items.<br />
       ~Switch between a dark mode and light mode.<br />
       ~View Completed tasks in your archive.<br />
-      ~Add events to your favorite external calendar using the calendar button<br />
+      ~Add events to your favorite external calendar using the calendar
+      button<br />
       ~Earn points for your efforts! ',
     </div>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
@@ -342,7 +351,11 @@
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/toastify-js"
     ></script>
-    <script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@1" async defer></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@1"
+      async
+      defer
+    ></script>
     <script src="../js-files/index.js"></script>
   </body>
 </html>
