@@ -1,6 +1,6 @@
 # Project-4900
-ProDo was my senior project, and I revieved an A on the assignment!
 
+ProDo was my senior project, and I revieved an A on the assignment!
 I'm still working on it for fun.
 
 
@@ -21,6 +21,7 @@ priority labels, due dates, category labels, and images from pexels API to notes
 • Deployed using Netlify.
 
 • Responsive.
+• Created with HTML,CSS, and Vanilla Javascript.
 
 ### ♡ Sneak Peak
 
