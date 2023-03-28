@@ -211,6 +211,13 @@ showSideBar.addEventListener("click", () => {
   generalDisplayBlockCall(divSideform);
 });
 
+//Showing and hiding habit tracker
+const  ShowHabitTrackerButton= document.getElementById("ShowHabitTrackerButton");
+const habitsSection = document.querySelector(".habitsSection");
+ShowHabitTrackerButton.addEventListener("click", () => {
+  generalDisplayBlockCall(habitsSection);
+});
+
 //Showing and hiding the form for adding a todo
 const createTodoShowBtn = document.getElementById("createTodoShowBtn");
 const divToCreateForm = document.getElementById("divToCreateForm");
@@ -1150,6 +1157,72 @@ function addOldNote(objectId, title, NoteBody, category, images) {
   //add to list
   notesList.appendChild(notesDiv);
 }
+
+
+
+
+//EVERYTHING HABIT TRACKER
+
+//Adding New  Habit
+
+const submitNewHabitBtn =document.getElementById("submitNewHabit");
+const habitList=document.querySelector(".habits-list");
+
+habitList.addEventListener("click", deleteCheckHabit);
+submitNewHabitBtn.addEventListener("click", addHabit);
+
+
+function addHabit(){
+ 
+  
+  const habitDiv = document.createElement("div");
+  habitDiv.setAttribute("class", "IndHabit");
+  habitDiv.classList.add("Habit");
+
+
+
+  const habitDivTitle = document.createElement("li");
+  habitDivTitle.setAttribute("class", "IndHabitTitle");
+  habitDivTitle.innerText = document.getElementById("habit-input").value;
+  habitDivTitle.classList.add("habitTitle");
+  habitDiv.appendChild(habitDivTitle);
+
+  const completedButton = document.createElement("button");
+  // completedButton.innerText = "✓";
+  completedButton.classList.add("complete-btn");
+  habitDiv.appendChild(completedButton);
+
+
+
+  const cancelButton = document.createElement("button");
+  cancelButton.classList.add("cancel-btn");
+  habitDiv.appendChild(cancelButton);
+
+  habitList.appendChild(habitDiv);
+
+}
+
+
+function deleteCheckHabit(event) {
+  const item = event.target;
+  if (item.classList[0] === "cancel-btn") {
+    const habit= item.parentElement;
+    habit.remove();
+    // deleteNoteStore(note.getAttribute("id"));
+  }
+
+
+  if (item.classList[0] === "Expand-btn") {
+    const habit = item.parentElement;
+    habit.classList.toggle("HabitExpand");
+  }
+}
+
+
+
+
+
+
 
 //LEVEL AND SCORING functions
 function scoringMath(userScore) {

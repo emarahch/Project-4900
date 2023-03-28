@@ -89,6 +89,12 @@
           </li>
           <li>
             <button
+              id="ShowHabitTrackerButton"
+              aria-label="Show Habit Tracker Button"
+            ></button>
+          </li>
+          <li>
+            <button
               id="ShowAddToCalendar"
               aria-label="Add To Calendar Button"
             ></button>
@@ -224,7 +230,7 @@
     </div> -->
 
       <!-- right section -->
-      <div id="LineDivTodoNote"></div>
+      <div id="DividingLineDiv"></div>
 
       <div class="notesSection">
         <!-- Note things -->
@@ -317,6 +323,24 @@
         <section class="notes-list"></section>
         <!-- </div> -->
       </div>
+
+      <div id="DividingLineDiv"></div>
+      <div class="habitsSection">
+        <!-- habit things -->
+        <h1 id="habitsHeader">Habits</h1>
+        <div id="HabitButtons">
+          <button id="createHabitShowBtn">+ Add New Habit</button>
+          <button id="changeDateBtn">Change date</button>
+        </div>
+
+        <!-- <div id="divToCreateHabitForm"> -->
+          <form id="createHabitForm">
+            <input type="text" id="habit-input" />
+            <!-- <button id="submitNewHabit" type="submit">submit</button> -->
+          </form>
+          <button id="submitNewHabit" type="submit">submit</button>
+          <section class="habits-list"></section>
+        <!-- </div> -->
 
       <!-- end of introbox -->
     </div>

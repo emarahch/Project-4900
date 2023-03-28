@@ -169,7 +169,7 @@ h1 {
   line-height: 1px;
 }
 
-#LineDivTodoNote {
+#DividingLineDiv {
   border: 0.5px solid #dfdfdf;
 }
 
@@ -195,6 +195,12 @@ h1 {
 
 #themeChangeButton {
   background-image: url("../images/darkMode30.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#ShowHabitTrackerButton{
+  background-image: url("../images/icons8-habits-30.png");
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -797,27 +803,37 @@ figcaption {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: all 0.5s;
+
 
   background-color: white;
   border-radius: 5px;
   list-style-type: none;
+
+  margin: 5px;
   margin-bottom: 10px;
   padding: 2%;
-  width: 65px;
-  height: 65px;
   box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
   border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-.HabitExpand {
-  height: 200px;
-  transition: all 0.5s;
-}
+
 .habit-list {
   display: flex;
   flex-direction: column;
 }
+
+
+.habitsSection {
+  padding: 2%;
+  width: 40%;
+}
+
+#habitsHeader {
+  margin-top: 60px;
+}
+
+
+
 
 /* breakpoints */
 
@@ -907,6 +923,10 @@ figcaption {
     overflow: scroll;
   }
 }
+
+
+
+
 
 @media (max-width: 600px) {
   .userStuff {
