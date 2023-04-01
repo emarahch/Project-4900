@@ -226,6 +226,7 @@ createTodoShowBtn.addEventListener("click", () => {
   generalDisplayBlockCall(divToCreateForm);
 });
 
+
 // //Showing and hiding the form for adding a note
 const createNoteShowBtn = document.getElementById("createNoteShowBtn");
 const divToCreateNote = document.getElementById("divToCreateNote");
@@ -233,6 +234,26 @@ const divToCreateNote = document.getElementById("divToCreateNote");
 createNoteShowBtn.addEventListener("click", () => {
   generalDisplayBlockCall(divToCreateNote);
 });
+
+
+//Showing and hiding the form for adding a habit
+const createHabitShowBtn = document.getElementById("createHabitShowBtn");
+const divToCreateHabitForm = document.getElementById("divToCreateHabitForm");
+
+createHabitShowBtn.addEventListener("click", () => {
+  generalDisplayBlockCall(divToCreateHabitForm);
+});
+
+
+
+//Showing and hiding the form for chnaging date in habit
+const changeDateHabitBtn = document.getElementById("changeDateHabitBtn");
+const divToChnageDateHabitForm = document.getElementById("divToChangeDateHabitForm");
+
+changeDateHabitBtn.addEventListener("click", () => {
+  generalDisplayBlockCall(divToChnageDateHabitForm);
+});
+
 
 //Switching between archive view and normal view
 const viewArchiveButton = document.getElementById("viewArchiveButton");
@@ -349,6 +370,7 @@ function storeTODO(event) {
   var textCa = Array.from(categoryNumberUser.selectedOptions).map(
     (x) => x.value ?? x.text
   );
+  //prevnting refresh of the page
   event.preventDefault();
   (async () => {
     const newTodo2 = new Parse.Object("ToDo");
@@ -1169,12 +1191,39 @@ const submitNewHabitBtn =document.getElementById("submitNewHabit");
 const habitList=document.querySelector(".habits-list");
 
 habitList.addEventListener("click", deleteCheckHabit);
-submitNewHabitBtn.addEventListener("click", addHabit);
+submitNewHabitBtn.addEventListener("click", updateUserHabitList);
+
+function updateUserHabitList(e){
+  Parse.User.enableUnsafeCurrentUser();
+  e.preventDefault();
+  const currentUser = Parse.User.current();
+  const currentUserId =currentUser.id;
+  alert(currentUserId);
+  (async () => {
+    const query = new Parse.Query("User");
+    try {
+  var userHabits = currentUser.get("currentHabits");
+  // alert(userHabits)
+  newUserHabits=document.getElementById("habit-input").value;
+  newUserHabitsArray= Array.from(newUserHabits).map(
+    (x) => x.value ?? x.text
+  );
+  currentUser.set("currentHabits", newUserHabitsArray);
+
+} catch (error) {
+  console.error("Error while retrieving object ", error);
+}
+})();
+
+}
 
 
-function addHabit(){
- 
-  
+function addHabit(e){
+  e.preventDefault();
+  var habitCount=0;
+
+  if (habitList.childNodes.length<3){
+
   const habitDiv = document.createElement("div");
   habitDiv.setAttribute("class", "IndHabit");
   habitDiv.classList.add("Habit");
@@ -1199,6 +1248,22 @@ function addHabit(){
   habitDiv.appendChild(cancelButton);
 
   habitList.appendChild(habitDiv);
+  habitCount=habitCount+1;
+  console.log(habitCount, "meow")
+
+  }
+  else{
+    Toastify({
+      text: "At the moment you can only track 3 habits ",
+      duration: 2500,
+      style: {
+        background: "linear-gradient(to right, #FF69B4, purple)",
+      },
+    }).showToast();
+    console.error("Error while creating ToDo: ", error);
+
+  }
+
 
 }
 
@@ -1211,11 +1276,13 @@ function deleteCheckHabit(event) {
     // deleteNoteStore(note.getAttribute("id"));
   }
 
-
-  if (item.classList[0] === "Expand-btn") {
+  if (item.classList[0] === "complete-btn") {
     const habit = item.parentElement;
-    habit.classList.toggle("HabitExpand");
-  }
+    habit.classList.toggle("completed");
+    // completedStore(habit.getAttribute("id"));
+
+ 
+}
 }
 
 

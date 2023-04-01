@@ -364,7 +364,8 @@ h1 {
   background-color: #ffb2ee;
 }
 
-#createTodoForm {
+#createTodoForm,
+#createHabitForm {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -795,6 +796,8 @@ figcaption {
   display: block;
 }
 
+/* everything habits */
+
 #divToCreateHabitForm {
   display: none;
 }
@@ -803,7 +806,6 @@ figcaption {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
 
   background-color: white;
   border-radius: 5px;
@@ -832,6 +834,9 @@ figcaption {
   margin-top: 60px;
 }
 
+#divToChangeDateHabitForm{
+  display:none;
+}
 
 
 

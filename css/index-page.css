@@ -39,7 +39,7 @@ a:visited {
   justify-content: center;
   flex-direction: column;
   background: url(../images/ffflux.svg);
-  height: 90vh;
+  height: 88vh;
   border: none;
 }
 #TagLine,
@@ -63,10 +63,10 @@ a:visited {
     transform: translateY(0);
   }
   40% {
-    transform: translateY(-30px);
+    transform: translateY(-10px);
   }
   60% {
-    transform: translateY(-15px);
+    transform: translateY(-2px);
   }
 }
 
