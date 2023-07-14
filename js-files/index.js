@@ -1531,3 +1531,76 @@ submitFilterChoice.addEventListener("click", () => {
     }
   }
 });
+
+
+
+// music
+// https://soundcloud.com/chillspacelofi/sets/lofi-non-copyright-hip-hop
+// https://soundcloud.com/chillspacelofi/agx12-adbeel-clouds?in=chillspacelofi/sets/lofi-non-copyright-hip-hop
+
+
+var playButton = document.querySelector('.playButton');
+var skipButton = document.querySelector('.skipButton');
+// var text = document.querySelector('.text');
+// var coverArt = document.querySelector('.coverArt');
+var audio = document.querySelector('.audios');
+// var duration=document.querySelector('.duration');
+
+
+
+
+var songCount=0;
+const songs = ["Cozy Afternoon", "Chocolate", "Yello Mornings","Snow fall"];
+// const covers=["pics/Gum.jpeg","pics/stereoDriver.jpeg","pics/End.jpeg","pics/youUp.jpeg"];
+const mp=["../music/CozyAfternoon.mp3",
+"../music/Digimazz--Chocolate.mp3",
+"../music/LostFiles-YellowMornings-2.mp3",
+"../music/snowfall.mp3"];
+
+
+audio.addEventListener('loadeddata', ()=>{
+    duration.innerHTML = formating(audio.duration);
+});
+
+function formating(time) {
+    var minutes = Math.floor(time / 60);
+    var seconds = Math.floor(time-(minutes * 60));
+    return `${minutes}:${seconds}`;
+  }
+
+
+playButton .addEventListener("click",()=>{
+    if (audio.paused || audio.ended){
+    playerF();
+    }else{
+     pauseF();
+    }
+});
+
+skipButton.addEventListener("click",()=>{
+    newSong();
+});
+
+function newSong(){
+    pauseF();
+    // text.innerHTML=songs[songCount];;
+    // coverArt.src=covers[songCount];
+    audio.src=mp[songCount];
+
+    if(songCount<songs.length-1){
+    songCount+=1;
+    }else{
+        songCount=0;
+    }
+}
+
+
+function playerF(){
+    playButton.innerHTML ="||";
+    audio.play();
+}
+
+function pauseF(){
+    playButton.innerHTML = "▶";
+    audio.pause();
+}

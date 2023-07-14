@@ -198,6 +198,12 @@ h1 {
   background-repeat: no-repeat;
   background-position: center;
 }
+#TriggerMusicButton{
+  background-image: url("../images/darkMode30.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 
 #ShowHabitTrackerButton{
   background-image: url("../images/icons8-habits-30.png");

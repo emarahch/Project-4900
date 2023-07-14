@@ -26,9 +26,9 @@ nav {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 400px;
+  height: 800px;
   width: 700px;
-  padding: 40px;
+  /* padding: 40px; */
   background-color: white;
   color: black;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
@@ -37,9 +37,9 @@ nav {
 input {
   border-radius: 20px;
   border: 0.02px solid rgb(230, 229, 229);
-  /* border-style: groove; */
-  height: 20px;
-  width: 200px;
+  height: 30px;
+  width: 400px;
+  padding:20px;
   margin-top: 10px;
 }
 
@@ -89,4 +89,5 @@ input[type="radio"] {
   align-items: center;
   /* margin: 5px; */
   padding: 20px;
+  width: 200px;
 }
