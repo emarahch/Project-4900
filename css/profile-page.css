@@ -235,6 +235,19 @@ h1 {
   background-position: center;
 }
 
+
+#music{
+border-radius: 16px;
+z-index: 9;
+width: 211px;
+height: 281px;
+display: none;
+position: absolute;
+cursor: move;
+background-color: rgba(18, 18, 18, 0.75);;
+}
+
+
 .TestTodoSection {
   width: 54%;
   padding: 2%;
@@ -834,6 +847,7 @@ figcaption {
 .habitsSection {
   padding: 2%;
   width: 40%;
+  display:none;
 }
 
 #habitsHeader {
