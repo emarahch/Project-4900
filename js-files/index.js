@@ -1546,8 +1546,8 @@ submitFilterChoice.addEventListener("click", () => {
 // https://soundcloud.com/chillspacelofi/agx12-adbeel-clouds?in=chillspacelofi/sets/lofi-non-copyright-hip-hop
 
 
-var playButton = document.querySelector('.playButton');
-var skipButton = document.querySelector('.skipButton');
+var playButton = document.getElementById('playButton');
+var skipButton = document.getElementById('skipButton');
 // var text = document.querySelector('.text');
 // var coverArt = document.querySelector('.coverArt');
 var audio = document.querySelector('.audios');
@@ -1569,6 +1569,8 @@ audio.addEventListener('loadeddata', ()=>{
     duration.innerHTML = formating(audio.duration);
 });
 
+
+
 function formating(time) {
     var minutes = Math.floor(time / 60);
     var seconds = Math.floor(time-(minutes * 60));
@@ -1577,7 +1579,8 @@ function formating(time) {
 
 
 playButton .addEventListener("click",()=>{
-    if (audio.paused || audio.ended){
+  audio.src=mp[songCount];
+    if( playButton.innerHTML == "▶"){
     playerF();
     }else{
      pauseF();
@@ -1589,7 +1592,6 @@ skipButton.addEventListener("click",()=>{
 });
 
 function newSong(){
-    pauseF();
     // text.innerHTML=songs[songCount];;
     // coverArt.src=covers[songCount];
     audio.src=mp[songCount];
@@ -1599,6 +1601,7 @@ function newSong(){
     }else{
         songCount=0;
     }
+    playerF();
 }
 
 
