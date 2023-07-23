@@ -1,3 +1,8 @@
+:root {
+  --hover-pink: #fd9be8;
+  --circle-radius: 50%;
+}
+
 body {
   font-family: "Lato";
   background-color: #fafafa;
@@ -45,7 +50,7 @@ a:visited {
 /* The top part of the screen */
 
 #userPlay {
-  border-radius: 50%;
+  border-radius: var(--circle-radius);
   height: 36px;
   width: 36px;
   margin-top: 15px;
@@ -92,14 +97,14 @@ a:visited {
   width: 36px;
   padding: 2px;
   height: 36px;
-  border-radius: 50%;
+  border-radius: var(--circle-radius);
   gap: 12px;
   border: none;
   background-color: white;
 }
 
 .timerSection button:hover {
-  background-color: #fd9be8;
+  background-color: var(--hover-pink);
 }
 
 /* .timerSection #increaseMinutes, 
@@ -146,6 +151,11 @@ a:visited {
   width: 30px;
   margin-left: -9px;
 }
+#showSideBar:hover {
+  background-color:#ebebeb;
+  border-radius:50%;
+  transition: 0.7s;
+}
 
 h1 {
   font-size: 32px;
@@ -177,6 +187,8 @@ h1 {
   background-color: #f6f6f6;
   width: 83px;
   border: none;
+  /* box-shadow: inset -1px 0px 10px rgba(0, 0, 0, 0.9); */
+  z-index:1;
 }
 
 .testNav button {
@@ -235,6 +247,18 @@ h1 {
   background-position: center;
 }
 
+#themeChangeButton:hover,
+#TriggerMusicButton:hover,
+#ShowHabitTrackerButton:hover,
+#tutorialbutton:hover,
+#ShowAddToCalendar:hover,
+.logoutButton:hover,
+.deleteAccountButton:hover{
+  background-color:  var(--hover-pink);
+  border-radius:50%;
+  transition: all 0.5s;
+}
+
 
 #music{
 border-radius: 16px;
@@ -255,9 +279,9 @@ background-color: rgba(18, 18, 18, 0.75);;
 }
 
 #musicButtons{
-  display:flex;
-  justify-content:center;
-  width: 146px;
+display:flex;
+justify-content:center;
+width: 180px;
 height: 32px;
 background-color: hsla(0,0%,100%,.05);
 border: 1px solid hsla(0,0%,100%,.1);
@@ -271,6 +295,9 @@ height: 32px;
 padding: 10px;
 width: 35px;
 
+}
+h3{
+  color: hsla(0,0%,100%,.7);
 }
 
 
@@ -454,6 +481,7 @@ width: 35px;
   border: none;
 }
 
+
 /* Lables for task */
 
 .labels {
@@ -551,7 +579,7 @@ width: 35px;
 }
 
 .complete-btn {
-  border-radius: 50%;
+  border-radius: var(--circle-radius);
   border: solid grey 0.5px;
   background-color: transparent;
   width: 23px;

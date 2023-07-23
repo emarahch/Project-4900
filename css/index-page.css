@@ -1,3 +1,9 @@
+:root {
+  --login-box-shadow:9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+  --pink: #fd9be8;
+}
+
+
 body {
   font-family: "Lato";
   margin: 0%;
@@ -42,18 +48,20 @@ a:visited {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  gap:0px;
   background: url(../images/ffflux.svg);
-  height: 88vh;
   border: none;
 }
-#TagLine,
-#promoText {
-  width: 500px;
-  font-size: 60px;
+#TagLine{
+  /* width: 500px; */
+  font-size:5rem;
   text-align: center;
 }
 #promoText{
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: 100;
+  color: rgb(75, 85, 99);
+  text-align: center;
 }
 
 #arrowDownPic {
@@ -77,23 +85,38 @@ a:visited {
 /* #cutePink {
   color: #f79af2;
 } */
+#featuresLink:hover{
+color:var(--pink);
+transition: all 0.5s;
+}
 
 .create-button,
 .login-button {
   cursor: pointer;
   width: 130px;
   height: 40px;
-  border-width: 4px;
-  border-image: linear-gradient(to right, darkblue, darkorchid) 1;
-  color: black;
-  background: transparent;
-  font-size: 12px;
-
+  color: white;
+  border:none;
+  background: black;
+  font-size: 16px;
+  border-radius: 20px;
+  font-weight: 400;
+}
+#featuresLink:hover,
+.create-button:hover,
+.login-button:hover{
+color:var(--pink);
+transition: all 0.5s;
 }
 
+.create-button:hover,
+.login-button:hover  {
+  box-shadow: var(--login-box-shadow);
+  transform: translateY(-2px);
+}
 
-.create-button {
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+.create-button{
+  width: 180px;
 }
 
 #textAButton {
@@ -103,22 +126,19 @@ a:visited {
   align-items: center;
   padding: 5px;
 }
-.create-button:hover {
-  box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
-  transform: translateY(-2px);
-}
+
 
 #boxpic {
-  height: 700px;
-  width: 700px;
+  /* height: 900px; */
+  width: 900px;
+/* position: relative; */
+  /* height: 80%;
+  width: 80%; */
   object-fit: contain;
 }
 
 
-.login-button:hover {
-  box-shadow: 9px 9px 33px rgb(202, 176, 176), -9px -9px 33px #ffffff;
-  transform: translateY(-2px);
-}
+
 
 #WholeFeatureDiv {
   display: flex;

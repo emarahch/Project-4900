@@ -34,12 +34,12 @@ nav {
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
 }
-input {
+input{
   border-radius: 20px;
   border: 0.02px solid rgb(230, 229, 229);
   height: 30px;
   width: 400px;
-  padding:20px;
+  padding: 6px 12px;
   margin-top: 10px;
 }
 
