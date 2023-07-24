@@ -2,6 +2,8 @@
   --login-box-shadow:9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
   --pink: #fd9be8;
 }
+/* spacing(2,4,8,12,16,20,24,28,..). */
+
 
 
 body {
@@ -12,12 +14,15 @@ body {
 
 nav {
   display: flex;
+  align-items: center;
   padding: 20px 5px;
   font-size: 15px;
   background-color: rgb(255, 255, 255);
-  height:5vh;
+  height:3vh;
+  /* height: 88px; */
   margin-right:20px;
   margin-left:20px;
+  border-bottom: 1px solid #4a4f5527;
 }
 nav ul {
   margin-left: auto;
@@ -53,15 +58,19 @@ a:visited {
   border: none;
 }
 #TagLine{
-  /* width: 500px; */
-  font-size:5rem;
+  font-size: 88px;
+  font-weight: 800;
+  max-width: 564px;
   text-align: center;
+  margin-bottom:24px;
 }
 #promoText{
-  font-size: 18px;
-  font-weight: 100;
+  font-size: 20px;
+  font-weight: 500;
   color: rgb(75, 85, 99);
   text-align: center;
+  margin-top: 0px;
+  margin-bottom: 24px;
 }
 
 #arrowDownPic {
@@ -82,9 +91,10 @@ a:visited {
   }
 }
 
-/* #cutePink {
-  color: #f79af2;
-} */
+#cutePink {
+  color:#9f8ae6;
+}
+
 #featuresLink:hover{
 color:var(--pink);
 transition: all 0.5s;
@@ -101,6 +111,7 @@ transition: all 0.5s;
   font-size: 16px;
   border-radius: 20px;
   font-weight: 400;
+  letter-spacing: 1px;
 }
 #featuresLink:hover,
 .create-button:hover,
@@ -117,6 +128,7 @@ transition: all 0.5s;
 
 .create-button{
   width: 180px;
+  margin-bottom: 24px;;
 }
 
 #textAButton {
@@ -129,11 +141,8 @@ transition: all 0.5s;
 
 
 #boxpic {
-  /* height: 900px; */
+  border-radius: 24px;
   width: 900px;
-/* position: relative; */
-  /* height: 80%;
-  width: 80%; */
   object-fit: contain;
 }
 

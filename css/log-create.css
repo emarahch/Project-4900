@@ -28,66 +28,77 @@ nav {
   flex-direction: column;
   height: 800px;
   width: 700px;
-  /* padding: 40px; */
   background-color: white;
   color: black;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
 }
+
+.inputSpacing{
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+margin-bottom:20px;
+}
 input{
-  border-radius: 20px;
+  border-radius: 8px;
   border: 0.02px solid rgb(230, 229, 229);
   height: 30px;
   width: 400px;
   padding: 6px 12px;
-  margin-top: 10px;
+  margin-top: 4px;
 }
 
-.Log-create-button,
+.createButton,
 .loginButton {
   width: 130px;
   height: 40px;
-  align-items: center;
-  justify-content: center;
-  background-color: #eeeeee4b;
-  border-radius: 142px;
+  font-size: 16px;
+  font-weight: 400;
+  border-radius: 20px;
   letter-spacing: 1px;
   transition: all 0.2s linear;
   cursor: pointer;
   border: none;
-
   background: rgb(0, 0, 0);
   color: white;
   margin-top: 10px;
 }
-.Log-create-button:hover > svg {
-  font-size: 1.2em;
-  transform: translateX(-5px);
-}
-.Log-create-button:hover {
+
+.createButton:hover,
+.loginButton:hover {
   box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
   transform: translateY(-2px);
+  color:#fd9be8
+}
+#chooseTitle{
+  font-size:20px ;
 }
 
-input[type="radio"]:checked + label > img {
+/* hiding the button, only show image */
+  .input-hidden{
+  opacity: 0;
+  position: absolute;
+  width: 90;
+  height: 90;
+  cursor: pointer;
+}
+
+
+  [type=radio]:checked + img {
   border: 1px solid #fff;
   box-shadow: 0 0 3px 3px#e2a7df;
 }
 
-/* hiding the button, only show image */
-input[type="radio"] {
-  opacity: 0;
-}
 .label-image {
-  width: 30px;
-  height: 40px;
+  width: 60px;
+  height: 70px;
 }
-
 .pick-Character {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin: 5px; */
+  gap:16px;
   padding: 20px;
   width: 200px;
 }

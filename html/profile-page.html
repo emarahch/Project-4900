@@ -41,15 +41,16 @@
     <div class="userStuff">
       <div class="userNamePfp">
         <img src="../images/plholder.webp" id="userPlay" alt="Profie picture" />
-        <p id="welcome">Hey Emy!</p>
+        <h1 id="welcome">Hey Emy!</h1> 
+        <!-- <p id="currentDate">Date</p> -->
       </div>
-      <p id="YouHaveDue">
+      <!-- <p id="YouHaveDue">
         You have <span id="ThingsDue">0</span> tasks due today
-      </p>
+      </p> -->
 
       <!-- Timer things -->
       <div id="timerAndScore">
-        <div class="timerSection">
+        <!-- <div class="timerSection">
           <h2 id="setTime">
             <span id="timerMinutes">25</span>:<span id="timerSeconds">00 </span>
           </h2>
@@ -59,9 +60,9 @@
           <button id="timerStartButton">Start</button>
           <button id="timerPauseButton">Pause</button>
           <button id="timerClearButton">Clear</button>
-        </div>
+        </div> -->
 
-        <div class="ScoreDiv">
+        <!-- <div class="ScoreDiv">
           <p>Level</p>
           <div id="levelEle">1</div>
           <div
@@ -70,7 +71,7 @@
             data-stroke-trail-width="10"
             id="bar"
             class="ldBar label-center"
-          ></div>
+          ></div> -->
         </div>
       </div>
     </div>
@@ -148,8 +149,25 @@
 
       <div class="TestTodoSection">
         <!-- <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX4t95PAs1EpY?utm_source=generator&theme=0" width="40%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> -->
-
+        <div id="beforeTodoHeader">
+          <div class="ScoreDiv">
+            <p>Level</p>
+            <div id="levelEle">1</div>
+            <div
+              data-preset="rainbow"
+              data-stroke-width="10"
+              data-stroke-trail-width="10"
+              id="bar"
+              class="ldBar label-center"
+            ></div>
+          </div>
+          <div>
         <p id="currentDate">Date</p>
+        <p id="bannerWelcomeDue"><span id="YouHaveDue"> You have <span id="ThingsDue">0</span> tasks due today </span></p>
+      </div>
+
+      </div>
+
         <div id="todoAndShowMore">
           <h1 id="todoHeader">Todo</h1>
         </div>
@@ -265,6 +283,18 @@
 
       <div class="notesSection">
         <!-- Note things -->
+        <div class="timerSection">
+          <h2 id="setTime">
+            <span id="timerMinutes">25</span>:<span id="timerSeconds">00 </span>
+          </h2>
+
+          <button id="increaseMinutes">+</button>
+          <button id="decreaseMinutes">-</button>
+          <button id="timerStartButton">Start</button>
+          <button id="timerPauseButton">Pause</button>
+          <button id="timerClearButton">Clear</button>
+        </div>
+        
         <h1 id="notesHeader">Notes</h1>
 
         <div id="divToSelectFilterForm">

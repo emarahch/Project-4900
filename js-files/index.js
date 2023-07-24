@@ -1011,7 +1011,7 @@ function loader() {
   const currentUser = Parse.User.current();
   const refUse = currentUser.get("username");
   const userI = currentUser.get("chara");
-  document.getElementById("welcome").innerHTML = "Hey, " + refUse + "!";
+  document.getElementById("welcome").innerHTML = "Welcome back, " + refUse + "!";
   document.getElementById("userPlay").src = userI;
   upScoreRealTime();
   retrieveTodos();

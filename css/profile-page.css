@@ -62,16 +62,26 @@ a:visited {
   border: none;
   align-items: center;
   height: 6vh;
-  background-color: #ffd2fd;
+  background-color: rgba(255, 210, 253, 0.56);
+  /* background-color: white; */
+  /* #ffd2fd; */
 }
 
-#welcome,
+#welcome{
+  padding: 3px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+/* #welcome, */
 #YouHaveDue {
   padding: 3px;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
 }
+
 
 #YouHaveDue {
   padding-left: 0px;
@@ -91,6 +101,11 @@ a:visited {
   align-items: center;
   justify-content: center;
   flex-direction: row;
+  border-radius: 5px;
+box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
+border: 1px solid rgba(0, 0, 0, 0.12);
+/* background-color: rgba(255, 210, 253, 0.56); */
+background-color: #dbe0ff;
 }
 .timerSection button {
   margin: 2px;
@@ -114,11 +129,17 @@ a:visited {
   height: 48px; */
 /* } */
 
-#timerAndScore {
+/* #timerAndScore {
   display: flex;
   margin-left: auto;
   gap: 32px;
-}
+  border-radius: 5px;
+  padding-left:4px;
+  padding-right:4px;
+
+/* background-color: #060303; */
+
+/* } */ */
 
 #setTime {
   font-size: 18px;
@@ -128,8 +149,14 @@ a:visited {
   margin-top: 5px;
   display: flex;
   align-items: center;
+  height: 30px;
+  width: 160px;
   gap: 5px;
   font-size: 14px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
+border: 1px solid rgba(0, 0, 0, 0.12);
+background-color: rgba(255, 210, 253, 0.56);
 }
 
 /* Everything in the center of the screen */
@@ -163,7 +190,7 @@ h1 {
   line-height: 38px;
 }
 #notesHeader {
-  margin-top: 60px;
+  margin-top: 21.44px;
 }
 
 #todoAndShowMore {
@@ -177,6 +204,14 @@ h1 {
   font-weight: 700;
   font-size: 16px;
   line-height: 1px;
+}
+
+#bannerWelcomeDue {
+  color: #7e7e7e;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1px;
+  margin-bottom: 0px;;
 }
 
 #DividingLineDiv {
@@ -257,6 +292,7 @@ h1 {
   background-color:  var(--hover-pink);
   border-radius:50%;
   transition: all 0.5s;
+  cursor: pointer;
 }
 
 
@@ -301,6 +337,10 @@ h3{
 }
 
 
+#beforeTodoHeader{
+  display:flex;
+  flex-direction: column;
+}
 
 
 .TestTodoSection {
@@ -1021,6 +1061,10 @@ figcaption {
 }
 
 /* Color schemes */
+.darkMode .testNav{
+  background-color: grey;
+  transition: 1s;
+}
 
 .darkMode .intro-box {
   background-color: black;

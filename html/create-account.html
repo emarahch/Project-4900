@@ -29,46 +29,65 @@
     <!-- chnagfe to form -->
     <div id="DivDivForLogCreate">
       <div class="Log-create-div">
-        <h3>Create account</h3>
-        <input type="text" placeholder="name" id="userName_field" />
-        <input type="email" placeholder="email" id="email_field" />
-        <input type="password" placeholder="password" id="password_field" />
+        <h1>Create account</h1>
+        <label class="inputSpacing">Name<input type="text" placeholder="name" id="userName_field" /></label>
+          <label class="inputSpacing">Email<input type="email" placeholder="email" id="email_field" /></label>
+            <label class="inputSpacing">Password<input type="password" placeholder="password" id="password_field" /></label>
 
+        <p id="chooseTitle">Choose your character</p>
         <div class="pick-Character">
+          
+          <label for="age1">
           <input
             type="radio"
             id="../images/plholder.webp"
+            class="input-hidden"
             name="chara"
             value="../images/plholder.webp"
-            class="input-hidden"
+            
           />
-          <label for="age1"
-            ><img src="../images/plholder.webp" class="label-image"
-          /></label>
+          <img src="../images/plholder.webp" class="label-image"/>
+        </label>
 
+          <!-- <label for="age1">
+            <img src="../images/plholder.webp" class="label-image"/>
+          </label> -->
+
+          <label for="age2">
           <input
             type="radio"
             id="../images/plholder.webp"
+            class="input-hidden"
             name="chara"
             value="../images/test1.jpeg"
-            class="input-hidden"
+            
           />
-          <label for="age2"
-            ><img src="../images/test1.jpeg" class="label-image"
-          /></label>
+          <img src="../images/test1.jpeg" class="label-image"
+          />
+        </label>
 
+          <!-- <label for="age2"
+            ><img src="../images/test1.jpeg" class="label-image"
+          /></label> -->
+
+          <label for="age3">
           <input
             type="radio"
             id="../images/plholder.webp"
+            class="input-hidden"
             name="chara"
             value="../images/test2.png"
-            class="input-hidden"
+            
           />
-          <label for="age3"
+          <img src="../images/test2.png" class="label-image"
+          />
+        </label>
+
+          <!-- <label for="age3"
             ><img src="../images/test2.png" class="label-image"
-          /></label>
+          /></label> -->
         </div>
-        <button onclick="preCreate()" class="Log-create-button">Create</button>
+        <button onclick="preCreate()" class="createButton">Create</button>
       </div>
     </div>
 
