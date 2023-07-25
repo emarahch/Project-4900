@@ -1,7 +1,8 @@
 :root {
   --hover-pink: #fd9be8;
-  --pale-pink:rgba(255, 210, 253, 0.56);
+  --pale-pink: rgba(255, 210, 253, 0.56);
   --circle-radius: 50%;
+  --average-border-radius:8px;
 }
 
 body {
@@ -30,7 +31,7 @@ a:visited {
   height: 100vh;
   position: fixed;
   background: #000 url("../images/icons8-favorite-64.png") center no-repeat;
-  z-index: 1;
+  z-index: 99;
   animation: heartBeat 2s infinite;
 }
 
@@ -52,8 +53,6 @@ a:visited {
 
 #userPlay {
   border-radius: var(--circle-radius);
-  /* height: 36px;
-  width: 36px; */
   height: 24px;
   width: 24px;
   margin-top: 15px;
@@ -66,11 +65,9 @@ a:visited {
   align-items: center;
   height: 6vh;
   background-color: rgba(255, 210, 253, 0.56);
-  /* background-color: white; */
-  /* #ffd2fd; */
 }
 
-#welcome{
+#welcome {
   padding: 3px;
   font-weight: 600;
   font-size: 14px;
@@ -85,7 +82,6 @@ a:visited {
   line-height: 22px;
 }
 
-
 #YouHaveDue {
   padding-left: 0px;
 }
@@ -94,22 +90,24 @@ a:visited {
   display: flex;
   flex-direction: row;
   margin-left: 10px;
-  /* gap: 23px; */
 }
 
 /* Timer section */
 
 .timerSection {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  border-radius: 5px;
-box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
-border: 1px solid rgba(0, 0, 0, 0.12);
-/* background-color: rgba(255, 210, 253, 0.56); */
-background-color: #dbe0ff;
+  /* border-radius: var(--average-border-radius); */
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
+  background-color: #dbe0ff;
+
+  border-radius: 16px;
+  z-index: 9;
+  width: 246px;
+  height: 100px;
+  display: none;
+  position: absolute;
+  cursor: move;
 }
+
 .timerSection button {
   margin: 2px;
   width: 36px;
@@ -125,24 +123,22 @@ background-color: #dbe0ff;
   background-color: var(--hover-pink);
 }
 
-/* .timerSection #increaseMinutes, 
+.timerSection #increaseMinutes, 
 .timerSection #decreaseMinutes{
-  /* border-radius:50%;
+  border-radius:50%;
   width:48px;
-  height: 48px; */
-/* } */
+  height: 48px; 
+} 
 
-/* #timerAndScore {
+#timerAndScore {
   display: flex;
   margin-left: auto;
   gap: 32px;
-  border-radius: 5px;
+  border-radius: var(--average-border-radius);
   padding-left:4px;
   padding-right:4px;
-
-/* background-color: #060303; */
-
-/* } */ */
+background-color: #060303;
+} 
 
 #setTime {
   font-size: 18px;
@@ -157,9 +153,10 @@ background-color: #dbe0ff;
   gap: 5px;
   font-size: 14px;
   border-radius: 10px;
+  margin-left: auto;
   box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
-border: 1px solid rgba(0, 0, 0, 0.12);
-background-color: rgba(255, 210, 253, 0.56);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background-color: rgba(255, 210, 253, 0.56);
 }
 
 /* Everything in the center of the screen */
@@ -168,7 +165,6 @@ background-color: rgba(255, 210, 253, 0.56);
   flex-direction: row;
   background-color: #ffffff;
   color: RGB(32, 32, 32);
-  /* height: 94vh; */
 }
 
 #showSideBar {
@@ -182,8 +178,8 @@ background-color: rgba(255, 210, 253, 0.56);
   margin-left: -9px;
 }
 #showSideBar:hover {
-  background-color:#ebebeb;
-  border-radius:50%;
+  background-color: #ebebeb;
+  border-radius: 50%;
   transition: 0.7s;
 }
 
@@ -194,12 +190,6 @@ h1 {
 }
 #notesHeader {
   margin-top: 21.44px;
-}
-
-#todoAndShowMore {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
 }
 
 #currentDate {
@@ -214,7 +204,7 @@ h1 {
   font-weight: 700;
   font-size: 14px;
   line-height: 1px;
-  margin-bottom: 0px;;
+  margin-bottom: 0px;
 }
 
 #DividingLineDiv {
@@ -226,11 +216,10 @@ h1 {
   display: flex;
   flex-direction: column;
   background-color: #f6f6f6;
-  height:100vh;
-  width:200px;
+  height: 100vh;
+  width: 200px;
   border: none;
-  /* box-shadow: inset -1px 0px 10px rgba(0, 0, 0, 0.9); */
-  z-index:1;
+  z-index: 1;
 }
 
 .testNav button {
@@ -252,14 +241,13 @@ h1 {
   background-repeat: no-repeat;
   background-position: center;
 }
-#TriggerMusicButton{
-  background-image: url("../images/darkMode30.png");
+#TriggerMusicButton {
+  /* background-image: url("../images/darkMode30.png");
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center; */
 }
 
-
-#ShowHabitTrackerButton{
+#ShowHabitTrackerButton {
   background-image: url("../images/icons8-habits-30.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -280,7 +268,6 @@ h1 {
   background-image: url("../images/logOut30.png");
   background-repeat: no-repeat;
   background-position: center;
-  /* margin-top: 550px; */
 }
 
 .deleteAccountButton {
@@ -289,80 +276,92 @@ h1 {
   background-position: center;
 }
 .showToDoDivButton:hover,
+#showTimerButton:hover,
+#CloseToDoDivButton:hover,
 #themeChangeButton:hover,
 #TriggerMusicButton:hover,
 #ShowHabitTrackerButton:hover,
 #tutorialbutton:hover,
 #ShowAddToCalendar:hover,
 .logoutButton:hover,
-.deleteAccountButton:hover{
-  background-color:  var(--hover-pink);
-  border-radius:50%;
+.deleteAccountButton:hover {
+  background-color: var(--hover-pink);
+  border-radius: 50%;
   transition: all 0.5s;
   cursor: pointer;
 }
 
 
-#music{
-border-radius: 16px;
-z-index: 9;
-width: 211px;
-height: 281px;
-display: none;
-position: absolute;
-cursor: move;
-background-color: rgba(18, 18, 18, 0.75);;
+
+#music {
+  border-radius: 16px;
+  z-index: 9;
+  width: 211px;
+  height: 281px;
+  display: none;
+  position: absolute;
+  cursor: move;
+  background-color: rgba(18, 18, 18, 0.75);
 }
 
-#innerMusic{
-  display:flex;
-  justify-content:center;
+#innerMusic {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  flex-direction:column;
-}
-
-#musicButtons{
-display:flex;
-justify-content:center;
-width: 180px;
-height: 32px;
-background-color: hsla(0,0%,100%,.05);
-border: 1px solid hsla(0,0%,100%,.1);
-border-radius: 8px;
-}
-
-.musicButtonsClass{
-background-color: transparent;
-border:0.5px solid hsla(0,0%,100%,.1);
-height: 32px;
-padding: 10px;
-width: 35px;
-
-}
-h3{
-  color: hsla(0,0%,100%,.7);
-}
-
-
-#beforeTodoHeader{
-  display:flex;
   flex-direction: column;
 }
 
+#musicButtons {
+  display: flex;
+  justify-content: center;
+  width: 180px;
+  height: 32px;
+  background-color: hsla(0, 0%, 100%, 0.05);
+  border: 1px solid hsla(0, 0%, 100%, 0.1);
+  border-radius: var(--average-border-radius);
+}
 
+.musicButtonsClass {
+  background-color: transparent;
+  border: 0.5px solid hsla(0, 0%, 100%, 0.1);
+  height: 32px;
+  padding: 10px;
+  width: 35px;
+}
+h3 {
+  color: hsla(0, 0%, 100%, 0.7);
+}
+
+#beforeTodoHeader {
+  display: flex;
+  flex-direction: row;
+}
+#CloseTodoHeader{
+  display: flex;
+  flex-direction: row;
+}
+#CloseToDoDivButton{
+  background-color: transparent;
+  border:none;
+  font-size: 16px;
+}
+#todoHeader{
+  margin: auto;
+}
 .TestTodoSection {
-  display:none;
+  display: none;
   width: 26%;
-  height:90vh;
+  height: 90vh;
   padding: 2%;
-  border-radius: 16px;
+  border-radius: 28px;
   margin-right: 16px;
-  margin-top:15px;
+  margin-top: 16px;
   background-color: var(--pale-pink);
 }
 
 #todoButtons {
   display: flex;
+  margin-top:50px;
 }
 
 .todo-list {
@@ -421,7 +420,7 @@ h3{
 
 #DivForButtonsArchEditSort button:hover {
   background-color: #ffb2ee;
-  border-radius: 5px;
+  border-radius: var(--average-border-radius);
   border: none;
 }
 
@@ -429,9 +428,9 @@ h3{
   background-image: url("../images/3dots14.png");
   background-repeat: no-repeat;
   background-position: center;
-  border-radius: 5px;
+  border-radius: var(--average-border-radius);
   border: 1px solid rgba(0, 0, 0, 0.2);
-  background-color: white;
+  background-color: transparent;
   padding: 10px;
 }
 
@@ -445,9 +444,9 @@ h3{
 
 #createTodoShowBtn,
 #createNoteShowBtn {
-  border-radius: 5px;
+  border-radius: var(--average-border-radius);
   border: none;
-  background-color: white;
+  background-color: transparent;
   padding: 5px;
   font-size: 14px;
 }
@@ -463,7 +462,7 @@ h3{
   background-position-y: center;
   padding-left: 8px;
 
-  border-radius: 5px;
+  border-radius: var(--average-border-radius);
   height: 20px;
   width: 50px;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -480,7 +479,7 @@ h3{
   background-position-x: 2px;
   background-position-y: center;
   padding-left: 8px;
-  border-radius: 5px;
+  border-radius: var(--average-border-radius);
   height: 20px;
   width: 50px;
   background-color: white;
@@ -498,7 +497,7 @@ h3{
   justify-content: space-between;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   padding: 15px;
-  border-radius: 5px;
+  border-radius: var(--average-border-radius);
   /* fix this... */
 }
 
@@ -530,10 +529,9 @@ h3{
 
 #sortButtonsDiv button:hover {
   background-color: #ffb2ee;
-  border-radius: 5px;
+  border-radius: var(--average-border-radius);
   border: none;
 }
-
 
 /* Lables for task */
 
@@ -575,8 +573,8 @@ h3{
   margin-bottom: 10px;
   padding: 2%;
   background-color: white;
-  border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
+  border-radius: var(--average-border-radius);
+  /* box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px; */
   border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
@@ -603,7 +601,7 @@ h3{
 }
 
 .IndCategories {
-  /* border-radius: 5px; */
+  /* border-radius: var(--average-border-radius) */
   padding: 5px;
   border-radius: 10px;
   margin-right: 9px;
@@ -634,7 +632,7 @@ h3{
 
 .complete-btn {
   border-radius: var(--circle-radius);
-  border: solid grey 0.5px;
+  border: solid rgba(147, 144, 144, 0.523) 0.5px;
   background-color: transparent;
   width: 23px;
   height: 23px;
@@ -672,9 +670,11 @@ h3{
 /* Notes section */
 
 .notesSection {
-padding: 2%;
- height:100vh;
- width: 70%;
+  padding: 2%;
+  height: 100vh;
+  /* width: 70%; */
+  width:64%;
+  margin: auto;
 }
 
 #NoteButtons {
@@ -683,21 +683,21 @@ padding: 2%;
 }
 .DivShowEditDeleteNoteButtons {
   display: none;
+  /* position:relative; */
+  z-index: 7;
   background-color: white;
   margin-left: auto;
-  right: 20px;
   box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
   border: 0.02px solid rgb(230, 229, 229);
   width: 20px;
   height: 40px;
- 
 }
 
 .title-field,
 .body-field {
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-  border-radius: 5px;
+  border-radius: var(--average-border-radius);
   border: 0.3px black;
   width: 200px;
   margin-bottom: 8px;
@@ -716,7 +716,7 @@ padding: 2%;
   justify-content: center;
   flex-direction: column;
   padding: 2px;
-  border-radius: 5px;
+  border-radius: var(--average-border-radius);
   border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
@@ -730,7 +730,7 @@ padding: 2%;
 #divForAllThingsImageSearch input,
 #divForAllThingsImageSearch button,
 .btn-save {
-  border-radius: 5px;
+  border-radius: var(--average-border-radius);
   background-color: white;
   border: 0.5px solid rgba(0, 0, 0, 0.12);
   font-size: 10px;
@@ -759,14 +759,14 @@ figcaption {
 
 .display_images img {
   width: 40px;
-  border-radius: 5px;
+  border-radius: var(--average-border-radius);
   height: 40px;
   cursor: pointer;
 }
 
 .IndImageGrid:hover {
   background-color: #f2dbff;
-  border-radius: 5px;
+  border-radius: var(--average-border-radius);
 }
 
 #createNoteShowBtn:hover {
@@ -794,7 +794,7 @@ figcaption {
   background-position-y: center;
   padding-left: 8px;
 
-  border-radius: 5px;
+  border-radius: var(--average-border-radius);
   height: 20px;
   width: 50px;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -809,7 +809,7 @@ figcaption {
   background-position: center;
   padding-left: 8px;
 
-  border-radius: 5px;
+  border-radius: var(--average-border-radius);
   height: 20px;
   width: 50px;
   border: none;
@@ -839,20 +839,18 @@ figcaption {
 .note {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-
+  gap:4px;
+  /* justify-content: space-between; */
   transition: all 0.5s;
-
   background-color: white;
-  border-radius: 5px;
+  border-radius: var(--average-border-radius);
   margin: 5px;
   margin-bottom: 10px;
   padding: 2%;
   overflow-y: hidden;
-
   font-size: 14px;
   color: rgb(46, 46, 46);
-  box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
+  /* box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px; */
   border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
@@ -866,48 +864,51 @@ figcaption {
 .note:hover #notesDivButtons {
   /* display: block; */
   background-color: #f4f5fc;
-  border-radius: 5px;
+  border-radius: var(--average-border-radius);
 }
 
 .IndNoteHeadImagePerNote {
-  width: 100%;
-  height: 40px;
-  object-fit: cover;
-  border-radius: 4px;
+  display:none;
 }
 
 .note .titleOut {
   font-weight: 500;
+  /* height: 2%; */
 }
 
 .note .bodyOut {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  height: 20px;
   opacity: 0.8;
 }
 
 .note .IndCategories {
   opacity: 0.9;
   padding: 0px;
+  min-width:8%;
+  max-width: fit-content;
   text-align: center;
 }
 
 .noteExpand {
   transition: all 0.5s;
-  height: 200px;
+  height: 64%;
 }
 
 .noteExpand .IndNoteHeadImagePerNote {
-  height: 80px;
+  display:block;
+  height: 28%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: var(--average-border-radius);
 }
 
 .noteExpand .bodyOut {
   overflow-y: auto;
   white-space: initial;
   text-overflow: initial;
-  height: 200px;
+  height: 80%;
 }
 
 .Expand-btn {
@@ -915,7 +916,7 @@ figcaption {
   background-image: url("../images/enlarge12.png");
   background-repeat: no-repeat;
   background-position: center;
-  border-radius: 5px;
+  border-radius: var(--average-border-radius);
   height: 20px;
   width: 20px;
   min-height: 20px;
@@ -939,7 +940,7 @@ figcaption {
   justify-content: space-between;
 
   background-color: white;
-  border-radius: 5px;
+  border-radius: var(--average-border-radius);
   list-style-type: none;
 
   margin: 5px;
@@ -949,28 +950,24 @@ figcaption {
   border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-
 .habit-list {
   display: flex;
   flex-direction: column;
 }
 
-
 .habitsSection {
   padding: 2%;
   width: 40%;
-  display:none;
+  display: none;
 }
 
 #habitsHeader {
   margin-top: 60px;
 }
 
-#divToChangeDateHabitForm{
-  display:none;
+#divToChangeDateHabitForm {
+  display: none;
 }
-
-
 
 /* breakpoints */
 
@@ -1045,9 +1042,7 @@ figcaption {
     transition: all 0.5s;
   }
 
-  /* .DivShowEditDeleteNoteButtons {
-    margin-left:auto;
-  } */
+
   #welcome,
   #YouHaveDue {
     padding: 1px;
@@ -1061,10 +1056,6 @@ figcaption {
   }
 }
 
-
-
-
-
 @media (max-width: 600px) {
   .userStuff {
     display: flex;
@@ -1077,7 +1068,7 @@ figcaption {
 }
 
 /* Color schemes */
-.darkMode .testNav{
+.darkMode .testNav {
   background-color: grey;
   transition: 1s;
 }

@@ -5,7 +5,7 @@ Parse.initialize(
   "ARHVg2q79aHYce2i4rov3RDm6Z4LMvPckfwggh6T" // This is your Javascript key
 );
 
-// If having trouble with parse, check if there is an update
+// If having trouble with parse, check if there is an update.
 const loaderContainer = document.querySelector(".loader-container");
 
 window.addEventListener("load", (event) => {
@@ -198,7 +198,6 @@ function generalDisplayBlockCall(Div) {
   }
 }
 
-
 const SortButtonsAll = document.getElementById("SortButtonsAll");
 const sortButtonsDiv = document.getElementById("sortButtonsDiv");
 
@@ -213,19 +212,29 @@ showSideBar.addEventListener("click", () => {
   generalDisplayBlockCall(divSideform);
 });
 
+
+//Showing hiding timer
+const showTimerButton=document.getElementById("showTimerButton");
+const timerSection=document.querySelector(".timerSection");
+showTimerButton.addEventListener("click", () => {
+  generalDisplayBlockCall(timerSection);
+});
+
+
+
 //showing hiding todosection
-const showToDoDivButton =document.querySelectorAll(".showToDoDivButton");
-const TestTodoSection =document.querySelector(".TestTodoSection");
-showToDoDivButton.forEach(function(i) {
-i.addEventListener("click", () => {
-  generalDisplayBlockCall(TestTodoSection);
+const showToDoDivButton = document.querySelectorAll(".showToDoDivButton");
+const TestTodoSection = document.querySelector(".TestTodoSection");
+showToDoDivButton.forEach(function (i) {
+  i.addEventListener("click", () => {
+    generalDisplayBlockCall(TestTodoSection);
+  });
 });
-});
-
-
 
 //Showing and hiding habit tracker
-const  ShowHabitTrackerButton= document.getElementById("ShowHabitTrackerButton");
+const ShowHabitTrackerButton = document.getElementById(
+  "ShowHabitTrackerButton"
+);
 const habitsSection = document.querySelector(".habitsSection");
 ShowHabitTrackerButton.addEventListener("click", () => {
   generalDisplayBlockCall(habitsSection);
@@ -239,34 +248,26 @@ createTodoShowBtn.addEventListener("click", () => {
   generalDisplayBlockCall(divToCreateForm);
 });
 
-
 // //Showing and hiding the form for adding a note
 const createNoteShowBtn = document.getElementById("createNoteShowBtn");
 const divToCreateNote = document.getElementById("divToCreateNote");
-
 createNoteShowBtn.addEventListener("click", () => {
   generalDisplayBlockCall(divToCreateNote);
 });
 
-
-//filtering notes section
+// shwowing and hiding filtering notes section
 const sortButtonNotes = document.getElementById("sortButtonNotes");
 const divSelectFilterform = document.getElementById("divToSelectFilterForm");
 sortButtonNotes.addEventListener("click", () => {
   generalDisplayBlockCall(divSelectFilterform);
 });
 
-
-
 //Showing and hiding the form for adding a habit
 const createHabitShowBtn = document.getElementById("createHabitShowBtn");
 const divToCreateHabitForm = document.getElementById("divToCreateHabitForm");
-
 createHabitShowBtn.addEventListener("click", () => {
   generalDisplayBlockCall(divToCreateHabitForm);
 });
-
-
 
 //Showing and hiding the form for chnaging date in habit
 const changeDateHabitBtn = document.getElementById("changeDateHabitBtn");
@@ -276,10 +277,9 @@ changeDateHabitBtn.addEventListener("click", () => {
   generalDisplayBlockCall(divToChnageDateHabitForm);
 });
 
-
 //showing hiding music
 const showMusic = document.getElementById("TriggerMusicButton");
-const divMusic= document.getElementById("music");
+const divMusic = document.getElementById("music");
 showMusic.addEventListener("click", () => {
   generalDisplayBlockCall(divMusic);
 });
@@ -313,16 +313,7 @@ ShowArchEditSortButton.addEventListener("click", () => {
   generalDisplayBlockCall(DivForButtonsArchEditSort);
 });
 
-
-
-
-
-
-
-
-
-
-// // ///edit mode button that shows trash button and makes tect editabkle...
+//edit mode button that shows trash button and makes text editable.
 //is there a way to improve how this looks??
 const editButtonTrash = document.getElementById("editButton");
 editButtonTrash.addEventListener("click", () => {
@@ -338,7 +329,6 @@ editButtonTrash.addEventListener("click", () => {
 });
 
 //Sorting todos based on priority
-//this works!
 const sortButton = document.getElementById("sortButton");
 sortButton.addEventListener("click", () => {
   var numbersToSort = document.querySelector(".todo-list").children;
@@ -373,7 +363,7 @@ sortButton.addEventListener("click", () => {
   }
 });
 
-//soring based on date:
+//soring based on date
 const sortButtonDate = document.getElementById("sortButtonDate");
 sortButtonDate.addEventListener("click", () => {
   var DatesToSort = document.querySelector(".todo-list").children;
@@ -419,8 +409,6 @@ sortCategoryButtonTodo.addEventListener("click", () => {
 
   generalDisplayBlockCall(divToSelectFilterFormToDo);
 });
-
-
 
 const submitFilterChoiceTodo = document.getElementById(
   "submitFilterChoiceTodo"
@@ -533,36 +521,6 @@ submitFilterChoice.addEventListener("click", () => {
     }
   }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //Adding New Todo's to the DOM
 const todoInput = document.querySelector(".todo-input");
@@ -773,7 +731,7 @@ function editStoreTodo(id, todoText) {
   })();
 }
 
-// const CompletedTodoList = document.querySelector(".CompletedTodo-list");
+
 CompletedTodoList.addEventListener("click", deleteCheck);
 function addToArchive(todo) {
   var meow = todo;
@@ -843,7 +801,7 @@ const notesTitle = document.querySelector(".title-field");
 saveButtonNotes.addEventListener("click", storeNote);
 notesList.addEventListener("click", deleteNote);
 
-//Everythign pexils
+//Everything pexils
 const searchButton = document.getElementById("searchButton");
 const noImageButton = document.getElementById("noImageButton");
 const searchInput = document.getElementById("image-search");
@@ -951,17 +909,25 @@ function addNote(ob2) {
   noteTitle.classList.add("titleOut");
   notesDiv.appendChild(noteTitle);
 
+  const noteCategory = document.createElement("li");
+  noteCategory.setAttribute("class", "IndCategories");
+  noteCategory.innerText = textCa;
+  noteCategory.classList.add("category");
+  notesDiv.appendChild(noteCategory);
+
   const newNote = document.createElement("li");
   newNote.setAttribute("class", "bodyOut");
   newNote.innerText = notesInput.value;
   newNote.classList.add("note-item");
   notesDiv.appendChild(newNote);
 
-  const noteCategory = document.createElement("li");
-  noteCategory.setAttribute("class", "IndCategories");
-  noteCategory.innerText = textCa;
-  noteCategory.classList.add("category");
-  notesDiv.appendChild(noteCategory);
+  // const noteCategory = document.createElement("li");
+  // noteCategory.setAttribute("class", "IndCategories");
+  // noteCategory.innerText = textCa;
+  // noteCategory.classList.add("category");
+  // notesDiv.appendChild(noteCategory);
+
+  
 
   //add to list
   notesList.appendChild(notesDiv);
@@ -1444,95 +1410,87 @@ function addOldNote(objectId, title, NoteBody, category, images) {
   noteTitle.classList.add("titleOut");
   notesDiv.appendChild(noteTitle);
 
-  const newNote = document.createElement("li");
-  newNote.setAttribute("class", "bodyOut");
-  newNote.innerText = NoteBody;
-  newNote.classList.add("note-item");
-  notesDiv.appendChild(newNote);
-
   const noteCategory = document.createElement("li");
   noteCategory.setAttribute("class", "IndCategories");
   noteCategory.innerText = category;
   noteCategory.classList.add("note-item");
   notesDiv.appendChild(noteCategory);
 
+  const newNote = document.createElement("li");
+  newNote.setAttribute("class", "bodyOut");
+  newNote.innerText = NoteBody;
+  newNote.classList.add("note-item");
+  notesDiv.appendChild(newNote);
+
+  // const noteCategory = document.createElement("li");
+  // noteCategory.setAttribute("class", "IndCategories");
+  // noteCategory.innerText = category;
+  // noteCategory.classList.add("note-item");
+  // notesDiv.appendChild(noteCategory);
+
   //add to list
   notesList.appendChild(notesDiv);
 }
 
-
-
-
 //EVERYTHING HABIT TRACKER
 
 //Adding New  Habit
-
-const submitNewHabitBtn =document.getElementById("submitNewHabit");
-const habitList=document.querySelector(".habits-list");
+const submitNewHabitBtn = document.getElementById("submitNewHabit");
+const habitList = document.querySelector(".habits-list");
 
 habitList.addEventListener("click", deleteCheckHabit);
 submitNewHabitBtn.addEventListener("click", updateUserHabitList);
 
-function updateUserHabitList(e){
+function updateUserHabitList(e) {
   Parse.User.enableUnsafeCurrentUser();
   e.preventDefault();
   const currentUser = Parse.User.current();
-  const currentUserId =currentUser.id;
+  const currentUserId = currentUser.id;
   alert(currentUserId);
   (async () => {
     const query = new Parse.Query("User");
     try {
-  var userHabits = currentUser.get("currentHabits");
-  // alert(userHabits)
-  newUserHabits=document.getElementById("habit-input").value;
-  newUserHabitsArray= Array.from(newUserHabits).map(
-    (x) => x.value ?? x.text
-  );
-  currentUser.set("currentHabits", newUserHabitsArray);
-
-} catch (error) {
-  console.error("Error while retrieving object ", error);
-}
-})();
-
+      var userHabits = currentUser.get("currentHabits");
+      // alert(userHabits)
+      newUserHabits = document.getElementById("habit-input").value;
+      newUserHabitsArray = Array.from(newUserHabits).map(
+        (x) => x.value ?? x.text
+      );
+      currentUser.set("currentHabits", newUserHabitsArray);
+    } catch (error) {
+      console.error("Error while retrieving object ", error);
+    }
+  })();
 }
 
-
-function addHabit(e){
+function addHabit(e) {
   e.preventDefault();
-  var habitCount=0;
+  var habitCount = 0;
 
-  if (habitList.childNodes.length<3){
+  if (habitList.childNodes.length < 3) {
+    const habitDiv = document.createElement("div");
+    habitDiv.setAttribute("class", "IndHabit");
+    habitDiv.classList.add("Habit");
 
-  const habitDiv = document.createElement("div");
-  habitDiv.setAttribute("class", "IndHabit");
-  habitDiv.classList.add("Habit");
+    const habitDivTitle = document.createElement("li");
+    habitDivTitle.setAttribute("class", "IndHabitTitle");
+    habitDivTitle.innerText = document.getElementById("habit-input").value;
+    habitDivTitle.classList.add("habitTitle");
+    habitDiv.appendChild(habitDivTitle);
 
+    const completedButton = document.createElement("button");
+    // completedButton.innerText = "✓";
+    completedButton.classList.add("complete-btn");
+    habitDiv.appendChild(completedButton);
 
+    const cancelButton = document.createElement("button");
+    cancelButton.classList.add("cancel-btn");
+    habitDiv.appendChild(cancelButton);
 
-  const habitDivTitle = document.createElement("li");
-  habitDivTitle.setAttribute("class", "IndHabitTitle");
-  habitDivTitle.innerText = document.getElementById("habit-input").value;
-  habitDivTitle.classList.add("habitTitle");
-  habitDiv.appendChild(habitDivTitle);
-
-  const completedButton = document.createElement("button");
-  // completedButton.innerText = "✓";
-  completedButton.classList.add("complete-btn");
-  habitDiv.appendChild(completedButton);
-
-
-
-  const cancelButton = document.createElement("button");
-  cancelButton.classList.add("cancel-btn");
-  habitDiv.appendChild(cancelButton);
-
-  habitList.appendChild(habitDiv);
-  habitCount=habitCount+1;
-  console.log(habitCount, "meow")
-
-  }
-  else{
+    habitList.appendChild(habitDiv);
+    habitCount = habitCount + 1;
+    console.log(habitCount, "meow");
+  } else {
     Toastify({
       text: "At the moment you can only track 3 habits ",
       duration: 2500,
@@ -1541,17 +1499,13 @@ function addHabit(e){
       },
     }).showToast();
     console.error("Error while creating ToDo: ", error);
-
   }
-
-
 }
-
 
 function deleteCheckHabit(event) {
   const item = event.target;
   if (item.classList[0] === "cancel-btn") {
-    const habit= item.parentElement;
+    const habit = item.parentElement;
     habit.remove();
     // deleteNoteStore(note.getAttribute("id"));
   }
@@ -1560,16 +1514,8 @@ function deleteCheckHabit(event) {
     const habit = item.parentElement;
     habit.classList.toggle("completed");
     // completedStore(habit.getAttribute("id"));
-
- 
+  }
 }
-}
-
-
-
-
-
-
 
 //LEVEL AND SCORING functions
 function scoringMath(userScore) {
@@ -1594,91 +1540,80 @@ function levelMath(userLevel, userScore) {
   return userLevel;
 }
 
-
-
 // music
 // https://soundcloud.com/chillspacelofi/sets/lofi-non-copyright-hip-hop
 // https://soundcloud.com/chillspacelofi/agx12-adbeel-clouds?in=chillspacelofi/sets/lofi-non-copyright-hip-hop
 
+var playButton = document.getElementById("playButton");
+var skipButton = document.getElementById("skipButton");
+var audio = document.querySelector(".audios");
 
-var playButton = document.getElementById('playButton');
-var skipButton = document.getElementById('skipButton');
-// var text = document.querySelector('.text');
-// var coverArt = document.querySelector('.coverArt');
-var audio = document.querySelector('.audios');
-// var duration=document.querySelector('.duration');
-
-
-
-
-var songCount=0;
-const songs = ["Cozy Afternoon", "Chocolate", "Yello Mornings","Snow fall"];
+var songCount = 0;
+const songs = ["Cozy Afternoon", "Chocolate", "Yello Mornings", "Snow fall"];
 // const covers=["pics/Gum.jpeg","pics/stereoDriver.jpeg","pics/End.jpeg","pics/youUp.jpeg"];
-const mp=["../music/CozyAfternoon.mp3",
-"../music/Digimazz--Chocolate.mp3",
-"../music/LostFiles-YellowMornings-2.mp3",
-"../music/snowfall.mp3"];
+const mp = [
+  "../music/CozyAfternoon.mp3",
+  "../music/Digimazz--Chocolate.mp3",
+  "../music/LostFiles-YellowMornings-2.mp3",
+  "../music/snowfall.mp3",
+];
 
-
-audio.addEventListener('loadeddata', ()=>{
-    duration.innerHTML = formating(audio.duration);
+audio.addEventListener("loadeddata", () => {
+  duration.innerHTML = formating(audio.duration);
 });
-
-
 
 function formating(time) {
-    var minutes = Math.floor(time / 60);
-    var seconds = Math.floor(time-(minutes * 60));
-    return `${minutes}:${seconds}`;
+  var minutes = Math.floor(time / 60);
+  var seconds = Math.floor(time - minutes * 60);
+  return `${minutes}:${seconds}`;
+}
+
+playButton.addEventListener("click", () => {
+  audio.src = mp[songCount];
+  if (playButton.innerHTML == "▶") {
+    playerF();
+  } else {
+    pauseF();
   }
-
-
-playButton .addEventListener("click",()=>{
-  audio.src=mp[songCount];
-    if( playButton.innerHTML == "▶"){
-    playerF();
-    }else{
-     pauseF();
-    }
 });
 
-skipButton.addEventListener("click",()=>{
-    newSong();
+skipButton.addEventListener("click", () => {
+  newSong();
 });
 
-function newSong(){
-    // text.innerHTML=songs[songCount];;
-    // coverArt.src=covers[songCount];
-    audio.src=mp[songCount];
+function newSong() {
+  // text.innerHTML=songs[songCount];;
+  // coverArt.src=covers[songCount];
+  audio.src = mp[songCount];
 
-    if(songCount<songs.length-1){
-    songCount+=1;
-    }else{
-        songCount=0;
-    }
-    playerF();
+  if (songCount < songs.length - 1) {
+    songCount += 1;
+  } else {
+    songCount = 0;
+  }
+  playerF();
 }
 
-
-function playerF(){
-    playButton.innerHTML ="||";
-    audio.play();
+function playerF() {
+  playButton.innerHTML = "||";
+  audio.play();
 }
 
-function pauseF(){
-    playButton.innerHTML = "▶";
-    audio.pause();
+function pauseF() {
+  playButton.innerHTML = "▶";
+  audio.pause();
 }
-
-
 
 // https://www.w3schools.com/howto/howto_js_draggable.asp
 dragElement(document.getElementById("music"));
+dragElement(document.querySelector(".timerSection"))
 
 function dragElement(elmnt) {
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  var pos1 = 0,
+    pos2 = 0,
+    pos3 = 0,
+    pos4 = 0;
   elmnt.onmousedown = dragMouseDown;
-  
 
   function dragMouseDown(e) {
     e = e || window.event;
@@ -1700,8 +1635,8 @@ function dragElement(elmnt) {
     pos3 = e.clientX;
     pos4 = e.clientY;
     // set the element's new position:
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    elmnt.style.top = elmnt.offsetTop - pos2 + "px";
+    elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
   }
 
   function closeDragElement() {
