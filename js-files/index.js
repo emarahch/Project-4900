@@ -197,6 +197,8 @@ function generalDisplayBlockCall(Div) {
     Div.style.display = "block";
   }
 }
+
+
 const SortButtonsAll = document.getElementById("SortButtonsAll");
 const sortButtonsDiv = document.getElementById("sortButtonsDiv");
 
@@ -210,6 +212,17 @@ const divSideform = document.querySelector(".testNav");
 showSideBar.addEventListener("click", () => {
   generalDisplayBlockCall(divSideform);
 });
+
+//showing hiding todosection
+const showToDoDivButton =document.querySelectorAll(".showToDoDivButton");
+const TestTodoSection =document.querySelector(".TestTodoSection");
+showToDoDivButton.forEach(function(i) {
+i.addEventListener("click", () => {
+  generalDisplayBlockCall(TestTodoSection);
+});
+});
+
+
 
 //Showing and hiding habit tracker
 const  ShowHabitTrackerButton= document.getElementById("ShowHabitTrackerButton");
@@ -234,6 +247,15 @@ const divToCreateNote = document.getElementById("divToCreateNote");
 createNoteShowBtn.addEventListener("click", () => {
   generalDisplayBlockCall(divToCreateNote);
 });
+
+
+//filtering notes section
+const sortButtonNotes = document.getElementById("sortButtonNotes");
+const divSelectFilterform = document.getElementById("divToSelectFilterForm");
+sortButtonNotes.addEventListener("click", () => {
+  generalDisplayBlockCall(divSelectFilterform);
+});
+
 
 
 //Showing and hiding the form for adding a habit
@@ -290,6 +312,257 @@ const DivForButtonsArchEditSort = document.getElementById(
 ShowArchEditSortButton.addEventListener("click", () => {
   generalDisplayBlockCall(DivForButtonsArchEditSort);
 });
+
+
+
+
+
+
+
+
+
+
+// // ///edit mode button that shows trash button and makes tect editabkle...
+//is there a way to improve how this looks??
+const editButtonTrash = document.getElementById("editButton");
+editButtonTrash.addEventListener("click", () => {
+  var trashList = document.querySelectorAll(".cancel-btn");
+  for (let i = 0; i < trashList.length; i++) {
+    generalDisplayBlockCall(trashList[i]);
+  }
+
+  var editTitleList = document.querySelectorAll(".EditTitle-btn");
+  for (let i = 0; i < editTitleList.length; i++) {
+    generalDisplayBlockCall(editTitleList[i]);
+  }
+});
+
+//Sorting todos based on priority
+//this works!
+const sortButton = document.getElementById("sortButton");
+sortButton.addEventListener("click", () => {
+  var numbersToSort = document.querySelector(".todo-list").children;
+  numbersToSort = Array.prototype.slice.call(numbersToSort, 0);
+
+  if (sortButton.innerHTML == "Priority Increasing") {
+    numbersToSort.sort(function (a, b) {
+      ab = a.querySelector(".todo-item.IndPriority");
+      ba = b.querySelector(".todo-item.IndPriority");
+      return ab.innerHTML > ba.innerHTML;
+    });
+    var parent = document.querySelector(".todo-list");
+    parent.innerHTML = "";
+
+    for (var i = 0, l = numbersToSort.length; i < l; i++) {
+      parent.appendChild(numbersToSort[i]);
+    }
+    sortButton.innerHTML = "Priority Decreasing";
+  } else if (sortButton.innerHTML == "Priority Decreasing") {
+    numbersToSort.sort(function (a, b) {
+      ab = a.querySelector(".todo-item.IndPriority");
+      ba = b.querySelector(".todo-item.IndPriority");
+      return ba.innerHTML > ab.innerHTML;
+    });
+    var parent = document.querySelector(".todo-list");
+    parent.innerHTML = "";
+
+    for (var i = 0, l = numbersToSort.length; i < l; i++) {
+      parent.appendChild(numbersToSort[i]);
+    }
+    sortButton.innerHTML = "Priority Increasing";
+  }
+});
+
+//soring based on date:
+const sortButtonDate = document.getElementById("sortButtonDate");
+sortButtonDate.addEventListener("click", () => {
+  var DatesToSort = document.querySelector(".todo-list").children;
+  DatesToSort = Array.prototype.slice.call(DatesToSort, 0);
+
+  if (sortButtonDate.innerHTML == "Date Increasing") {
+    DatesToSort.sort(function (a, b) {
+      ab = a.querySelector(".todo-item.IndDate ");
+      ba = b.querySelector(".todo-item.IndDate ");
+      return ab.innerHTML > ba.innerHTML;
+    });
+    var parent = document.querySelector(".todo-list");
+    parent.innerHTML = "";
+
+    for (var i = 0, l = DatesToSort.length; i < l; i++) {
+      parent.appendChild(DatesToSort[i]);
+    }
+    sortButtonDate.innerHTML = "Date Decreasing";
+  } else if (sortButtonDate.innerHTML == "Date Decreasing") {
+    DatesToSort.sort(function (a, b) {
+      ab = a.querySelector(".todo-item.IndDate ");
+      ba = b.querySelector(".todo-item.IndDate ");
+      return ba.innerHTML > ab.innerHTML;
+    });
+    var parent = document.querySelector(".todo-list");
+    parent.innerHTML = "";
+
+    for (var i = 0, l = DatesToSort.length; i < l; i++) {
+      parent.appendChild(DatesToSort[i]);
+    }
+    sortButtonDate.innerHTML = "Date Increasing";
+  }
+});
+
+//filtering todo section
+const sortCategoryButtonTodo = document.getElementById(
+  "sortCategoryButtonTodo"
+);
+sortCategoryButtonTodo.addEventListener("click", () => {
+  const divToSelectFilterFormToDo = document.getElementById(
+    "divToSelectFilterFormToDo"
+  );
+
+  generalDisplayBlockCall(divToSelectFilterFormToDo);
+});
+
+
+
+const submitFilterChoiceTodo = document.getElementById(
+  "submitFilterChoiceTodo"
+);
+
+//Went through stackoverflow and came yup with this
+submitFilterChoiceTodo.addEventListener("click", () => {
+  var filterTodo = document.getElementById("filterTodo");
+  var filterSelection = filterTodo.options[filterTodo.selectedIndex].value;
+
+  var numby = document.querySelector(".todo-list").children;
+  numby = Array.prototype.slice.call(numby, 0);
+
+  var numbyFalse = document.querySelector(".todo-list").children;
+  numbyFalse = Array.prototype.slice.call(numbyFalse, 0);
+  console.log(filterSelection);
+
+  numby = numby.filter(function (number) {
+    var ab = number.querySelector(".IndCategories.todo-item");
+    //in order to find if any of the words match
+    var first = ab.innerHTML.indexOf(filterSelection) > -1;
+    return first;
+  });
+
+  numby2 = numbyFalse.filter(function (number) {
+    var ab = number.querySelector(".IndCategories.todo-item");
+    //in order to find if any of the words match
+    var first = ab.innerHTML.indexOf(filterSelection) > -1;
+    var second = !first;
+    return second;
+  });
+
+  var parent = document.querySelector(".todo-list");
+  parent.innerHTML = "";
+
+  if (numby.length === 0) {
+    Toastify({
+      text: "You dont have anything in this category ",
+      duration: 2500,
+      style: {
+        background: "linear-gradient(to right, #FF69B4, purple)",
+      },
+    }).showToast();
+
+    for (var i = 0, l = numby2.length; i < l; i++) {
+      parent.appendChild(numby2[i]);
+    }
+  } else {
+    for (var i = 0, l = numby.length; i < l; i++) {
+      parent.appendChild(numby[i]);
+    }
+
+    for (var i = 0, l = numby2.length; i < l; i++) {
+      parent.appendChild(numby2[i]);
+    }
+  }
+});
+
+//Not perfect...need to have it so that if there is nothing in that selection, then you dont show anything???or at least show a message
+const submitFilterChoice = document.getElementById("submitFilterChoice");
+
+submitFilterChoice.addEventListener("click", () => {
+  var filterNotes = document.getElementById("filterNotes");
+  var filterSelection = filterNotes.options[filterNotes.selectedIndex].value;
+
+  var numby = document.querySelector(".notes-list").children;
+  numby = Array.prototype.slice.call(numby, 0);
+
+  var numbyFalse = document.querySelector(".notes-list").children;
+  numbyFalse = Array.prototype.slice.call(numbyFalse, 0);
+  console.log(filterSelection);
+
+  numby = numby.filter(function (number) {
+    var ab = number.querySelector(".IndCategories.note-item");
+    //in order to find if any of the words match
+    var first = ab.innerHTML.indexOf(filterSelection) > -1;
+    return first;
+  });
+
+  numby2 = numbyFalse.filter(function (number) {
+    var ab = number.querySelector(".IndCategories.note-item");
+    //in order to find if any of the words match
+    var first = ab.innerHTML.indexOf(filterSelection) > -1;
+    var second = !first;
+    return second;
+  });
+
+  var parent = document.querySelector(".notes-list");
+  parent.innerHTML = "";
+
+  if (numby.length === 0) {
+    Toastify({
+      text: "You dont have anything in this category ",
+      duration: 2500,
+      style: {
+        background: "linear-gradient(to right, #FF69B4, purple)",
+      },
+    }).showToast();
+
+    for (var i = 0, l = numby2.length; i < l; i++) {
+      parent.appendChild(numby2[i]);
+    }
+  } else {
+    for (var i = 0, l = numby.length; i < l; i++) {
+      parent.appendChild(numby[i]);
+    }
+
+    for (var i = 0, l = numby2.length; i < l; i++) {
+      parent.appendChild(numby2[i]);
+    }
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Adding New Todo's to the DOM
 const todoInput = document.querySelector(".todo-input");
@@ -1011,7 +1284,7 @@ function loader() {
   const currentUser = Parse.User.current();
   const refUse = currentUser.get("username");
   const userI = currentUser.get("chara");
-  document.getElementById("welcome").innerHTML = "Welcome back, " + refUse + "!";
+  document.getElementById("welcome").innerHTML = refUse + "'s Workspace";
   document.getElementById("userPlay").src = userI;
   upScoreRealTime();
   retrieveTodos();
@@ -1320,224 +1593,6 @@ function levelMath(userLevel, userScore) {
   }
   return userLevel;
 }
-
-// // ///edit mode button that shows trash button and makes tect editabkle...
-//is there a way to improve how this looks??
-const editButtonTrash = document.getElementById("editButton");
-editButtonTrash.addEventListener("click", () => {
-  var trashList = document.querySelectorAll(".cancel-btn");
-  for (let i = 0; i < trashList.length; i++) {
-    generalDisplayBlockCall(trashList[i]);
-  }
-
-  var editTitleList = document.querySelectorAll(".EditTitle-btn");
-  for (let i = 0; i < editTitleList.length; i++) {
-    generalDisplayBlockCall(editTitleList[i]);
-  }
-});
-
-//Sorting todos based on priority
-//this works!
-const sortButton = document.getElementById("sortButton");
-sortButton.addEventListener("click", () => {
-  var numbersToSort = document.querySelector(".todo-list").children;
-  numbersToSort = Array.prototype.slice.call(numbersToSort, 0);
-
-  if (sortButton.innerHTML == "Priority Increasing") {
-    numbersToSort.sort(function (a, b) {
-      ab = a.querySelector(".todo-item.IndPriority");
-      ba = b.querySelector(".todo-item.IndPriority");
-      return ab.innerHTML > ba.innerHTML;
-    });
-    var parent = document.querySelector(".todo-list");
-    parent.innerHTML = "";
-
-    for (var i = 0, l = numbersToSort.length; i < l; i++) {
-      parent.appendChild(numbersToSort[i]);
-    }
-    sortButton.innerHTML = "Priority Decreasing";
-  } else if (sortButton.innerHTML == "Priority Decreasing") {
-    numbersToSort.sort(function (a, b) {
-      ab = a.querySelector(".todo-item.IndPriority");
-      ba = b.querySelector(".todo-item.IndPriority");
-      return ba.innerHTML > ab.innerHTML;
-    });
-    var parent = document.querySelector(".todo-list");
-    parent.innerHTML = "";
-
-    for (var i = 0, l = numbersToSort.length; i < l; i++) {
-      parent.appendChild(numbersToSort[i]);
-    }
-    sortButton.innerHTML = "Priority Increasing";
-  }
-});
-
-//soring based on date:
-const sortButtonDate = document.getElementById("sortButtonDate");
-sortButtonDate.addEventListener("click", () => {
-  var DatesToSort = document.querySelector(".todo-list").children;
-  DatesToSort = Array.prototype.slice.call(DatesToSort, 0);
-
-  if (sortButtonDate.innerHTML == "Date Increasing") {
-    DatesToSort.sort(function (a, b) {
-      ab = a.querySelector(".todo-item.IndDate ");
-      ba = b.querySelector(".todo-item.IndDate ");
-      return ab.innerHTML > ba.innerHTML;
-    });
-    var parent = document.querySelector(".todo-list");
-    parent.innerHTML = "";
-
-    for (var i = 0, l = DatesToSort.length; i < l; i++) {
-      parent.appendChild(DatesToSort[i]);
-    }
-    sortButtonDate.innerHTML = "Date Decreasing";
-  } else if (sortButtonDate.innerHTML == "Date Decreasing") {
-    DatesToSort.sort(function (a, b) {
-      ab = a.querySelector(".todo-item.IndDate ");
-      ba = b.querySelector(".todo-item.IndDate ");
-      return ba.innerHTML > ab.innerHTML;
-    });
-    var parent = document.querySelector(".todo-list");
-    parent.innerHTML = "";
-
-    for (var i = 0, l = DatesToSort.length; i < l; i++) {
-      parent.appendChild(DatesToSort[i]);
-    }
-    sortButtonDate.innerHTML = "Date Increasing";
-  }
-});
-
-//filtering todo section
-const sortCategoryButtonTodo = document.getElementById(
-  "sortCategoryButtonTodo"
-);
-sortCategoryButtonTodo.addEventListener("click", () => {
-  const divToSelectFilterFormToDo = document.getElementById(
-    "divToSelectFilterFormToDo"
-  );
-
-  generalDisplayBlockCall(divToSelectFilterFormToDo);
-});
-
-//filtering notes section
-const sortButtonNotes = document.getElementById("sortButtonNotes");
-sortButtonNotes.addEventListener("click", () => {
-  const divSelectFilterform = document.getElementById("divToSelectFilterForm");
-
-  generalDisplayBlockCall(divSelectFilterform);
-});
-
-const submitFilterChoiceTodo = document.getElementById(
-  "submitFilterChoiceTodo"
-);
-
-//Went through stackoverflow and came yup with this
-submitFilterChoiceTodo.addEventListener("click", () => {
-  var filterTodo = document.getElementById("filterTodo");
-  var filterSelection = filterTodo.options[filterTodo.selectedIndex].value;
-
-  var numby = document.querySelector(".todo-list").children;
-  numby = Array.prototype.slice.call(numby, 0);
-
-  var numbyFalse = document.querySelector(".todo-list").children;
-  numbyFalse = Array.prototype.slice.call(numbyFalse, 0);
-  console.log(filterSelection);
-
-  numby = numby.filter(function (number) {
-    var ab = number.querySelector(".IndCategories.todo-item");
-    //in order to find if any of the words match
-    var first = ab.innerHTML.indexOf(filterSelection) > -1;
-    return first;
-  });
-
-  numby2 = numbyFalse.filter(function (number) {
-    var ab = number.querySelector(".IndCategories.todo-item");
-    //in order to find if any of the words match
-    var first = ab.innerHTML.indexOf(filterSelection) > -1;
-    var second = !first;
-    return second;
-  });
-
-  var parent = document.querySelector(".todo-list");
-  parent.innerHTML = "";
-
-  if (numby.length === 0) {
-    Toastify({
-      text: "You dont have anything in this category ",
-      duration: 2500,
-      style: {
-        background: "linear-gradient(to right, #FF69B4, purple)",
-      },
-    }).showToast();
-
-    for (var i = 0, l = numby2.length; i < l; i++) {
-      parent.appendChild(numby2[i]);
-    }
-  } else {
-    for (var i = 0, l = numby.length; i < l; i++) {
-      parent.appendChild(numby[i]);
-    }
-
-    for (var i = 0, l = numby2.length; i < l; i++) {
-      parent.appendChild(numby2[i]);
-    }
-  }
-});
-
-//Not perfect...need to have it so that if there is nothing in that selection, then you dont show anything???or at least show a message
-const submitFilterChoice = document.getElementById("submitFilterChoice");
-
-submitFilterChoice.addEventListener("click", () => {
-  var filterNotes = document.getElementById("filterNotes");
-  var filterSelection = filterNotes.options[filterNotes.selectedIndex].value;
-
-  var numby = document.querySelector(".notes-list").children;
-  numby = Array.prototype.slice.call(numby, 0);
-
-  var numbyFalse = document.querySelector(".notes-list").children;
-  numbyFalse = Array.prototype.slice.call(numbyFalse, 0);
-  console.log(filterSelection);
-
-  numby = numby.filter(function (number) {
-    var ab = number.querySelector(".IndCategories.note-item");
-    //in order to find if any of the words match
-    var first = ab.innerHTML.indexOf(filterSelection) > -1;
-    return first;
-  });
-
-  numby2 = numbyFalse.filter(function (number) {
-    var ab = number.querySelector(".IndCategories.note-item");
-    //in order to find if any of the words match
-    var first = ab.innerHTML.indexOf(filterSelection) > -1;
-    var second = !first;
-    return second;
-  });
-
-  var parent = document.querySelector(".notes-list");
-  parent.innerHTML = "";
-
-  if (numby.length === 0) {
-    Toastify({
-      text: "You dont have anything in this category ",
-      duration: 2500,
-      style: {
-        background: "linear-gradient(to right, #FF69B4, purple)",
-      },
-    }).showToast();
-
-    for (var i = 0, l = numby2.length; i < l; i++) {
-      parent.appendChild(numby2[i]);
-    }
-  } else {
-    for (var i = 0, l = numby.length; i < l; i++) {
-      parent.appendChild(numby[i]);
-    }
-
-    for (var i = 0, l = numby2.length; i < l; i++) {
-      parent.appendChild(numby2[i]);
-    }
-  }
-});
 
 
 

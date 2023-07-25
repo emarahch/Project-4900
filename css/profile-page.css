@@ -1,5 +1,6 @@
 :root {
   --hover-pink: #fd9be8;
+  --pale-pink:rgba(255, 210, 253, 0.56);
   --circle-radius: 50%;
 }
 
@@ -51,8 +52,10 @@ a:visited {
 
 #userPlay {
   border-radius: var(--circle-radius);
-  height: 36px;
-  width: 36px;
+  /* height: 36px;
+  width: 36px; */
+  height: 24px;
+  width: 24px;
   margin-top: 15px;
 }
 
@@ -69,8 +72,8 @@ a:visited {
 
 #welcome{
   padding: 3px;
-  font-weight: 500;
-  font-size: 18px;
+  font-weight: 600;
+  font-size: 14px;
   line-height: 22px;
 }
 
@@ -91,7 +94,7 @@ a:visited {
   display: flex;
   flex-direction: row;
   margin-left: 10px;
-  gap: 23px;
+  /* gap: 23px; */
 }
 
 /* Timer section */
@@ -153,7 +156,7 @@ background-color: #dbe0ff;
   width: 160px;
   gap: 5px;
   font-size: 14px;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
 border: 1px solid rgba(0, 0, 0, 0.12);
 background-color: rgba(255, 210, 253, 0.56);
@@ -165,7 +168,7 @@ background-color: rgba(255, 210, 253, 0.56);
   flex-direction: row;
   background-color: #ffffff;
   color: RGB(32, 32, 32);
-  height: 94vh;
+  /* height: 94vh; */
 }
 
 #showSideBar {
@@ -209,18 +212,22 @@ h1 {
 #bannerWelcomeDue {
   color: #7e7e7e;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1px;
   margin-bottom: 0px;;
 }
 
 #DividingLineDiv {
   border: 0.5px solid #dfdfdf;
+  /* cursor: col-resize; */
 }
 
 .testNav {
+  display: flex;
+  flex-direction: column;
   background-color: #f6f6f6;
-  width: 83px;
+  height:100vh;
+  width:200px;
   border: none;
   /* box-shadow: inset -1px 0px 10px rgba(0, 0, 0, 0.9); */
   z-index:1;
@@ -273,7 +280,7 @@ h1 {
   background-image: url("../images/logOut30.png");
   background-repeat: no-repeat;
   background-position: center;
-  margin-top: 550px;
+  /* margin-top: 550px; */
 }
 
 .deleteAccountButton {
@@ -281,7 +288,7 @@ h1 {
   background-repeat: no-repeat;
   background-position: center;
 }
-
+.showToDoDivButton:hover,
 #themeChangeButton:hover,
 #TriggerMusicButton:hover,
 #ShowHabitTrackerButton:hover,
@@ -344,8 +351,14 @@ h3{
 
 
 .TestTodoSection {
-  width: 54%;
+  display:none;
+  width: 26%;
+  height:90vh;
   padding: 2%;
+  border-radius: 16px;
+  margin-right: 16px;
+  margin-top:15px;
+  background-color: var(--pale-pink);
 }
 
 #todoButtons {
@@ -561,6 +574,7 @@ h3{
   margin: 5px;
   margin-bottom: 10px;
   padding: 2%;
+  background-color: white;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
   border: 1px solid rgba(0, 0, 0, 0.12);
@@ -658,8 +672,9 @@ h3{
 /* Notes section */
 
 .notesSection {
-  padding: 2%;
-  width: 40%;
+padding: 2%;
+ height:100vh;
+ width: 70%;
 }
 
 #NoteButtons {
@@ -669,13 +684,13 @@ h3{
 .DivShowEditDeleteNoteButtons {
   display: none;
   background-color: white;
-  margin-left: 35%;
-  position: absolute;
-  z-index: 9;
+  margin-left: auto;
+  right: 20px;
   box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
   border: 0.02px solid rgb(230, 229, 229);
   width: 20px;
   height: 40px;
+ 
 }
 
 .title-field,
@@ -784,7 +799,8 @@ figcaption {
   width: 50px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   background-color: transparent;
-  margin-left: 77%;
+  /* margin-left: 77%; */
+  margin-left: auto;
 }
 
 .showMoreIndNote-Button {
@@ -841,14 +857,14 @@ figcaption {
 }
 
 #notesDivButtons {
-  right: 100px;
-  z-index: 2;
-  position: absolute;
-  display: none;
+  /* z-index: 2;
+  display: none; */
+  opacity: 0px;
+  margin-left: auto;
 }
 
 .note:hover #notesDivButtons {
-  display: block;
+  /* display: block; */
   background-color: #f4f5fc;
   border-radius: 5px;
 }
@@ -1029,9 +1045,9 @@ figcaption {
     transition: all 0.5s;
   }
 
-  .DivShowEditDeleteNoteButtons {
-    margin-left: 90%;
-  }
+  /* .DivShowEditDeleteNoteButtons {
+    margin-left:auto;
+  } */
   #welcome,
   #YouHaveDue {
     padding: 1px;

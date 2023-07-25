@@ -38,49 +38,42 @@
 
     <div class="loader-container"></div>
 
-    <div class="userStuff">
+    <!-- <div class="userStuff">
       <div class="userNamePfp">
         <img src="../images/plholder.webp" id="userPlay" alt="Profie picture" />
         <h1 id="welcome">Hey Emy!</h1> 
-        <!-- <p id="currentDate">Date</p> -->
       </div>
-      <!-- <p id="YouHaveDue">
-        You have <span id="ThingsDue">0</span> tasks due today
-      </p> -->
-
-      <!-- Timer things -->
-      <div id="timerAndScore">
-        <!-- <div class="timerSection">
-          <h2 id="setTime">
-            <span id="timerMinutes">25</span>:<span id="timerSeconds">00 </span>
-          </h2>
-
-          <button id="increaseMinutes">+</button>
-          <button id="decreaseMinutes">-</button>
-          <button id="timerStartButton">Start</button>
-          <button id="timerPauseButton">Pause</button>
-          <button id="timerClearButton">Clear</button>
-        </div> -->
-
-        <!-- <div class="ScoreDiv">
-          <p>Level</p>
-          <div id="levelEle">1</div>
-          <div
-            data-preset="rainbow"
-            data-stroke-width="10"
-            data-stroke-trail-width="10"
-            id="bar"
-            class="ldBar label-center"
-          ></div> -->
-        </div>
-      </div>
-    </div>
+      </div> -->
+  
 
     <div id="division1"></div>
 
     <div class="intro-box">
       <div class="testNav">
+        <div class="userNamePfp">
+          <img src="../images/plholder.webp" id="userPlay" alt="Profie picture" />
+          <h1 id="welcome">Hey Emy!</h1> 
+        </div>
+<div class="ScoreDiv">
+            <p>Level</p>
+            <div id="levelEle">1</div>
+            <div
+              data-preset="rainbow"
+              data-stroke-width="10"
+              data-stroke-trail-width="10"
+              id="bar"
+              class="ldBar label-center"
+            ></div>
+          </div>
         <ul>
+
+          <li>
+            <button
+            id="NavshowToDoDivButton"
+            class="showToDoDivButton"
+            aria-label="showToDoDivButton"
+            >ToDo</button>
+          </li>
 
           <li>
           <button
@@ -147,143 +140,17 @@
 
       <button id="showSideBar"></button>
 
-      <div class="TestTodoSection">
-        <!-- <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX4t95PAs1EpY?utm_source=generator&theme=0" width="40%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> -->
-        <div id="beforeTodoHeader">
-          <div class="ScoreDiv">
-            <p>Level</p>
-            <div id="levelEle">1</div>
-            <div
-              data-preset="rainbow"
-              data-stroke-width="10"
-              data-stroke-trail-width="10"
-              id="bar"
-              class="ldBar label-center"
-            ></div>
-          </div>
-          <div>
-        <p id="currentDate">Date</p>
-        <p id="bannerWelcomeDue"><span id="YouHaveDue"> You have <span id="ThingsDue">0</span> tasks due today </span></p>
-      </div>
-
-      </div>
-
-        <div id="todoAndShowMore">
-          <h1 id="todoHeader">Todo</h1>
-        </div>
-
-        <div id="todoButtons">
-          <button id="createTodoShowBtn">+ Add Task</button>
-          <div id="DivForShowMore">
-            <button
-              id="ShowArchEditSortButton"
-              aria-label="Show more Button"
-            ></button>
-            <div id="DivForButtonsArchEditSort">
-              <div id="DivForButtonsArchEditSortFormating">
-                <button id="viewArchiveButton">Show Archive</button>
-                <button id="editButton">Edit</button>
-                <button id="SortButtonsAll">Sort</button>
-              </div>
-              <div id="sortButtonsDiv">
-                <div id="divInSortButtonsDiv">
-                  <button id="sortButton">Priority Increasing</button>
-                  <button id="sortButtonDate">Date Increasing</button>
-                  <button id="sortCategoryButtonTodo">Category</button>
-                  <div id="divToSelectFilterFormToDo">
-                    <div id="divToSingleSelect">
-                      <form id="selectFilterTodo">
-                        <select name="filterTodo" id="filterTodo">
-                          <option value="General" selected="selected">
-                            General
-                          </option>
-                          <option value="School">School</option>
-                          <option value="School">Health</option>
-                          <option value="Goals">Goals</option>
-                          <option value="Work">Work</option>
-                          <option value="Side Hustle">Side Hustle</option>
-                          <option value="Creative">Creative</option>
-                          <option value="Family">Family</option>
-                          <option value="Home">Home</option>
-                          <option value="Kids">Kids</option>
-                          <option value="Groccery">Groccery</option>
-                          <option value="Meal planning">Meal planning</option>
-                        </select>
-                      </form>
-                      <!-- supposed to be inside form?? -->
-                      <button id="submitFilterChoiceTodo" type="submit">
-                        Submit Filter Choice
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!--         
-        <div class="labels">
-
-        </div> -->
-
-        <div id="divToCreateForm">
-          <form id="createTodoForm">
-            <input type="text" class="todo-input" />
-
-            <!-- priority level, single level -->
-            <div id="divToSingleSelect">
-              <select name="priorityNumber" id="priorityNumber">
-                <option value="1" selected="selected">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
-            </div>
-
-            <!-- console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))" -->
-            <!-- multiselect-hide-x="true" -->
-            <div id="divToMulstiSelect">
-              <select
-                multiple
-                name="field1"
-                id="categoryNumber"
-                onchange="console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))"
-              >
-                <option value="General" selected="selected">General</option>
-                <option value="School">School</option>
-                <option value="School">Health</option>
-                <option value="Goals">Goals</option>
-                <option value="Work">Work</option>
-                <option value="Side Hustle">Side Hustle</option>
-                <option value="Creative">Creative</option>
-                <option value="Family">Family</option>
-                <option value="Home">Home</option>
-                <option value="Kids">Kids</option>
-                <option value="Groccery">Groccery</option>
-                <option value="Meal planning">Meal planning</option>
-              </select>
-            </div>
-            <input type="date" class="todo-dateInput" />
-
-            <button class="todo-button" type="submit">submit</button>
-          </form>
-        </div>
-
-        <div class="checklist-container"></div>
-        <ul class="todo-list"></ul>
-        <ul class="CompletedTodo-list"></ul>
-      </div>
 
       <!-- <div class="archivedList-container">
         <ul class="CompletedTodo-list"></ul>
     </div> -->
 
       <!-- right section -->
-      <div id="DividingLineDiv"></div>
+      <!-- <div id="DividingLineDiv"></div> -->
 
       <div class="notesSection">
         <!-- Note things -->
-        <div class="timerSection">
+        <!-- <div class="timerSection">
           <h2 id="setTime">
             <span id="timerMinutes">25</span>:<span id="timerSeconds">00 </span>
           </h2>
@@ -293,7 +160,26 @@
           <button id="timerStartButton">Start</button>
           <button id="timerPauseButton">Pause</button>
           <button id="timerClearButton">Clear</button>
-        </div>
+        </div> -->
+
+        <div id="beforeTodoHeader">
+          <!-- <div class="ScoreDiv">
+            <p>Level</p>
+            <div id="levelEle">1</div>
+            <div
+              data-preset="rainbow"
+              data-stroke-width="10"
+              data-stroke-trail-width="10"
+              id="bar"
+              class="ldBar label-center"
+            ></div>
+          </div> -->
+          <div>
+        <p id="currentDate">Date</p>
+        <p id="bannerWelcomeDue"><span id="YouHaveDue"> You have <span id="ThingsDue">0</span> tasks due today </span></p>
+      </div>
+
+      </div>
         
         <h1 id="notesHeader">Notes</h1>
 
@@ -385,7 +271,132 @@
         <!-- </div> -->
       </div>
 
-      <div id="DividingLineDiv"></div>
+      <!-- <div id="DividingLineDiv"></div> -->
+
+
+      <div class="TestTodoSection">
+        <!-- <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX4t95PAs1EpY?utm_source=generator&theme=0" width="40%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> -->
+        <button
+        id="CloseToDoDivButton"
+        class="showToDoDivButton"
+        aria-label="closeToDoDivButton"
+      >X</button>
+
+        <div id="todoAndShowMore">
+          <h1 id="todoHeader">Todo</h1>
+        </div>
+
+        <div id="todoButtons">
+          <button id="createTodoShowBtn">+ Add Task</button>
+          <div id="DivForShowMore">
+            <button
+              id="ShowArchEditSortButton"
+              aria-label="Show more Button"
+            ></button>
+            <div id="DivForButtonsArchEditSort">
+              <div id="DivForButtonsArchEditSortFormating">
+                <button id="viewArchiveButton">Show Archive</button>
+                <button id="editButton">Edit</button>
+                <button id="SortButtonsAll">Sort</button>
+              </div>
+              <div id="sortButtonsDiv">
+                <div id="divInSortButtonsDiv">
+                  <button id="sortButton">Priority Increasing</button>
+                  <button id="sortButtonDate">Date Increasing</button>
+                  <button id="sortCategoryButtonTodo">Category</button>
+                  <div id="divToSelectFilterFormToDo">
+                    <div id="divToSingleSelect">
+                      <form id="selectFilterTodo">
+                        <select name="filterTodo" id="filterTodo">
+                          <option value="General" selected="selected">
+                            General
+                          </option>
+                          <option value="School">School</option>
+                          <option value="School">Health</option>
+                          <option value="Goals">Goals</option>
+                          <option value="Work">Work</option>
+                          <option value="Side Hustle">Side Hustle</option>
+                          <option value="Creative">Creative</option>
+                          <option value="Family">Family</option>
+                          <option value="Home">Home</option>
+                          <option value="Kids">Kids</option>
+                          <option value="Groccery">Groccery</option>
+                          <option value="Meal planning">Meal planning</option>
+                        </select>
+                      </form>
+                      <!-- supposed to be inside form?? -->
+                      <button id="submitFilterChoiceTodo" type="submit">
+                        Submit Filter Choice
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+
+        <!--         
+        <div class="labels">
+
+        </div> -->
+
+        <div id="divToCreateForm">
+          <form id="createTodoForm">
+            <input type="text" class="todo-input" />
+
+            <!-- priority level, single level -->
+            <div id="divToSingleSelect">
+              <select name="priorityNumber" id="priorityNumber">
+                <option value="1" selected="selected">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
+
+            <!-- console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))" -->
+            <!-- multiselect-hide-x="true" -->
+            <div id="divToMulstiSelect">
+              <select
+                multiple
+                name="field1"
+                id="categoryNumber"
+                onchange="console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))"
+              >
+                <option value="General" selected="selected">General</option>
+                <option value="School">School</option>
+                <option value="School">Health</option>
+                <option value="Goals">Goals</option>
+                <option value="Work">Work</option>
+                <option value="Side Hustle">Side Hustle</option>
+                <option value="Creative">Creative</option>
+                <option value="Family">Family</option>
+                <option value="Home">Home</option>
+                <option value="Kids">Kids</option>
+                <option value="Groccery">Groccery</option>
+                <option value="Meal planning">Meal planning</option>
+              </select>
+            </div>
+            <input type="date" class="todo-dateInput" />
+
+            <button class="todo-button" type="submit">submit</button>
+          </form>
+        </div>
+
+        <div class="checklist-container"></div>
+        <ul class="todo-list"></ul>
+        <ul class="CompletedTodo-list"></ul>
+      </div>
+
+
+
+
+
+
+
+
+
 
       <div class="habitsSection">
         <!-- habit things -->
