@@ -3,6 +3,7 @@
   --pale-pink: rgba(255, 210, 253, 0.56);
   --circle-radius: 50%;
   --average-border-radius:8px;
+  --average-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
 }
 
 body {
@@ -51,12 +52,7 @@ a:visited {
 
 /* The top part of the screen */
 
-#userPlay {
-  border-radius: var(--circle-radius);
-  height: 24px;
-  width: 24px;
-  margin-top: 15px;
-}
+
 
 .userStuff {
   display: flex;
@@ -67,12 +63,7 @@ a:visited {
   background-color: rgba(255, 210, 253, 0.56);
 }
 
-#welcome {
-  padding: 3px;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 22px;
-}
+
 
 /* #welcome, */
 #YouHaveDue {
@@ -95,75 +86,76 @@ a:visited {
 /* Timer section */
 
 .timerSection {
-  /* border-radius: var(--average-border-radius); */
-  box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
-  background-color: #dbe0ff;
-
+  background-color: rgba(18, 18, 18, 0.75);
+  color: hsla(0,0%,100%,.7);
   border-radius: 16px;
   z-index: 9;
   width: 246px;
   height: 100px;
+  padding:2px;
   display: none;
   position: absolute;
   cursor: move;
 }
+#formatTimer{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
 
 .timerSection button {
-  margin: 2px;
-  width: 36px;
-  padding: 2px;
-  height: 36px;
-  border-radius: var(--circle-radius);
-  gap: 12px;
-  border: none;
-  background-color: white;
+  background-color: hsla(0,0%,85%,.2);
+  color: hsla(0,0%,100%,.7);
+  cursor: pointer;
+  border: 0.5px solid hsla(0, 0%, 100%, 0.1);
+  border-radius:var(--circle-radius);
+  width:42px;
+  height: 42px; 
 }
 
 .timerSection button:hover {
   background-color: var(--hover-pink);
 }
 
-.timerSection #increaseMinutes, 
-.timerSection #decreaseMinutes{
-  border-radius:50%;
-  width:48px;
-  height: 48px; 
-} 
-
-#timerAndScore {
-  display: flex;
-  margin-left: auto;
-  gap: 32px;
-  border-radius: var(--average-border-radius);
-  padding-left:4px;
-  padding-right:4px;
-background-color: #060303;
-} 
 
 #setTime {
   font-size: 18px;
 }
 
 .ScoreDiv {
-  margin-top: 5px;
+  /* margin-top: 5px; */
   display: flex;
+  /* position: absolute; */
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  height: 30px;
-  width: 160px;
-  gap: 5px;
+  /* z-index:9; */
+  height: 100px;
+  width: 200px;
+  padding:2px;
   font-size: 14px;
-  border-radius: 10px;
+  border-radius: var(--average-border-radius);
   margin-left: auto;
-  box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
+  /* box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px; */
+  /* border: 2px solid var(--hover-pink); */
   border: 1px solid rgba(0, 0, 0, 0.12);
-  background-color: rgba(255, 210, 253, 0.56);
 }
+
+
+#levelArea{
+margin: 12px;
+}
+
 
 /* Everything in the center of the screen */
 .intro-box {
   display: flex;
   flex-direction: row;
-  background-color: #ffffff;
+  background-color: #fffffe;
+  /* background-color: #ffffff; */
+    /* Alt color scheme */
+  /* background-color: #f9f8fc; */
   color: RGB(32, 32, 32);
 }
 
@@ -192,12 +184,7 @@ h1 {
   margin-top: 21.44px;
 }
 
-#currentDate {
-  color: #7e7e7e;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1px;
-}
+
 
 #bannerWelcomeDue {
   color: #7e7e7e;
@@ -216,10 +203,33 @@ h1 {
   display: flex;
   flex-direction: column;
   background-color: #f6f6f6;
+
+  /* Alt color scheme */
+  /* background-color:#d9d4e7;   */
+
   height: 100vh;
   width: 200px;
   border: none;
   z-index: 1;
+}
+#welcome {
+  padding: 3px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+#currentDate {
+  /* color: #7e7e7e; */
+  /* font-weight: 700; */
+  font-size: 14px;
+  line-height: 1px;
+}
+.userPlay {
+  border-radius: var(--circle-radius);
+  height: 24px;
+  width: 24px;
+  margin-top: 15px;
 }
 
 .testNav button {
@@ -294,14 +304,16 @@ h1 {
 
 
 #music {
+  display: none;
   border-radius: 16px;
-  z-index: 9;
+  z-index: 8;
   width: 211px;
   height: 281px;
-  display: none;
   position: absolute;
   cursor: move;
+  color: hsla(0,0%,100%,.7);
   background-color: rgba(18, 18, 18, 0.75);
+  transform: translate(264px, 0px);
 }
 
 #innerMusic {
@@ -309,33 +321,67 @@ h1 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap:16px;
+  margin-top: 32px;
 }
 
-#musicButtons {
+#musicControls,
+#musicVolume,
+#musicBy
+{
   display: flex;
-  justify-content: center;
-  width: 180px;
-  height: 32px;
+  flex-direction: column;
+  align-items: center;
   background-color: hsla(0, 0%, 100%, 0.05);
   border: 1px solid hsla(0, 0%, 100%, 0.1);
   border-radius: var(--average-border-radius);
+  width: 180px;
+  height: 64px;
+}
+.musicSectionHeaders{
+  margin-top:4px;
+}
+
+#musicBy{
+  height:48px;
+}
+#musicByLink{
+  margin:auto;
+}
+
+#musicByLink{
+  color: hsla(0,0%,100%,.7);
+}
+
+#musicByLink:hover{
+  color:var(--hover-pink);
+}
+
+#musicControlButtons {
+  display: flex;
+  justify-content: center;
+  gap:8px;
+  margin-top:-10px;
+}
+#seek-slider{
+  cursor: pointer;
 }
 
 .musicButtonsClass {
-  background-color: transparent;
+  background-color: hsla(0,0%,85%,.2);
+  cursor: pointer;
   border: 0.5px solid hsla(0, 0%, 100%, 0.1);
+  border-radius:var(--circle-radius);
   height: 32px;
   padding: 10px;
   width: 35px;
 }
-h3 {
-  color: hsla(0, 0%, 100%, 0.7);
+.musicButtonsClass:hover{
+  background-color: var(--hover-pink);
 }
 
-#beforeTodoHeader {
-  display: flex;
-  flex-direction: row;
-}
+
+
 #CloseTodoHeader{
   display: flex;
   flex-direction: row;
@@ -350,6 +396,7 @@ h3 {
 }
 .TestTodoSection {
   display: none;
+  box-shadow: var(--average-shadow);
   width: 26%;
   height: 90vh;
   padding: 2%;
@@ -668,6 +715,11 @@ h3 {
 }
 
 /* Notes section */
+/* #beforeTodoHeader {
+  display: flex;
+  flex-direction: column;
+  
+} */
 
 .notesSection {
   padding: 2%;
@@ -792,8 +844,7 @@ figcaption {
   background-repeat: no-repeat;
   background-position-x: 2px;
   background-position-y: center;
-  padding-left: 8px;
-
+  padding-left: 16px;
   border-radius: var(--average-border-radius);
   height: 20px;
   width: 50px;
@@ -840,8 +891,6 @@ figcaption {
   display: flex;
   flex-direction: column;
   gap:4px;
-  /* justify-content: space-between; */
-  transition: all 0.5s;
   background-color: white;
   border-radius: var(--average-border-radius);
   margin: 5px;
@@ -850,7 +899,6 @@ figcaption {
   overflow-y: hidden;
   font-size: 14px;
   color: rgb(46, 46, 46);
-  /* box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px; */
   border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
@@ -892,7 +940,6 @@ figcaption {
 }
 
 .noteExpand {
-  transition: all 0.5s;
   height: 64%;
 }
 

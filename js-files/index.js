@@ -56,6 +56,7 @@ var bar1 = new ldBar(".ldBar");
 var bar2 = document.getElementById("bar").ldBar;
 bar1.set(80);
 
+//Add to calendar
 const config = {
   name: "Event from ProDo",
   description: "",
@@ -140,11 +141,12 @@ function create(charry) {
       login();
     })
     .catch(function (error) {
-      window.alert("Error: " + error.code + " " + error.message);
+      // window.alert("Error: " + error.code + " " + error.message);
     });
 }
 
 //logging into account
+
 function login() {
   var user = Parse.User.logIn(
     document.getElementById("email_field").value,
@@ -154,9 +156,16 @@ function login() {
       mainProfilePage();
     })
     .catch(function (error) {
-      window.alert("Error: " + error.code + " " + error.message);
+      // window.alert("Error: " + error.code + " " + error.message);
     });
 }
+
+// const loginButton=document.querySelector(".loginButton");
+// loginButton.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   // login();
+//   alert("meow");
+// });
 
 //logging out of account
 const logoutButton = document.querySelector(".logoutButton");
@@ -1251,7 +1260,7 @@ function loader() {
   const refUse = currentUser.get("username");
   const userI = currentUser.get("chara");
   document.getElementById("welcome").innerHTML = refUse + "'s Workspace";
-  document.getElementById("userPlay").src = userI;
+  document.querySelector(".userPlay").src = userI;
   upScoreRealTime();
   retrieveTodos();
   retrieveNotes();

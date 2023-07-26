@@ -43,12 +43,12 @@
     <div class="intro-box">
       <div class="testNav">
         <div class="userNamePfp">
-          <img src="../images/plholder.webp" id="userPlay" alt="Profie picture" />
+          <!-- <div>S</div> -->
+          <img src="../images/plholder.webp" class="userPlay" alt="Profie picture" />
           <h1 id="welcome">Hey Emy!</h1> 
         </div>
-
         <ul>
-
+          <p id="currentDate">Date</p>
           <li>
             <button
             id="NavshowToDoDivButton"
@@ -107,27 +107,9 @@
         </ul>
       </div>
 
-<div id="music">
-  <div id="innerMusic">
-  <h3>Song title</h3>
-  <div id="musicButtons">
-    <button class="musicButtonsClass" id="playButton">▶</button>
-    <button class="musicButtonsClass" id="skipButton">↦</button>
-    <!-- <button class="skipButton">↦</button> -->
-    <audio class="audios" preload="metadata"><source src="" ></audio>
-  </div>
-  <div> Music volume</div>
-  </div>
-</div> 
 
-<div class="timerSection">
-  <h2 id="setTime"> <span id="timerMinutes">25</span>:<span id="timerSeconds">00 </span></h2>
-  <button id="increaseMinutes">+</button>
-  <button id="decreaseMinutes">-</button>
-  <button id="timerStartButton">Start</button>
-  <button id="timerPauseButton">Pause</button>
-  <button id="timerClearButton">Clear</button>
- </div>
+
+
 
 
 
@@ -135,27 +117,64 @@
 
       <div class="notesSection">
         <!-- Note things -->
-
         <div id="beforeTodoHeader">
+          <div class="timerSection">
+            <div id="formatTimer">
+             <h2 id="setTime"> <span id="timerMinutes">25</span>:<span id="timerSeconds">00 </span></h2>
+             <div>
+             <button id="increaseMinutes">+</button>
+             <button id="decreaseMinutes">-</button>
+             <button id="timerStartButton">Start</button>
+             <button id="timerPauseButton">Pause</button>
+             <button id="timerClearButton">Clear</button>
+             </div>
+            </div>
+            </div>
+
+            <div id="music">
+              <div id="innerMusic">
+              <audio class="audios" preload="metadata"><source src="" ></audio>
+              <div id="musicControls">
+                <p class="musicSectionHeaders">Music controls</p>
+                <div id=musicControlButtons>
+                <button class="musicButtonsClass" id="playButton">▶</button>
+                <button class="musicButtonsClass" id="skipButton">↦</button>
+                <!-- <button class="skipButton">↦</button> -->
+                <!-- <audio class="audios" preload="metadata"><source src="" ></audio> -->
+                </div>
+              </div>
+              <div id="musicVolume">
+                <p class="musicSectionHeaders">Volume</p>
+                <input type="range" id="seek-slider" max="100" value="0">
+              </div>
+              <div id="musicBy">
+                <a href="https://soundcloud.com/chillspacelofi/sets/lofi-non-copyright-hip-hop" target="_blank" id="musicByLink"> Music by - Chill Space</a>
+              </div>
+              </div>
+            </div> 
+            <!-- Spacing div, leave it -->
           <div>
-           <p id="currentDate">Date</p>
           </div>
 
           <div class="ScoreDiv">
-            <p>Level</p>
-            <div id="levelEle">1</div>
+            <!-- <div id="levelEle">1</div> -->
+            <!-- data-preset="energy" -->
             <div
-              data-preset="rainbow"
+              data-stroke="pink"
+              data-path="M90.5,23.2c0-12.5-10.2-22.7-22.7-22.7
+              c-13.6,0-20.9,8.6-22.3,13.8C44.3,8.9,
+              35.1,0.5,23.2,0.5C10.7,0.5,0.5,10.7,
+              0.5,23.2c0,22.2,36.5,45.3,45,55.9
+              C53.5,67.3,90.5,46.3,90.5,23.2z"
               data-stroke-width="10"
               data-stroke-trail-width="10"
               id="bar"
               class="ldBar label-center"
             ></div>
+            <p id="levelArea">Lvl <span id="levelEle">1</span></p>
           </div>
         </div>
-        
         <h1 id="notesHeader">Notes</h1>
-
         <div id="divToSelectFilterForm">
           <div id="divToSingleSelect">
             <form id="selectFilterNotes">
