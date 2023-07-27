@@ -4,6 +4,7 @@
   --circle-radius: 50%;
   --average-border-radius:8px;
   --average-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
+  --average-font-size:16px;
 }
 
 body {
@@ -65,17 +66,18 @@ a:visited {
 
 
 
-/* #welcome, */
-#YouHaveDue {
-  padding: 3px;
+#bannerWelcomeDue {
+  display: flex;
+  justify-content: center;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
+  color: #7e7e7e;
+  
 }
 
-#YouHaveDue {
-  padding-left: 0px;
-}
+
+
 
 .userNamePfp {
   display: flex;
@@ -134,7 +136,7 @@ align-items: center;
   height: 100px;
   width: 200px;
   padding:2px;
-  font-size: 14px;
+  font-size: var(--average-font-size);
   border-radius: var(--average-border-radius);
   margin-left: auto;
   /* box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px; */
@@ -186,14 +188,6 @@ h1 {
 
 
 
-#bannerWelcomeDue {
-  color: #7e7e7e;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1px;
-  margin-bottom: 0px;
-}
-
 #DividingLineDiv {
   border: 0.5px solid #dfdfdf;
   /* cursor: col-resize; */
@@ -215,14 +209,14 @@ h1 {
 #welcome {
   padding: 3px;
   font-weight: 600;
-  font-size: 14px;
+  font-size: var(--average-font-size);
   line-height: 22px;
 }
 
 #currentDate {
   /* color: #7e7e7e; */
   /* font-weight: 700; */
-  font-size: 14px;
+  font-size: var(--average-font-size);
   line-height: 1px;
 }
 .userPlay {
@@ -389,7 +383,7 @@ h1 {
 #CloseToDoDivButton{
   background-color: transparent;
   border:none;
-  font-size: 16px;
+  font-size: var(--average-font-size);
 }
 #todoHeader{
   margin: auto;
@@ -586,7 +580,7 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-size: 14px;
+  font-size: var(--average-font-size);
 }
 
 /* Toggle trash edit  */
@@ -626,7 +620,7 @@ h1 {
 }
 
 .todo-item {
-  font-size: 14px;
+  font-size: var(--average-font-size);
   color: rgb(46, 46, 46);
 }
 
@@ -830,13 +824,22 @@ figcaption {
   margin-bottom: 10px;
 }
 
+
 #createNoteForm {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
+  /* justify-content: center;
+  align-items: center; */
+  flex-direction: column;
   margin-bottom: 10px;
   padding: 5px;
+  background-color: white;
+  border-radius: var(--average-border-radius);
+  margin: 5px;
+  margin-bottom: 10px;
+  padding: 2%;
+  font-size: var(--average-font-size);
+  color: rgb(46, 46, 46);
+  border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 #sortButtonNotes {
@@ -897,7 +900,7 @@ figcaption {
   margin-bottom: 10px;
   padding: 2%;
   overflow-y: hidden;
-  font-size: 14px;
+  font-size: var(--average-font-size);
   color: rgb(46, 46, 46);
   border: 1px solid rgba(0, 0, 0, 0.12);
 }
@@ -920,7 +923,7 @@ figcaption {
 }
 
 .note .titleOut {
-  font-weight: 500;
+  font-weight: 600;
   /* height: 2%; */
 }
 
@@ -929,6 +932,7 @@ figcaption {
   overflow: hidden;
   text-overflow: ellipsis;
   opacity: 0.8;
+  font-size:var(--average-font-size);
 }
 
 .note .IndCategories {
@@ -937,6 +941,7 @@ figcaption {
   min-width:8%;
   max-width: fit-content;
   text-align: center;
+  font-size: var(--average-font-size);
 }
 
 .noteExpand {
@@ -1090,13 +1095,6 @@ figcaption {
   }
 
 
-  #welcome,
-  #YouHaveDue {
-    padding: 1px;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 22px;
-  }
 
   body {
     overflow: scroll;

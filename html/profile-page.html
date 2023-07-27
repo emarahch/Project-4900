@@ -205,17 +205,8 @@
         </div>
 
         <div id="divToCreateNote">
+          <!-- <div id="createNoteFormating"> -->
           <form id="createNoteForm">
-            <div id="createNoteFormInputs">
-              <input
-                class="title-field"
-                type="text"
-                placeholder="title your note"
-                maxlength="50"
-              />
-
-              <textarea class="body-field"></textarea>
-            </div>
 
             <div id="divForAllThingsImageSearch">
               <div id="imageButtons">
@@ -230,6 +221,20 @@
               </div>
               <div class="display_images"></div>
             </div>
+
+
+            <!-- <div id="createNoteFormInputs"> -->
+              <input
+                class="title-field"
+                type="text"
+                placeholder="title your note"
+                maxlength="50"
+              />
+
+              <textarea class="body-field"></textarea>
+            <!-- </div> -->
+
+
 
             <div id="divToMulstiSelect">
               <select
@@ -257,10 +262,12 @@
           </form>
 
           <!-- <button class="btn-clear">Clear</button> -->
-        </div>
+        <!-- </div> -->
+      </div>
 
         <section class="notes-list"></section>
         <!-- </div> -->
+      
       </div>
 
       
@@ -277,7 +284,7 @@
       <p id="todoHeader">Todo</p>
     </div>
    
-    <p id="bannerWelcomeDue"><span id="YouHaveDue"> You have <span id="ThingsDue">0</span> tasks due today </span></p>
+    <p id="bannerWelcomeDue"><span id="YouHaveDue">You have<span id="ThingsDue"> 0 </span>tasks due today </span></p>
         <div id="todoButtons">
           <button id="createTodoShowBtn">+ Add Task</button>
           <div id="DivForShowMore">
