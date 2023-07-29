@@ -293,6 +293,16 @@ showMusic.addEventListener("click", () => {
   generalDisplayBlockCall(divMusic);
 });
 
+//Showing and hiding add Image div
+const showAddImageButton = document.getElementById(
+  "showAddImageButton"
+);
+const divToShowImageDiv = document.getElementById("divToShowImageDiv");
+showAddImageButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  generalDisplayBlockCall(divToShowImageDiv);
+});
+
 //Switching between archive view and normal view
 const viewArchiveButton = document.getElementById("viewArchiveButton");
 const CompletedTodoList = document.querySelector(".CompletedTodo-list");
@@ -863,8 +873,13 @@ function display_images(response) {
     i.addEventListener("click", function () {
       console.log(i.firstChild.getAttribute("src"));
       currentImageSelected = i.firstChild.getAttribute("src");
+      // i.style.backgroundColor="blue";
+  
     });
   });
+
+  
+    
 }
 
 function addNote(ob2) {

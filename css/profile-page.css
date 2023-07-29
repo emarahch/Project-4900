@@ -5,6 +5,7 @@
   --average-border-radius:8px;
   --average-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
   --average-font-size:16px;
+  --larger-font-size:18px;
 }
 
 body {
@@ -53,8 +54,6 @@ a:visited {
 
 /* The top part of the screen */
 
-
-
 .userStuff {
   display: flex;
   flex-direction: row;
@@ -70,8 +69,8 @@ a:visited {
   display: flex;
   justify-content: center;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: var(--larger-font-size);
+    line-height: 22px;
   color: #7e7e7e;
   
 }
@@ -122,7 +121,7 @@ align-items: center;
 
 
 #setTime {
-  font-size: 18px;
+  font-size:  var(--larger-font-size);
 }
 
 .ScoreDiv {
@@ -197,6 +196,7 @@ h1 {
   display: flex;
   flex-direction: column;
   background-color: #f6f6f6;
+  background-color: var(--pale-pink);
 
   /* Alt color scheme */
   /* background-color:#d9d4e7;   */
@@ -387,6 +387,7 @@ h1 {
 }
 #todoHeader{
   margin: auto;
+  font-size: 31px;
 }
 .TestTodoSection {
   display: none;
@@ -708,12 +709,6 @@ h1 {
   background-color: #ffb2ee;
 }
 
-/* Notes section */
-/* #beforeTodoHeader {
-  display: flex;
-  flex-direction: column;
-  
-} */
 
 .notesSection {
   padding: 2%;
@@ -729,10 +724,11 @@ h1 {
 }
 .DivShowEditDeleteNoteButtons {
   display: none;
-  /* position:relative; */
+  position:absolute;
   z-index: 7;
   background-color: white;
-  margin-left: auto;
+  right: 38px;
+  top: 48px;
   box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
   border: 0.02px solid rgb(230, 229, 229);
   width: 20px;
@@ -742,26 +738,38 @@ h1 {
 .title-field,
 .body-field {
   background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-  border-radius: var(--average-border-radius);
-  border: 0.3px black;
-  width: 200px;
+  /* box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; */
+  /* border-radius: var(--average-border-radius); */
+  border:none;
+  max-width: 100%;
   margin-bottom: 8px;
+  font-size: var(--average-font-size);
 }
 
 .title-field {
-  height: 20px;
+  height: 40px;
 }
 
 .body-field {
   height: 200px;
+  border-top:1px solid rgba(0, 0, 0, 0.201);
+}
+
+#divToShowImageDiv{
+  display:none;
+  z-index: 9;
+  position: absolute;
+  background-color: white; 
+  right: 8px;
+  top: 50px;
 }
 
 #divForAllThingsImageSearch {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
-  padding: 2px;
+  padding: 8px;
   border-radius: var(--average-border-radius);
   border: 1px solid rgba(0, 0, 0, 0.12);
 }
@@ -776,11 +784,36 @@ h1 {
 #divForAllThingsImageSearch input,
 #divForAllThingsImageSearch button,
 .btn-save {
-  border-radius: var(--average-border-radius);
+  /* border-radius: var(--average-border-radius);
   background-color: white;
   border: 0.5px solid rgba(0, 0, 0, 0.12);
-  font-size: 10px;
+  font-size: 10px; */
 }
+
+.btn-save {
+margin:auto;
+margin-top: 8px;
+border-radius: var(--average-border-radius);
+background-color:var(--pale-pink);
+border: 0.5px solid rgba(0, 0, 0, 0.12);
+width:fit-content;
+}
+.btn-save:hover{
+  background-color: var(--hover-pink);
+}
+#divToMulstiSelect{
+  display: flex;
+  margin:auto;
+  flex-direction: row;
+  align-items: center;
+  width: fit-content;
+  border-radius: var(--average-border-radius);
+}
+
+#divToMulstiSelect > p{
+  width:100px;
+}
+
 
 #divForAllThingsImageSearch button:hover {
   background-color: #ffd2fd;
@@ -804,16 +837,20 @@ figcaption {
 }
 
 .display_images img {
-  width: 40px;
+  width: 60px;
   border-radius: var(--average-border-radius);
-  height: 40px;
+  height: 60px;
   cursor: pointer;
+  object-fit: cover;
+
 }
 
 .IndImageGrid:hover {
   background-color: #f2dbff;
   border-radius: var(--average-border-radius);
 }
+
+
 
 #createNoteShowBtn:hover {
   background-color: #ffb2ee;
@@ -827,9 +864,8 @@ figcaption {
 
 #createNoteForm {
   display: flex;
-  /* justify-content: center;
-  align-items: center; */
   flex-direction: column;
+  position: relative;
   margin-bottom: 10px;
   padding: 5px;
   background-color: white;
@@ -840,6 +876,21 @@ figcaption {
   font-size: var(--average-font-size);
   color: rgb(46, 46, 46);
   border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+#showAddImageButton{
+  padding-left: 16px;
+  border-radius: var(--average-border-radius);
+  height: 20px;
+  width: fit-content;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: transparent;
+  /* margin-left: 77%; */
+  margin-left: auto;
+  
+}
+#showAddImageButton:hover{
+  background-color: var(--hover-pink);
 }
 
 #sortButtonNotes {
@@ -893,7 +944,8 @@ figcaption {
 .note {
   display: flex;
   flex-direction: column;
-  gap:4px;
+  position: relative;
+  gap:12px;
   background-color: white;
   border-radius: var(--average-border-radius);
   margin: 5px;
@@ -906,14 +958,11 @@ figcaption {
 }
 
 #notesDivButtons {
-  /* z-index: 2;
-  display: none; */
   opacity: 0px;
   margin-left: auto;
 }
 
 .note:hover #notesDivButtons {
-  /* display: block; */
   background-color: #f4f5fc;
   border-radius: var(--average-border-radius);
 }
@@ -924,6 +973,7 @@ figcaption {
 
 .note .titleOut {
   font-weight: 600;
+  font-size:  var(--larger-font-size);
   /* height: 2%; */
 }
 
