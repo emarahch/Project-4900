@@ -241,13 +241,13 @@ showToDoDivButton.forEach(function (i) {
 });
 
 //Showing and hiding habit tracker
-const ShowHabitTrackerButton = document.getElementById(
-  "ShowHabitTrackerButton"
-);
-const habitsSection = document.querySelector(".habitsSection");
-ShowHabitTrackerButton.addEventListener("click", () => {
-  generalDisplayBlockCall(habitsSection);
-});
+// const ShowHabitTrackerButton = document.getElementById(
+//   "ShowHabitTrackerButton"
+// );
+// const habitsSection = document.querySelector(".habitsSection");
+// ShowHabitTrackerButton.addEventListener("click", () => {
+//   generalDisplayBlockCall(habitsSection);
+// });
 
 //Showing and hiding the form for adding a todo
 const createTodoShowBtn = document.getElementById("createTodoShowBtn");
@@ -334,18 +334,18 @@ ShowArchEditSortButton.addEventListener("click", () => {
 
 //edit mode button that shows trash button and makes text editable.
 //is there a way to improve how this looks??
-const editButtonTrash = document.getElementById("editButton");
-editButtonTrash.addEventListener("click", () => {
-  var trashList = document.querySelectorAll(".cancel-btn");
-  for (let i = 0; i < trashList.length; i++) {
-    generalDisplayBlockCall(trashList[i]);
-  }
+// const editButtonTrash = document.getElementById("editButton");
+// editButtonTrash.addEventListener("click", () => {
+//   var trashList = document.querySelectorAll(".cancel-btn");
+//   for (let i = 0; i < trashList.length; i++) {
+//     generalDisplayBlockCall(trashList[i]);
+//   }
 
-  var editTitleList = document.querySelectorAll(".EditTitle-btn");
-  for (let i = 0; i < editTitleList.length; i++) {
-    generalDisplayBlockCall(editTitleList[i]);
-  }
-});
+//   var editTitleList = document.querySelectorAll(".EditTitle-btn");
+//   for (let i = 0; i < editTitleList.length; i++) {
+//     generalDisplayBlockCall(editTitleList[i]);
+//   }
+// });
 
 //Sorting todos based on priority
 const sortButton = document.getElementById("sortButton");
@@ -580,10 +580,10 @@ function addTodo(idd) {
   newToDo.classList.add("todo-item");
   toDoDiv.appendChild(newToDo);
 
-  const EditTitleButton = document.createElement("button");
-  EditTitleButton.setAttribute("value", "Off");
-  EditTitleButton.classList.add("EditTitle-btn");
-  toDoDiv.appendChild(EditTitleButton);
+  // const EditTitleButton = document.createElement("button");
+  // EditTitleButton.setAttribute("value", "Off");
+  // EditTitleButton.classList.add("EditTitle-btn");
+  // toDoDiv.appendChild(EditTitleButton);
 
   const newToDoP = document.createElement("li");
   newToDoP.setAttribute("class", "IndPriority");
@@ -603,10 +603,24 @@ function addTodo(idd) {
   newTodoDate.classList.add("todo-item");
   toDoDiv.appendChild(newTodoDate);
 
+
+  const showMoreIndButtonTodo = document.createElement("button");
+  showMoreIndButtonTodo.classList.add("showMoreIndTodo-Button");
+  toDoDiv.appendChild(showMoreIndButtonTodo);
+
+  const TodoDivButtons = document.createElement("div");
+  TodoDivButtons.setAttribute("class", "TodoDivButtons");
+
+  const EditTitleButton = document.createElement("button");
+  EditTitleButton.setAttribute("value", "Off");
+  EditTitleButton.classList.add("EditTitle-btn");
+  toDoDiv.appendChild(EditTitleButton);
+  TodoDivButtons.appendChild(EditTitleButton);
+
   const cancelButton = document.createElement("button");
-  // cancelButton.innerText = "trash";
   cancelButton.classList.add("cancel-btn");
-  toDoDiv.appendChild(cancelButton);
+  TodoDivButtons.appendChild(cancelButton);
+  toDoDiv.appendChild(TodoDivButtons);
 
   //add to list
   todoList.appendChild(toDoDiv);
@@ -768,8 +782,9 @@ function deleteCheck(event) {
   const item = event.target;
   if (item.classList[0] === "cancel-btn") {
     const todo = item.parentElement;
-    todo.remove();
-    deleteToDoStore(todo.getAttribute("id"));
+    const tody = todo.parentElement;
+    tody.remove();
+    deleteToDoStore(tody.getAttribute("id"));
   }
 
   //I have it whhere the user can click button multuple times, bc people make mistakes
@@ -797,7 +812,8 @@ function deleteCheck(event) {
 
   if (item.classList[0] === "EditTitle-btn") {
     const todo = item.parentElement;
-    ObjectIdText = todo.getAttribute("id"); //Works
+    const todoy = todo.parentElement;
+    ObjectIdText = todoy.getAttribute("id"); //Works
     if (item.getAttribute("value") == "Off") {
       item.classList.toggle("editingModeCancelIcon");
       editTextFunc(ObjectIdText);
@@ -807,6 +823,12 @@ function deleteCheck(event) {
       stopEditText(ObjectIdText);
       item.setAttribute("value", "Off");
     }
+  }
+
+  if (item.classList[0] === "showMoreIndTodo-Button") {
+    const notey = item.parentElement;
+    //this finds the correct child (showMoreDiv) and calls the display function
+    generalDisplayBlockCall(notey.children.item(0));
   }
 }
 
@@ -827,9 +849,7 @@ const searchInput = document.getElementById("image-search");
 var imageDisplay = document.querySelector(".display_images");
 var currentImageSelected;
 
-noImageButton.addEventListener("click", () => {
-  currentImageSelected = null;
-});
+
 
 searchButton.addEventListener("click", async () => {
   var query = searchInput.value;
@@ -855,6 +875,12 @@ searchButton.addEventListener("click", async () => {
   display_images(response);
 });
 
+noImageButton.addEventListener("click", () => {
+  currentImageSelected = null;
+  generalDisplayBlockCall(document.getElementById("divToShowImageDiv"));
+});
+
+
 function display_images(response) {
   while (imageDisplay.firstChild) {
     imageDisplay.removeChild(imageDisplay.firstChild);
@@ -873,7 +899,14 @@ function display_images(response) {
     i.addEventListener("click", function () {
       console.log(i.firstChild.getAttribute("src"));
       currentImageSelected = i.firstChild.getAttribute("src");
-      // i.style.backgroundColor="blue";
+
+      // https://www.w3schools.com/howto/howto_js_active_element.asp
+      var current = document.getElementsByClassName("active");
+      if (current.length > 0) { 
+        current[0].className = current[0].className.replace(" active", "");
+      }
+      this.className += " active";
+
   
     });
   });
@@ -933,11 +966,11 @@ function addNote(ob2) {
   noteTitle.classList.add("titleOut");
   notesDiv.appendChild(noteTitle);
 
-  const noteCategory = document.createElement("li");
-  noteCategory.setAttribute("class", "IndCategories");
-  noteCategory.innerText = textCa;
-  noteCategory.classList.add("category");
-  notesDiv.appendChild(noteCategory);
+  // const noteCategory = document.createElement("li");
+  // noteCategory.setAttribute("class", "IndCategories");
+  // noteCategory.innerText = textCa;
+  // noteCategory.classList.add("category");
+  // notesDiv.appendChild(noteCategory);
 
   const newNote = document.createElement("li");
   newNote.setAttribute("class", "bodyOut");
@@ -945,22 +978,24 @@ function addNote(ob2) {
   newNote.classList.add("note-item");
   notesDiv.appendChild(newNote);
 
-  // const noteCategory = document.createElement("li");
-  // noteCategory.setAttribute("class", "IndCategories");
-  // noteCategory.innerText = textCa;
-  // noteCategory.classList.add("category");
-  // notesDiv.appendChild(noteCategory);
+  const noteCategory = document.createElement("li");
+  noteCategory.setAttribute("class", "IndCategories");
+  noteCategory.innerText = textCa;
+  noteCategory.classList.add("category");
+  notesDiv.appendChild(noteCategory);
 
   
 
   //add to list
-  notesList.appendChild(notesDiv);
+  // notesList.appendChild(notesDiv);
+  notesList.prepend(notesDiv);
 
   notesInput.value = "";
   notesTitle.value = "";
 }
 
 function storeNote(event) {
+
   var categoryNumberUser = document.getElementById("categoryNumberNotes");
   var textCa = Array.from(categoryNumberUser.selectedOptions).map(
     (x) => x.value ?? x.text
@@ -980,6 +1015,7 @@ function storeNote(event) {
       console.log("Note created", result);
       ob2 = newNote.id;
       addNote(ob2);
+      generalDisplayBlockCall(document.getElementById("divToCreateNote"));
     } catch (error) {
       Toastify({
         text: "Error : Besite you need to add a title and body",
@@ -1274,7 +1310,7 @@ function loader() {
   const currentUser = Parse.User.current();
   const refUse = currentUser.get("username");
   const userI = currentUser.get("chara");
-  document.getElementById("welcome").innerHTML = refUse + "'s Workspace";
+  document.getElementById("welcome").innerHTML = refUse ;
   document.querySelector(".userPlay").src = userI;
   upScoreRealTime();
   retrieveTodos();
@@ -1313,6 +1349,19 @@ function addOldToDo(objectId, title, isCompleted, priority, category, date) {
   toDoDiv.setAttribute("id", objectId);
   toDoDiv.classList.add("todo");
 
+  const TodoDivButtons = document.createElement("div");
+  TodoDivButtons.setAttribute("class", "TodoDivButtons");
+
+  const EditTitleButton = document.createElement("button");
+  EditTitleButton.setAttribute("value", "Off");
+  EditTitleButton.classList.add("EditTitle-btn");
+  TodoDivButtons.appendChild(EditTitleButton);
+
+  const cancelButton = document.createElement("button");
+  cancelButton.classList.add("cancel-btn");
+  TodoDivButtons.appendChild(cancelButton);
+  toDoDiv.appendChild(TodoDivButtons);
+
   const completedButton = document.createElement("button");
   completedButton.classList.add("complete-btn");
   toDoDiv.appendChild(completedButton);
@@ -1323,10 +1372,10 @@ function addOldToDo(objectId, title, isCompleted, priority, category, date) {
   newToDo.classList.add("todo-item");
   toDoDiv.appendChild(newToDo);
 
-  const EditTitleButton = document.createElement("button");
-  EditTitleButton.setAttribute("value", "Off");
-  EditTitleButton.classList.add("EditTitle-btn");
-  toDoDiv.appendChild(EditTitleButton);
+  // const EditTitleButton = document.createElement("button");
+  // EditTitleButton.setAttribute("value", "Off");
+  // EditTitleButton.classList.add("EditTitle-btn");
+  // toDoDiv.appendChild(EditTitleButton);
 
   const newToDoP = document.createElement("li");
   newToDoP.setAttribute("class", "IndPriority");
@@ -1346,9 +1395,38 @@ function addOldToDo(objectId, title, isCompleted, priority, category, date) {
   newTodoDate.classList.add("todo-item");
   toDoDiv.appendChild(newTodoDate);
 
-  const cancelButton = document.createElement("button");
-  cancelButton.classList.add("cancel-btn");
-  toDoDiv.appendChild(cancelButton);
+  // const TodoDivButtons = document.createElement("div");
+  // TodoDivButtons.setAttribute("class", "TodoDivButtons");
+
+  // const EditTitleButton = document.createElement("button");
+  // EditTitleButton.setAttribute("value", "Off");
+  // EditTitleButton.classList.add("EditTitle-btn");
+  // TodoDivButtons.appendChild(EditTitleButton);
+
+  // const cancelButton = document.createElement("button");
+  // cancelButton.classList.add("cancel-btn");
+  // TodoDivButtons.appendChild(cancelButton);
+  // toDoDiv.appendChild(TodoDivButtons);
+
+
+  const showMoreIndButtonTodo = document.createElement("button");
+  showMoreIndButtonTodo.classList.add("showMoreIndTodo-Button");
+  toDoDiv.appendChild(showMoreIndButtonTodo);
+
+  // const TodoDivButtons = document.createElement("div");
+  // TodoDivButtons.setAttribute("class", "TodoDivButtons");
+
+  // const EditTitleButton = document.createElement("button");
+  // EditTitleButton.setAttribute("value", "Off");
+  // EditTitleButton.classList.add("EditTitle-btn");
+  // TodoDivButtons.appendChild(EditTitleButton);
+
+  // const cancelButton = document.createElement("button");
+  // cancelButton.classList.add("cancel-btn");
+  // TodoDivButtons.appendChild(cancelButton);
+  // toDoDiv.appendChild(TodoDivButtons);
+
+
 
   if (isCompleted == true) {
     toDoDiv.classList.toggle("completed");
@@ -1434,11 +1512,11 @@ function addOldNote(objectId, title, NoteBody, category, images) {
   noteTitle.classList.add("titleOut");
   notesDiv.appendChild(noteTitle);
 
-  const noteCategory = document.createElement("li");
-  noteCategory.setAttribute("class", "IndCategories");
-  noteCategory.innerText = category;
-  noteCategory.classList.add("note-item");
-  notesDiv.appendChild(noteCategory);
+  // const noteCategory = document.createElement("li");
+  // noteCategory.setAttribute("class", "IndCategories");
+  // noteCategory.innerText = category;
+  // noteCategory.classList.add("note-item");
+  // notesDiv.appendChild(noteCategory);
 
   const newNote = document.createElement("li");
   newNote.setAttribute("class", "bodyOut");
@@ -1446,14 +1524,15 @@ function addOldNote(objectId, title, NoteBody, category, images) {
   newNote.classList.add("note-item");
   notesDiv.appendChild(newNote);
 
-  // const noteCategory = document.createElement("li");
-  // noteCategory.setAttribute("class", "IndCategories");
-  // noteCategory.innerText = category;
-  // noteCategory.classList.add("note-item");
-  // notesDiv.appendChild(noteCategory);
+  const noteCategory = document.createElement("li");
+  noteCategory.setAttribute("class", "IndCategories");
+  noteCategory.innerText = category;
+  noteCategory.classList.add("note-item");
+  notesDiv.appendChild(noteCategory);
 
   //add to list
-  notesList.appendChild(notesDiv);
+  // notesList.appendChild(notesDiv);
+  notesList.prepend(notesDiv);
 }
 
 //EVERYTHING HABIT TRACKER

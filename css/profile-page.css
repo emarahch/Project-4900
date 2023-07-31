@@ -29,6 +29,9 @@ a:visited {
   color: black;
 }
 
+button{
+  cursor: pointer;
+}
 .loader-container {
   width: 100%;
   height: 100vh;
@@ -81,6 +84,7 @@ a:visited {
 .userNamePfp {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   margin-left: 10px;
 }
 
@@ -108,7 +112,7 @@ align-items: center;
 .timerSection button {
   background-color: hsla(0,0%,85%,.2);
   color: hsla(0,0%,100%,.7);
-  cursor: pointer;
+  /* cursor: pointer; */
   border: 0.5px solid hsla(0, 0%, 100%, 0.1);
   border-radius:var(--circle-radius);
   width:42px;
@@ -125,21 +129,16 @@ align-items: center;
 }
 
 .ScoreDiv {
-  /* margin-top: 5px; */
   display: flex;
-  /* position: absolute; */
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  /* z-index:9; */
   height: 100px;
   width: 200px;
   padding:2px;
   font-size: var(--average-font-size);
   border-radius: var(--average-border-radius);
   margin-left: auto;
-  /* box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px; */
-  /* border: 2px solid var(--hover-pink); */
   border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
@@ -161,18 +160,19 @@ margin: 12px;
 }
 
 #showSideBar {
-  background-image: url("../images/icons8-double-right-15.png");
+  background-image: url("../images/doubleRight30.png");
   background-repeat: no-repeat;
   background-position: center;
   border: none;
   background-color: transparent;
   height: 30px;
   width: 30px;
-  margin-left: -9px;
+  margin-top:4px;
+  padding:4px;
 }
 #showSideBar:hover {
   background-color: #ebebeb;
-  border-radius: 50%;
+  border-radius: var(--average-border-radius);
   transition: 0.7s;
 }
 
@@ -202,7 +202,8 @@ h1 {
   /* background-color:#d9d4e7;   */
 
   height: 100vh;
-  width: 200px;
+  /* width: 200px; */
+  width: 80px;
   border: none;
   z-index: 1;
 }
@@ -211,18 +212,19 @@ h1 {
   font-weight: 600;
   font-size: var(--average-font-size);
   line-height: 22px;
+  display: none;
 }
 
 #currentDate {
-  /* color: #7e7e7e; */
-  /* font-weight: 700; */
   font-size: var(--average-font-size);
   line-height: 1px;
+  display: none;
 }
 .userPlay {
   border-radius: var(--circle-radius);
-  height: 24px;
-  width: 24px;
+
+  height: 30px;
+width: 30px;
   margin-top: 15px;
 }
 
@@ -235,9 +237,10 @@ h1 {
 
 .testNav ul {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: column; 
   align-items: center;
+  gap:4px;
+  margin-top:48px;
 }
 
 #themeChangeButton {
@@ -245,17 +248,32 @@ h1 {
   background-repeat: no-repeat;
   background-position: center;
 }
-#TriggerMusicButton {
-  /* background-image: url("../images/darkMode30.png");
-  background-repeat: no-repeat;
-  background-position: center; */
-}
 
-#ShowHabitTrackerButton {
-  background-image: url("../images/icons8-habits-30.png");
+#NavshowToDoDivButton{
+  background-image: url("../images/icons8-todo-list-30-2.png");
   background-repeat: no-repeat;
   background-position: center;
 }
+
+#showTimerButton {
+  background-image: url("../images/icons8-time-30-2.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+
+#TriggerMusicButton {
+  background-image: url("../images/icons8-music-30-2.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* #ShowHabitTrackerButton {
+  background-image: url("../images/icons8-habits-30.png");
+  background-repeat: no-repeat;
+  background-position: center;
+} */
 #tutorialbutton {
   background-image: url("../images/tutorial30.png");
   background-repeat: no-repeat;
@@ -292,7 +310,7 @@ h1 {
   background-color: var(--hover-pink);
   border-radius: 50%;
   transition: all 0.5s;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 
@@ -358,12 +376,12 @@ h1 {
   margin-top:-10px;
 }
 #seek-slider{
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .musicButtonsClass {
   background-color: hsla(0,0%,85%,.2);
-  cursor: pointer;
+  /* cursor: pointer; */
   border: 0.5px solid hsla(0, 0%, 100%, 0.1);
   border-radius:var(--circle-radius);
   height: 32px;
@@ -391,6 +409,7 @@ h1 {
 }
 .TestTodoSection {
   display: none;
+  position: relative;
   box-shadow: var(--average-shadow);
   width: 26%;
   height: 90vh;
@@ -431,37 +450,37 @@ h1 {
 
 #DivForButtonsArchEditSort {
   display: none;
-  position: fixed;
-
-  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
-    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  position: absolute;
+  box-shadow: var(--average-shadow);
   border: 0.02px solid rgb(230, 229, 229);
   background-color: white;
   width: 200px;
   height: 100px;
   border-radius: 10px;
   margin-top: 40px;
+  right:20px;
   z-index: 7;
+
 }
 
 #DivForButtonsArchEditSortFormating {
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  padding: 12px;
   height: 20px;
-  max-width: 100px;
+  width: 90%;
 }
 
 #sortButtonsDiv button,
 #DivForButtonsArchEditSort button {
   background-color: transparent;
   border: none;
-  font-size: 13px;
+  font-size: var(--average-font-size);
 }
 
 #DivForButtonsArchEditSort button:hover {
   background-color: #ffb2ee;
+  width: 100%;
   border-radius: var(--average-border-radius);
   border: none;
 }
@@ -499,16 +518,12 @@ h1 {
 
 #SortButtonsAll {
   background-image: url("../images/sort12.png");
-  background-repeat: no-repeat;
-  background-position-x: 2px;
-  background-position-y: center;
-  padding-left: 8px;
-
-  border-radius: var(--average-border-radius);
-  height: 20px;
-  width: 50px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  background-color: white;
+background-repeat: no-repeat;
+background-position-x: 2px;
+background-position-y: center;
+border-radius: var(--average-border-radius);
+border: 1px solid rgba(0, 0, 0, 0.2);
+background-color: white;
 }
 
 #SortButtonsAll:hover {
@@ -541,6 +556,7 @@ h1 {
   padding: 15px;
   border-radius: var(--average-border-radius);
   /* fix this... */
+  background-color: #fafafa;
 }
 
 #divToSelectFilterFormToDo {
@@ -551,7 +567,6 @@ h1 {
   display: none;
   position: fixed;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 8px 0px;
-  border: 0.02px solid rgb(230, 229, 229);
   background-color: white;
   width: 199px;
   height: 150px;
@@ -588,7 +603,6 @@ h1 {
 
 .cancel-btn,
 .cancelNote-btn {
-  display: none;
   background-image: url("../images/trash18.png");
   border: none;
   background-color: transparent;
@@ -601,9 +615,6 @@ h1 {
   background-color: #ffb2ee;
 }
 
-.EditTitle-btn {
-  display: none;
-}
 
 /* Todo Section */
 
@@ -611,6 +622,7 @@ h1 {
   display: flex;
   flex-direction: row;
   align-items: center;
+  position: relative;
   margin: 5px;
   margin-bottom: 10px;
   padding: 2%;
@@ -643,10 +655,11 @@ h1 {
 }
 
 .IndCategories {
-  /* border-radius: var(--average-border-radius) */
   padding: 5px;
-  border-radius: 10px;
+  /* height: ; */
+  border-radius: var(--average-border-radius);
   margin-right: 9px;
+  padding:4px;
   background-color: #dbe0ff;
 }
 .IndDate {
@@ -709,6 +722,19 @@ h1 {
   background-color: #ffb2ee;
 }
 
+.TodoDivButtons{
+  display:none;
+  position: absolute;
+  z-index: 99;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
+  border: 0.02px solid rgb(230, 229, 229);
+  width: 20px;
+  height: 40px;
+  right: 10px;
+  top:32px;
+}
+
 
 .notesSection {
   padding: 2%;
@@ -738,8 +764,6 @@ h1 {
 .title-field,
 .body-field {
   background-color: white;
-  /* box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; */
-  /* border-radius: var(--average-border-radius); */
   border:none;
   max-width: 100%;
   margin-bottom: 8px;
@@ -769,9 +793,12 @@ h1 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap:8px;
   padding: 8px;
   border-radius: var(--average-border-radius);
   border: 1px solid rgba(0, 0, 0, 0.12);
+  /* box-shadow: 0 0 0 1px rgba(64,87,109,0.07),0 2px 12px rgba(53,71,90,0.2); */
+  box-shadow: var(--average-shadow);
 }
 
 #imageButtons {
@@ -779,6 +806,11 @@ h1 {
   justify-content: center;
   flex-direction: row;
   gap: 2px;
+}
+#image-search{
+  border-radius: var(--average-border-radius);
+  border: 0.5px solid rgba(0, 0, 0, 0.12);
+  height: 20px;
 }
 
 #divForAllThingsImageSearch input,
@@ -851,6 +883,10 @@ figcaption {
 }
 
 
+.active{
+  background-color: var(--hover-pink);
+}
+
 
 #createNoteShowBtn:hover {
   background-color: #ffb2ee;
@@ -885,7 +921,6 @@ figcaption {
   width: fit-content;
   border: 1px solid rgba(0, 0, 0, 0.2);
   background-color: transparent;
-  /* margin-left: 77%; */
   margin-left: auto;
   
 }
@@ -908,7 +943,9 @@ figcaption {
   margin-left: auto;
 }
 
-.showMoreIndNote-Button {
+.showMoreIndNote-Button,
+.showMoreIndTodo-Button
+ {
   background-image: url("../images/3dots14.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -919,6 +956,14 @@ figcaption {
   width: 50px;
   border: none;
   background-color: transparent;
+}
+.showMoreIndTodo-Button:hover{
+  background-color: var(--hover-pink);
+}
+
+.showMoreIndNote-Button:active,
+.showMoreIndTodo-Button:active{
+  background-color: var(--hover-pink);
 }
 
 .note button:hover {
@@ -974,7 +1019,6 @@ figcaption {
 .note .titleOut {
   font-weight: 600;
   font-size:  var(--larger-font-size);
-  /* height: 2%; */
 }
 
 .note .bodyOut {
@@ -987,7 +1031,7 @@ figcaption {
 
 .note .IndCategories {
   opacity: 0.9;
-  padding: 0px;
+  padding: 4px;
   min-width:8%;
   max-width: fit-content;
   text-align: center;
@@ -1073,9 +1117,8 @@ figcaption {
 
 /* breakpoints */
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .intro-box {
-    display: flex;
     flex-direction: column;
     margin: 0px;
     height: 80%;
@@ -1086,6 +1129,13 @@ figcaption {
     height: 400px;
   }
 
+  #currentDate{
+    display: none;
+  }
+  .userNamePfp{
+    justify-content: center;
+  }
+
   .todo-list {
     height: 200px;
   }
@@ -1094,12 +1144,16 @@ figcaption {
   }
   .testNav {
     width: 100%;
-    height: 80px;
+    height: 100px;
+  }
+  .testNav ul{
+    margin-top: 0px;
   }
 
   .testNav ul {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     gap: 50px;
   }
   .logoutButton {
@@ -1171,6 +1225,10 @@ figcaption {
 .darkMode .intro-box {
   background-color: black;
   color: white;
+}
+
+.darkMode #bannerWelcomeDue{
+  color:white;
 }
 
 .darkMode .IndToDo {
