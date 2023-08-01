@@ -216,17 +216,19 @@ SortButtonsAll.addEventListener("click", () => {
 
 //Showing and hiding nav bar
 const showSideBar = document.getElementById("showSideBar");
-const divSideform = document.querySelector(".testNav");
+const divSideform = document.getElementById("myNav");
 showSideBar.addEventListener("click", () => {
   generalDisplayBlockCall(divSideform);
 });
 
 
 //Showing hiding timer
-const showTimerButton=document.getElementById("showTimerButton");
+const showTimerButton=document.querySelectorAll(".showTimerDivButton");
 const timerSection=document.querySelector(".timerSection");
-showTimerButton.addEventListener("click", () => {
-  generalDisplayBlockCall(timerSection);
+showTimerButton.forEach(function (i) {
+  i.addEventListener("click", () => {
+    generalDisplayBlockCall(timerSection);
+  });
 });
 
 
@@ -239,6 +241,8 @@ showToDoDivButton.forEach(function (i) {
     generalDisplayBlockCall(TestTodoSection);
   });
 });
+
+
 
 //Showing and hiding habit tracker
 // const ShowHabitTrackerButton = document.getElementById(
@@ -287,11 +291,15 @@ changeDateHabitBtn.addEventListener("click", () => {
 });
 
 //showing hiding music
-const showMusic = document.getElementById("TriggerMusicButton");
+const showMusic = document.querySelectorAll(".showMusicDivButton");
 const divMusic = document.getElementById("music");
-showMusic.addEventListener("click", () => {
-  generalDisplayBlockCall(divMusic);
+showMusic.forEach(function (i) {
+  i.addEventListener("click", () => {
+    generalDisplayBlockCall(divMusic);
+  });
 });
+
+
 
 //Showing and hiding add Image div
 const showAddImageButton = document.getElementById(

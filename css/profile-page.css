@@ -96,7 +96,7 @@ button{
   border-radius: 16px;
   z-index: 9;
   width: 246px;
-  height: 100px;
+  height: 126px;
   padding:2px;
   display: none;
   position: absolute;
@@ -107,6 +107,11 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
+}
+
+#CloseTimerDivButton{
+ margin-left: auto;
+ margin-bottom: 0px;
 }
 
 .timerSection button {
@@ -125,6 +130,7 @@ align-items: center;
 
 
 #setTime {
+  margin-top: 0px;
   font-size:  var(--larger-font-size);
 }
 
@@ -192,7 +198,7 @@ h1 {
   /* cursor: col-resize; */
 }
 
-.testNav {
+nav {
   display: flex;
   flex-direction: column;
   background-color: #f6f6f6;
@@ -228,14 +234,14 @@ width: 30px;
   margin-top: 15px;
 }
 
-.testNav button {
+nav button {
   background-color: transparent;
   border: none;
   height: 50px;
   width: 50px;
 }
 
-.testNav ul {
+nav ul {
   display: flex;
   flex-direction: column; 
   align-items: center;
@@ -320,7 +326,7 @@ width: 30px;
   border-radius: 16px;
   z-index: 8;
   width: 211px;
-  height: 281px;
+  height: 300px;
   position: absolute;
   cursor: move;
   color: hsla(0,0%,100%,.7);
@@ -334,7 +340,6 @@ width: 30px;
   align-items: center;
   flex-direction: column;
   gap:16px;
-  margin-top: 32px;
 }
 
 #musicControls,
@@ -350,6 +355,14 @@ width: 30px;
   width: 180px;
   height: 64px;
 }
+
+
+#CloseMusicDivButton{
+  margin-left: auto;
+  margin-bottom: 0px;
+  color: hsla(0,0%,100%,.7);
+ }
+
 .musicSectionHeaders{
   margin-top:4px;
 }
@@ -397,12 +410,21 @@ width: 30px;
 #CloseTodoHeader{
   display: flex;
   flex-direction: row;
+  justify-content:  center;
 }
-#CloseToDoDivButton{
+#CloseToDoDivButton,
+#CloseMusicDivButton,
+#CloseTimerDivButton
+{
+  height:42px;
+  width:42px;
   background-color: transparent;
   border:none;
   font-size: var(--average-font-size);
 }
+
+
+
 #todoHeader{
   margin: auto;
   font-size: 31px;
@@ -609,7 +631,7 @@ background-color: white;
   width: 18px;
   height: 18px;
   background-repeat: no-repeat;
-  margin-left: auto;
+  /* margin-left: auto; */
 }
 .cancel-btn:hover {
   background-color: #ffb2ee;
@@ -729,10 +751,17 @@ background-color: white;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
   border: 0.02px solid rgb(230, 229, 229);
-  width: 20px;
-  height: 40px;
   right: 10px;
   top:32px;
+  border-radius: var(--average-border-radius);
+  width: 64px;
+  height: 40px;
+  padding: 4px;
+}
+
+.TodoDivButtons button{
+  display: flex;
+  flex-direction: column;
 }
 
 
@@ -757,8 +786,10 @@ background-color: white;
   top: 48px;
   box-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
   border: 0.02px solid rgb(230, 229, 229);
-  width: 20px;
+  border-radius: var(--average-border-radius);
+  width: 64px;
   height: 40px;
+  padding:4px;
 }
 
 .title-field,
@@ -1142,15 +1173,15 @@ figcaption {
   #showSideBar {
     display: none;
   }
-  .testNav {
+  nav {
     width: 100%;
     height: 100px;
   }
-  .testNav ul{
+  nav ul{
     margin-top: 0px;
   }
 
-  .testNav ul {
+  nav ul {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -1160,7 +1191,7 @@ figcaption {
     margin: 0px;
   }
 
-  .testNav button {
+  nav button {
     width: 300%;
   }
 
@@ -1217,7 +1248,7 @@ figcaption {
 }
 
 /* Color schemes */
-.darkMode .testNav {
+.darkMode nav{
   background-color: grey;
   transition: 1s;
 }

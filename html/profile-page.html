@@ -32,18 +32,14 @@
   </head>
 
   <body>
-    <!-- <nav>
-     
-      </nav> -->
 
     <div class="loader-container"></div>
     <div id="division1"></div>
 
     <!-- EVERYTHING IS STORED HERE IntoBox is for layout config -->
     <div class="intro-box">
-      <div class="testNav">
+      <nav id="myNav">
         <div class="userNamePfp">
-          <!-- <div>S</div> -->
           <img src="../images/plholder.webp" class="userPlay" alt="Profie picture" />
           <h1 id="welcome">Hey Emy!</h1> 
         </div>
@@ -60,6 +56,7 @@
           <li>
             <button
             id="showTimerButton"
+            class="showTimerDivButton"
             aria-label="showTimerButton"
             ></button>
           </li>
@@ -67,6 +64,7 @@
           <li>
           <button
           id="TriggerMusicButton"
+          class="showMusicDivButton"
           aria-label="TriggerMusicButton"
         ></button>
       </li>
@@ -105,7 +103,7 @@
 
           
         </ul>
-      </div>
+      </nav>
 
 
 
@@ -120,6 +118,11 @@
         <div id="beforeTodoHeader">
           <div class="timerSection">
             <div id="formatTimer">
+              <button
+        id="CloseTimerDivButton"
+        class="showTimerDivButton"
+        aria-label="closeTimerDivButton"
+      >X</button>
              <h2 id="setTime"> <span id="timerMinutes">25</span>:<span id="timerSeconds">00 </span></h2>
              <div>
              <button id="increaseMinutes">+</button>
@@ -133,6 +136,11 @@
 
             <div id="music">
               <div id="innerMusic">
+                <button
+                id="CloseMusicDivButton"
+                class="showMusicDivButton"
+                aria-label="closeMusicDivButton"
+              >X</button>
               <audio class="audios" preload="metadata"><source src="" ></audio>
               <div id="musicControls">
                 <p class="musicSectionHeaders">Music controls</p>
@@ -160,7 +168,7 @@
             <!-- <div id="levelEle">1</div> -->
             <!-- data-preset="energy" -->
             <div
-              data-stroke="pink"
+              data-stroke="rgb(255, 210, 253)"
               data-path="M90.5,23.2c0-12.5-10.2-22.7-22.7-22.7
               c-13.6,0-20.9,8.6-22.3,13.8C44.3,8.9,
               35.1,0.5,23.2,0.5C10.7,0.5,0.5,10.7,
@@ -280,12 +288,12 @@
       <div class="TestTodoSection">
         <!-- <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX4t95PAs1EpY?utm_source=generator&theme=0" width="40%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> -->
         <div id="CloseTodoHeader">
-        <button
-        id="CloseToDoDivButton"
-        class="showToDoDivButton"
-        aria-label="closeToDoDivButton"
-      >X</button>
       <p id="todoHeader">Todo</p>
+      <button
+      id="CloseToDoDivButton"
+      class="showToDoDivButton"
+      aria-label="closeToDoDivButton"
+    >X</button>
     </div>
    
     <p id="bannerWelcomeDue"><span id="YouHaveDue">You have<span id="ThingsDue"> 0 </span>tasks due today </span></p>
