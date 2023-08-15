@@ -24,5 +24,3 @@ priority labels, due dates, category labels, and images from pexels API to notes
 
 ### ♡ Sneak Peak
 
-<a href="https://imgur.com/8EGAo3R"><img src="https://i.imgur.com/8EGAo3R.png" title="source: imgur.com" /></a>
-<a href="https://imgur.com/bPr7YtZ"><img src="https://i.imgur.com/bPr7YtZ.png" title="source: imgur.com" /></a>
