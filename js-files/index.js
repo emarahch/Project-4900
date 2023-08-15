@@ -141,12 +141,13 @@ function create(charry) {
       login();
     })
     .catch(function (error) {
-      // window.alert("Error: " + error.code + " " + error.message);
+      document.body.classList.toggle("wrongPassword");
+     
     });
 }
 
 //logging into account
-
+// const inputs= document.getElementById("password_field");
 function login() {
   var user = Parse.User.logIn(
     document.getElementById("email_field").value,
@@ -156,7 +157,7 @@ function login() {
       mainProfilePage();
     })
     .catch(function (error) {
-      // window.alert("Error: " + error.code + " " + error.message);
+      document.body.classList.toggle("wrongPassword");
     });
 }
 

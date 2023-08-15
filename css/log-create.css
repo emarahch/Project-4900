@@ -54,6 +54,21 @@ input{
   font-size: var(--average-font-size);
 }
 
+.labelRed {
+  color: hsl(0, 100%, 67%);
+  visibility: hidden;
+  font-size:var(--average-font-size);
+  margin-bottom: 20px;
+}
+
+.wrongPassword input{
+  border: 0.02px solid red;
+}
+.wrongPassword .labelRed {
+  visibility: visible;
+}
+
+
 .createButton,
 .loginButton {
   width: 130px;
