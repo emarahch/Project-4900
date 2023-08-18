@@ -99,8 +99,8 @@ input{
   .input-hidden{
   opacity: 0;
   position: absolute;
-  width: 90;
-  height: 90;
+  width: 120px;
+  height: 140px;
   cursor: pointer;
 }
 
@@ -111,8 +111,9 @@ input{
 }
 
 .label-image {
-  width: 60px;
-  height: 70px;
+  width: 120px;
+  height: 140px;
+  object-fit: contain;
 }
 .pick-Character {
   display: flex;

@@ -16,6 +16,7 @@ window.addEventListener("load", (event) => {
   loader();
 });
 
+// 
 //Tutorial tooltip
 const tutuWords = document.getElementById("insideTutorial");
 tippy("#tutorialbutton", {
@@ -135,16 +136,26 @@ function create(charry) {
   user.set("chara", charry);
 
   // Call the save method, which returns the saved object if successful
+
+
   user
     .signUp()
     .then(function (user) {
+      if(document.body.classList.toggle("wrongPassword")==true){
+        document.body.classList.toggle("wrongPassword");
+        }
       login();
     })
     .catch(function (error) {
+      if(document.body.classList.toggle("wrongPassword")==false){
       document.body.classList.toggle("wrongPassword");
+      }
      
     });
 }
+
+
+
 
 //logging into account
 // const inputs= document.getElementById("password_field");
@@ -154,10 +165,15 @@ function login() {
     document.getElementById("password_field").value
   )
     .then(function (user) {
+      if(document.body.classList.toggle("wrongPassword")==true){
+        document.body.classList.toggle("wrongPassword");
+        }
       mainProfilePage();
     })
     .catch(function (error) {
-      document.body.classList.toggle("wrongPassword");
+      if(document.body.classList.toggle("wrongPassword")==false){
+        document.body.classList.toggle("wrongPassword");
+        }
     });
 }
 
@@ -192,6 +208,7 @@ function upScoreRealTime() {
       console.error("Error while retrieving ParseObject", error);
     }
     document.getElementById("levelEle").innerHTML = userLevel;
+    
 
     bar1.set(scoringMath(userScore));
   })();
@@ -724,6 +741,12 @@ function completedStore(idd) {
             userLevel,
             userScore
           );
+          // confetti(); 
+          confetti({
+            particleCount: 200,
+            spread: 600,
+            origin: { y: 0.4 }
+          });
         }
       }
 

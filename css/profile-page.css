@@ -1,6 +1,8 @@
 :root {
   --hover-pink: #fd9be8;
   --pale-pink: rgba(255, 210, 253, 0.56);
+  --dark-mode-pink:#E9C0E9;
+  --dark-mode-grey:#343945;
   --circle-radius: 50%;
   --average-border-radius:8px;
   --average-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
@@ -141,7 +143,7 @@ align-items: center;
   align-items: center;
   height: 100px;
   width: 200px;
-  padding:2px;
+  padding:6px;
   font-size: var(--average-font-size);
   border-radius: var(--average-border-radius);
   margin-left: auto;
@@ -203,12 +205,7 @@ nav {
   flex-direction: column;
   background-color: #f6f6f6;
   background-color: var(--pale-pink);
-
-  /* Alt color scheme */
-  /* background-color:#d9d4e7;   */
-
   height: 100vh;
-  /* width: 200px; */
   width: 80px;
   border: none;
   z-index: 1;
@@ -229,8 +226,11 @@ nav {
 .userPlay {
   border-radius: var(--circle-radius);
 
-  height: 30px;
-width: 30px;
+  /* height: 30px;
+width: 30px; */
+
+height: 50px;
+width: 50px;
   margin-top: 15px;
 }
 
@@ -1248,8 +1248,9 @@ figcaption {
 }
 
 /* Color schemes */
-.darkMode nav{
-  background-color: grey;
+.darkMode nav,
+.darkMode .TestTodoSection{
+  background-color: var(--dark-mode-pink);
   transition: 1s;
 }
 
@@ -1258,27 +1259,24 @@ figcaption {
   color: white;
 }
 
-.darkMode #bannerWelcomeDue{
-  color:white;
-}
 
-.darkMode .IndToDo {
-  background-color: grey;
-  transition: 1s;
-  /* color: white; */
-}
-
-.darkMode .IndToDo .IndTitle {
-  color: white;
-}
-
+.darkMode .IndToDo,
 .darkMode .note {
+  background-color:var(--dark-mode-grey);
   transition: 1s;
-  background-color: grey;
+}
+
+
+.darkMode .IndToDo .IndTitle,
+.darkMode .note
+ {
   color: white;
 }
 
-.darkMode .note .IndCategories {
+
+.darkMode .note .IndCategories,
+.darkMode #todoHeader,
+.darkMode #bannerWelcomeDue{
   color: black;
 }
 
@@ -1286,7 +1284,6 @@ figcaption {
   border: 0.5px solid #696868;
 }
 
-.darkMode #createTodoShowBtn,
 .darkMode #createNoteShowBtn,
 .darkMode #sortButtonNotes {
   color: white;
@@ -1302,4 +1299,8 @@ figcaption {
 
 .darkMode .complete-btn {
   border-color: white;
+}
+
+.darkMode .ScoreDiv{
+ border: 1px solid var(--dark-mode-grey);
 }
